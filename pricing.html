@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fiyatlandırma — İhtiyacınıza Uygun Plan | Iarone</title>
+  <meta name="description" content="Iarone fiyatlandırma planları: Başlangıç, Profesyonel ve Premium. Şeffaf fiyatlar, gizli ücret yok." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.v5.css" />
+  <script>(function(){var t=localStorage.getItem('iarone-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})()</script>
+  <style>
+    /* Pricing-page tilt is handled via JS; ensure no overflow clip on grid */
+    .pricing-grid { overflow: visible; }
+
+    /* FAQ Accordion */
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .faq-question {
+      display: flex; align-items: center; justify-content: space-between;
+      cursor: pointer; font-size: 16px; font-weight: 600; color: var(--t1);
+      gap: 16px; transition: color var(--t) var(--ease);
+    }
+    .faq-question:hover { color: var(--ac-lt); }
+    [data-theme="light"] .faq-question:hover { color: var(--ac); }
+    .faq-icon {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--ac-bg); border: 1px solid var(--border-ac);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--ac-lt); font-size: 18px; flex-shrink: 0;
+      transition: transform var(--t) var(--ease);
+    }
+    [data-theme="light"] .faq-icon { color: var(--ac); }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height .4s var(--ease), padding .3s var(--ease);
+      font-size: 15px; color: var(--t2); line-height: 1.7;
+    }
+    .faq-item.open .faq-answer { max-height: 200px; padding-top: 14px; }
+    .faq-answer p { max-width: none; }
+
+    /* Comparison Table */
+    .compare-table {
+      width: 100%; border-collapse: collapse;
+      font-size: 14px;
+    }
+    .compare-table th, .compare-table td {
+      padding: 14px 20px; text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .compare-table th {
+      font-weight: 700; font-size: 13px; color: var(--t1);
+      background: var(--bg-card);
+    }
+    .compare-table th:first-child, .compare-table td:first-child {
+      text-align: left; color: var(--t2);
+    }
+    .compare-table .col-hl { background: var(--ac-bg); color: var(--ac-lt); }
+    [data-theme="light"] .compare-table .col-hl { color: var(--ac); }
+    .compare-table tbody tr:hover td { background: var(--bg-card-hv, rgba(255,255,255,.04)); }
+    .check { color: var(--success); font-size: 16px; }
+    .dash  { color: var(--t3); }
+    .star  { color: var(--warn); }
+
+    /* Trust logos strip */
+    .trust-strip {
+      display: flex; align-items: center; justify-content: center; gap: 48px;
+      padding: 32px 0; flex-wrap: wrap;
+    }
+    .trust-item {
+      font-size: 20px; font-weight: 800; letter-spacing: -.03em;
+      color: var(--t3); opacity: .5; transition: opacity var(--t);
+    }
+    .trust-item:hover { opacity: .85; }
+  </style>
+</head>
+<body>
+
+<!-- ═══ BG BLOBS ═══ -->
+<div class="bg-blobs" aria-hidden="true">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+</div>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="nav" id="main-nav" role="navigation" aria-label="Ana navigasyon">
+  <div class="container">
+    <div class="nav__wrap">
+
+      <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa">
+        <img src="00_iarone_logo_exact_transparent_white_glow.png" class="logo-dark" alt="Iarone" />
+        <img src="00_iarone_logo_exact_transparent_black.png"     class="logo-light" alt="Iarone" />
+        <span class="logo-text">IARONE</span>
+      </a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="index.html"     class="nav__link" data-i18n="nav.home">Ana Sayfa</a></li>
+        <li><a href="https://app.iarone.com" class="nav__link" data-i18n="nav.dashboard">Nasıl Çalışır</a></li>
+        <li><a href="pricing.html"   class="nav__link active" data-i18n="nav.pricing">Fiyatlandırma</a></li>
+      </ul>
+
+      <div class="nav__right">
+        <!-- Language -->
+        <div class="lang-sw" id="lang-sw">
+          <button class="lang-btn" id="lang-btn" aria-label="Dil seçin">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="lang-current">TR</span>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-drop" role="menu">
+            <div class="lang-opt sel" data-lang="tr" role="menuitem" tabindex="0">🇹🇷 &nbsp;Türkçe</div>
+            <div class="lang-opt"     data-lang="en" role="menuitem" tabindex="0">🇬🇧 &nbsp;English</div>
+          </div>
+        </div>
+
+        <!-- Theme -->
+        <button class="theme-tog" id="theme-toggle" aria-label="Temayı değiştir">
+          <svg class="ic-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="ic-sun"  width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+
+        <a href="https://app.iarone.com/auth.html"      class="btn btn-ghost"   id="nav-login" data-i18n="nav.login">Giriş Yap</a>
+        <a href="https://app.iarone.com/auth.html"      class="btn btn-primary" id="nav-register" style="margin-right: 8px;">Kayıt Ol</a>
+        <a href="https://app.iarone.com" class="btn btn-primary" id="nav-cta">
+          <span data-i18n="nav.cta">Model Oluştur</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <button class="nav__burger" id="nav-burger" aria-label="Menüyü aç" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="nav__mobile" id="nav-mobile" role="menu">
+  <a href="index.html"     class="nav__link" data-i18n="nav.home">Ana Sayfa</a>
+  <a href="https://app.iarone.com" class="nav__link" data-i18n="nav.dashboard">Nasıl Çalışır</a>
+  <a href="pricing.html"   class="nav__link active" data-i18n="nav.pricing">Fiyatlandırma</a>
+  <div class="nav__mobile-actions">
+    <a href="https://app.iarone.com/auth.html"      class="btn btn-ghost"   data-i18n="nav.login">Giriş Yap</a>
+    <a href="https://app.iarone.com/auth.html"      class="btn btn-primary" style="margin-bottom: 10px;">Kayıt Ol</a>
+    <a href="https://app.iarone.com" class="btn btn-primary" data-i18n="nav.cta">Model Oluştur</a>
+  </div>
+</div>
+
+<!-- ═══ PRICING HERO ═══ -->
+<section class="section z1" id="pricing" aria-labelledby="pricing-heading"
+  style="padding-top:calc(var(--nav-h) + 80px);background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(99,102,241,.07) 0%,transparent 70%);">
+  <div class="container">
+    <div class="sec-hd reveal">
+      <span class="badge" data-i18n="pricing.badge">Fiyatlandırma</span>
+      <h1 class="gt" id="pricing-heading" data-i18n="pricing.title">İhtiyacınıza Uygun Plan</h1>
+      <p data-i18n="pricing.sub">Şeffaf fiyatlar. Gizli ücret yok. İstediğiniz zaman iptal.</p>
+    </div>
+
+    <!-- 3-Column Pricing Grid -->
+    <div class="pricing-grid">
+
+      <!-- ── Card 1: Starter ── -->
+      <div class="p-card reveal" id="plan-starter" role="article" aria-label="Başlangıç Paketi">
+        <div class="p-plan" data-i18n="pricing.p1_name">Başlangıç</div>
+        <div class="p-price" data-i18n="pricing.p1_price">Ücretsiz</div>
+        <div class="p-per"   data-i18n="pricing.p1_per">İlk 3 model dahil</div>
+        <hr class="p-hr" />
+        <p class="p-desc" data-i18n="pricing.p1_desc">
+          Platforma alışmak ve ilk modeli denemek için ideal başlangıç noktası.
+        </p>
+        <ul class="p-feats" aria-label="Başlangıç paketi özellikleri">
+          <li class="p-feat" data-i18n="pricing.p1_f1">İlk 3 adet 3D model üretimi</li>
+          <li class="p-feat" data-i18n="pricing.p1_f2">Temel web önizleme</li>
+          <li class="p-feat" data-i18n="pricing.p1_f3">Basit kalite sonuç raporu</li>
+          <li class="p-feat" data-i18n="pricing.p1_f4">Standart işlem sırası</li>
+        </ul>
+        <a href="https://app.iarone.com" class="btn btn-ghost btn-full btn-ghost-lg" id="plan-starter-cta" data-i18n="pricing.p1_cta">
+          Ücretsiz Başla
+        </a>
+      </div>
+
+      <!-- ── Card 2: Professional (Highlighted) ── -->
+      <div class="p-card p-card-hl reveal d1" id="plan-pro" role="article" aria-label="Profesyonel Paketi — En popüler">
+        <div class="p-pop" data-i18n="pricing.p2_badge">En Popüler</div>
+        <div class="p-plan" data-i18n="pricing.p2_name">Profesyonel</div>
+        <div class="p-price" data-i18n="pricing.p2_price">₺499</div>
+        <div class="p-per"   data-i18n="pricing.p2_per">/ ay · aylık faturalandırma</div>
+        <hr class="p-hr" />
+        <p class="p-desc" data-i18n="pricing.p2_desc">
+          Ciddi satış hedefi olan e-ticaret işletmeleri için. Kalite + İyileştirme dahil.
+        </p>
+        <ul class="p-feats" aria-label="Profesyonel paketi özellikleri">
+          <li class="p-feat"       data-i18n="pricing.p2_f1">Aylık 50 adet 3D model üretimi</li>
+          <li class="p-feat"       data-i18n="pricing.p2_f2">Detaylı Kalite Raporu (3 kategori)</li>
+          <li class="p-feat star"  data-i18n="pricing.p2_f3">Akıllı Model İyileştirme sistemi</li>
+          <li class="p-feat"       data-i18n="pricing.p2_f4">Mobil AR hazır çıktı</li>
+          <li class="p-feat"       data-i18n="pricing.p2_f5">Web embed + API erişimi</li>
+          <li class="p-feat"       data-i18n="pricing.p2_f6">Öncelikli destek</li>
+        </ul>
+        <a href="https://app.iarone.com" class="btn btn-primary btn-full btn-primary-lg" id="plan-pro-cta">
+          <span data-i18n="pricing.p2_cta">Hemen Başla</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- ── Card 3: Premium ── -->
+      <div class="p-card reveal d2" id="plan-premium" role="article" aria-label="Premium Paketi">
+        <div class="p-plan" data-i18n="pricing.p3_name">Premium</div>
+        <div class="p-price" style="font-size:32px;line-height:1.2;" data-i18n="pricing.p3_price">Özel Fiyat</div>
+        <div class="p-per" data-i18n="pricing.p3_per">Kurumsal ve ajanslar için</div>
+        <hr class="p-hr" />
+        <p class="p-desc" data-i18n="pricing.p3_desc">
+          Satış kalitesi odaklı uzman kontrolü ve öncelikli işlem hakkı.
+        </p>
+        <ul class="p-feats" aria-label="Premium paketi özellikleri">
+          <li class="p-feat"       data-i18n="pricing.p3_f1">Sınırsız model üretimi</li>
+          <li class="p-feat"       data-i18n="pricing.p3_f2">Uzman kalite kontrolü + manuel düzenleme</li>
+          <li class="p-feat star"  data-i18n="pricing.p3_f3">Satış kalitesi odaklı iyileştirme</li>
+          <li class="p-feat"       data-i18n="pricing.p3_f4">Öncelikli işlem hakkı</li>
+          <li class="p-feat"       data-i18n="pricing.p3_f5">Özel API entegrasyonu</li>
+          <li class="p-feat"       data-i18n="pricing.p3_f6">Ayrılmış hesap yöneticisi</li>
+        </ul>
+        <a href="mailto:hello@iarone.ai" class="btn btn-ghost btn-full btn-ghost-lg" id="plan-premium-cta" data-i18n="pricing.p3_cta">
+          Teklif Al
+        </a>
+      </div>
+
+    </div><!-- /pricing-grid -->
+  </div>
+</section>
+
+<!-- ═══ FEATURE COMPARISON TABLE ═══ -->
+<section class="section-sm z1" aria-labelledby="compare-heading">
+  <div class="container">
+    <div class="sec-hd reveal">
+      <h2 class="gt" id="compare-heading">Planları Karşılaştır</h2>
+    </div>
+    <div class="reveal" style="overflow-x:auto;border:1px solid var(--border);border-radius:var(--r-xl);">
+      <table class="compare-table" role="table" aria-label="Plan karşılaştırma tablosu">
+        <thead>
+          <tr>
+            <th style="width:40%">Özellik</th>
+            <th>Başlangıç</th>
+            <th class="col-hl">Profesyonel</th>
+            <th>Premium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>3D Model Üretimi</td>
+            <td>3 model</td>
+            <td class="col-hl">50 / ay</td>
+            <td>Sınırsız</td>
+          </tr>
+          <tr>
+            <td>Kalite Raporu</td>
+            <td>Basit</td>
+            <td class="col-hl">Detaylı</td>
+            <td>Uzman Kontrolü</td>
+          </tr>
+          <tr>
+            <td>Akıllı Model İyileştirme</td>
+            <td><span class="dash">—</span></td>
+            <td class="col-hl"><span class="star">⚡</span></td>
+            <td><span class="star">⚡</span></td>
+          </tr>
+          <tr>
+            <td>Mobil AR Hazır Çıktı</td>
+            <td><span class="dash">—</span></td>
+            <td class="col-hl"><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>API Erişimi</td>
+            <td><span class="dash">—</span></td>
+            <td class="col-hl"><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Web Embed</td>
+            <td><span class="dash">—</span></td>
+            <td class="col-hl"><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Destek</td>
+            <td>Standart</td>
+            <td class="col-hl">Öncelikli</td>
+            <td>Hesap Yöneticisi</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="section-sm z1" aria-labelledby="faq-heading">
+  <div class="container" style="max-width:760px">
+    <div class="sec-hd reveal">
+      <h2 class="gt" id="faq-heading">Sıkça Sorulan Sorular</h2>
+    </div>
+    <div id="faq-list">
+      <div class="faq-item reveal" data-faq>
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          <span>Ücretsiz planla başlayabilir miyim?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer"><p>Evet, kayıt olmadan ilk 3 modelinizi ücretsiz oluşturabilirsiniz. Kredi kartı gerekmez.</p></div>
+      </div>
+      <div class="faq-item reveal d1" data-faq>
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          <span>Akıllı İyileştirme sistemi nasıl çalışır?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer"><p>Arka planda profesyonel 3D araçları otomatik olarak çalıştırır. Cam, metal ve parlak yüzeyleri tespit edip gerçekçi dokular atar. Blender bilgisi gerekmez.</p></div>
+      </div>
+      <div class="faq-item reveal d2" data-faq>
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          <span>Modellerim hangi formatlarda çıkar?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer"><p>GLB, GLTF ve USDZ formatları desteklenir. Web AR, iOS AR Quick Look ve tüm büyük e-ticaret platformlarıyla uyumludur.</p></div>
+      </div>
+      <div class="faq-item reveal d3" data-faq>
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
+          <span>Aboneliği istediğim zaman iptal edebilir miyim?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer"><p>Evet, herhangi bir ceza veya ücret ödemeden istediğiniz zaman iptal edebilirsiniz. İptal sonrasında oluşturduğunuz modellere erişiminiz devam eder.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRUST LOGOS ═══ -->
+<section class="section-xs z1">
+  <div class="container">
+    <p style="text-align:center;font-size:13px;color:var(--t3);margin:0 auto 24px;">
+      Güvenilen Platformlar ve Standartlar
+    </p>
+    <div class="trust-strip reveal" aria-label="Desteklenen platformlar">
+      <span class="trust-item">Shopify</span>
+      <span class="trust-item">WooCommerce</span>
+      <span class="trust-item">Trendyol</span>
+      <span class="trust-item">n11</span>
+      <span class="trust-item">Hepsiburada</span>
+      <span class="trust-item">Magento</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BETA CTA ═══ -->
+<section class="section-sm z1" id="beta" aria-labelledby="beta-heading">
+  <div class="container">
+    <div class="beta-box reveal">
+      <div class="beta-inner">
+        <span class="badge" data-i18n="pricing.beta_badge">Sınırlı Erişim</span>
+        <h2 class="gt-ac" id="beta-heading" data-i18n="pricing.beta_title">
+          Sınırlı Beta Programına Katılın
+        </h2>
+        <p data-i18n="pricing.beta_sub">
+          İlk 200 kullanıcıdan biri olun. Erken erişim, özel indirim ve doğrudan ekibe geri bildirim hakkı.
+        </p>
+        <form class="beta-form" id="beta-form" novalidate>
+          <input
+            type="email"
+            class="beta-input"
+            id="beta-email"
+            aria-label="Beta programı için e-posta adresi"
+            data-i18n="pricing.beta_ph"
+            placeholder="e-posta adresiniz"
+            required
+          />
+          <button type="submit" class="btn btn-primary" id="beta-submit" data-i18n="pricing.beta_btn">
+            Listeye Ekle
+          </button>
+        </form>
+        <p class="beta-note" data-i18n="pricing.beta_note">
+          🔒 Spam yok. İstediğiniz zaman çıkabilirsiniz.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer z1" role="contentinfo">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="foot-brand">
+        <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa" style="margin-bottom: 16px;">
+          <img src="00_iarone_logo_exact_transparent_white_glow.png" class="logo-dark" alt="Iarone" />
+          <img src="00_iarone_logo_exact_transparent_black.png"     class="logo-light" alt="Iarone" />
+          <span class="logo-text">IARONE</span>
+        </a>
+        <p data-i18n="footer.tagline">Ürün fotoğraflarından satışa hazır 3D ve AR modeller.</p>
+      </div>
+      <div>
+        <div class="foot-col-title" data-i18n="footer.col1">Ürün</div>
+        <div class="foot-links">
+          <a href="https://app.iarone.com" data-i18n="footer.f_dash">Nasıl Çalışır</a>
+          <a href="pricing.html"   data-i18n="footer.f_price">Fiyatlandırma</a>
+          <a href="#"              data-i18n="footer.f_api">API Docs</a>
+        </div>
+      </div>
+      <div>
+        <div class="foot-col-title" data-i18n="footer.col2">Şirket</div>
+        <div class="foot-links">
+          <a href="#" data-i18n="footer.c_about">Hakkımızda</a>
+          <a href="#" data-i18n="footer.c_blog">Blog</a>
+          <a href="#" data-i18n="footer.c_career">Kariyer</a>
+          <a href="#" data-i18n="footer.c_contact">İletişim</a>
+        </div>
+      </div>
+      <div>
+        <div class="foot-col-title" data-i18n="footer.col3">Yasal</div>
+        <div class="foot-links">
+          <a href="#" data-i18n="footer.l_priv">Gizlilik Politikası</a>
+          <a href="#" data-i18n="footer.l_terms">Kullanım Koşulları</a>
+          <a href="#" data-i18n="footer.l_kvkk">KVKK</a>
+          <a href="#" data-i18n="footer.l_cookie">Çerez Politikası</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="foot-copy" data-i18n="footer.copy">© 2025 Iarone. Tüm hakları saklıdır.</span>
+      <div class="foot-socials" aria-label="Sosyal medya">
+        <a href="#" class="soc-btn" aria-label="Twitter/X">𝕏</a>
+        <a href="#" class="soc-btn" aria-label="LinkedIn">in</a>
+        <a href="#" class="soc-btn" aria-label="Instagram">📷</a>
+        <a href="#" class="soc-btn" aria-label="YouTube">▶</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ FLOATING WIDGETS ═══ -->
+<div class="floating-widgets">
+  <!-- AI Chatbot Widget -->
+  <div class="ai-widget" id="ai-widget">
+    <!-- Chat Window -->
+    <div class="ai-chat-window" id="ai-chat-window">
+      <div class="ai-chat-header">
+        <div class="ai-chat-title">
+          <span class="ai-avatar">✨</span>
+          <div>
+            <strong>Iarone AI Asistan</strong>
+            <span>Çevrimiçi</span>
+          </div>
+        </div>
+        <button class="ai-close-btn" id="ai-close-btn" aria-label="Kapat">&times;</button>
+      </div>
+      <div class="ai-chat-body" id="ai-chat-body">
+        <!-- Messages will be injected here via JS -->
+      </div>
+    </div>
+    <!-- Toggle Button -->
+    <button class="ai-toggle-btn" id="ai-toggle-btn" aria-label="Asistanı Aç">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z"></path></svg>
+    </button>
+  </div>
+
+  <!-- Instagram Icon -->
+  <a href="https://www.instagram.com/iarone.ai/?hl=tr" target="_blank" rel="noopener noreferrer" class="ig-float-btn" aria-label="Instagram">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+  </a>
+</div>
+
+<script src="i18n.js"></script>
+<script src="app.v5.js"></script>
+<script>
+  // ── FAQ Accordion ──
+  document.querySelectorAll('[data-faq]').forEach(item => {
+    const q = item.querySelector('.faq-question');
+    q.addEventListener('click', () => {
+      const open = item.classList.toggle('open');
+      q.setAttribute('aria-expanded', open);
+    });
+    q.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); q.click(); } });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iarone — Fotoğraftan Satışa Hazır 3D Modele</title>
+  <meta name="description" content="Ürün fotoğraflarından saniyeler içinde satışa hazır 3D ve AR modeller üretin. Iarone kalite kontrol ve akıllı iyileştirme ile birlikte sunar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.v5.css" />
+  <!-- Anti-flash + clear stale preloader session flag -->
+  <script>
+    sessionStorage.removeItem('iar-pl');
+    (function(){var t=localStorage.getItem('iarone-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})()
+  </script>
+</head>
+<body>
+
+<div id="preloader" class="pl" role="status" aria-label="Iarone yükleniyor">
+  <div class="pl__logo">
+    <img src="00_iarone_logo_exact_transparent_white_glow.png" class="logo-dark" alt="Iarone" />
+    <img src="00_iarone_logo_exact_transparent_black.png" class="logo-light" alt="Iarone" />
+    <span class="logo-text">IARONE</span>
+  </div>
+  <div class="pl__text">Yükleniyor<span class="pl__dots"></span></div>
+</div>
+
+<!-- ═══ BG BLOBS ═══ -->
+<div class="bg-blobs" aria-hidden="true">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="nav" id="main-nav" role="navigation" aria-label="Ana navigasyon">
+  <div class="container">
+    <div class="nav__wrap">
+
+      <!-- Logo -->
+      <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa">
+        <img src="00_iarone_logo_exact_transparent_white_glow.png" class="logo-dark" alt="Iarone" />
+        <img src="00_iarone_logo_exact_transparent_black.png"     class="logo-light" alt="Iarone" />
+        <span class="logo-text">IARONE</span>
+      </a>
+
+      <!-- Desktop Links -->
+      <ul class="nav__links" role="list">
+        <li><a href="index.html"     class="nav__link active" data-i18n="nav.home">Ana Sayfa</a></li>
+        <li><a href="https://app.iarone.com" class="nav__link"        data-i18n="nav.dashboard">Nasıl Çalışır</a></li>
+        <li><a href="pricing.html"   class="nav__link"        data-i18n="nav.pricing">Fiyatlandırma</a></li>
+      </ul>
+
+      <!-- Right Controls -->
+      <div class="nav__right">
+
+        <!-- Language Switcher -->
+        <div class="lang-sw" id="lang-sw">
+          <button class="lang-btn" id="lang-btn" aria-label="Dil seçin" aria-haspopup="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="lang-current">TR</span>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-drop" role="menu">
+            <div class="lang-opt sel" data-lang="tr" role="menuitem" tabindex="0">🇹🇷 &nbsp;Türkçe</div>
+            <div class="lang-opt"     data-lang="en" role="menuitem" tabindex="0">🇬🇧 &nbsp;English</div>
+          </div>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button class="theme-tog" id="theme-toggle" aria-label="Temayı değiştir">
+          <svg class="ic-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="ic-sun"  width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+
+        <!-- CTA Buttons -->
+        <a href="https://app.iarone.com/auth.html"      class="btn btn-ghost"   id="nav-login" data-i18n="nav.login">Giriş Yap</a>
+        <a href="https://app.iarone.com/auth.html"      class="btn btn-primary" id="nav-register" style="margin-right: 8px;">Kayıt Ol</a>
+        <a href="https://app.iarone.com" class="btn btn-primary" id="nav-cta">
+          <span data-i18n="nav.cta">Model Oluştur</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <!-- Mobile Hamburger -->
+        <button class="nav__burger" id="nav-burger" aria-label="Menüyü aç" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav Drawer -->
+<div class="nav__mobile" id="nav-mobile" role="menu">
+  <a href="index.html"     class="nav__link active" data-i18n="nav.home">Ana Sayfa</a>
+  <a href="https://app.iarone.com" class="nav__link"        data-i18n="nav.dashboard">Nasıl Çalışır</a>
+  <a href="pricing.html"   class="nav__link"        data-i18n="nav.pricing">Fiyatlandırma</a>
+  <div class="nav__mobile-actions">
+    <a href="https://app.iarone.com/auth.html"      class="btn btn-ghost"   data-i18n="nav.login">Giriş Yap</a>
+    <a href="https://app.iarone.com/auth.html"      class="btn btn-primary" style="margin-bottom: 10px;">Kayıt Ol</a>
+    <a href="https://app.iarone.com" class="btn btn-primary" data-i18n="nav.cta">Model Oluştur</a>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero" aria-labelledby="hero-h1">
+  <div class="container z1">
+    <div class="hero__inner">
+
+      <!-- Content -->
+      <div>
+        <div class="reveal">
+          <span class="badge" data-i18n="home.badge_hero">AI Destekli 3D Üretim Platformu</span>
+        </div>
+        <h1 class="hero__h1 gt reveal d1" id="hero-h1" data-i18n="home.hero_h1">
+          Fotoğraf yükle. 3D modelini oluştur. Kalitesini gör. Gerekirse iyileştir.
+        </h1>
+        <p class="hero__sub reveal d2" data-i18n="home.hero_h2">
+          Ürün görsellerinden satışa hazır 3D deneyimler üretin. Iarone, modeli sadece oluşturmaz; kullanılabilirlik, kalite ve iyileştirme süreciyle birlikte sunar.
+        </p>
+        <div class="hero__actions reveal d3">
+          <a href="https://app.iarone.com" class="btn btn-primary btn-primary-lg" id="hero-cta-primary">
+            <span data-i18n="home.hero_cta_primary">Hemen Model Oluştur</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://app.iarone.com" class="btn btn-ghost btn-ghost-lg" id="hero-cta-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
+            <span data-i18n="home.hero_cta_secondary">Nasıl Çalışır?</span>
+          </a>
+        </div>
+        <div class="hero__stats reveal d4">
+          <div>
+            <div class="hero__sv" data-i18n="home.stat1_v">10×</div>
+            <div class="hero__sl" data-i18n="home.stat1_l">Geleneksele göre daha hızlı</div>
+          </div>
+          <div>
+            <div class="hero__sv" data-i18n="home.stat2_v">%100</div>
+            <div class="hero__sl" data-i18n="home.stat2_l">Teknik bilgi gerekmez</div>
+          </div>
+          <div>
+            <div class="hero__sv" data-i18n="home.stat3_v">AR</div>
+            <div class="hero__sl" data-i18n="home.stat3_l">Mobil & Web hazır çıktı</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual -->
+      <div class="hero__visual reveal d2" id="hero-3d-video-container" style="cursor: grab; position: relative;">
+        <canvas id="hero-3d-canvas" style="width: 100%; height: auto; max-width: 600px; display: block; margin: 0 auto; user-select: none;"></canvas>
+        <video id="hero-hidden-video" src="muscent.mp4" playsinline muted loop style="display:none;" preload="auto"></video>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BENEFITS STRIP ═══ -->
+<div class="reveal" style="position:relative;z-index:1">
+  <img src="10_platform_benefits_strip.png"
+       alt="Iarone platform avantajları: Zamandan Tasarruf, Maliyet Avantajı, Kolay Kullanım, Yüksek Performans, Daha Fazla Satış"
+       style="width:100%;border-top:1px solid var(--border);border-bottom:1px solid var(--border);opacity:.92;" />
+</div>
+
+<!-- ═══ USP SECTION ═══ -->
+<section class="section z1" id="usp" aria-labelledby="usp-heading">
+  <div class="container">
+    <div class="usp__inner">
+
+      <!-- Visual (Left) -->
+      <div class="reveal">
+        <div class="usp__img-wrap">
+          <img src="04_smart_quality_check_report.png" alt="Iarone kalite raporu dashboard ekranı" />
+        </div>
+        <div class="quality-card">
+          <div class="q-title" data-i18n="home.usp_q_title">Model Kalite Raporu</div>
+          <div class="q-item q-ok">
+            <span class="qi">✅</span>
+            <span data-i18n="home.usp_q_prev">Önizleme: Uygun</span>
+          </div>
+          <div class="q-item q-ok">
+            <span class="qi">✅</span>
+            <span data-i18n="home.usp_q_mob">Mobil AR: Uygun</span>
+          </div>
+          <div class="q-item q-warn">
+            <span>⚠️</span>
+            <span data-i18n="home.usp_q_sale">Satış Kalitesi: İyileştirme Gerekiyor</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text (Right) -->
+      <div class="usp__text reveal d2">
+        <span class="badge" data-i18n="home.usp_badge">Rekabetçi Fark</span>
+        <h2 class="gt-ac" id="usp-heading" data-i18n="home.usp_title">
+          Sadece Üretmiyoruz, Denetliyoruz.
+        </h2>
+        <p data-i18n="home.usp_text">
+          Modelinizin gerçekten kullanılabilir olup olmadığını bilin. Iarone, oluşturulan her modeli analiz eder, telefonda nasıl açılacağını test eder ve sade bir dille eksiklerini söyler.
+        </p>
+        <a href="https://app.iarone.com" class="btn btn-primary btn-primary-lg" id="usp-cta">
+          <span data-i18n="home.usp_cta">Kalite Raporunu Gör</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="section z1" id="nasil-calisir" aria-labelledby="steps-heading"
+  style="background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(99,102,241,.06) 0%,transparent 70%)">
+  <div class="container">
+    <div class="sec-hd reveal">
+      <span class="badge" data-i18n="home.steps_badge">Süreç</span>
+      <h2 class="gt" id="steps-heading" data-i18n="home.steps_title">Dört Adımda Satışa Hazır</h2>
+      <p data-i18n="home.steps_sub">Tek fotoğraftan kalite onaylı AR modele saniyeler içinde.</p>
+    </div>
+
+    <div class="steps-grid">
+      <!-- Step 1 -->
+      <div class="step-card reveal">
+        <div class="step-num">01</div>
+        <div class="step-ico">📸</div>
+        <h3 data-i18n="home.step1_title">Fotoğraf Kontrolü</h3>
+        <p data-i18n="home.step1_desc">Sistem fotoğrafın ışığını ve açısını analiz eder, sizi yönlendirir.</p>
+        <div class="step-img">
+          <img src="03_upload_product_photo_experience.png" alt="Fotoğraf yükleme deneyimi" />
+        </div>
+      </div>
+      <!-- Step 2 -->
+      <div class="step-card reveal d1">
+        <div class="step-num">02</div>
+        <div class="step-ico">⚡</div>
+        <h3 data-i18n="home.step2_title">3D Üretim</h3>
+        <p data-i18n="home.step2_desc">Güçlü motorlarımız saniyeler içinde ilk modeli çıkarır.</p>
+        <div class="step-img">
+          <img src="01_2d_photo_to_interactive_3d_model.png" alt="3D model üretim süreci" />
+        </div>
+      </div>
+      <!-- Step 3 -->
+      <div class="step-card reveal d2">
+        <div class="step-num">03</div>
+        <div class="step-ico">🔬</div>
+        <h3 data-i18n="home.step3_title">Kalite Raporu</h3>
+        <p data-i18n="home.step3_desc">E-ticaret ve AR kullanımına uygunluk anında test edilir.</p>
+        <div class="step-img">
+          <img src="04_smart_quality_check_report.png" alt="Kalite raporu ekranı" />
+        </div>
+      </div>
+      <!-- Step 4 -->
+      <div class="step-card reveal d3">
+        <div class="step-num">04</div>
+        <div class="step-ico">✨</div>
+        <h3 data-i18n="home.step4_title">Akıllı İyileştirme</h3>
+        <p data-i18n="home.step4_desc">Tek tıkla temizlenir, hafifletilir, gerçekçi yüzeyler eklenir.</p>
+        <div class="step-img">
+          <img src="05_invisible_refinement_laboratory.png" alt="Akıllı model iyileştirme" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ USE CASES ═══ -->
+<section class="section z1" id="kullanim-alanlari" aria-labelledby="uc-heading">
+  <div class="container">
+    <div class="sec-hd reveal">
+      <span class="badge" data-i18n="home.uc_badge">Kullanım Alanları</span>
+      <h2 class="gt" id="uc-heading" data-i18n="home.uc_title">Her Ürün Kategorisi İçin</h2>
+      <p data-i18n="home.uc_sub">Mobilyadan elektroniğe, ayakkabıdan dekorasyona — her kategoride AR deneyimi.</p>
+    </div>
+    <div class="uc-grid">
+      <div class="uc-card reveal">
+        <img src="06_furniture_use_case_web_ar.png" alt="Mobilya kategorisi — Web AR ve 3D deneyimi" />
+      </div>
+      <div class="uc-card reveal d1">
+        <img src="07_shoes_use_case_web_ar.png" alt="Ayakkabı kategorisi — Gerçekçi 3D görselleştirme" />
+      </div>
+      <div class="uc-card reveal d2">
+        <img src="08_electronics_use_case_web_ar.png" alt="Elektronik kategorisi — Detay keşfi" />
+      </div>
+      <div class="uc-card reveal d3">
+        <img src="09_decoration_use_case_web_ar.png" alt="Dekorasyon kategorisi — AR ile mekanda görselleştirme" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SALES READY SHOWCASE ═══ -->
+<section class="section-sm z1" aria-labelledby="sr-heading">
+  <div class="container">
+    <div class="sec-hd reveal">
+      <span class="badge" data-i18n="home.sr_badge">Sonuç</span>
+      <h2 class="gt" id="sr-heading" data-i18n="home.sr_title">Satış Kalitesinde Çıktı</h2>
+      <p data-i18n="home.sr_sub">Her model; masaüstü, tablet ve mobil AR'da test edilmiş, onaylanmış olarak teslim edilir.</p>
+    </div>
+    <div class="reveal">
+      <img src="02_sales_ready_desktop_and_mobile_ar.png"
+           alt="Iarone platformu — masaüstü ve mobil AR görünümü — Satış Kalitesi Yüksek, Mobil Uyumluluk Tam"
+           style="width:100%;border-radius:var(--r-xl);border:1px solid var(--border);box-shadow:var(--sh-xl),var(--sh-ac);" />
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer z1" role="contentinfo">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="foot-brand">
+        <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa" style="margin-bottom: 16px;">
+          <img src="00_iarone_logo_exact_transparent_white_glow.png" class="logo-dark" alt="Iarone" />
+          <img src="00_iarone_logo_exact_transparent_black.png"     class="logo-light" alt="Iarone" />
+          <span class="logo-text">IARONE</span>
+        </a>
+        <p data-i18n="footer.tagline">Ürün fotoğraflarından satışa hazır 3D ve AR modeller.</p>
+      </div>
+      <div>
+        <div class="foot-col-title" data-i18n="footer.col1">Ürün</div>
+        <div class="foot-links">
+          <a href="https://app.iarone.com" data-i18n="footer.f_dash">Nasıl Çalışır</a>
+          <a href="pricing.html"   data-i18n="footer.f_price">Fiyatlandırma</a>
+          <a href="#"              data-i18n="footer.f_api">API Docs</a>
+        </div>
+      </div>
+      <div>
+        <div class="foot-col-title" data-i18n="footer.col2">Şirket</div>
+        <div class="foot-links">
+          <a href="#" data-i18n="footer.c_about">Hakkımızda</a>
+          <a href="#" data-i18n="footer.c_blog">Blog</a>
+          <a href="#" data-i18n="footer.c_career">Kariyer</a>
+          <a href="#" data-i18n="footer.c_contact">İletişim</a>
+        </div>
+      </div>
+      <div>
+        <div class="foot-col-title" data-i18n="footer.col3">Yasal</div>
+        <div class="foot-links">
+          <a href="#" data-i18n="footer.l_priv">Gizlilik Politikası</a>
+          <a href="#" data-i18n="footer.l_terms">Kullanım Koşulları</a>
+          <a href="#" data-i18n="footer.l_kvkk">KVKK</a>
+          <a href="#" data-i18n="footer.l_cookie">Çerez Politikası</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="foot-copy" data-i18n="footer.copy">© 2025 Iarone. Tüm hakları saklıdır.</span>
+      <div class="foot-socials" aria-label="Sosyal medya">
+        <a href="#" class="soc-btn" aria-label="Twitter/X">𝕏</a>
+        <a href="#" class="soc-btn" aria-label="LinkedIn">in</a>
+        <a href="#" class="soc-btn" aria-label="Instagram">📷</a>
+        <a href="#" class="soc-btn" aria-label="YouTube">▶</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ FLOATING WIDGETS ═══ -->
+<div class="floating-widgets">
+  <!-- AI Chatbot Widget -->
+  <div class="ai-widget" id="ai-widget">
+    <!-- Chat Window -->
+    <div class="ai-chat-window" id="ai-chat-window">
+      <div class="ai-chat-header">
+        <div class="ai-chat-title">
+          <span class="ai-avatar">✨</span>
+          <div>
+            <strong>Iarone AI Asistan</strong>
+            <span>Çevrimiçi</span>
+          </div>
+        </div>
+        <button class="ai-close-btn" id="ai-close-btn" aria-label="Kapat">&times;</button>
+      </div>
+      <div class="ai-chat-body" id="ai-chat-body">
+        <!-- Messages will be injected here via JS -->
+      </div>
+    </div>
+    <!-- Toggle Button -->
+    <button class="ai-toggle-btn" id="ai-toggle-btn" aria-label="Asistanı Aç">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z"></path></svg>
+    </button>
+  </div>
+
+  <!-- Instagram Icon -->
+  <a href="https://www.instagram.com/iarone.ai/?hl=tr" target="_blank" rel="noopener noreferrer" class="ig-float-btn" aria-label="Instagram">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+  </a>
+</div>
+
+<script src="i18n.js"></script>
+<script src="app.v5.js"></script>
+</body>
+</html>
