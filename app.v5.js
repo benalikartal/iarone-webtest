@@ -207,17 +207,62 @@ function initBetaForm() {
   const form = document.getElementById('beta-form');
   if (!form) return;
 
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     const btn   = form.querySelector('[type="submit"]');
     const input = form.querySelector('input[type="email"]');
-    if (!input.value) return;
+    const website = form.querySelector('input[name="website"]');
+    if (!input || !input.value) return;
 
     const originalText = btn.textContent;
-    btn.textContent = '✅ Eklendi!';
-    btn.style.background = 'linear-gradient(135deg,#059669,#10b981)';
+    const lang = getLang();
+    btn.textContent = '...';
     btn.disabled = true;
-    input.value  = '';
+
+    try {
+      const payload = {
+        email: input.value,
+        intent: 'EARLY_ACCESS',
+        source: 'LANDING_PRICING_BETA',
+        pageUrl: window.location.href,
+        website: website ? website.value : ''
+      };
+
+      const res = await fetch((window.IARONE_API_URL || 'http://localhost:3000/api') + '/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        if (data.error) {
+           btn.textContent = 'Hata: ' + data.error;
+           setTimeout(() => { btn.textContent = originalText; btn.disabled = false; }, 3000);
+           return;
+        }
+        throw new Error('API Unreachable');
+      }
+
+      btn.textContent = (lang === 'tr') ? '✅ Eklendi!' : '✅ Added!';
+      btn.style.background = 'linear-gradient(135deg,#059669,#10b981)';
+      input.value  = '';
+    } catch (err) {
+      console.error('Lead Capture Error:', err);
+      btn.textContent = (lang === 'tr') ? 'Hata! Tekrar deneyin.' : 'Error! Try again.';
+      btn.style.background = 'var(--err)';
+      
+      // Kaydedilemeyenleri localStorage'a at
+      try {
+        const payload = {
+          email: input.value, intent: 'EARLY_ACCESS', source: 'LANDING_PRICING_BETA',
+          pageUrl: window.location.href, timestamp: Date.now()
+        };
+        const pending = JSON.parse(localStorage.getItem('pending_leads') || '[]');
+        pending.push(payload);
+        localStorage.setItem('pending_leads', JSON.stringify(pending));
+      } catch (e) {}
+    }
 
     setTimeout(() => {
       btn.textContent = originalText;
@@ -565,21 +610,71 @@ function initWaitlistForm() {
   const form = document.getElementById('waitlist-form');
   if (!form) return;
 
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     const btn   = form.querySelector('[type="submit"]');
-    const input = form.querySelector('input[type="email"]');
-    if (!input || !input.value) return;
+    const inputEmail = form.querySelector('input[type="email"]');
+    const inputName = form.querySelector('#wait_name');
+    const inputBrand = form.querySelector('#wait_brand');
+    const website = form.querySelector('input[name="website"]');
+    const intentRadio = form.querySelector('input[name="wait_intent"]:checked');
+    
+    if (!inputEmail || !inputEmail.value) return;
 
     const originalText = btn.textContent;
     const lang = getLang();
-    btn.textContent = (lang === 'tr') ? '✅ Başvurunuz alındı!' : '✅ Application received!';
-    btn.style.background = 'linear-gradient(135deg,#059669,#10b981)';
+    btn.textContent = '...';
     btn.disabled = true;
-    
-    form.querySelectorAll('input').forEach(i => {
-      if (i.type !== 'radio' && i.type !== 'checkbox' && i.type !== 'submit') i.value = '';
-    });
+
+    try {
+      const payload = {
+        name: inputName ? inputName.value : '',
+        email: inputEmail.value,
+        company: inputBrand ? inputBrand.value : '',
+        intent: intentRadio ? intentRadio.value : 'MARKET_WAITLIST',
+        source: 'MARKET_WAITLIST',
+        pageUrl: window.location.href,
+        website: website ? website.value : ''
+      };
+
+      const res = await fetch((window.IARONE_API_URL || 'http://localhost:3000/api') + '/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        if (data.error) {
+           btn.textContent = 'Hata: ' + data.error;
+           setTimeout(() => { btn.textContent = originalText; btn.disabled = false; }, 3000);
+           return;
+        }
+        throw new Error('API Unreachable');
+      }
+
+      btn.textContent = (lang === 'tr') ? '✅ Başvurunuz alındı!' : '✅ Application received!';
+      btn.style.background = 'linear-gradient(135deg,#059669,#10b981)';
+      
+      form.querySelectorAll('input').forEach(i => {
+        if (i.type !== 'radio' && i.type !== 'checkbox' && i.type !== 'submit') i.value = '';
+      });
+    } catch (err) {
+      console.error('Lead Capture Error:', err);
+      btn.textContent = (lang === 'tr') ? 'Hata! Tekrar deneyin.' : 'Error! Try again.';
+      btn.style.background = 'var(--err)';
+      
+      try {
+        const payload = {
+          name: inputName ? inputName.value : '', email: inputEmail.value,
+          company: inputBrand ? inputBrand.value : '', intent: intentRadio ? intentRadio.value : 'MARKET_WAITLIST',
+          source: 'MARKET_WAITLIST', pageUrl: window.location.href, timestamp: Date.now()
+        };
+        const pending = JSON.parse(localStorage.getItem('pending_leads') || '[]');
+        pending.push(payload);
+        localStorage.setItem('pending_leads', JSON.stringify(pending));
+      } catch (e) {}
+    }
 
     setTimeout(() => {
       btn.textContent = originalText;

@@ -368,16 +368,9 @@
         <p data-i18n="pricing.beta_sub">
           İlk 200 kullanıcıdan biri olun. Erken erişim, özel indirim ve doğrudan ekibe geri bildirim hakkı.
         </p>
-        <form class="beta-form" id="beta-form" novalidate>
-          <input
-            type="email"
-            class="beta-input"
-            id="beta-email"
-            aria-label="Beta programı için e-posta adresi"
-            data-i18n="pricing.beta_ph"
-            placeholder="e-posta adresiniz"
-            required
-          />
+        <form class="beta-form" id="beta-form">
+          <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" />
+          <input type="email" class="beta-input" id="beta-email" aria-label="Beta programı için e-posta adresi" data-i18n="pricing.beta_ph" placeholder="e-posta adresiniz" required />
           <button type="submit" class="btn btn-primary" id="beta-submit" data-i18n="pricing.beta_btn">
             Listeye Ekle
           </button>
