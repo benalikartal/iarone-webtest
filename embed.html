@@ -24,6 +24,11 @@
   <div id="fallback">
     Model Not Found or Unavailable
   </div>
+  
+  <div id="ios-fallback" style="display:none; width:100%; height:100%; align-items:center; justify-content:center; flex-direction:column; background-color:#111; color:#fff; font-family:sans-serif; text-align:center;">
+    <div style="font-size:40px; margin-bottom:8px;">📱</div>
+    <div style="font-size:14px; margin-bottom:16px;">iOS AR Ready<br/><span style="color:#888;font-size:11px;">Open on iOS device</span></div>
+  </div>
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
@@ -37,12 +42,21 @@
             const pkg = data.package;
             const viewer = document.getElementById('viewer');
             
-            if(pkg.glbUrl) {
-              viewer.src = pkg.glbUrl;
-              viewer.style.display = 'block';
+            if(pkg.packageType === 'IOS_AR_ONLY') {
+              if(!pkg.glbUrl && pkg.usdzUrl) {
+                document.getElementById('ios-fallback').style.display = 'flex';
+              } else {
+                viewer.style.display = 'block';
+                if(pkg.glbUrl) viewer.src = pkg.glbUrl;
+              }
             } else {
-              document.getElementById('fallback').innerText = 'Model source not ready';
-              document.getElementById('fallback').style.display = 'flex';
+              if(pkg.glbUrl) {
+                viewer.src = pkg.glbUrl;
+                viewer.style.display = 'block';
+              } else {
+                document.getElementById('fallback').innerText = 'Model source not ready';
+                document.getElementById('fallback').style.display = 'flex';
+              }
             }
             if(pkg.usdzUrl) viewer.setAttribute('ios-src', pkg.usdzUrl);
             if(pkg.posterImageUrl) viewer.poster = pkg.posterImageUrl;
