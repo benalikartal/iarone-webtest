@@ -280,10 +280,16 @@ function setActiveLink() {
   const page = location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav__link, .sb-item').forEach(a => {
     const href = a.getAttribute('href') || '';
-    const active =
-      (href.includes('index')   && (page === '' || page === 'index.html')) ||
-      (href.includes('dashboard') && page.includes('dashboard')) ||
-      (href.includes('pricing')   && page.includes('pricing'));
+    let active = false;
+    if (page === '' || page === 'index.html') {
+      if (href === 'index.html') active = true;
+    } else if (page.includes('pricing')) {
+      if (href.includes('pricing')) active = true;
+    } else if (page.includes('market')) {
+      if (href.includes('market')) active = true;
+    } else if (page.includes('dashboard')) {
+      if (href.includes('dashboard')) active = true;
+    }
     a.classList.toggle('active', active);
   });
 }
@@ -554,6 +560,35 @@ function initInteractiveVideo() {
   window.addEventListener('touchend', onDragEnd);
 }
 
+/* ─── WAITLIST FORM (MARKET) ─── */
+function initWaitlistForm() {
+  const form = document.getElementById('waitlist-form');
+  if (!form) return;
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn   = form.querySelector('[type="submit"]');
+    const input = form.querySelector('input[type="email"]');
+    if (!input || !input.value) return;
+
+    const originalText = btn.textContent;
+    const lang = getLang();
+    btn.textContent = (lang === 'tr') ? '✅ Başvurunuz alındı!' : '✅ Application received!';
+    btn.style.background = 'linear-gradient(135deg,#059669,#10b981)';
+    btn.disabled = true;
+    
+    form.querySelectorAll('input').forEach(i => {
+      if (i.type !== 'radio' && i.type !== 'checkbox' && i.type !== 'submit') i.value = '';
+    });
+
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 5000);
+  });
+}
+
 /* ─── INIT ─── */
 document.addEventListener('DOMContentLoaded', () => {
   // Preloader must run first (before theme so it respects current theme)
@@ -578,4 +613,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initPageTransitions();
   initAIChatbot();
   initInteractiveVideo();
+  initWaitlistForm();
 });

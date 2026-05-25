@@ -48,8 +48,9 @@
       <!-- Desktop Links -->
       <ul class="nav__links" role="list">
         <li><a href="index.html"     class="nav__link active" data-i18n="nav.home">Ana Sayfa</a></li>
-        <li><a href="https://app.iarone.com" class="nav__link"        data-i18n="nav.dashboard">Nasıl Çalışır</a></li>
-        <li><a href="pricing.html"   class="nav__link"        data-i18n="nav.pricing">Fiyatlandırma</a></li>
+        <li><a href="index.html#nasil-calisir" class="nav__link" data-i18n="nav.dashboard">Nasıl Çalışır</a></li>
+        <li><a href="market.html"    class="nav__link" data-i18n="nav.market">Market</a></li>
+        <li><a href="pricing.html"   class="nav__link" data-i18n="nav.pricing">Fiyatlandırma</a></li>
       </ul>
 
       <!-- Right Controls -->
@@ -94,8 +95,9 @@
 <!-- Mobile Nav Drawer -->
 <div class="nav__mobile" id="nav-mobile" role="menu">
   <a href="index.html"     class="nav__link active" data-i18n="nav.home">Ana Sayfa</a>
-  <a href="https://app.iarone.com" class="nav__link"        data-i18n="nav.dashboard">Nasıl Çalışır</a>
-  <a href="pricing.html"   class="nav__link"        data-i18n="nav.pricing">Fiyatlandırma</a>
+  <a href="index.html#nasil-calisir" class="nav__link" data-i18n="nav.dashboard">Nasıl Çalışır</a>
+  <a href="market.html"    class="nav__link" data-i18n="nav.market">Market</a>
+  <a href="pricing.html"   class="nav__link" data-i18n="nav.pricing">Fiyatlandırma</a>
   <div class="nav__mobile-actions">
     <a href="https://app.iarone.com/auth.html"      class="btn btn-ghost"   data-i18n="nav.login">Giriş Yap</a>
     <a href="https://app.iarone.com/auth.html"      class="btn btn-primary" style="margin-bottom: 10px;">Kayıt Ol</a>
@@ -124,7 +126,7 @@
             <span data-i18n="home.hero_cta_primary">Hemen Model Oluştur</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="https://app.iarone.com" class="btn btn-ghost btn-ghost-lg" id="hero-cta-secondary">
+          <a href="index.html#nasil-calisir" class="btn btn-ghost btn-ghost-lg" id="hero-cta-secondary">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
             <span data-i18n="home.hero_cta_secondary">Nasıl Çalışır?</span>
           </a>
@@ -263,6 +265,22 @@
   </div>
 </section>
 
+<!-- ═══ PREMIUM STRIP ═══ -->
+<section class="premium-strip reveal" aria-label="Platform pipeline">
+  <div class="ps-card">
+    <span data-i18n="market.premium_gen">Üret</span> 🚀
+  </div>
+  <div class="ps-card">
+    <span data-i18n="market.premium_val">Doğrula</span> 🔬
+  </div>
+  <div class="ps-card">
+    <span data-i18n="market.premium_pub">Yayınla</span> 🌐
+  </div>
+  <div class="ps-card">
+    <span data-i18n="market.premium_sell">Sat</span> 💎
+  </div>
+</section>
+
 <!-- ═══ USE CASES ═══ -->
 <section class="section z1" id="kullanim-alanlari" aria-labelledby="uc-heading">
   <div class="container">
@@ -283,6 +301,84 @@
       </div>
       <div class="uc-card reveal d3">
         <img src="09_decoration_use_case_web_ar.png" alt="Dekorasyon kategorisi — AR ile mekanda görselleştirme" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MARKET TEASER ═══ -->
+<section class="section z1" id="market-teaser" aria-labelledby="mt-heading">
+  <div class="container">
+    <div class="sec-hd reveal market-teaser">
+      <span class="badge" data-i18n="home.market_badge">Market Beta</span>
+      <h2 class="gt" id="mt-heading" data-i18n="home.market_title">AR'de denenebilir 3D model pazarı</h2>
+      <p data-i18n="home.market_sub">Hazır AR-ready modelleri keşfedin, gerçek dünyada deneyin veya kendi 3D modelinizi Iarone'da satışa açın.</p>
+      
+      <div style="margin-top: 24px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="market.html" class="btn btn-primary" data-i18n="home.market_cta_primary">Market'i Keşfet</a>
+        <a href="market.html#sell" class="btn btn-ghost" data-i18n="home.market_cta_secondary">Modelini Sat</a>
+      </div>
+    </div>
+    
+    <div class="market-grid">
+      <!-- Card 1 -->
+      <div class="market-card reveal">
+        <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
+        <div class="mc-img">
+          <img src="06_furniture_use_case_web_ar.png" alt="Modern Berjer" />
+        </div>
+        <div class="mc-content">
+          <div class="mc-cat" data-i18n="market.cat_furn">Mobilya</div>
+          <div class="mc-title" data-i18n="market.card_chair">Modern Berjer</div>
+          <div class="market-tags">
+            <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
+            <span class="market-tag" data-i18n="market.tag_mob">Mobil Uyumlu</span>
+          </div>
+          <div class="mc-actions">
+            <a href="market.html#waitlist" class="btn btn-primary" data-i18n="market.btn_try">AR'de Dene</a>
+            <a href="market.html" class="btn btn-ghost" data-i18n="market.btn_detail">Detaylar</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Card 2 -->
+      <div class="market-card reveal d1">
+        <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
+        <div class="mc-img">
+          <img src="09_decoration_use_case_web_ar.png" alt="Dekoratif Vazo" />
+        </div>
+        <div class="mc-content">
+          <div class="mc-cat" data-i18n="market.cat_decor">Ev Dekorasyonu</div>
+          <div class="mc-title" data-i18n="market.card_vase">Dekoratif Vazo</div>
+          <div class="market-tags">
+            <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
+            <span class="market-tag" data-i18n="market.tag_scale">Ölçek Onaylı</span>
+          </div>
+          <div class="mc-actions">
+            <a href="market.html#waitlist" class="btn btn-primary" data-i18n="market.btn_try">AR'de Dene</a>
+            <a href="market.html" class="btn btn-ghost" data-i18n="market.btn_detail">Detaylar</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Card 3 -->
+      <div class="market-card reveal d2">
+        <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
+        <div class="mc-img">
+          <img src="08_electronics_use_case_web_ar.png" alt="Elektronik" />
+        </div>
+        <div class="mc-content">
+          <div class="mc-cat" data-i18n="market.cat_stand">Ürün Standları</div>
+          <div class="mc-title" data-i18n="market.card_stand">Ürün Sergileme Standı</div>
+          <div class="market-tags">
+            <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
+            <span class="market-tag" data-i18n="market.tag_comm">Ticari Lisans</span>
+          </div>
+          <div class="mc-actions">
+            <a href="market.html#waitlist" class="btn btn-primary" data-i18n="market.btn_try">AR'de Dene</a>
+            <a href="market.html" class="btn btn-ghost" data-i18n="market.btn_detail">Detaylar</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -319,9 +415,11 @@
       <div>
         <div class="foot-col-title" data-i18n="footer.col1">Ürün</div>
         <div class="foot-links">
-          <a href="https://app.iarone.com" data-i18n="footer.f_dash">Nasıl Çalışır</a>
-          <a href="pricing.html"   data-i18n="footer.f_price">Fiyatlandırma</a>
-          <a href="#"              data-i18n="footer.f_api">API Docs</a>
+          <a href="index.html#nasil-calisir" data-i18n="footer.f_dash">Nasıl Çalışır</a>
+          <a href="market.html"              data-i18n="footer.f_market">Market</a>
+          <a href="pricing.html"             data-i18n="footer.f_price">Fiyatlandırma</a>
+          <a href="market.html#sell"         data-i18n="footer.f_sell">Satış Yap</a>
+          <a href="#"                        data-i18n="footer.f_api">API Docs</a>
         </div>
       </div>
       <div>
