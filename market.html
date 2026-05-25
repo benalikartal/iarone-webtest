@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iarone Market — AR'de Denenebilir 3D Model Pazarı</title>
+  <meta name="description" content="AR-ready, mobil uyumlu ve kalite etiketiyle sunulan 3D modelleri keşfedin veya kendi modelinizi Iarone'da satışa açmak için başvurun." />
+  
+  <meta property="og:title" content="Iarone Market — AR'de Denenebilir 3D Model Pazarı" />
+  <meta property="og:description" content="AR-ready, mobil uyumlu ve kalite etiketiyle sunulan 3D modelleri keşfedin veya kendi modelinizi Iarone'da satışa açmak için başvurun." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.v5.css" />
+  <!-- Anti-flash + clear stale preloader session flag -->
+  <script>
+    sessionStorage.removeItem('iar-pl');
+    (function(){var t=localStorage.getItem('iarone-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})()
+  </script>
+</head>
+<body>
+
+<div id="preloader" class="pl" role="status" aria-label="Iarone yükleniyor">
+  <div class="pl__logo">
+    <img src="00_iarone_logo_exact_transparent_white_glow.png" class="logo-dark" alt="Iarone" />
+    <img src="00_iarone_logo_exact_transparent_black.png" class="logo-light" alt="Iarone" />
+    <span class="logo-text">IARONE</span>
+  </div>
+  <div class="pl__text">Yükleniyor<span class="pl__dots"></span></div>
+</div>
+
+<!-- ═══ BG BLOBS ═══ -->
+<div class="bg-blobs" aria-hidden="true">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="nav" id="main-nav" role="navigation" aria-label="Ana navigasyon">
+  <div class="container">
+    <div class="nav__wrap">
+      <!-- Logo -->
+      <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa">
+        <img src="00_iarone_logo_exact_transparent_white_glow.png" class="logo-dark" alt="Iarone" />
+        <img src="00_iarone_logo_exact_transparent_black.png"     class="logo-light" alt="Iarone" />
+        <span class="logo-text">IARONE</span>
+      </a>
+
+      <!-- Desktop Links -->
+      <ul class="nav__links" role="list">
+        <li><a href="index.html"     class="nav__link" data-i18n="nav.home">Ana Sayfa</a></li>
+        <li><a href="index.html#nasil-calisir" class="nav__link" data-i18n="nav.dashboard">Nasıl Çalışır</a></li>
+        <li><a href="market.html"    class="nav__link active" data-i18n="nav.market">Market</a></li>
+        <li><a href="pricing.html"   class="nav__link" data-i18n="nav.pricing">Fiyatlandırma</a></li>
+      </ul>
+
+      <!-- Right Controls -->
+      <div class="nav__right">
+        <!-- Language Switcher -->
+        <div class="lang-sw" id="lang-sw">
+          <button class="lang-btn" id="lang-btn" aria-label="Dil seçin" aria-haspopup="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="lang-current">TR</span>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-drop" role="menu">
+            <div class="lang-opt sel" data-lang="tr" role="menuitem" tabindex="0">🇹🇷 &nbsp;Türkçe</div>
+            <div class="lang-opt"     data-lang="en" role="menuitem" tabindex="0">🇬🇧 &nbsp;English</div>
+          </div>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button class="theme-tog" id="theme-toggle" aria-label="Temayı değiştir">
+          <svg class="ic-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="ic-sun"  width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+
+        <!-- CTA Buttons -->
+        <a href="https://app.iarone.com/auth.html"      class="btn btn-ghost"   id="nav-login" data-i18n="nav.login">Giriş Yap</a>
+        <a href="https://app.iarone.com/auth.html"      class="btn btn-primary" id="nav-register" style="margin-right: 8px;">Kayıt Ol</a>
+        <a href="https://app.iarone.com" class="btn btn-primary" id="nav-cta">
+          <span data-i18n="nav.cta">Model Oluştur</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <!-- Mobile Hamburger -->
+        <button class="nav__burger" id="nav-burger" aria-label="Menüyü aç" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav Drawer -->
+<div class="nav__mobile" id="nav-mobile" role="menu">
+  <a href="index.html"     class="nav__link" data-i18n="nav.home">Ana Sayfa</a>
+  <a href="index.html#nasil-calisir" class="nav__link" data-i18n="nav.dashboard">Nasıl Çalışır</a>
+  <a href="market.html"    class="nav__link active" data-i18n="nav.market">Market</a>
+  <a href="pricing.html"   class="nav__link" data-i18n="nav.pricing">Fiyatlandırma</a>
+  <div class="nav__mobile-actions">
+    <a href="https://app.iarone.com/auth.html"      class="btn btn-ghost"   data-i18n="nav.login">Giriş Yap</a>
+    <a href="https://app.iarone.com/auth.html"      class="btn btn-primary" style="margin-bottom: 10px;">Kayıt Ol</a>
+    <a href="https://app.iarone.com" class="btn btn-primary" data-i18n="nav.cta">Model Oluştur</a>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="section z1" style="padding-top: 160px; text-align: center;">
+  <div class="container">
+    <div class="reveal">
+      <span class="badge" data-i18n="market.badge">Market Beta</span>
+      <h1 class="gt-ac" style="margin: 20px 0; max-width: 800px; margin-left: auto; margin-right: auto;" data-i18n="market.h1">Satışa hazır AR modelleri keşfet</h1>
+      <p style="margin: 0 auto 30px; font-size: 18px;" data-i18n="market.sub">Iarone Market, gerçek dünyada denenebilir, mobil uyumlu ve kalite etiketiyle sunulan 3D modeller için yeni nesil bir vitrin.</p>
+      
+      <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="#featured" class="btn btn-primary btn-primary-lg" data-i18n="market.cta1">AR Modelleri Keşfet</a>
+        <a href="#sell" class="btn btn-ghost btn-ghost-lg" data-i18n="market.cta2">Satıcı Başvurusu Yap</a>
+      </div>
+      <p style="margin-top: 20px; font-size: 13px; color: var(--warn);" data-i18n="market.scarcity">İlk satıcılar erken pazar yeri görünürlüğü avantajına sahip olacaktır.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CATEGORY FILTER BAR ═══ -->
+<section class="z1" style="border-bottom: 1px solid var(--border); padding-bottom: 20px;" id="featured">
+  <div class="container reveal d1">
+    <div class="market-filter">
+      <button class="filter-btn active" data-i18n="market.cat_all">Tümü</button>
+      <button class="filter-btn" data-i18n="market.cat_furn">Mobilya</button>
+      <button class="filter-btn" data-i18n="market.cat_decor">Ev Dekorasyonu</button>
+      <button class="filter-btn" data-i18n="market.cat_cafe">Kafe & Restoran</button>
+      <button class="filter-btn" data-i18n="market.cat_stand">Ürün Standları</button>
+      <button class="filter-btn" data-i18n="market.cat_print">3D Baskıya Uygun</button>
+      <button class="filter-btn" data-i18n="market.cat_conf">Konfigüratör Hazır</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURED MODELS GRID ═══ -->
+<section class="section-sm z1" style="padding-top: 40px;">
+  <div class="container">
+    <div style="text-align: right; margin-bottom: 20px;">
+      <span style="font-size: 12px; color: var(--t3); font-style: italic;" data-i18n="market.preview_only">Sadece önizleme — ücretli indirmeler yakında</span>
+    </div>
+    <div class="market-grid">
+      <!-- 1 -->
+      <div class="market-card reveal">
+        <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
+        <div class="mc-img">
+          <img src="06_furniture_use_case_web_ar.png" alt="Card Image 1" />
+        </div>
+        <div class="mc-content">
+          <div class="mc-cat" data-i18n="market.cat_furn">Mobilya</div>
+          <div class="mc-title" data-i18n="market.card_lounge">Modern Dinlenme Koltuğu</div>
+          <div class="market-tags">
+            <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
+            <span class="market-tag" data-i18n="market.tag_mob">Mobil Uyumlu</span>
+            <span class="market-tag" data-i18n="market.tag_scale">Ölçek Onaylı</span>
+          </div>
+          <div class="mc-actions">
+            <a href="#waitlist" class="btn btn-primary" data-i18n="market.btn_try">AR'de Dene</a>
+            <a href="#featured" class="btn btn-ghost" data-i18n="market.btn_detail">Detaylar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="market-card reveal d1">
+        <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
+        <div class="mc-img">
+          <img src="09_decoration_use_case_web_ar.png" alt="Card Image 2" />
+        </div>
+        <div class="mc-content">
+          <div class="mc-cat" data-i18n="market.cat_decor">Ev Dekorasyonu</div>
+          <div class="mc-title" data-i18n="market.card_coffee">Minimal Orta Sehpa</div>
+          <div class="market-tags">
+            <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
+            <span class="market-tag" data-i18n="market.tag_comm">Ticari Lisans</span>
+          </div>
+          <div class="mc-actions">
+            <a href="#waitlist" class="btn btn-primary" data-i18n="market.btn_try">AR'de Dene</a>
+            <a href="#featured" class="btn btn-ghost" data-i18n="market.btn_detail">Detaylar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="market-card reveal d2">
+        <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
+        <div class="mc-img">
+          <img src="09_decoration_use_case_web_ar.png" alt="Card Image 3" />
+        </div>
+        <div class="mc-content">
+          <div class="mc-cat" data-i18n="market.cat_decor">Ev Dekorasyonu</div>
+          <div class="mc-title" data-i18n="market.card_vase">Dekoratif Seramik Vazo</div>
+          <div class="market-tags">
+            <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
+            <span class="market-tag" data-i18n="market.tag_mob">Mobil Uyumlu</span>
+            <span class="market-tag" data-i18n="market.tag_scale">Ölçek Onaylı</span>
+          </div>
+          <div class="mc-actions">
+            <a href="#waitlist" class="btn btn-primary" data-i18n="market.btn_try">AR'de Dene</a>
+            <a href="#featured" class="btn btn-ghost" data-i18n="market.btn_detail">Detaylar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="market-card reveal">
+        <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
+        <div class="mc-img">
+          <img src="06_furniture_use_case_web_ar.png" alt="Card Image 4" />
+        </div>
+        <div class="mc-content">
+          <div class="mc-cat" data-i18n="market.cat_cafe">Kafe & Restoran</div>
+          <div class="mc-title" data-i18n="market.card_cafe">Kafe Masa Seti</div>
+          <div class="market-tags">
+            <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
+            <span class="market-tag" data-i18n="market.tag_comm">Ticari Lisans</span>
+          </div>
+          <div class="mc-actions">
+            <a href="#waitlist" class="btn btn-primary" data-i18n="market.btn_try">AR'de Dene</a>
+            <a href="#featured" class="btn btn-ghost" data-i18n="market.btn_detail">Detaylar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="market-card reveal d1">
+        <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
+        <div class="mc-img">
+          <img src="08_electronics_use_case_web_ar.png" alt="Card Image 5" />
+        </div>
+        <div class="mc-content">
+          <div class="mc-cat" data-i18n="market.cat_stand">Ürün Standları</div>
+          <div class="mc-title" data-i18n="market.card_stand">Retail Product Stand</div>
+          <div class="market-tags">
+            <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
+            <span class="market-tag" data-i18n="market.tag_scale">Ölçek Onaylı</span>
+          </div>
+          <div class="mc-actions">
+            <a href="#waitlist" class="btn btn-primary" data-i18n="market.btn_try">AR'de Dene</a>
+            <a href="#featured" class="btn btn-ghost" data-i18n="market.btn_detail">Detaylar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="market-card reveal d2">
+        <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
+        <div class="mc-img">
+          <img src="06_furniture_use_case_web_ar.png" alt="Card Image 6" />
+        </div>
+        <div class="mc-content">
+          <div class="mc-cat" data-i18n="market.cat_furn">Mobilya</div>
+          <div class="mc-title" data-i18n="market.card_cabinet">Modüler Dolap Altlığı</div>
+          <div class="market-tags">
+            <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
+            <span class="market-tag" data-i18n="market.tag_mob">Mobil Uyumlu</span>
+            <span class="market-tag" data-i18n="market.tag_comm">Ticari Lisans</span>
+          </div>
+          <div class="mc-actions">
+            <a href="#waitlist" class="btn btn-primary" data-i18n="market.btn_try">AR'de Dene</a>
+            <a href="#featured" class="btn btn-ghost" data-i18n="market.btn_detail">Detaylar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="market-card reveal">
+        <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
+        <div class="mc-img">
+          <img src="09_decoration_use_case_web_ar.png" alt="Card Image 7" />
+        </div>
+        <div class="mc-content">
+          <div class="mc-cat" data-i18n="market.cat_decor">Ev Dekorasyonu</div>
+          <div class="mc-title" data-i18n="market.card_lamp">Sarkıt Lamba</div>
+          <div class="market-tags">
+            <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
+            <span class="market-tag" data-i18n="market.tag_scale">Ölçek Onaylı</span>
+          </div>
+          <div class="mc-actions">
+            <a href="#waitlist" class="btn btn-primary" data-i18n="market.btn_try">AR'de Dene</a>
+            <a href="#featured" class="btn btn-ghost" data-i18n="market.btn_detail">Detaylar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="market-card reveal d1">
+        <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
+        <div class="mc-img">
+          <img src="06_furniture_use_case_web_ar.png" alt="Card Image 8" />
+        </div>
+        <div class="mc-content">
+          <div class="mc-cat" data-i18n="market.cat_stand">Ürün Standları</div>
+          <div class="mc-title" data-i18n="market.card_shelf">Sergileme Rafı</div>
+          <div class="market-tags">
+            <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
+            <span class="market-tag" data-i18n="market.tag_mob">Mobil Uyumlu</span>
+            <span class="market-tag" data-i18n="market.tag_comm">Ticari Lisans</span>
+          </div>
+          <div class="mc-actions">
+            <a href="#waitlist" class="btn btn-primary" data-i18n="market.btn_try">AR'de Dene</a>
+            <a href="#featured" class="btn btn-ghost" data-i18n="market.btn_detail">Detaylar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ QUALITY LABELS & AR READINESS ═══ -->
+<section class="section z1">
+  <div class="container">
+    <div class="sec-hd reveal">
+      <h2 class="gt">Iarone Farkı</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: start;">
+      <div class="quality-label-grid reveal">
+        <div class="ql-card"><span style="color: var(--ac); font-size: 20px;">📱</span> <span data-i18n="market.tag_mob">Mobil Uyumlu</span></div>
+        <div class="ql-card"><span style="color: var(--success); font-size: 20px;">✓</span> <span data-i18n="market.tag_ar">AR Hazır</span></div>
+        <div class="ql-card"><span style="color: var(--gold); font-size: 20px;">📏</span> <span data-i18n="market.tag_scale">Ölçek Onaylı</span></div>
+        <div class="ql-card"><span style="color: var(--ac-lt); font-size: 20px;">💼</span> <span data-i18n="market.tag_comm">Ticari Lisans</span></div>
+        <div class="ql-card"><span style="color: var(--t2); font-size: 20px;">🖨️</span> <span data-i18n="market.cat_print">3D Baskıya Uygun</span></div>
+        <div class="ql-card"><span style="color: var(--t2); font-size: 20px;">⚙️</span> <span data-i18n="market.cat_conf">Konfigüratör Hazır</span></div>
+      </div>
+      
+      <div class="ar-readiness-card reveal d1">
+        <div class="ar-score-title" data-i18n="market.ar_score">AR Hazırlık Skoru</div>
+        <div class="ar-score-items">
+          <div class="ar-score-item ok">✓ <span data-i18n="market.score_mob">Mobil Hazır: 92/100</span></div>
+          <div class="ar-score-item ok">✓ <span data-i18n="market.score_fmt">Format: GLB + USDZ</span></div>
+          <div class="ar-score-item ok">✓ <span data-i18n="market.score_scale">Ölçek: Onaylı</span></div>
+          <div class="ar-score-item ok">✓ <span data-i18n="market.score_license">Lisans Hazır</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SELL ON IARONE ═══ -->
+<section class="container z1" id="sell">
+  <div class="sell-card reveal">
+    <h2 class="gt-ac" style="margin-bottom: 20px;" data-i18n="market.sell_title">Modelini Iarone'da Sat</h2>
+    <p style="margin: 0 auto 30px; font-size: 16px; color: var(--t2);" data-i18n="market.sell_text">3D tasarımcılar, ajanslar ve ürün üreticileri için AR-ready model satış kanalı. Modelini yükle, kalite kontrolünden geçir, AR önizlemeyle satışa aç.</p>
+    <a href="#waitlist" class="btn btn-primary btn-primary-lg" data-i18n="market.sell_cta">Satıcı Başvurusu Yap</a>
+  </div>
+</section>
+
+<!-- ═══ WAITLIST FORM ═══ -->
+<section class="section z1" id="waitlist">
+  <div class="container reveal">
+    <form class="waitlist-form" id="waitlist-form">
+      <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px;" class="gt" data-i18n="market.wait_title">Bekleme Listesine Katıl</h3>
+      
+      <div class="wf-group">
+        <label data-i18n="market.wait_name">Ad Soyad</label>
+        <input type="text" required />
+      </div>
+      <div class="wf-group">
+        <label data-i18n="market.wait_email">E-posta adresi</label>
+        <input type="email" required />
+      </div>
+      <div class="wf-group">
+        <label data-i18n="market.wait_brand">Şirket / Marka (Opsiyonel)</label>
+        <input type="text" />
+      </div>
+      <div class="wf-group">
+        <label data-i18n="market.wait_intent">Amacınız:</label>
+        <div class="wf-radio-group">
+          <label class="wf-radio">
+            <input type="radio" name="intent" value="buy" required />
+            <span data-i18n="market.wait_intent1">Model satın almak</span>
+          </label>
+          <label class="wf-radio">
+            <input type="radio" name="intent" value="sell" />
+            <span data-i18n="market.wait_intent2">Kendi modellerimi satmak</span>
+          </label>
+          <label class="wf-radio">
+            <input type="radio" name="intent" value="generate" />
+            <span data-i18n="market.wait_intent3">Ürünümün modelini üretmek</span>
+          </label>
+        </div>
+      </div>
+      
+      <button type="submit" class="btn btn-primary btn-full btn-primary-lg" style="margin-top: 10px;" data-i18n="market.wait_btn">Gönder</button>
+    </form>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer z1" role="contentinfo">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="foot-brand">
+        <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa" style="margin-bottom: 16px;">
+          <img src="00_iarone_logo_exact_transparent_white_glow.png" class="logo-dark" alt="Iarone" />
+          <img src="00_iarone_logo_exact_transparent_black.png"     class="logo-light" alt="Iarone" />
+          <span class="logo-text">IARONE</span>
+        </a>
+        <p data-i18n="footer.tagline">Ürün fotoğraflarından satışa hazır 3D ve AR modeller.</p>
+      </div>
+      <div>
+        <div class="foot-col-title" data-i18n="footer.col1">Ürün</div>
+        <div class="foot-links">
+          <a href="index.html#nasil-calisir" data-i18n="footer.f_dash">Nasıl Çalışır</a>
+          <a href="market.html"              data-i18n="footer.f_market">Market</a>
+          <a href="pricing.html"             data-i18n="footer.f_price">Fiyatlandırma</a>
+          <a href="market.html#sell"         data-i18n="footer.f_sell">Satış Yap</a>
+          <a href="#"                        data-i18n="footer.f_api">API Docs</a>
+        </div>
+      </div>
+      <div>
+        <div class="foot-col-title" data-i18n="footer.col2">Şirket</div>
+        <div class="foot-links">
+          <a href="#" data-i18n="footer.c_about">Hakkımızda</a>
+          <a href="#" data-i18n="footer.c_blog">Blog</a>
+          <a href="#" data-i18n="footer.c_career">Kariyer</a>
+          <a href="#" data-i18n="footer.c_contact">İletişim</a>
+        </div>
+      </div>
+      <div>
+        <div class="foot-col-title" data-i18n="footer.col3">Yasal</div>
+        <div class="foot-links">
+          <a href="#" data-i18n="footer.l_priv">Gizlilik Politikası</a>
+          <a href="#" data-i18n="footer.l_terms">Kullanım Koşulları</a>
+          <a href="#" data-i18n="footer.l_kvkk">KVKK</a>
+          <a href="#" data-i18n="footer.l_cookie">Çerez Politikası</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="foot-copy" data-i18n="footer.copy">© 2025 Iarone. Tüm hakları saklıdır.</span>
+      <div class="foot-socials" aria-label="Sosyal medya">
+        <a href="#" class="soc-btn" aria-label="Twitter/X">𝕏</a>
+        <a href="#" class="soc-btn" aria-label="LinkedIn">in</a>
+        <a href="#" class="soc-btn" aria-label="Instagram">📷</a>
+        <a href="#" class="soc-btn" aria-label="YouTube">▶</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ FLOATING WIDGETS ═══ -->
+<div class="floating-widgets">
+  <div class="ai-widget" id="ai-widget">
+    <div class="ai-chat-window" id="ai-chat-window">
+      <div class="ai-chat-header">
+        <div class="ai-chat-title">
+          <span class="ai-avatar">✨</span>
+          <div>
+            <strong>Iarone AI Asistan</strong>
+            <span>Çevrimiçi</span>
+          </div>
+        </div>
+        <button class="ai-close-btn" id="ai-close-btn" aria-label="Kapat">&times;</button>
+      </div>
+      <div class="ai-chat-body" id="ai-chat-body"></div>
+    </div>
+    <button class="ai-toggle-btn" id="ai-toggle-btn" aria-label="Asistanı Aç">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z"></path></svg>
+    </button>
+  </div>
+  <a href="https://www.instagram.com/iarone.ai/?hl=tr" target="_blank" rel="noopener noreferrer" class="ig-float-btn" aria-label="Instagram">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+  </a>
+</div>
+
+<script src="i18n.js"></script>
+<script src="app.v5.js"></script>
+</body>
+</html>
