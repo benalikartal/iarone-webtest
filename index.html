@@ -9,10 +9,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.v5.css" />
+  <link rel="stylesheet" href="design-switcher.css" />
   <!-- Anti-flash + clear stale preloader session flag -->
   <script>
     sessionStorage.removeItem('iar-pl');
-    (function(){var t=localStorage.getItem('iarone-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})()
+    (function(){
+      var t=localStorage.getItem('iarone-theme')||'dark';
+      document.documentElement.setAttribute('data-theme',t);
+      var d=localStorage.getItem('iarone-design-variant')||'v0';
+      document.documentElement.setAttribute('data-design',d);
+    })()
   </script>
 </head>
 <body>
@@ -51,6 +57,7 @@
         <li><a href="index.html#nasil-calisir" class="nav__link" data-i18n="nav.dashboard">Nasıl Çalışır</a></li>
         <li><a href="market.html"    class="nav__link" data-i18n="nav.market">Market</a></li>
         <li><a href="pricing.html"   class="nav__link" data-i18n="nav.pricing">Fiyatlandırma</a></li>
+        <li><a href="dashboard.html" class="nav__link">Panel</a></li>
       </ul>
 
       <!-- Right Controls -->
@@ -113,13 +120,13 @@
       <!-- Content -->
       <div>
         <div class="reveal">
-          <span class="badge" data-i18n="home.badge_hero">AI Destekli 3D Üretim Platformu</span>
+          <span class="badge">Creative Web Studio 💻</span>
         </div>
-        <h1 class="hero__h1 gt reveal d1" id="hero-h1" data-i18n="home.hero_h1">
-          Fotoğraf yükle. 3D modelini oluştur. Kalitesini gör. Gerekirse iyileştir.
+        <h1 class="hero__h1 gt reveal d1" id="hero-h1">
+          Yenilikçi ve modern web siteleri <span class="gt-ac">inşa ediyoruz.</span>
         </h1>
-        <p class="hero__sub reveal d2" data-i18n="home.hero_h2">
-          Ürün görsellerinden satışa hazır 3D deneyimler üretin. Iarone, modeli sadece oluşturmaz; kullanılabilirlik, kalite ve iyileştirme süreciyle birlikte sunar.
+        <p class="hero__sub reveal d2" style="font-size: 17px; line-height: 1.8; margin-top: 16px; margin-bottom: 32px;">
+          ⚙️ High Performance & Clean Design
         </p>
         <div class="hero__actions reveal d3">
           <a href="https://app.iarone.com" class="btn btn-primary btn-primary-lg" id="hero-cta-primary">
@@ -148,9 +155,70 @@
       </div>
 
       <!-- Visual -->
-      <div class="hero__visual reveal d2" id="hero-3d-video-container" style="cursor: grab; position: relative;">
-        <canvas id="hero-3d-canvas" style="width: 100%; height: auto; max-width: 600px; display: block; margin: 0 auto; user-select: none;"></canvas>
-        <video id="hero-hidden-video" src="muscent.mp4" playsinline muted loop style="display:none;" preload="auto"></video>
+      <!-- Visual: Hero Upload Zone -->
+      <div class="hero__visual reveal d2" style="position: relative;">
+        <div class="hero-upload-zone" id="upload-zone">
+          <div class="upload-particles" id="upload-particles"></div>
+          
+          <div class="hero-upload-content">
+            <div class="hero-upload-ico">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+            </div>
+            <h3 class="hero-upload-title" data-i18n="dash.upload_title">Ürün Fotoğrafı Yükle</h3>
+            <p class="hero-upload-sub" data-i18n="dash.upload_desc">Sürükleyin ve bırakın ya da dosya seçin</p>
+            <div class="hero-upload-formats">
+              <span class="hero-upload-fmt">PNG</span>
+              <span class="hero-upload-fmt">JPG</span>
+              <span class="hero-upload-fmt">WEBP</span>
+            </div>
+          </div>
+
+          <div class="hero-upload-preview" id="upload-preview">
+            <img src="" class="upload-preview-img" id="upload-preview-img" alt="Yüklenen Ürün Fotoğrafı" />
+            
+            <div class="upload-overlay" id="upload-overlay">
+              <div class="upload-progress-ring">
+                <svg width="80" height="80">
+                  <circle class="upload-ring-bg" cx="40" cy="40" r="35" />
+                  <circle class="upload-ring-fill" id="upload-progress-fill" cx="40" cy="40" r="35" />
+                </svg>
+                <div class="upload-ring-icon" id="upload-ring-icon">📸</div>
+              </div>
+              <div>
+                <div class="upload-status-text" id="upload-status-text">Fotoğraf Analiz Ediliyor...</div>
+                <div class="upload-status-sub" id="upload-status-sub">%0</div>
+              </div>
+              <div class="upload-steps">
+                <div class="upload-step active" id="step-1">
+                  <div class="upload-step-dot"></div>
+                  <span data-i18n="dash.proc1_title">Fotoğraf Analizi</span>
+                </div>
+                <div class="upload-step" id="step-2">
+                  <div class="upload-step-dot"></div>
+                  <span data-i18n="dash.proc2_title">3D Üretim</span>
+                </div>
+                <div class="upload-step" id="step-3">
+                  <div class="upload-step-dot"></div>
+                  <span data-i18n="dash.proc3_title">Kalite Raporu</span>
+                </div>
+                <div class="upload-step" id="step-4">
+                  <div class="upload-step-dot"></div>
+                  <span data-i18n="dash.proc4_title">Akıllı İyileştirme</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="upload-done-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>AR Model Hazır!</span>
+            </div>
+
+            <a href="market.html" class="btn btn-primary upload-try-btn">
+              <span data-i18n="market.btn_try">AR'de Dene</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -472,6 +540,12 @@
       <div class="ai-chat-body" id="ai-chat-body">
         <!-- Messages will be injected here via JS -->
       </div>
+      <div class="ai-chat-footer">
+        <input type="text" class="ai-chat-input" id="ai-chat-input" placeholder="Asistana sorun..." />
+        <button class="ai-chat-send" id="ai-chat-send" aria-label="Gönder">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
     </div>
     <!-- Toggle Button -->
     <button class="ai-toggle-btn" id="ai-toggle-btn" aria-label="Asistanı Aç">
@@ -485,7 +559,8 @@
   </a>
 </div>
 
-<script src="i18n.js"></script>
-<script src="app.v5.js"></script>
+<script type="module" src="i18n.js"></script>
+<script type="module" src="app.v5.js"></script>
+<script src="design-switcher.js"></script>
 </body>
 </html>

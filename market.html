@@ -14,10 +14,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.v5.css" />
+  <link rel="stylesheet" href="design-switcher.css" />
   <!-- Anti-flash + clear stale preloader session flag -->
   <script>
     sessionStorage.removeItem('iar-pl');
-    (function(){var t=localStorage.getItem('iarone-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})()
+    (function(){
+      var t=localStorage.getItem('iarone-theme')||'dark';
+      document.documentElement.setAttribute('data-theme',t);
+      var d=localStorage.getItem('iarone-design-variant')||'v0';
+      document.documentElement.setAttribute('data-design',d);
+    })()
   </script>
 </head>
 <body>
@@ -55,6 +61,7 @@
         <li><a href="index.html#nasil-calisir" class="nav__link" data-i18n="nav.dashboard">Nasıl Çalışır</a></li>
         <li><a href="market.html"    class="nav__link active" data-i18n="nav.market">Market</a></li>
         <li><a href="pricing.html"   class="nav__link" data-i18n="nav.pricing">Fiyatlandırma</a></li>
+        <li><a href="dashboard.html" class="nav__link">Panel</a></li>
       </ul>
 
       <!-- Right Controls -->
@@ -125,189 +132,303 @@
   </div>
 </section>
 
-<!-- ═══ CATEGORY FILTER BAR ═══ -->
-<section class="z1" style="border-bottom: 1px solid var(--border); padding-bottom: 20px;" id="featured">
-  <div class="container reveal d1">
-    <div class="market-filter">
-      <button class="filter-btn active" data-i18n="market.cat_all">Tümü</button>
-      <button class="filter-btn" data-i18n="market.cat_furn">Mobilya</button>
-      <button class="filter-btn" data-i18n="market.cat_decor">Ev Dekorasyonu</button>
-      <button class="filter-btn" data-i18n="market.cat_cafe">Kafe & Restoran</button>
-      <button class="filter-btn" data-i18n="market.cat_stand">Ürün Standları</button>
-      <button class="filter-btn" data-i18n="market.cat_print">3D Baskıya Uygun</button>
-      <button class="filter-btn" data-i18n="market.cat_conf">Konfigüratör Hazır</button>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ FEATURED MODELS GRID ═══ -->
+<!-- ═══ MARKET LAYOUT WITH FILTERS ═══ -->
 <section class="section-sm z1" style="padding-top: 40px;">
   <div class="container">
-    <div style="text-align: right; margin-bottom: 20px;">
-      <span style="font-size: 12px; color: var(--t3); font-style: italic;" data-i18n="market.preview_only">Sadece önizleme — ücretli indirmeler yakında</span>
+    
+    <!-- Search Bar -->
+    <div class="market-search-wrap" id="market-search-wrap">
+      <svg class="market-search-ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" class="market-search-input" id="market-search-input" placeholder="Model ara... (ör. koltuk, berjer, vazo)" data-i18n="market.search_ph" />
+      <button class="market-search-clear" id="market-search-clear" aria-label="Aramayı Temizle">&times;</button>
     </div>
-    <div class="market-grid">
-      <!-- 1 -->
-      <div class="market-card reveal">
-        <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
-        <div class="mc-img">
-          <img src="06_furniture_use_case_web_ar.png" alt="Card Image 1" />
-        </div>
-        <div class="mc-content">
-          <div class="mc-cat" data-i18n="market.cat_furn">Mobilya</div>
-          <div class="mc-title" data-i18n="market.card_lounge">Modern Dinlenme Koltuğu</div>
-          <div class="market-tags">
-            <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
-            <span class="market-tag" data-i18n="market.tag_mob">Mobil Uyumlu</span>
-            <span class="market-tag" data-i18n="market.tag_scale">Ölçek Onaylı</span>
-          </div>
-          <div class="mc-actions">
-            <a href="#waitlist" class="btn btn-primary" data-i18n="market.btn_try">AR'de Dene</a>
-            <a href="#featured" class="btn btn-ghost" data-i18n="market.btn_detail">Detaylar</a>
-          </div>
-        </div>
-      </div>
+    
+    <div class="market-search-results-count" id="results-count"></div>
 
-      <!-- 2 -->
-      <div class="market-card reveal d1">
-        <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
-        <div class="mc-img">
-          <img src="09_decoration_use_case_web_ar.png" alt="Card Image 2" />
+    <div class="market-layout">
+      <!-- Left Filter Panel -->
+      <aside class="market-filter-panel" id="filter-panel">
+        <div class="filter-panel-title">
+          <span>Filtreler</span>
+          <button class="filter-reset-btn" id="filter-reset-btn">Sıfırla</button>
         </div>
-        <div class="mc-content">
-          <div class="mc-cat" data-i18n="market.cat_decor">Ev Dekorasyonu</div>
-          <div class="mc-title" data-i18n="market.card_coffee">Minimal Orta Sehpa</div>
-          <div class="market-tags">
-            <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
-            <span class="market-tag" data-i18n="market.tag_comm">Ticari Lisans</span>
+        
+        <!-- Category Group -->
+        <div class="filter-group">
+          <div class="filter-group-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span>Kategoriler</span>
           </div>
-          <div class="mc-actions">
-            <a href="#waitlist" class="btn btn-primary" data-i18n="market.btn_try">AR'de Dene</a>
-            <a href="#featured" class="btn btn-ghost" data-i18n="market.btn_detail">Detaylar</a>
+          <div class="filter-opts" id="category-opts">
+            <div class="filter-opt selected" data-value="all">
+              <div class="filter-opt-check">✓</div>
+              <span data-i18n="market.cat_all">Tümü</span>
+            </div>
+            <div class="filter-opt" data-value="furniture">
+              <div class="filter-opt-check"></div>
+              <span data-i18n="market.cat_furn">Mobilya</span>
+            </div>
+            <div class="filter-opt" data-value="decor">
+              <div class="filter-opt-check"></div>
+              <span data-i18n="market.cat_decor">Ev Dekorasyonu</span>
+            </div>
+            <div class="filter-opt" data-value="cafe">
+              <div class="filter-opt-check"></div>
+              <span data-i18n="market.cat_cafe">Kafe & Restoran</span>
+            </div>
+            <div class="filter-opt" data-value="stand">
+              <div class="filter-opt-check"></div>
+              <span data-i18n="market.cat_stand">Ürün Standları</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- 3 -->
-      <div class="market-card reveal d2">
-        <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
-        <div class="mc-img">
-          <img src="09_decoration_use_case_web_ar.png" alt="Card Image 3" />
-        </div>
-        <div class="mc-content">
-          <div class="mc-cat" data-i18n="market.cat_decor">Ev Dekorasyonu</div>
-          <div class="mc-title" data-i18n="market.card_vase">Dekoratif Seramik Vazo</div>
-          <div class="market-tags">
-            <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
-            <span class="market-tag" data-i18n="market.tag_mob">Mobil Uyumlu</span>
-            <span class="market-tag" data-i18n="market.tag_scale">Ölçek Onaylı</span>
+        <!-- Format Group -->
+        <div class="filter-group">
+          <div class="filter-group-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            <span>Formatlar</span>
           </div>
-          <div class="mc-actions">
-            <a href="#waitlist" class="btn btn-primary" data-i18n="market.btn_try">AR'de Dene</a>
-            <a href="#featured" class="btn btn-ghost" data-i18n="market.btn_detail">Detaylar</a>
+          <div class="filter-opts" id="format-opts">
+            <div class="filter-opt" data-value="glb">
+              <div class="filter-opt-check"></div>
+              <span>GLB</span>
+            </div>
+            <div class="filter-opt" data-value="usdz">
+              <div class="filter-opt-check"></div>
+              <span>USDZ</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- 4 -->
-      <div class="market-card reveal">
-        <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
-        <div class="mc-img">
-          <img src="06_furniture_use_case_web_ar.png" alt="Card Image 4" />
-        </div>
-        <div class="mc-content">
-          <div class="mc-cat" data-i18n="market.cat_cafe">Kafe & Restoran</div>
-          <div class="mc-title" data-i18n="market.card_cafe">Kafe Masa Seti</div>
-          <div class="market-tags">
-            <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
-            <span class="market-tag" data-i18n="market.tag_comm">Ticari Lisans</span>
+        <!-- Price Pills Group -->
+        <div class="filter-group">
+          <div class="filter-group-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span>Fiyat</span>
           </div>
-          <div class="mc-actions">
-            <a href="#waitlist" class="btn btn-primary" data-i18n="market.btn_try">AR'de Dene</a>
-            <a href="#featured" class="btn btn-ghost" data-i18n="market.btn_detail">Detaylar</a>
+          <div class="price-filter-pills" id="price-opts">
+            <button class="price-pill active" data-value="all">Tümü</button>
+            <button class="price-pill" data-value="free">Ücretsiz</button>
+            <button class="price-pill" data-value="premium">Ücretli</button>
           </div>
         </div>
-      </div>
+      </aside>
 
-      <!-- 5 -->
-      <div class="market-card reveal d1">
-        <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
-        <div class="mc-img">
-          <img src="08_electronics_use_case_web_ar.png" alt="Card Image 5" />
+      <!-- Right Side Grid & Content -->
+      <div style="width: 100%;">
+        <div style="text-align: right; margin-bottom: 20px;">
+          <span style="font-size: 12px; color: var(--t3); font-style: italic;" data-i18n="market.preview_only">Sadece önizleme — ücretli indirmeler yakında</span>
         </div>
-        <div class="mc-content">
-          <div class="mc-cat" data-i18n="market.cat_stand">Ürün Standları</div>
-          <div class="mc-title" data-i18n="market.card_stand">Retail Product Stand</div>
-          <div class="market-tags">
-            <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
-            <span class="market-tag" data-i18n="market.tag_scale">Ölçek Onaylı</span>
-          </div>
-          <div class="mc-actions">
-            <a href="#waitlist" class="btn btn-primary" data-i18n="market.btn_try">AR'de Dene</a>
-            <a href="#featured" class="btn btn-ghost" data-i18n="market.btn_detail">Detaylar</a>
-          </div>
-        </div>
-      </div>
 
-      <!-- 6 -->
-      <div class="market-card reveal d2">
-        <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
-        <div class="mc-img">
-          <img src="06_furniture_use_case_web_ar.png" alt="Card Image 6" />
-        </div>
-        <div class="mc-content">
-          <div class="mc-cat" data-i18n="market.cat_furn">Mobilya</div>
-          <div class="mc-title" data-i18n="market.card_cabinet">Modüler Dolap Altlığı</div>
-          <div class="market-tags">
-            <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
-            <span class="market-tag" data-i18n="market.tag_mob">Mobil Uyumlu</span>
-            <span class="market-tag" data-i18n="market.tag_comm">Ticari Lisans</span>
+        <!-- Skeleton grid to display before lazy loading -->
+        <div class="market-grid" id="market-skeleton-grid" style="display: grid;">
+          <div class="skeleton-card">
+            <div class="skeleton-img"></div>
+            <div class="skeleton-content">
+              <div class="skeleton-line sl-short"></div>
+              <div class="skeleton-line sl-medium"></div>
+              <div class="skeleton-tags">
+                <div class="skeleton-tag"></div>
+                <div class="skeleton-tag"></div>
+              </div>
+              <div style="display: flex; gap: 8px;"><div class="skeleton-btn"></div><div class="skeleton-btn"></div></div>
+            </div>
           </div>
-          <div class="mc-actions">
-            <a href="#waitlist" class="btn btn-primary" data-i18n="market.btn_try">AR'de Dene</a>
-            <a href="#featured" class="btn btn-ghost" data-i18n="market.btn_detail">Detaylar</a>
+          <div class="skeleton-card">
+            <div class="skeleton-img"></div>
+            <div class="skeleton-content">
+              <div class="skeleton-line sl-short"></div>
+              <div class="skeleton-line sl-medium"></div>
+              <div class="skeleton-tags">
+                <div class="skeleton-tag"></div>
+                <div class="skeleton-tag"></div>
+              </div>
+              <div style="display: flex; gap: 8px;"><div class="skeleton-btn"></div><div class="skeleton-btn"></div></div>
+            </div>
+          </div>
+          <div class="skeleton-card">
+            <div class="skeleton-img"></div>
+            <div class="skeleton-content">
+              <div class="skeleton-line sl-short"></div>
+              <div class="skeleton-line sl-medium"></div>
+              <div class="skeleton-tags">
+                <div class="skeleton-tag"></div>
+                <div class="skeleton-tag"></div>
+              </div>
+              <div style="display: flex; gap: 8px;"><div class="skeleton-btn"></div><div class="skeleton-btn"></div></div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- 7 -->
-      <div class="market-card reveal">
-        <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
-        <div class="mc-img">
-          <img src="09_decoration_use_case_web_ar.png" alt="Card Image 7" />
-        </div>
-        <div class="mc-content">
-          <div class="mc-cat" data-i18n="market.cat_decor">Ev Dekorasyonu</div>
-          <div class="mc-title" data-i18n="market.card_lamp">Sarkıt Lamba</div>
-          <div class="market-tags">
-            <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
-            <span class="market-tag" data-i18n="market.tag_scale">Ölçek Onaylı</span>
+        <!-- Real Grid -->
+        <div class="market-grid" id="market-real-grid" style="display: none;">
+          <!-- Card 1 -->
+          <div class="market-card filtered-in" data-category="furniture" data-format="glb,usdz" data-price="0" data-quality="92">
+            <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
+            <div class="mc-img">
+              <div class="mc-3d-overlay">
+                <div class="mc-3d-play-btn">
+                  <div class="mc-3d-play-ico">✨</div>
+                  <span>3D Model Yükle</span>
+                </div>
+              </div>
+              <img src="06_furniture_use_case_web_ar.png" alt="Modern Lounge Chair" />
+              <!-- model-viewer slot will be injected here when played -->
+            </div>
+            <div class="mc-content">
+              <div class="mc-cat" data-i18n="market.cat_furn">Mobilya</div>
+              <div class="mc-title" data-i18n="market.card_lounge">Modern Dinlenme Koltuğu</div>
+              <div class="market-tags">
+                <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
+                <span class="market-tag" data-i18n="market.tag_mob">Mobil Uyumlu</span>
+                <span class="market-tag" data-i18n="market.tag_scale">Ölçek Onaylı</span>
+              </div>
+              <div class="mc-actions">
+                <a href="#waitlist" class="btn btn-primary btn-micro" data-i18n="market.btn_try">AR'de Dene</a>
+                <a href="#featured" class="btn btn-ghost btn-micro" data-i18n="market.btn_detail">Detaylar</a>
+              </div>
+            </div>
           </div>
-          <div class="mc-actions">
-            <a href="#waitlist" class="btn btn-primary" data-i18n="market.btn_try">AR'de Dene</a>
-            <a href="#featured" class="btn btn-ghost" data-i18n="market.btn_detail">Detaylar</a>
-          </div>
-        </div>
-      </div>
 
-      <!-- 8 -->
-      <div class="market-card reveal d1">
-        <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
-        <div class="mc-img">
-          <img src="06_furniture_use_case_web_ar.png" alt="Card Image 8" />
+          <!-- Card 2 -->
+          <div class="market-card filtered-in" data-category="decor" data-format="glb,usdz" data-price="49" data-quality="88">
+            <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
+            <div class="mc-img">
+              <div class="mc-3d-overlay">
+                <div class="mc-3d-play-btn">
+                  <div class="mc-3d-play-ico">✨</div>
+                  <span>3D Model Yükle</span>
+                </div>
+              </div>
+              <img src="09_decoration_use_case_web_ar.png" alt="Minimal Coffee Table" />
+            </div>
+            <div class="mc-content">
+              <div class="mc-cat" data-i18n="market.cat_decor">Ev Dekorasyonu</div>
+              <div class="mc-title" data-i18n="market.card_coffee">Minimal Orta Sehpa</div>
+              <div class="market-tags">
+                <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
+                <span class="market-tag" data-i18n="market.tag_comm">Ticari Lisans</span>
+              </div>
+              <div class="mc-actions">
+                <a href="#waitlist" class="btn btn-primary btn-micro" data-i18n="market.btn_try">AR'de Dene</a>
+                <a href="#featured" class="btn btn-ghost btn-micro" data-i18n="market.btn_detail">Detaylar</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="market-card filtered-in" data-category="decor" data-format="glb" data-price="0" data-quality="95">
+            <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
+            <div class="mc-img">
+              <div class="mc-3d-overlay">
+                <div class="mc-3d-play-btn">
+                  <div class="mc-3d-play-ico">✨</div>
+                  <span>3D Model Yükle</span>
+                </div>
+              </div>
+              <img src="09_decoration_use_case_web_ar.png" alt="Decorative Ceramic Vase" />
+            </div>
+            <div class="mc-content">
+              <div class="mc-cat" data-i18n="market.cat_decor">Ev Dekorasyonu</div>
+              <div class="mc-title" data-i18n="market.card_vase">Dekoratif Seramik Vazo</div>
+              <div class="market-tags">
+                <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
+                <span class="market-tag" data-i18n="market.tag_mob">Mobil Uyumlu</span>
+                <span class="market-tag" data-i18n="market.tag_scale">Ölçek Onaylı</span>
+              </div>
+              <div class="mc-actions">
+                <a href="#waitlist" class="btn btn-primary btn-micro" data-i18n="market.btn_try">AR'de Dene</a>
+                <a href="#featured" class="btn btn-ghost btn-micro" data-i18n="market.btn_detail">Detaylar</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="market-card filtered-in" data-category="cafe" data-format="glb,usdz" data-price="99" data-quality="90">
+            <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
+            <div class="mc-img">
+              <div class="mc-3d-overlay">
+                <div class="mc-3d-play-btn">
+                  <div class="mc-3d-play-ico">✨</div>
+                  <span>3D Model Yükle</span>
+                </div>
+              </div>
+              <img src="06_furniture_use_case_web_ar.png" alt="Cafe Table Set" />
+            </div>
+            <div class="mc-content">
+              <div class="mc-cat" data-i18n="market.cat_cafe">Kafe & Restoran</div>
+              <div class="mc-title" data-i18n="market.card_cafe">Kafe Masa Seti</div>
+              <div class="market-tags">
+                <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
+                <span class="market-tag" data-i18n="market.tag_comm">Ticari Lisans</span>
+              </div>
+              <div class="mc-actions">
+                <a href="#waitlist" class="btn btn-primary btn-micro" data-i18n="market.btn_try">AR'de Dene</a>
+                <a href="#featured" class="btn btn-ghost btn-micro" data-i18n="market.btn_detail">Detaylar</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="market-card filtered-in" data-category="stand" data-format="glb" data-price="0" data-quality="85">
+            <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
+            <div class="mc-img">
+              <div class="mc-3d-overlay">
+                <div class="mc-3d-play-btn">
+                  <div class="mc-3d-play-ico">✨</div>
+                  <span>3D Model Yükle</span>
+                </div>
+              </div>
+              <img src="08_electronics_use_case_web_ar.png" alt="Retail Product Stand" />
+            </div>
+            <div class="mc-content">
+              <div class="mc-cat" data-i18n="market.cat_stand">Ürün Standları</div>
+              <div class="mc-title" data-i18n="market.card_stand">Retail Product Stand</div>
+              <div class="market-tags">
+                <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
+                <span class="market-tag" data-i18n="market.tag_scale">Ölçek Onaylı</span>
+              </div>
+              <div class="mc-actions">
+                <a href="#waitlist" class="btn btn-primary btn-micro" data-i18n="market.btn_try">AR'de Dene</a>
+                <a href="#featured" class="btn btn-ghost btn-micro" data-i18n="market.btn_detail">Detaylar</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="market-card filtered-in" data-category="furniture" data-format="glb,usdz" data-price="120" data-quality="91">
+            <div class="mc-beta-lbl" data-i18n="market.beta_label">Önizleme Aşamasında</div>
+            <div class="mc-img">
+              <div class="mc-3d-overlay">
+                <div class="mc-3d-play-btn">
+                  <div class="mc-3d-play-ico">✨</div>
+                  <span>3D Model Yükle</span>
+                </div>
+              </div>
+              <img src="06_furniture_use_case_web_ar.png" alt="Modular Cabinet Base" />
+            </div>
+            <div class="mc-content">
+              <div class="mc-cat" data-i18n="market.cat_furn">Mobilya</div>
+              <div class="mc-title" data-i18n="market.card_cabinet">Modüler Dolap Altlığı</div>
+              <div class="market-tags">
+                <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
+                <span class="market-tag" data-i18n="market.tag_mob">Mobil Uyumlu</span>
+                <span class="market-tag" data-i18n="market.tag_comm">Ticari Lisans</span>
+              </div>
+              <div class="mc-actions">
+                <a href="#waitlist" class="btn btn-primary btn-micro" data-i18n="market.btn_try">AR'de Dene</a>
+                <a href="#featured" class="btn btn-ghost btn-micro" data-i18n="market.btn_detail">Detaylar</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="mc-content">
-          <div class="mc-cat" data-i18n="market.cat_stand">Ürün Standları</div>
-          <div class="mc-title" data-i18n="market.card_shelf">Sergileme Rafı</div>
-          <div class="market-tags">
-            <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
-            <span class="market-tag" data-i18n="market.tag_mob">Mobil Uyumlu</span>
-            <span class="market-tag" data-i18n="market.tag_comm">Ticari Lisans</span>
-          </div>
-          <div class="mc-actions">
-            <a href="#waitlist" class="btn btn-primary" data-i18n="market.btn_try">AR'de Dene</a>
-            <a href="#featured" class="btn btn-ghost" data-i18n="market.btn_detail">Detaylar</a>
-          </div>
+
+        <!-- Empty State Container -->
+        <div class="market-empty-state" id="market-empty-state">
+          <div class="empty-state-illus">🔍</div>
+          <h3 class="empty-state-title">Eşleşen Model Bulunamadı</h3>
+          <p class="empty-state-sub">Arama kriterlerinizi değiştirmeyi veya farklı bir kategori seçmeyi deneyin.</p>
         </div>
       </div>
     </div>
@@ -447,6 +568,36 @@
   </div>
 </footer>
 
+<!-- Onboarding Modal -->
+<div class="onboarding-overlay" id="onboarding-overlay">
+  <div class="onboarding-modal">
+    <button class="onboarding-close" id="onboarding-close" aria-label="Kapat">&times;</button>
+    <div class="onboarding-modal-header">
+      <div class="onboarding-step-badge" id="ob-step-badge">Adım 1 / 3</div>
+      <h3 id="ob-title">3D Modelinizi Keşfedin</h3>
+      <p id="ob-sub">Iarone Market'teki 3D modelleri AR'de nasıl deneyeceğinizi öğrenin.</p>
+    </div>
+    <div class="onboarding-modal-body">
+      <div class="onboarding-tips" id="onboarding-tips-container">
+        <!-- Tips will be dynamically loaded via JS -->
+      </div>
+      <div class="onboarding-progress">
+        <div class="ob-dots" id="ob-dots">
+          <div class="ob-dot active"></div>
+          <div class="ob-dot"></div>
+          <div class="ob-dot"></div>
+        </div>
+        <div class="ob-step-text" id="ob-step-text">Adım 1/3: Başlarken</div>
+      </div>
+      <div class="onboarding-actions">
+        <button class="btn btn-ghost" id="ob-prev-btn" style="display: none;">Geri</button>
+        <button class="btn btn-primary" id="ob-next-btn">Devam Et</button>
+      </div>
+      <div class="ob-skip" id="ob-skip-btn">Tanıtımı Atla</div>
+    </div>
+  </div>
+</div>
+
 <!-- ═══ FLOATING WIDGETS ═══ -->
 <div class="floating-widgets">
   <div class="ai-widget" id="ai-widget">
@@ -462,6 +613,12 @@
         <button class="ai-close-btn" id="ai-close-btn" aria-label="Kapat">&times;</button>
       </div>
       <div class="ai-chat-body" id="ai-chat-body"></div>
+      <div class="ai-chat-footer">
+        <input type="text" class="ai-chat-input" id="ai-chat-input" placeholder="Asistana sorun..." />
+        <button class="ai-chat-send" id="ai-chat-send" aria-label="Gönder">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
     </div>
     <button class="ai-toggle-btn" id="ai-toggle-btn" aria-label="Asistanı Aç">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z"></path></svg>
@@ -472,7 +629,8 @@
   </a>
 </div>
 
-<script src="i18n.js"></script>
-<script src="app.v5.js"></script>
+<script type="module" src="i18n.js"></script>
+<script type="module" src="app.v5.js"></script>
+<script src="design-switcher.js"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 /* =====================================================
-   IARONE — app.js v2.1
-   Theme toggle, i18n, nav, animations, 3D preloader
+   IARONE — app.js v2.5
+   Theme toggle, i18n, nav, animations, 3D preloader, 
+   Drag & Drop, Search, Filters, Onboarding & Dashboard modules
    ===================================================== */
 
 /* ─── PREMIUM PRELOADER (GÜVENLİ) ─── */
@@ -346,7 +347,7 @@ function initPageTransitions() {
 
   document.querySelectorAll('a[href]').forEach(a => {
     const href = a.getAttribute('href');
-    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto')) return;
+    if (!href || href.includes('#') || href.startsWith('http') || href.startsWith('mailto')) return;
     a.addEventListener('click', e => {
       e.preventDefault();
       document.body.style.cssText = 'opacity:0;transform:translateY(-8px);transition:all .22s ease;';
@@ -355,112 +356,83 @@ function initPageTransitions() {
   });
 }
 
-/* ─── AI CHATBOT WIDGET ─── */
-function initAIChatbot() {
-  const widget = document.getElementById('ai-widget');
-  const toggleBtn = document.getElementById('ai-toggle-btn');
-  const closeBtn = document.getElementById('ai-close-btn');
-  const chatBody = document.getElementById('ai-chat-body');
-  
-  if (!widget || !toggleBtn || !closeBtn || !chatBody) return;
+/* ─── WAITLIST FORM (MARKET) ─── */
+function initWaitlistForm() {
+  const form = document.getElementById('waitlist-form');
+  if (!form) return;
 
-  let isInitialized = false;
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn   = form.querySelector('[type="submit"]');
+    const inputEmail = form.querySelector('input[type="email"]');
+    const inputName = form.querySelector('#wait_name');
+    const inputBrand = form.querySelector('#wait_brand');
+    const website = form.querySelector('input[name="website"]');
+    const intentRadio = form.querySelector('input[name="wait_intent"]:checked');
+    
+    if (!inputEmail || !inputEmail.value) return;
 
-  const responses = {
-    'Sistem Nasıl Çalışır?': 'Iarone, yüklediğiniz herhangi bir 2D ürün fotoğrafını analiz eder, ışıklandırma ve dokularını iyileştirerek saniyeler içinde 3D modele dönüştürür. Üstelik herhangi bir teknik bilgiye ihtiyacınız yoktur.',
-    'Fiyatlandırma': 'Fiyatlandırma planlarımız aylık abonelik şeklindedir. İhtiyaçlarınıza göre Starter, Pro veya Enterprise planlarından birini seçebilirsiniz. Detaylar için üst menüdeki Fiyatlandırma sayfasına göz atabilirsiniz.',
-    'Örnek AR Gör': 'Harika! Telefonunun kamerasıyla aşağıdaki QR kodu okutarak satışa hazır bir AR modelini anında deneyimleyebilirsin.<br><br><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://ar-code.com/NgU6gFv8p" alt="Iarone AR QR Kod" style="border-radius: var(--r-sm); margin-top: 10px; width: 160px; height: 160px;" />'
-  };
+    const originalText = btn.textContent;
+    const lang = getLang();
+    btn.textContent = '...';
+    btn.disabled = true;
 
-  const optionsHTML = `
-    <div class="ai-options" id="ai-options-container">
-      <button class="ai-opt-btn">Sistem Nasıl Çalışır?</button>
-      <button class="ai-opt-btn">Fiyatlandırma</button>
-      <button class="ai-opt-btn">Örnek AR Gör</button>
-    </div>
-  `;
+    try {
+      const payload = {
+        name: inputName ? inputName.value : '',
+        email: inputEmail.value,
+        company: inputBrand ? inputBrand.value : '',
+        intent: intentRadio ? intentRadio.value : 'MARKET_WAITLIST',
+        source: 'MARKET_WAITLIST',
+        pageUrl: window.location.href,
+        website: website ? website.value : ''
+      };
 
-  function addMessage(text, sender = 'bot', rawHTML = false) {
-    const msgDiv = document.createElement('div');
-    msgDiv.className = `ai-msg ${sender}`;
-    const bubble = document.createElement('div');
-    bubble.className = 'ai-msg-bubble';
-    if (rawHTML) {
-      bubble.innerHTML = text;
-    } else {
-      bubble.textContent = text;
-    }
-    msgDiv.appendChild(bubble);
-    chatBody.appendChild(msgDiv);
-    chatBody.scrollTop = chatBody.scrollHeight;
-  }
-
-  function addTypingIndicator() {
-    const typingDiv = document.createElement('div');
-    typingDiv.className = 'ai-typing';
-    typingDiv.id = 'ai-typing-indicator';
-    typingDiv.innerHTML = '<div class="ai-dot"></div><div class="ai-dot"></div><div class="ai-dot"></div>';
-    chatBody.appendChild(typingDiv);
-    chatBody.scrollTop = chatBody.scrollHeight;
-  }
-
-  function removeTypingIndicator() {
-    const indicator = document.getElementById('ai-typing-indicator');
-    if (indicator) indicator.remove();
-  }
-
-  function handleOptionClick(optionText) {
-    // Remove options
-    const optionsContainer = document.getElementById('ai-options-container');
-    if (optionsContainer) optionsContainer.remove();
-
-    // User message
-    addMessage(optionText, 'user');
-
-    // Show typing
-    addTypingIndicator();
-
-    // Bot reply
-    setTimeout(() => {
-      removeTypingIndicator();
-      addMessage(responses[optionText], 'bot', true);
+      const res = await fetch((window.IARONE_API_URL || 'http://localhost:3000/api') + '/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
       
-      // Bring back options after a short delay
-      setTimeout(() => {
-        chatBody.insertAdjacentHTML('beforeend', optionsHTML);
-        bindOptionEvents();
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }, 800);
-    }, 1000);
-  }
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        if (data.error) {
+           btn.textContent = 'Hata: ' + data.error;
+           setTimeout(() => { btn.textContent = originalText; btn.disabled = false; }, 3000);
+           return;
+        }
+        throw new Error('API Unreachable');
+      }
 
-  function bindOptionEvents() {
-    const btns = chatBody.querySelectorAll('.ai-opt-btn');
-    btns.forEach(btn => {
-      btn.addEventListener('click', () => handleOptionClick(btn.textContent));
-    });
-  }
-
-  function openChat() {
-    widget.classList.add('open');
-    if (!isInitialized) {
-      isInitialized = true;
-      addTypingIndicator();
-      setTimeout(() => {
-        removeTypingIndicator();
-        addMessage('Merhaba! Iarone\'a hoş geldin. Sana nasıl yardımcı olabilirim?', 'bot');
-        chatBody.insertAdjacentHTML('beforeend', optionsHTML);
-        bindOptionEvents();
-      }, 800);
+      btn.textContent = (lang === 'tr') ? '✅ Başvurunuz alındı!' : '✅ Application received!';
+      btn.style.background = 'linear-gradient(135deg,#059669,#10b981)';
+      
+      form.querySelectorAll('input').forEach(i => {
+        if (i.type !== 'radio' && i.type !== 'checkbox' && i.type !== 'submit') i.value = '';
+      });
+    } catch (err) {
+      console.error('Lead Capture Error:', err);
+      btn.textContent = (lang === 'tr') ? 'Hata! Tekrar deneyin.' : 'Error! Try again.';
+      btn.style.background = 'var(--err)';
+      
+      try {
+        const payload = {
+          name: inputName ? inputName.value : '', email: inputEmail.value,
+          company: inputBrand ? inputBrand.value : '', intent: intentRadio ? intentRadio.value : 'MARKET_WAITLIST',
+          source: 'MARKET_WAITLIST', pageUrl: window.location.href, timestamp: Date.now()
+        };
+        const pending = JSON.parse(localStorage.getItem('pending_leads') || '[]');
+        pending.push(payload);
+        localStorage.setItem('pending_leads', JSON.stringify(pending));
+      } catch (e) {}
     }
-  }
 
-  function closeChat() {
-    widget.classList.remove('open');
-  }
-
-  toggleBtn.addEventListener('click', openChat);
-  closeBtn.addEventListener('click', closeChat);
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 5000);
+  });
 }
 
 /* ─── DYNAMIC NAVBAR & PROFILE ─── */
@@ -605,82 +577,679 @@ function initInteractiveVideo() {
   window.addEventListener('touchend', onDragEnd);
 }
 
-/* ─── WAITLIST FORM (MARKET) ─── */
-function initWaitlistForm() {
-  const form = document.getElementById('waitlist-form');
-  if (!form) return;
+/* ─── FEATURE 1: HERO DRAG & DROP UPLOAD SIMULATION ─── */
+function initHeroDragDrop() {
+  const zone = document.getElementById('upload-zone');
+  const preview = document.getElementById('upload-preview');
+  const previewImg = document.getElementById('upload-preview-img');
+  const progressFill = document.getElementById('upload-progress-fill');
+  const statusText = document.getElementById('upload-status-text');
+  const statusSub = document.getElementById('upload-status-sub');
+  
+  if (!zone || !preview || !previewImg || !progressFill) return;
 
-  form.addEventListener('submit', async e => {
-    e.preventDefault();
-    const btn   = form.querySelector('[type="submit"]');
-    const inputEmail = form.querySelector('input[type="email"]');
-    const inputName = form.querySelector('#wait_name');
-    const inputBrand = form.querySelector('#wait_brand');
-    const website = form.querySelector('input[name="website"]');
-    const intentRadio = form.querySelector('input[name="wait_intent"]:checked');
-    
-    if (!inputEmail || !inputEmail.value) return;
+  const steps = [
+    document.getElementById('step-1'),
+    document.getElementById('step-2'),
+    document.getElementById('step-3'),
+    document.getElementById('step-4')
+  ];
 
-    const originalText = btn.textContent;
-    const lang = getLang();
-    btn.textContent = '...';
-    btn.disabled = true;
+  // Helper to update SVG progress circle dash offset (220 is full path length)
+  const setProgress = (percent) => {
+    const offset = 220 - (220 * percent) / 100;
+    progressFill.style.strokeDashoffset = offset;
+    statusSub.textContent = `%${Math.round(percent)}`;
+  };
 
-    try {
-      const payload = {
-        name: inputName ? inputName.value : '',
-        email: inputEmail.value,
-        company: inputBrand ? inputBrand.value : '',
-        intent: intentRadio ? intentRadio.value : 'MARKET_WAITLIST',
-        source: 'MARKET_WAITLIST',
-        pageUrl: window.location.href,
-        website: website ? website.value : ''
-      };
+  const createParticles = () => {
+    const parent = document.getElementById('upload-particles');
+    if (!parent) return;
+    parent.innerHTML = '';
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const angle = Math.random() * Math.PI * 2;
+      const dist = 50 + Math.random() * 80;
+      p.style.setProperty('--dx', `${Math.cos(angle) * dist}px`);
+      p.style.setProperty('--dy', `${Math.sin(angle) * dist}px`);
+      p.style.left = '50%';
+      p.style.top = '50%';
+      p.style.background = `hsl(${220 + Math.random() * 40}, 90%, 65%)`;
+      parent.appendChild(p);
+      setTimeout(() => p.remove(), 1200);
+    }
+  };
 
-      const res = await fetch((window.IARONE_API_URL || 'http://localhost:3000/api') + '/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
+  const startSimulation = (file) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      previewImg.src = e.target.result;
+      zone.classList.remove('state-uploading', 'state-processing', 'state-done');
+      zone.classList.add('state-uploading');
       
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        if (data.error) {
-           btn.textContent = 'Hata: ' + data.error;
-           setTimeout(() => { btn.textContent = originalText; btn.disabled = false; }, 3000);
-           return;
+      let progress = 0;
+      setProgress(0);
+      steps.forEach(s => s?.classList.remove('active', 'done'));
+      steps[0]?.classList.add('active');
+
+      const interval = setInterval(() => {
+        progress += 2;
+        setProgress(progress);
+
+        if (progress === 30) {
+          zone.classList.remove('state-uploading');
+          zone.classList.add('state-processing');
+          statusText.textContent = "3D Model Üretiliyor...";
+          steps[0]?.classList.remove('active');
+          steps[0]?.classList.add('done');
+          steps[1]?.classList.add('active');
+        } else if (progress === 60) {
+          statusText.textContent = "Kalite Kontrolü Yapılıyor...";
+          steps[1]?.classList.remove('active');
+          steps[1]?.classList.add('done');
+          steps[2]?.classList.add('active');
+        } else if (progress === 85) {
+          statusText.textContent = "Pürüzler Gideriliyor...";
+          steps[2]?.classList.remove('active');
+          steps[2]?.classList.add('done');
+          steps[3]?.classList.add('active');
+        } else if (progress >= 100) {
+          clearInterval(interval);
+          zone.classList.remove('state-processing');
+          zone.classList.add('state-done');
+          steps[3]?.classList.remove('active');
+          steps[3]?.classList.add('done');
+          createParticles();
         }
-        throw new Error('API Unreachable');
-      }
+      }, 70);
+    };
+    reader.readAsDataURL(file);
+  };
 
-      btn.textContent = (lang === 'tr') ? '✅ Başvurunuz alındı!' : '✅ Application received!';
-      btn.style.background = 'linear-gradient(135deg,#059669,#10b981)';
+  zone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    zone.classList.add('dragover');
+  });
+  zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
+  zone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    zone.classList.remove('dragover');
+    const files = e.dataTransfer.files;
+    if (files.length > 0 && files[0].type.startsWith('image/')) {
+      startSimulation(files[0]);
+    }
+  });
+
+  zone.addEventListener('click', (e) => {
+    // Prevent triggering upload on buttons click
+    if (e.target.closest('.upload-try-btn') || zone.classList.contains('state-uploading') || zone.classList.contains('state-processing')) return;
+    const inp = document.createElement('input');
+    inp.type = 'file';
+    inp.accept = 'image/*';
+    inp.onchange = () => {
+      if (inp.files.length > 0) startSimulation(inp.files[0]);
+    };
+    inp.click();
+  });
+}
+
+/* ─── FEATURE 2: BUTTON MICRO-INTERACTIONS ─── */
+function initButtonMicroInteractions() {
+  document.querySelectorAll('.btn-primary').forEach(btn => {
+    if (btn.classList.contains('btn-micro')) return;
+    btn.classList.add('btn-micro');
+    
+    // Wrap current label
+    const label = btn.innerHTML;
+    btn.innerHTML = `
+      <span class="btn-label">${label}</span>
+      <span class="btn-spinner">
+        <svg class="spin-ring" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-opacity="0.25"></circle>
+          <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor"></path>
+        </svg>
+      </span>
+      <span class="btn-checkmark">✓</span>
+    `;
+
+    btn.addEventListener('click', (e) => {
+      // If it's a link or already loading/success, let it be
+      if (btn.classList.contains('btn-loading') || btn.classList.contains('btn-success')) return;
+
+      // Ripple Effect
+      btn.classList.add('rippling');
+      setTimeout(() => btn.classList.remove('rippling'), 400);
+
+      // Submit buttons triggers loading sequence
+      if (btn.closest('form')) {
+        btn.classList.add('btn-loading');
+        // Let the form handles actual submission, we just trigger micro visual
+        setTimeout(() => {
+          btn.classList.remove('btn-loading');
+          btn.classList.add('btn-success');
+          setTimeout(() => {
+            btn.classList.remove('btn-success');
+          }, 3000);
+        }, 1800);
+      }
+    });
+  });
+}
+
+/* ─── FEATURE 3: MARKET LAZY LOAD & SEARCH & ADVANCED FILTERS ─── */
+function initMarketLazyLoad() {
+  const realGrid = document.getElementById('market-real-grid');
+  const skeletonGrid = document.getElementById('market-skeleton-grid');
+  if (!realGrid || !skeletonGrid) return;
+
+  // Simulate loading delay for skeleton loader
+  setTimeout(() => {
+    skeletonGrid.style.display = 'none';
+    realGrid.style.display = 'grid';
+    initMarketCardsOverlay();
+  }, 1200);
+}
+
+function initMarketCardsOverlay() {
+  document.querySelectorAll('.market-card').forEach(card => {
+    const overlay = card.querySelector('.mc-3d-overlay');
+    const imgWrap = card.querySelector('.mc-img');
+    if (!overlay || !imgWrap) return;
+
+    overlay.addEventListener('click', (e) => {
+      e.stopPropagation();
+      // Inject model-viewer when clicked
+      overlay.style.display = 'none';
+      const mv = document.createElement('model-viewer');
+      mv.setAttribute('src', 'https://modelviewer.dev/shared-assets/models/Astronaut.glb');
+      mv.setAttribute('alt', 'Iarone 3D model preview');
+      mv.setAttribute('auto-rotate', '');
+      mv.setAttribute('camera-controls', '');
+      mv.setAttribute('touch-action', 'none');
+      mv.style.width = '100%';
+      mv.style.height = '100%';
+      mv.style.position = 'absolute';
+      mv.style.inset = '0';
+      mv.style.background = 'var(--bg-surface)';
+      imgWrap.appendChild(mv);
+    });
+  });
+}
+
+function initMarketSearch() {
+  const searchInput = document.getElementById('market-search-input');
+  const clearBtn = document.getElementById('market-search-clear');
+  const searchWrap = document.getElementById('market-search-wrap');
+  
+  if (!searchInput) return;
+
+  const handleSearch = () => {
+    const query = searchInput.value.toLowerCase().trim();
+    searchWrap.classList.toggle('has-value', query.length > 0);
+    applyMarketFilters();
+  };
+
+  // Debounced search logic
+  let debounceTimeout;
+  searchInput.addEventListener('input', () => {
+    clearTimeout(debounceTimeout);
+    debounceTimeout = setTimeout(handleSearch, 300);
+  });
+
+  clearBtn?.addEventListener('click', () => {
+    searchInput.value = '';
+    searchWrap.classList.remove('has-value');
+    applyMarketFilters();
+  });
+}
+
+function initMarketFilters() {
+  const resetBtn = document.getElementById('filter-reset-btn');
+  const filterPanel = document.getElementById('filter-panel');
+  if (!filterPanel) return;
+
+  // Toggle filter option selection
+  document.querySelectorAll('.filter-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      // For categories only 1 can be selected
+      if (opt.closest('#category-opts')) {
+        opt.parentNode.querySelectorAll('.filter-opt').forEach(sibling => {
+          sibling.classList.remove('selected');
+          sibling.querySelector('.filter-opt-check').textContent = '';
+        });
+      }
       
-      form.querySelectorAll('input').forEach(i => {
-        if (i.type !== 'radio' && i.type !== 'checkbox' && i.type !== 'submit') i.value = '';
-      });
-    } catch (err) {
-      console.error('Lead Capture Error:', err);
-      btn.textContent = (lang === 'tr') ? 'Hata! Tekrar deneyin.' : 'Error! Try again.';
-      btn.style.background = 'var(--err)';
+      const selected = opt.classList.toggle('selected');
+      opt.querySelector('.filter-opt-check').textContent = selected ? '✓' : '';
       
-      try {
-        const payload = {
-          name: inputName ? inputName.value : '', email: inputEmail.value,
-          company: inputBrand ? inputBrand.value : '', intent: intentRadio ? intentRadio.value : 'MARKET_WAITLIST',
-          source: 'MARKET_WAITLIST', pageUrl: window.location.href, timestamp: Date.now()
-        };
-        const pending = JSON.parse(localStorage.getItem('pending_leads') || '[]');
-        pending.push(payload);
-        localStorage.setItem('pending_leads', JSON.stringify(pending));
-      } catch (e) {}
+      filterPanel.classList.add('filters-active');
+      applyMarketFilters();
+    });
+  });
+
+  // Price pills toggle
+  document.querySelectorAll('.price-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      pill.parentNode.querySelectorAll('.price-pill').forEach(sibling => sibling.classList.remove('active'));
+      pill.classList.add('active');
+      filterPanel.classList.add('filters-active');
+      applyMarketFilters();
+    });
+  });
+
+  resetBtn?.addEventListener('click', () => {
+    document.querySelectorAll('.filter-opt').forEach(opt => {
+      opt.classList.remove('selected');
+      opt.querySelector('.filter-opt-check').textContent = '';
+    });
+    // Set default category to 'all'
+    const defaultCat = document.querySelector('#category-opts [data-value="all"]');
+    if (defaultCat) {
+      defaultCat.classList.add('selected');
+      defaultCat.querySelector('.filter-opt-check').textContent = '✓';
     }
 
+    document.querySelectorAll('.price-pill').forEach(pill => pill.classList.remove('active'));
+    document.querySelector('.price-pill[data-value="all"]')?.classList.add('active');
+
+    const searchInp = document.getElementById('market-search-input');
+    if (searchInp) searchInp.value = '';
+    document.getElementById('market-search-wrap')?.classList.remove('has-value');
+
+    filterPanel.classList.remove('filters-active');
+    applyMarketFilters();
+  });
+}
+
+function applyMarketFilters() {
+  const cards = document.querySelectorAll('#market-real-grid .market-card');
+  const searchInput = document.getElementById('market-search-input');
+  const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
+  // Get active filters
+  const selectedCatOpt = document.querySelector('#category-opts .filter-opt.selected');
+  const categoryFilter = selectedCatOpt ? selectedCatOpt.getAttribute('data-value') : 'all';
+
+  const formatFilters = Array.from(document.querySelectorAll('#format-opts .filter-opt.selected')).map(o => o.getAttribute('data-value'));
+  
+  const activePricePill = document.querySelector('#price-opts .price-pill.active');
+  const priceFilter = activePricePill ? activePricePill.getAttribute('data-value') : 'all';
+
+  let visibleCount = 0;
+
+  cards.forEach(card => {
+    const cardCat = card.getAttribute('data-category');
+    const cardFormats = card.getAttribute('data-format').split(',');
+    const cardPrice = parseFloat(card.getAttribute('data-price'));
+    const cardTitle = card.querySelector('.mc-title').textContent.toLowerCase();
+
+    // Check query match
+    const matchesQuery = query === '' || cardTitle.includes(query) || cardCat.includes(query);
+
+    // Check category match
+    const matchesCat = categoryFilter === 'all' || cardCat === categoryFilter;
+
+    // Check formats match (if any format is selected, the card must support at least one of selected formats)
+    const matchesFormat = formatFilters.length === 0 || formatFilters.some(f => cardFormats.includes(f));
+
+    // Check price match
+    let matchesPrice = true;
+    if (priceFilter === 'free') {
+      matchesPrice = cardPrice === 0;
+    } else if (priceFilter === 'premium') {
+      matchesPrice = cardPrice > 0;
+    }
+
+    if (matchesQuery && matchesCat && matchesFormat && matchesPrice) {
+      card.style.display = 'block';
+      card.classList.remove('filtered-out');
+      card.classList.add('filtered-in');
+      visibleCount++;
+    } else {
+      card.style.display = 'none';
+      card.classList.remove('filtered-in');
+      card.classList.add('filtered-out');
+    }
+  });
+
+  // Empty state handling
+  const emptyState = document.getElementById('market-empty-state');
+  const resultsCount = document.getElementById('results-count');
+  
+  if (emptyState) {
+    emptyState.classList.toggle('visible', visibleCount === 0);
+  }
+
+  if (resultsCount) {
+    const lang = getLang();
+    if (visibleCount === 0) {
+      resultsCount.textContent = "";
+    } else {
+      resultsCount.textContent = lang === 'tr' ? `${visibleCount} model listeleniyor` : `${visibleCount} models found`;
+    }
+  }
+}
+
+/* ─── FEATURE 4: ENHANCED AI CHAT VIDEO PLAYER & ONBOARDING MODAL ─── */
+function initEnhancedAIChat() {
+  const chatbot = document.getElementById('ai-widget');
+  if (!chatbot) return;
+
+  const chatBody = document.getElementById('ai-chat-body');
+  const input = document.getElementById('ai-chat-input');
+  const sendBtn = document.getElementById('ai-chat-send');
+  const toggleBtn = document.getElementById('ai-toggle-btn');
+  const closeBtn = document.getElementById('ai-close-btn');
+
+  if (!chatBody || !input || !sendBtn || !toggleBtn || !closeBtn) return;
+
+  let isInitialized = false;
+
+  const optionsHTML = `
+    <div class="ai-options" id="ai-options-container">
+      <button class="ai-opt-btn">Sistem Nasıl Çalışır?</button>
+      <button class="ai-opt-btn">Fiyatlandırma</button>
+      <button class="ai-opt-btn">Örnek AR Gör</button>
+    </div>
+  `;
+
+  const addMessage = (text, sender = 'bot', isVideo = false, rawHTML = false) => {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `ai-msg ${sender}`;
+    const bubble = document.createElement('div');
+    bubble.className = isVideo ? 'ai-video-bubble' : 'ai-msg-bubble';
+
+    if (isVideo) {
+      bubble.innerHTML = `
+        <div style="position: relative;">
+          <video class="ai-video-player" id="ai-player">
+            <source src="muscent.mp4" type="video/mp4">
+          </video>
+          <div class="ai-video-overlay-btn" id="ai-play-overlay">
+            <div class="ai-video-play-ico">▶</div>
+          </div>
+        </div>
+        <div class="ai-video-caption">Iarone Nasıl Çalışır? (Video Rehber)</div>
+      `;
+      msgDiv.appendChild(bubble);
+      chatBody.appendChild(msgDiv);
+
+      // Play video listener
+      const player = bubble.querySelector('#ai-player');
+      const overlay = bubble.querySelector('#ai-play-overlay');
+      overlay.addEventListener('click', () => {
+        if (player.paused) {
+          player.play();
+          overlay.classList.add('playing');
+        } else {
+          player.pause();
+          overlay.classList.remove('playing');
+        }
+      });
+      player.addEventListener('click', () => {
+        player.pause();
+        overlay.classList.remove('playing');
+      });
+    } else {
+      if (rawHTML) {
+        bubble.innerHTML = text;
+      } else {
+        bubble.textContent = text;
+      }
+      msgDiv.appendChild(bubble);
+      chatBody.appendChild(msgDiv);
+    }
+    
+    chatBody.scrollTop = chatBody.scrollHeight;
+  };
+
+  const addTypingIndicator = () => {
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'ai-typing';
+    typingDiv.id = 'ai-typing-indicator';
+    typingDiv.innerHTML = '<div class="ai-dot"></div><div class="ai-dot"></div><div class="ai-dot"></div>';
+    chatBody.appendChild(typingDiv);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  };
+
+  const removeTypingIndicator = () => {
+    const indicator = document.getElementById('ai-typing-indicator');
+    if (indicator) indicator.remove();
+  };
+
+  const handleMessageSubmit = () => {
+    const query = input.value.trim();
+    if (query === '') return;
+
+    addMessage(query, 'user');
+    input.value = '';
+    
+    addTypingIndicator();
+    
     setTimeout(() => {
-      btn.textContent = originalText;
-      btn.style.background = '';
-      btn.disabled = false;
-    }, 5000);
+      removeTypingIndicator();
+      if (query.toLowerCase().includes('nası') || query.toLowerCase().includes('nasıl')) {
+        addMessage('', 'bot', true);
+      } else if (query.toLowerCase().includes('fiyat')) {
+        addMessage('Aylık abonelik planlarımız Starter (Ücretsiz), Pro (₺499) ve Premium (Kurumsal) şeklindedir. Detaylar için üst menüden Fiyatlandırma sayfamıza göz atabilirsiniz.', 'bot');
+      } else {
+        addMessage('Sorunuzu aldım! Destek ekibimiz en kısa sürede yanıtlayacaktır. Dilerseniz menüdeki hazır başlıkları seçebilirsiniz.', 'bot');
+      }
+    }, 1200);
+  };
+
+  const handleOptionClick = (optionText) => {
+    const opts = document.getElementById('ai-options-container');
+    if (opts) opts.remove();
+
+    addMessage(optionText, 'user');
+    addTypingIndicator();
+
+    setTimeout(() => {
+      removeTypingIndicator();
+      if (optionText === 'Sistem Nasıl Çalışır?') {
+        addMessage('', 'bot', true);
+      } else if (optionText === 'Fiyatlandırma') {
+        addMessage('Aylık abonelik planlarımız Starter (Ücretsiz), Pro (₺499) ve Premium (Kurumsal) şeklindedir. Detaylar için üst menüden Fiyatlandırma sayfamıza göz atabilirsiniz.', 'bot');
+      } else if (optionText === 'Örnek AR Gör') {
+        addMessage('Harika! Telefonunun kamerasıyla aşağıdaki QR kodu okutarak satışa hazır bir AR modelini anında deneyimleyebilirsin.<br><br><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://ar-code.com/NgU6gFv8p" alt="Iarone AR QR Kod" style="border-radius: var(--r-sm); margin-top: 10px; width: 160px; height: 160px;" />', 'bot', false, true);
+      }
+
+      setTimeout(() => {
+        chatBody.insertAdjacentHTML('beforeend', optionsHTML);
+        bindOptionEvents();
+      }, 1000);
+    }, 1000);
+  };
+
+  const bindOptionEvents = () => {
+    document.querySelectorAll('.ai-opt-btn').forEach(btn => {
+      btn.onclick = () => handleOptionClick(btn.textContent);
+    });
+  };
+
+  toggleBtn.onclick = () => {
+    chatbot.classList.add('open');
+    if (!isInitialized) {
+      isInitialized = true;
+      addTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        addMessage("Merhaba! Iarone'a hoş geldiniz. Size nasıl yardımcı olabilirim?", 'bot');
+        chatBody.insertAdjacentHTML('beforeend', optionsHTML);
+        bindOptionEvents();
+      }, 800);
+    }
+  };
+
+  closeBtn.onclick = () => chatbot.classList.remove('open');
+
+  sendBtn.onclick = handleMessageSubmit;
+  input.onkeydown = (e) => { if (e.key === 'Enter') handleMessageSubmit(); };
+}
+
+function initOnboardingModal() {
+  const overlay = document.getElementById('onboarding-overlay');
+  if (!overlay) return;
+
+  // Check localStorage flag
+  if (localStorage.getItem('iarone-onboarded') === 'true') return;
+
+  const title = document.getElementById('ob-title');
+  const sub = document.getElementById('ob-sub');
+  const badge = document.getElementById('ob-step-badge');
+  const container = document.getElementById('onboarding-tips-container');
+  const prevBtn = document.getElementById('ob-prev-btn');
+  const nextBtn = document.getElementById('ob-next-btn');
+  const stepText = document.getElementById('ob-step-text');
+  const dots = document.querySelectorAll('.ob-dots .ob-dot');
+
+  let step = 1;
+
+  const stepsData = {
+    1: {
+      title: "Iarone Market'e Hoş Geldiniz",
+      sub: "Platformu maksimum verimlilikle nasıl kullanacağınızı öğrenin.",
+      badge: "Adım 1 / 3",
+      stepText: "Adım 1/3: Başlarken",
+      tips: [
+        { icon: "🔍", title: "Gelişmiş Arama & Filtreleme", desc: "Aradığınız 3D modele anında ulaşmak için sol taraftaki filtre panelini ve debounced aramayı kullanın." },
+        { icon: "✨", title: "Etkileşimli 3D Gösterim", desc: "Her karttaki '3D Model Yükle' butonuna tıklayarak modelin tarayıcı içinde dönmesini sağlayın." }
+      ]
+    },
+    2: {
+      title: "Kendi Fotoğraflarınızı Yükleyin",
+      sub: "Fotoğraflarınızı satışa hazır 3D model haline getirmek çok kolay.",
+      badge: "Adım 2 / 3",
+      stepText: "Adım 2/3: Fotoğraf Yükleme",
+      tips: [
+        { icon: "📸", title: "Fotoğraf Kalite Analizi", desc: "Sistemimiz fotoğrafın ışıklandırmasını ve açısını otomatik denetleyerek hataları minimize eder." },
+        { icon: "⚡", title: "Akıllı İyileştirme", desc: "Ham modelinizi tek tıkla pürüzsüzleştirin ve premium AR çıktısı elde edin." }
+      ]
+    },
+    3: {
+      title: "Hazırsınız!",
+      sub: "Artırılmış Gerçeklik deneyimine başlamak için bekleme listemize katılın.",
+      badge: "Adım 3 / 3",
+      stepText: "Adım 3/3: Pazar Yeri",
+      tips: [
+        { icon: "🛒", title: "Bekleme Listesi Avantajı", desc: "Pazar yerinde yer alacak ilk satıcılardan biri olarak öncelikli görünürlük elde edin." },
+        { icon: "💼", title: "Ticari Entegrasyon", desc: "Üretilen embed kodlarını web sitenize kopyalayıp hemen satış yapmaya başlayın." }
+      ]
+    }
+  };
+
+  const renderStep = (s) => {
+    const data = stepsData[s];
+    title.textContent = data.title;
+    sub.textContent = data.sub;
+    badge.textContent = data.badge;
+    stepText.textContent = data.stepText;
+
+    dots.forEach((d, idx) => {
+      d.className = 'ob-dot';
+      if (idx === s - 1) d.classList.add('active');
+      else if (idx < s - 1) d.classList.add('done');
+    });
+
+    container.innerHTML = data.tips.map(t => `
+      <div class="onboarding-tip">
+        <div class="onboarding-tip-ico">${t.icon}</div>
+        <div class="onboarding-tip-text">
+          <strong>${t.title}</strong>
+          <p>${t.desc}</p>
+        </div>
+      </div>
+    `).join('');
+
+    prevBtn.style.display = s === 1 ? 'none' : 'block';
+    nextBtn.textContent = s === 3 ? 'Hemen Başla' : 'Devam Et';
+  };
+
+  const closeOnboarding = () => {
+    overlay.classList.remove('visible');
+    localStorage.setItem('iarone-onboarded', 'true');
+  };
+
+  nextBtn.onclick = () => {
+    if (step < 3) {
+      step++;
+      renderStep(step);
+    } else {
+      closeOnboarding();
+    }
+  };
+
+  prevBtn.onclick = () => {
+    if (step > 1) {
+      step--;
+      renderStep(step);
+    }
+  };
+
+  (document.getElementById('ob-close') || document.getElementById('onboarding-close'))?.addEventListener('click', closeOnboarding);
+  document.getElementById('ob-skip-btn') ?. addEventListener('click', closeOnboarding);
+
+  // Start with 2 seconds delay
+  setTimeout(() => {
+    overlay.classList.add('visible');
+    renderStep(1);
+  }, 2000);
+}
+
+/* ─── FEATURE 5: DASHBOARD TABS, CODE SNIPPETS, SIDEBAR ─── */
+function initDashboardTabs() {
+  const tabs = document.querySelectorAll('#dash-tabs .dash-tab');
+  if (tabs.length === 0) return;
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const target = tab.getAttribute('data-target');
+      document.querySelectorAll('.dash-panel').forEach(p => {
+        p.classList.remove('active');
+        if (p.id === target) p.classList.add('active');
+      });
+    });
+  });
+}
+
+function initCodeSnippets() {
+  const copyBtn = document.querySelector('.copy-btn');
+  const toast = document.getElementById('copy-toast');
+  if (!copyBtn) return;
+
+  copyBtn.addEventListener('click', () => {
+    const code = document.getElementById('code-html')?.textContent;
+    if (!code) return;
+
+    navigator.clipboard.writeText(code).then(() => {
+      copyBtn.classList.add('copied');
+      copyBtn.textContent = "Kopyalandı ✓";
+      toast.classList.add('visible');
+
+      setTimeout(() => {
+        copyBtn.classList.remove('copied');
+        copyBtn.textContent = "Kopyala";
+        toast.classList.remove('visible');
+      }, 2500);
+    }).catch(err => console.error("Clipboard copy failed: ", err));
+  });
+}
+
+function initCollapsibleSidebar() {
+  const btn = document.getElementById('sb-collapse-btn');
+  const sidebar = document.getElementById('sidebar');
+  const main = document.querySelector('.app-main');
+
+  if (!btn || !sidebar || !main) return;
+
+  btn.addEventListener('click', () => {
+    sidebar.classList.toggle('collapsed');
+    main.classList.toggle('sidebar-collapsed');
   });
 }
 
@@ -706,7 +1275,18 @@ document.addEventListener('DOMContentLoaded', () => {
   initSidebar();
   initPricingCards();
   initPageTransitions();
-  initAIChatbot();
   initInteractiveVideo();
   initWaitlistForm();
+
+  // Next-Level Upgrade Initializers
+  initHeroDragDrop();
+  initButtonMicroInteractions();
+  initMarketLazyLoad();
+  initMarketSearch();
+  initMarketFilters();
+  initEnhancedAIChat();
+  initOnboardingModal();
+  initDashboardTabs();
+  initCodeSnippets();
+  initCollapsibleSidebar();
 });

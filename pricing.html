@@ -9,7 +9,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.v5.css" />
-  <script>(function(){var t=localStorage.getItem('iarone-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})()</script>
+  <link rel="stylesheet" href="design-switcher.css" />
+  <script>(function(){
+    var t=localStorage.getItem('iarone-theme')||'dark';
+    document.documentElement.setAttribute('data-theme',t);
+    var d=localStorage.getItem('iarone-design-variant')||'v0';
+    document.documentElement.setAttribute('data-design',d);
+  })()</script>
   <style>
     /* Pricing-page tilt is handled via JS; ensure no overflow clip on grid */
     .pricing-grid { overflow: visible; }
@@ -102,6 +108,7 @@
         <li><a href="index.html#nasil-calisir" class="nav__link" data-i18n="nav.dashboard">Nasıl Çalışır</a></li>
         <li><a href="market.html"    class="nav__link" data-i18n="nav.market">Market</a></li>
         <li><a href="pricing.html"   class="nav__link active" data-i18n="nav.pricing">Fiyatlandırma</a></li>
+        <li><a href="dashboard.html" class="nav__link">Panel</a></li>
       </ul>
 
       <div class="nav__right">
@@ -455,6 +462,12 @@
       <div class="ai-chat-body" id="ai-chat-body">
         <!-- Messages will be injected here via JS -->
       </div>
+      <div class="ai-chat-footer">
+        <input type="text" class="ai-chat-input" id="ai-chat-input" placeholder="Asistana sorun..." />
+        <button class="ai-chat-send" id="ai-chat-send" aria-label="Gönder">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
     </div>
     <!-- Toggle Button -->
     <button class="ai-toggle-btn" id="ai-toggle-btn" aria-label="Asistanı Aç">
@@ -468,8 +481,9 @@
   </a>
 </div>
 
-<script src="i18n.js"></script>
-<script src="app.v5.js"></script>
+<script type="module" src="i18n.js"></script>
+<script type="module" src="app.v5.js"></script>
+<script src="design-switcher.js"></script>
 <script>
   // ── FAQ Accordion ──
   document.querySelectorAll('[data-faq]').forEach(item => {

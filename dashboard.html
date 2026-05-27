@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iarone — Dashboard</title>
+  <meta name="description" content="Iarone 3D Model Yönetim ve İyileştirme Paneli." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.v5.css" />
+  <link rel="stylesheet" href="design-switcher.css" />
+  <script>
+    (function(){
+      var t=localStorage.getItem('iarone-theme')||'dark';
+      document.documentElement.setAttribute('data-theme',t);
+      var d=localStorage.getItem('iarone-design-variant')||'v0';
+      document.documentElement.setAttribute('data-design',d);
+    })()
+  </script>
+</head>
+<body style="min-height: 100vh; display: flex; background: var(--bg);">
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="sidebar" id="sidebar" style="position: fixed; top: 0; bottom: 0; left: 0; z-index: 1000; width: 250px; background: var(--bg-sidebar); border-right: 1px solid var(--border); display: flex; flex-direction: column; transition: width var(--ts) var(--ease);">
+    <!-- Logo area -->
+    <div class="sb-logo-wrap" style="display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid var(--border);">
+      <a href="index.html" class="sb-logo" style="display: flex; align-items: center; gap: 10px;">
+        <img src="00_iarone_logo_exact_transparent_white_glow.png" class="logo-dark" alt="Iarone" style="height: 32px;" />
+        <img src="00_iarone_logo_exact_transparent_black.png" class="logo-light" alt="Iarone" style="height: 32px; display: none;" />
+        <span class="logo-text" style="font-weight: 800; font-size: 16px; letter-spacing: 0.05em; color: var(--t1);">IARONE</span>
+      </a>
+      <button class="sb-collapse-btn" id="sb-collapse-btn" aria-label="Menüyü Küçült">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+    </div>
+
+    <!-- Navigation Items -->
+    <nav style="flex: 1; padding: 24px 16px; display: flex; flex-direction: column; gap: 6px;">
+      <a href="index.html" class="sb-item">
+        <span class="sb-item-svg">🏠</span>
+        <span data-i18n="nav.home">Ana Sayfa</span>
+      </a>
+      <a href="market.html" class="sb-item">
+        <span class="sb-item-svg">🛒</span>
+        <span data-i18n="nav.market">Market</span>
+      </a>
+      <a href="dashboard.html" class="sb-item active">
+        <span class="sb-item-svg">📊</span>
+        <span>Kontrol Paneli</span>
+      </a>
+      <a href="pricing.html" class="sb-item">
+        <span class="sb-item-svg">💳</span>
+        <span data-i18n="nav.pricing">Fiyatlandırma</span>
+      </a>
+      
+      <div class="sb-sec" style="margin-top: 24px; margin-bottom: 8px; padding-left: 12px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--t3);">Hesap</div>
+      <a href="#" class="sb-item">
+        <span class="sb-item-svg">👤</span>
+        <span>Profilim</span>
+      </a>
+      <a href="#" class="sb-item" style="color: var(--err);">
+        <span class="sb-item-svg">🚪</span>
+        <span>Çıkış Yap</span>
+      </a>
+    </nav>
+
+    <!-- User Profile Strip inside sidebar -->
+    <div style="padding: 16px 20px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 12px;">
+      <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--ac); display: flex; align-items: center; justify-content: center; font-weight: bold; color: #fff;">U</div>
+      <div style="overflow: hidden; flex: 1;">
+        <div class="sb-uname" style="font-weight: 600; font-size: 13px; color: var(--t1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Demo Kullanıcı</div>
+        <div class="sb-uplan" style="font-size: 11px; color: var(--t3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" data-i18n="dash.sb_plan">Profesyonel Plan</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══ MAIN APP CONTAINER ═══ -->
+  <main class="app-main" style="margin-left: 250px; flex: 1; min-height: 100vh; padding: 40px; display: flex; flex-direction: column;">
+    
+    <!-- Topbar Controls (Top Bar Container) -->
+    <header class="top-bar-container" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; gap: 20px; flex-wrap: wrap; width: 100%;">
+      <div style="min-width: 250px; flex: 1;">
+        <h1 style="font-size: 28px; font-weight: 800; margin: 0; line-height: 1.25;" class="gt">Kontrol Paneli</h1>
+        <p style="font-size: 14px; color: var(--t3); margin: 4px 0 0 0; line-height: 1.5; white-space: nowrap;">3D modellerinizi, kalite raporlarınızı ve faturalarınızı yönetin.</p>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 16px; flex-shrink: 0;">
+        <!-- Theme Toggle -->
+        <button class="theme-tog" id="theme-toggle" aria-label="Temayı değiştir" style="margin: 0;">
+          <svg class="ic-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="ic-sun"  width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Tab Buttons -->
+    <div class="dash-tabs" id="dash-tabs">
+      <div class="dash-tab active" data-target="panel-models">
+        <span>📦</span>
+        <span data-i18n="dash.sb_models">Modellerim</span>
+      </div>
+      <div class="dash-tab" data-target="panel-quality">
+        <span>⚡</span>
+        <span>Kalite Raporları</span>
+      </div>
+      <div class="dash-tab" data-target="panel-billing">
+        <span>🧾</span>
+        <span>Faturalandırma</span>
+      </div>
+    </div>
+
+    <!-- ═══ PANEL 1: MY MODELS ═══ -->
+    <div class="dash-panel active" id="panel-models">
+      <!-- Stats Row -->
+      <div class="dash-stats">
+        <div class="dash-stat-card">
+          <div class="dash-stat-label">Toplam Model</div>
+          <div class="dash-stat-value">12</div>
+          <div class="dash-stat-change up">↑ %20 bu ay</div>
+        </div>
+        <div class="dash-stat-card">
+          <div class="dash-stat-label">AR Onaylı</div>
+          <div class="dash-stat-value">10</div>
+          <div class="dash-stat-change up">↑ %90 başarı oranı</div>
+        </div>
+        <div class="dash-stat-card">
+          <div class="dash-stat-label">İyileştirilen</div>
+          <div class="dash-stat-value">8</div>
+          <div class="dash-stat-change up">↑ %100 kalite</div>
+        </div>
+        <div class="dash-stat-card">
+          <div class="dash-stat-label">Kalan Kredi</div>
+          <div class="dash-stat-value">38 / 50</div>
+          <div class="dash-stat-change">Sıfırlanma: 12 gün</div>
+        </div>
+      </div>
+
+      <!-- Models List / Grid -->
+      <div class="sec-hd" style="margin-top: 40px; margin-bottom: 20px;">
+        <h2 style="font-size: 20px;" class="gt">Son Üretilen Modeller</h2>
+      </div>
+
+      <div class="market-grid">
+        <!-- Dashboard Card 1 -->
+        <div class="market-card filtered-in">
+          <div class="mc-beta-lbl" style="background: var(--success);" data-i18n="dash.badge_ready">Hazır</div>
+          <div class="mc-img">
+            <img src="06_furniture_use_case_web_ar.png" alt="Sandalye" />
+          </div>
+          <div class="mc-content">
+            <div class="mc-cat" data-i18n="dash.m1_meta">2 saat önce</div>
+            <div class="mc-title" data-i18n="dash.m1_name">Sandalye — Model 01</div>
+            <div class="mc-actions" style="margin-top: 16px;">
+              <a href="#" class="btn btn-primary btn-micro">Embed Al</a>
+              <a href="#" class="btn btn-ghost btn-micro">USDZ İndir</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard Card 2 -->
+        <div class="market-card filtered-in">
+          <div class="mc-beta-lbl" style="background: var(--warn);" data-i18n="dash.badge_enhance">İyileştirme Gerekli</div>
+          <div class="mc-img">
+            <img src="09_decoration_use_case_web_ar.png" alt="Komidin" />
+          </div>
+          <div class="mc-content">
+            <div class="mc-cat" data-i18n="dash.m2_meta">Dün</div>
+            <div class="mc-title" data-i18n="dash.m2_name">Komidin — Model 03</div>
+            <div class="mc-actions" style="margin-top: 16px;">
+              <a href="#" class="btn btn-primary btn-micro">Tek Tıkla İyileştir</a>
+              <a href="#" class="btn btn-ghost btn-micro">Detaylar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard Card 3 -->
+        <div class="market-card filtered-in">
+          <div class="mc-beta-lbl" style="background: var(--success);" data-i18n="dash.badge_ready">Hazır</div>
+          <div class="mc-img">
+            <img src="08_electronics_use_case_web_ar.png" alt="Kulaklık" />
+          </div>
+          <div class="mc-content">
+            <div class="mc-cat" data-i18n="dash.m3_meta">3 gün önce</div>
+            <div class="mc-title" data-i18n="dash.m3_name">Kulaklık — Model 07</div>
+            <div class="mc-actions" style="margin-top: 16px;">
+              <a href="#" class="btn btn-primary btn-micro">Embed Al</a>
+              <a href="#" class="btn btn-ghost btn-micro">GLB İndir</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Integrasyon Kod Snippet'ları Bölümü -->
+      <div class="sec-hd" style="margin-top: 60px; margin-bottom: 20px;">
+        <h2 style="font-size: 20px;" class="gt">Hızlı Embed Entegrasyonu</h2>
+        <p style="font-size: 13px; color: var(--t3); margin: 0;">Oluşturduğunuz 3D modelleri web sitenize anında yerleştirebilirsiniz.</p>
+      </div>
+
+      <div class="code-snippet-wrap">
+        <div class="code-snippet-header">
+          <div class="code-snippet-title">
+            <div class="code-dots">
+              <div class="code-dot code-dot-r"></div>
+              <div class="code-dot code-dot-y"></div>
+              <div class="code-dot code-dot-g"></div>
+            </div>
+            <span>HTML &lt;model-viewer&gt; Yerleştirme Kodu</span>
+          </div>
+          <span class="code-lang-badge">HTML</span>
+        </div>
+        <div class="code-snippet-body">
+          <pre id="code-html"><span class="c-cmt">&lt;!-- Iarone 3D Model Viewer Embed Kodu --&gt;</span>
+&lt;<span class="c-tag">script</span> <span class="c-attr">type</span>=<span class="c-str">"module"</span> <span class="c-attr">src</span>=<span class="c-str">"https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"</span>&gt;&lt;/<span class="c-tag">script</span>&gt;
+
+&lt;<span class="c-tag">model-viewer</span> 
+  <span class="c-attr">src</span>=<span class="c-str">"https://api.iarone.com/models/model-01.glb"</span>
+  <span class="c-attr">ios-src</span>=<span class="c-str">"https://api.iarone.com/models/model-01.usdz"</span>
+  <span class="c-attr">alt</span>=<span class="c-str">"Iarone 3D Ürün Modeli"</span>
+  <span class="c-attr">ar</span> 
+  <span class="c-attr">camera-controls</span> 
+  <span class="c-attr">shadow-intensity</span>=<span class="c-str">"1"</span>
+  <span class="c-attr">touch-action</span>=<span class="c-str">"none"</span>
+  <span class="c-attr">style</span>=<span class="c-str">"width: 100%; height: 500px;"</span>&gt;
+&lt;/<span class="c-tag">model-viewer</span>&gt;</pre>
+        </div>
+        <div style="padding: 12px 16px; display: flex; justify-content: flex-end; background: var(--bg-surface); border-top: 1px solid var(--border);">
+          <button class="copy-btn" data-target="code-html">Kopyala</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ PANEL 2: QUALITY REPORTS ═══ -->
+    <div class="dash-panel" id="panel-quality">
+      <div class="sec-hd" style="margin-bottom: 20px;">
+        <h2 style="font-size: 20px;" class="gt">Model Kalite Raporları</h2>
+        <p style="font-size: 14px; color: var(--t2); margin: 0;">Her modelin e-ticaret ve AR standartlarına uygunluğunu görün.</p>
+      </div>
+
+      <div class="quality-report-grid">
+        <!-- Report 1 -->
+        <div class="qr-card">
+          <div class="qr-model-name">Sandalye — Model 01</div>
+          <div class="qr-model-date">Analiz edildi: 2 saat önce</div>
+          
+          <div class="qr-scores">
+            <div class="qr-score-item">
+              <span class="qr-score-label">Web Önizleme</span>
+              <div class="qr-score-bar"><div class="qr-score-fill qr-fill-good" style="width: 95%;"></div></div>
+              <span class="qr-score-num">95%</span>
+            </div>
+            <div class="qr-score-item">
+              <span class="qr-score-label">Mobil AR Uygunluğu</span>
+              <div class="qr-score-bar"><div class="qr-score-fill qr-fill-good" style="width: 92%;"></div></div>
+              <span class="qr-score-num">92%</span>
+            </div>
+            <div class="qr-score-item">
+              <span class="qr-score-label">Doku & Işık Kalitesi</span>
+              <div class="qr-score-bar"><div class="qr-score-fill qr-fill-good" style="width: 90%;"></div></div>
+              <span class="qr-score-num">90%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Report 2 -->
+        <div class="qr-card">
+          <div class="qr-model-name">Komidin — Model 03</div>
+          <div class="qr-model-date">Analiz edildi: Dün</div>
+          
+          <div class="qr-scores">
+            <div class="qr-score-item">
+              <span class="qr-score-label">Web Önizleme</span>
+              <div class="qr-score-bar"><div class="qr-score-fill qr-fill-good" style="width: 82%;"></div></div>
+              <span class="qr-score-num">82%</span>
+            </div>
+            <div class="qr-score-item">
+              <span class="qr-score-label">Mobil AR Uygunluğu</span>
+              <div class="qr-score-bar"><div class="qr-score-fill qr-fill-warn" style="width: 65%;"></div></div>
+              <span class="qr-score-num">65%</span>
+            </div>
+            <div class="qr-score-item">
+              <span class="qr-score-label">Doku & Işık Kalitesi</span>
+              <div class="qr-score-bar"><div class="qr-score-fill qr-fill-err" style="width: 48%;"></div></div>
+              <span class="qr-score-num">48%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ PANEL 3: BILLING ═══ -->
+    <div class="dash-panel" id="panel-billing">
+      <div class="sec-hd" style="margin-bottom: 20px;">
+        <h2 style="font-size: 20px;" class="gt">Abonelik & Faturalandırma</h2>
+      </div>
+
+      <div class="billing-plan-card">
+        <div>
+          <div class="billing-plan-name" data-i18n="dash.sb_plan">Profesyonel Plan</div>
+          <div class="billing-plan-price">₺499 <span class="billing-plan-period">/ ay</span></div>
+          <div class="billing-badge">Faturalandırma Durumu: Aktif</div>
+        </div>
+        <button class="btn btn-primary" style="align-self: center;">Planı Yönet</button>
+      </div>
+
+      <div class="sec-hd" style="margin-top: 40px; margin-bottom: 20px;">
+        <h3 style="font-size: 16px;" class="gt">Fatura Geçmişi</h3>
+      </div>
+
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden;">
+        <table class="invoice-table">
+          <thead>
+            <tr>
+              <th>Fatura ID</th>
+              <th>Tarih</th>
+              <th>Tutar</th>
+              <th>Durum</th>
+              <th>Fatura</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#INV-00125</td>
+              <td>15 Mayıs 2026</td>
+              <td>₺499,00</td>
+              <td><span style="color: var(--success);">Ödendi</span></td>
+              <td><a href="#" style="text-decoration: underline; font-weight: 600; color: var(--ac-lt);">PDF İndir</a></td>
+            </tr>
+            <tr>
+              <td>#INV-00084</td>
+              <td>15 Nisan 2026</td>
+              <td>₺499,00</td>
+              <td><span style="color: var(--success);">Ödendi</span></td>
+              <td><a href="#" style="text-decoration: underline; font-weight: 600; color: var(--ac-lt);">PDF İndir</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Copy Toast Alert -->
+  <div class="copy-toast" id="copy-toast">
+    <span class="copy-toast-ico">✓</span>
+    <span>Kod panoya kopyalandı!</span>
+  </div>
+
+  <script type="module" src="i18n.js"></script>
+  <script type="module" src="app.v5.js"></script>
+  <script src="design-switcher.js"></script>
+</body>
+</html>
