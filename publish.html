@@ -22,6 +22,17 @@
     <span class="badge" style="background:rgba(16, 185, 129, 0.1); color:#10b981;">AR Readiness: <span id="pkg-ar"></span></span>
   </div>
   
+  <div id="ios-warning" style="display:none; background:rgba(245,158,11,0.1); color:var(--warn); padding:12px; border-radius:8px; font-size:14px; margin-bottom:16px;">
+    ⚠️ iOS-only AR package. Web preview is limited because GLB is missing.
+  </div>
+  
+  <div id="ios-fallback" style="display:none; flex-direction:column; align-items:center; justify-content:center; background:#111; height:400px; border-radius:12px; margin-bottom:20px; padding:20px; text-align:center;">
+    <div style="font-size:48px; margin-bottom:16px;">📱</div>
+    <h3 style="color:#fff; margin:0 0 8px 0;">iOS AR Ready</h3>
+    <p style="color:var(--t3); font-size:14px; margin:0 0 24px 0;">This package does not include a 3D web preview. Open on an iOS device to view in AR.</p>
+    <a id="ios-fallback-btn" href="#" target="_blank" class="btn btn-primary">Download USDZ</a>
+  </div>
+
   <model-viewer id="viewer"
     camera-controls 
     auto-rotate 
@@ -60,8 +71,22 @@
           document.getElementById('pkg-ar').innerText = pkg.arReadinessScore ? pkg.arReadinessScore+'/100' : 'N/A';
           
           const viewer = document.getElementById('viewer');
-          if(pkg.glbUrl) viewer.src = pkg.glbUrl;
-          if(pkg.usdzUrl) viewer.setAttribute('ios-src', pkg.usdzUrl);
+          
+          if(pkg.packageType === 'IOS_AR_ONLY') {
+            document.getElementById('ios-warning').style.display = 'block';
+            if(!pkg.glbUrl && pkg.usdzUrl) {
+              viewer.style.display = 'none';
+              document.getElementById('ios-fallback').style.display = 'flex';
+              document.getElementById('ios-fallback-btn').href = pkg.usdzUrl;
+            } else {
+              if(pkg.glbUrl) viewer.src = pkg.glbUrl;
+              if(pkg.usdzUrl) viewer.setAttribute('ios-src', pkg.usdzUrl);
+            }
+          } else {
+            if(pkg.glbUrl) viewer.src = pkg.glbUrl;
+            if(pkg.usdzUrl) viewer.setAttribute('ios-src', pkg.usdzUrl);
+          }
+          
           if(pkg.posterImageUrl) viewer.poster = pkg.posterImageUrl;
         } else {
           document.getElementById('error-container').style.display = 'block';
