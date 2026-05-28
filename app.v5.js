@@ -1254,7 +1254,7 @@ function initCollapsibleSidebar() {
 }
 
 /* ─── INIT ─── */
-document.addEventListener('DOMContentLoaded', () => {
+const initApp = () => {
   // Preloader must run first (before theme so it respects current theme)
   initPreloader();
 
@@ -1289,4 +1289,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initDashboardTabs();
   initCodeSnippets();
   initCollapsibleSidebar();
-});
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
