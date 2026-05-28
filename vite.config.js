@@ -9,7 +9,8 @@ export default defineConfig({
         market: resolve(__dirname, 'market.html'),
         pricing: resolve(__dirname, 'pricing.html'),
         publish: resolve(__dirname, 'publish.html'),
-        embed: resolve(__dirname, 'embed.html')
+        embed: resolve(__dirname, 'embed.html'),
+        dashboard: resolve(__dirname, 'dashboard.html')
       }
     }
   }
