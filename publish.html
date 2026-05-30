@@ -21,7 +21,11 @@
     <h1 id="pkg-title">Model</h1>
     <span class="badge" style="background:rgba(16, 185, 129, 0.1); color:#10b981;">AR Readiness: <span id="pkg-ar"></span></span>
   </div>
-  
+
+  <!-- Phase 7A (Part C5): honest scale trust chip. Never claims verified unless
+       the backend genuinely verified it. -->
+  <div id="pkg-scale-chip" style="display:inline-block; font-size:12px; font-weight:600; padding:4px 10px; border-radius:999px; margin-bottom:16px; background:rgba(148,163,184,0.12); color:var(--t3);">Ölçek bilinmiyor</div>
+
   <div id="ios-warning" style="display:none; background:rgba(245,158,11,0.1); color:var(--warn); padding:12px; border-radius:8px; font-size:14px; margin-bottom:16px;">
     ⚠️ iOS-only AR package. Web preview is limited because GLB is missing.
   </div>
@@ -57,11 +61,46 @@
 </div>
 
 <script>
+  // Phase 7A: config-driven API base (runtime global → local-dev default).
+  const API_BASE = (typeof window !== 'undefined' && window.IARONE_API_URL) || 'http://localhost:3000/api';
+
+  // Phase 7A (Part C5): honest scale label. The client/web layer can NEVER claim
+  // a verified scale; only a backend-verified block (scale_verified + a
+  // trustworthy source + a valid bbox) reads as "Doğrulanmış ölçek".
+  const _TRUSTWORTHY_SCALE_SOURCES = ['reference_object', 'user_input', 'sensor_depth'];
+  function _extractScaleMeta(pkg) {
+    if (!pkg || typeof pkg !== 'object') return null;
+    return pkg.scaleMetadata || pkg.scale_metadata
+        || (pkg.manifest && pkg.manifest.scale_metadata)
+        || (pkg.quality && pkg.quality.scale_metadata) || null;
+  }
+  function _isScaleVerified(sm) {
+    if (!sm || typeof sm !== 'object' || sm.scale_verified !== true) return false;
+    if (_TRUSTWORTHY_SCALE_SOURCES.indexOf(sm.scale_source) === -1) return false;
+    const b = sm.bbox_meters;
+    return Array.isArray(b) && b.length === 3 && b.every(n => typeof n === 'number' && isFinite(n) && n > 0);
+  }
+  function renderScaleChip(pkg) {
+    const chip = document.getElementById('pkg-scale-chip');
+    if (!chip) return;
+    const sm = _extractScaleMeta(pkg);
+    if (_isScaleVerified(sm)) {
+      chip.innerText = 'Doğrulanmış ölçek';
+      chip.style.background = 'rgba(46,158,91,0.12)'; chip.style.color = '#2e9e5b';
+    } else if (sm && sm.scale_source && sm.scale_source !== 'unknown') {
+      chip.innerText = 'Yaklaşık ölçek (doğrulanmadı)';
+      chip.style.background = 'rgba(201,138,27,0.12)'; chip.style.color = '#c98a1b';
+    } else {
+      chip.innerText = 'Ölçek bilinmiyor';
+      chip.style.background = 'rgba(148,163,184,0.12)'; chip.style.color = 'var(--t3)';
+    }
+  }
+
   const urlParams = new URLSearchParams(window.location.search);
   const slug = urlParams.get('slug');
 
   if(slug) {
-    fetch('http://localhost:3000/api/publish/'+slug)
+    fetch(API_BASE + '/publish/'+slug)
       .then(res => res.json())
       .then(data => {
         if(data.success && data.package) {
@@ -69,7 +108,8 @@
           document.getElementById('publish-container').style.display = 'block';
           document.getElementById('pkg-title').innerText = pkg.title || 'Model';
           document.getElementById('pkg-ar').innerText = pkg.arReadinessScore ? pkg.arReadinessScore+'/100' : 'N/A';
-          
+          renderScaleChip(pkg);
+
           const viewer = document.getElementById('viewer');
           
           if(pkg.packageType === 'IOS_AR_ONLY') {
