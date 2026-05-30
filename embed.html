@@ -31,11 +31,13 @@
   </div>
 
   <script>
+    // Phase 7A: config-driven API base (runtime global → local-dev default).
+    const API_BASE = (typeof window !== 'undefined' && window.IARONE_API_URL) || 'http://localhost:3000/api';
     const urlParams = new URLSearchParams(window.location.search);
     const slug = urlParams.get('slug');
 
     if(slug) {
-      fetch('http://localhost:3000/api/publish/'+slug)
+      fetch(API_BASE + '/publish/'+slug)
         .then(res => res.json())
         .then(data => {
           if(data.success && data.package) {
