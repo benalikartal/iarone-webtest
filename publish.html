@@ -96,6 +96,14 @@
     }
   }
 
+  // Phase 7B.1: core invariant — only an absolute http(s) URL is renderable.
+  // A storage_key or local path must NEVER become a viewer src / href. The API
+  // already guarantees public glbUrl, but the page enforces it defensively.
+  function isPublicUrl(u) {
+    return typeof u === 'string' && /^https?:\/\//i.test(u.trim());
+  }
+  function publicOrNull(u) { return isPublicUrl(u) ? u.trim() : null; }
+
   const urlParams = new URLSearchParams(window.location.search);
   const slug = urlParams.get('slug');
 
@@ -105,29 +113,43 @@
       .then(data => {
         if(data.success && data.package) {
           const pkg = data.package;
+          // Phase 7B.1: sanitize all renderable URLs up front — non-public values
+          // (storage_key / local path) are dropped to null, never rendered.
+          const glbUrl    = publicOrNull(pkg.glbUrl);
+          const usdzUrl   = publicOrNull(pkg.usdzUrl);
+          const posterUrl = publicOrNull(pkg.posterImageUrl);
+
+          // No public artifact at all → show the not-available fallback.
+          if(!glbUrl && !usdzUrl) {
+            document.getElementById('error-container').style.display = 'block';
+            document.querySelector('#error-container h2').innerText =
+              'Bu model için yayın bağlantısı henüz hazır değil.';
+            return;
+          }
+
           document.getElementById('publish-container').style.display = 'block';
           document.getElementById('pkg-title').innerText = pkg.title || 'Model';
           document.getElementById('pkg-ar').innerText = pkg.arReadinessScore ? pkg.arReadinessScore+'/100' : 'N/A';
           renderScaleChip(pkg);
 
           const viewer = document.getElementById('viewer');
-          
+
           if(pkg.packageType === 'IOS_AR_ONLY') {
             document.getElementById('ios-warning').style.display = 'block';
-            if(!pkg.glbUrl && pkg.usdzUrl) {
+            if(!glbUrl && usdzUrl) {
               viewer.style.display = 'none';
               document.getElementById('ios-fallback').style.display = 'flex';
-              document.getElementById('ios-fallback-btn').href = pkg.usdzUrl;
+              document.getElementById('ios-fallback-btn').href = usdzUrl;
             } else {
-              if(pkg.glbUrl) viewer.src = pkg.glbUrl;
-              if(pkg.usdzUrl) viewer.setAttribute('ios-src', pkg.usdzUrl);
+              if(glbUrl) viewer.src = glbUrl;
+              if(usdzUrl) viewer.setAttribute('ios-src', usdzUrl);
             }
           } else {
-            if(pkg.glbUrl) viewer.src = pkg.glbUrl;
-            if(pkg.usdzUrl) viewer.setAttribute('ios-src', pkg.usdzUrl);
+            if(glbUrl) viewer.src = glbUrl;
+            if(usdzUrl) viewer.setAttribute('ios-src', usdzUrl);
           }
-          
-          if(pkg.posterImageUrl) viewer.poster = pkg.posterImageUrl;
+
+          if(posterUrl) viewer.poster = posterUrl;
         } else {
           document.getElementById('error-container').style.display = 'block';
         }
