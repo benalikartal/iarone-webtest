@@ -33,6 +33,9 @@
   <script>
     // Phase 7A: config-driven API base (runtime global → local-dev default).
     const API_BASE = (typeof window !== 'undefined' && window.IARONE_API_URL) || 'http://localhost:3000/api';
+    // Phase 7B.1: only an absolute http(s) URL is renderable — a storage_key or
+    // local path must NEVER become a viewer src.
+    function publicOrNull(u) { return (typeof u === 'string' && /^https?:\/\//i.test(u.trim())) ? u.trim() : null; }
     const urlParams = new URLSearchParams(window.location.search);
     const slug = urlParams.get('slug');
 
@@ -43,25 +46,31 @@
           if(data.success && data.package) {
             const pkg = data.package;
             const viewer = document.getElementById('viewer');
-            
+            const glbUrl    = publicOrNull(pkg.glbUrl);
+            const usdzUrl   = publicOrNull(pkg.usdzUrl);
+            const posterUrl = publicOrNull(pkg.posterImageUrl);
+
             if(pkg.packageType === 'IOS_AR_ONLY') {
-              if(!pkg.glbUrl && pkg.usdzUrl) {
+              if(!glbUrl && usdzUrl) {
                 document.getElementById('ios-fallback').style.display = 'flex';
-              } else {
+              } else if(glbUrl) {
                 viewer.style.display = 'block';
-                if(pkg.glbUrl) viewer.src = pkg.glbUrl;
+                viewer.src = glbUrl;
+              } else {
+                document.getElementById('fallback').innerText = 'Model source not ready';
+                document.getElementById('fallback').style.display = 'flex';
               }
             } else {
-              if(pkg.glbUrl) {
-                viewer.src = pkg.glbUrl;
+              if(glbUrl) {
+                viewer.src = glbUrl;
                 viewer.style.display = 'block';
               } else {
                 document.getElementById('fallback').innerText = 'Model source not ready';
                 document.getElementById('fallback').style.display = 'flex';
               }
             }
-            if(pkg.usdzUrl) viewer.setAttribute('ios-src', pkg.usdzUrl);
-            if(pkg.posterImageUrl) viewer.poster = pkg.posterImageUrl;
+            if(usdzUrl) viewer.setAttribute('ios-src', usdzUrl);
+            if(posterUrl) viewer.poster = posterUrl;
           } else {
             document.getElementById('fallback').style.display = 'flex';
           }
