@@ -45,13 +45,22 @@
     ar-scale="fixed">
   </model-viewer>
 
-  <div style="display:flex; gap:16px; margin-top:20px;">
-    <button class="btn btn-primary" onclick="document.querySelector('model-viewer').activateAR()" style="flex:1;">
+  <div style="display:flex; gap:16px; margin-top:20px; flex-wrap:wrap;">
+    <button class="btn btn-primary" onclick="document.querySelector('model-viewer').activateAR()" style="flex:1; min-width:140px;">
       Open in AR
     </button>
-    <a href="market.html#sell" class="btn btn-ghost" style="flex:1; text-align:center;">
+    <!-- Phase 7C.1: format-aware download (GLB or USDZ). Set + revealed in JS. -->
+    <a id="pub-dl" href="#" target="_blank" rel="noopener" class="btn btn-ghost" style="flex:1; min-width:140px; text-align:center; display:none;">
+      İndir
+    </a>
+    <a href="market.html#sell" class="btn btn-ghost" style="flex:1; min-width:140px; text-align:center;">
       Apply to Market Beta
     </a>
+  </div>
+  <!-- Phase 7C.1: shown if the GLB preview itself fails to load; the download
+       button above stays usable so the model can still be obtained. -->
+  <div id="viewer-error" style="display:none; margin-top:14px; padding:12px 14px; border:1px solid var(--border); border-radius:8px; background:rgba(245,158,11,0.08); color:var(--t2); font-size:13px; text-align:center;">
+    Model önizlemesi yüklenemedi, dosyayı indirebilirsiniz.
   </div>
   <div style="text-align:center; margin-top:16px; font-size:12px; color:var(--t3);">Powered by Iarone</div>
 </div>
@@ -145,14 +154,24 @@
           document.getElementById('pkg-ar').innerText = pkg.arReadinessScore ? pkg.arReadinessScore+'/100' : 'N/A';
           renderScaleChip(pkg);
 
+          // Phase 7C.1: format-aware download button. Prefer GLB, else USDZ.
+          // Labels the file honestly (never "GLB" for a USDZ) and only shows when
+          // a public URL exists.
+          const dlUrl = glbUrl || usdzUrl;
+          if (dlUrl) {
+            const dlBtn = document.getElementById('pub-dl');
+            dlBtn.href = dlUrl;
+            dlBtn.innerText = glbUrl ? 'GLB İndir' : 'USDZ İndir';
+            dlBtn.style.display = '';
+          }
+
           const viewer = document.getElementById('viewer');
-          // Phase 7C.1: clean state when the GLB itself fails to load (network /
-          // corrupt artifact). model-viewer fires 'error' with detail.type 'loadfailure'.
+          // Phase 7C.1: if the GLB preview itself fails to load (network / corrupt
+          // artifact / CORS), keep the card + download button and surface a clear
+          // note instead of blanking the page. model-viewer fires 'error' on load.
           viewer.addEventListener('error', function(){
-            document.getElementById('publish-container').style.display = 'none';
-            const ec = document.getElementById('error-container');
-            ec.style.display = 'block';
-            ec.querySelector('h2').innerText = 'Model görüntülenemedi. Lütfen daha sonra tekrar deneyin.';
+            viewer.style.display = 'none';
+            document.getElementById('viewer-error').style.display = 'block';
           }, { once: true });
 
           if(pkg.packageType === 'IOS_AR_ONLY') {
