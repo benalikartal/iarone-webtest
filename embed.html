@@ -59,6 +59,13 @@
           if(data.success && data.package) {
             const pkg = data.package;
             const viewer = document.getElementById('viewer');
+            // Phase 7C.1: graceful fallback if the GLB itself fails to load.
+            viewer.addEventListener('error', function(){
+              viewer.style.display = 'none';
+              const fb = document.getElementById('fallback');
+              fb.innerText = 'Model yüklenemedi';
+              fb.style.display = 'flex';
+            }, { once: true });
             const glbUrl    = publicOrNull(pkg.glbUrl);
             const usdzUrl   = publicOrNull(pkg.usdzUrl);
             const posterUrl = publicOrNull(pkg.posterImageUrl);

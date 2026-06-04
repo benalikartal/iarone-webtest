@@ -146,6 +146,14 @@
           renderScaleChip(pkg);
 
           const viewer = document.getElementById('viewer');
+          // Phase 7C.1: clean state when the GLB itself fails to load (network /
+          // corrupt artifact). model-viewer fires 'error' with detail.type 'loadfailure'.
+          viewer.addEventListener('error', function(){
+            document.getElementById('publish-container').style.display = 'none';
+            const ec = document.getElementById('error-container');
+            ec.style.display = 'block';
+            ec.querySelector('h2').innerText = 'Model görüntülenemedi. Lütfen daha sonra tekrar deneyin.';
+          }, { once: true });
 
           if(pkg.packageType === 'IOS_AR_ONLY') {
             document.getElementById('ios-warning').style.display = 'block';

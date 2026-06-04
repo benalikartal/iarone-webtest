@@ -629,8 +629,18 @@
   </a>
 </div>
 
+<!-- Phase 7C.1: inject build-time API base so app.v5.js lead capture (/api/leads)
+     hits the Railway API on Vercel. Vite replaces the VITE token at build time;
+     the guard uses startsWith (partial prefix) — not full-token equality — so a
+     correctly injected URL is never overwritten with localhost. -->
+<script>
+  window.IARONE_API_URL = "%VITE_IARONE_API_URL%";
+  if (!window.IARONE_API_URL || window.IARONE_API_URL.startsWith("%VITE_")) {
+    window.IARONE_API_URL = "http://localhost:3000/api";
+  }
+</script>
 <script type="module" src="i18n.js"></script>
 <script type="module" src="app.v5.js"></script>
-<script src="design-switcher.js"></script>
+<script type="module" src="design-switcher.js"></script>
 </body>
 </html>
