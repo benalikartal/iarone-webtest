@@ -145,11 +145,11 @@ const i18n = {
       p3_f6:    'Ayrılmış hesap yöneticisi',
       p3_cta:   'Teklif Al',
 
-      beta_badge: 'Erişim Talebi',
+      beta_badge: 'Satış ile İletişim',
       beta_title: 'Planınızı Görüşelim',
       beta_sub:   'Ürün kataloğunuzu Iarone ile 3D/AR\'a taşımak için satış ekibimizle iletişime geçin. Size uygun kredi ve plan seçeneğini birlikte belirleyelim.',
       beta_ph:    'e-posta adresiniz',
-      beta_btn:   'Erişim Talep Et',
+      beta_btn:   'Satış Ekibiyle Görüş',
       beta_note:  '🔒 Spam yok. İstediğiniz zaman çıkabilirsiniz.',
     },
     market: {
@@ -371,11 +371,11 @@ const i18n = {
       p3_f6:    'Dedicated account manager',
       p3_cta:   'Contact Sales',
 
-      beta_badge: 'Limited Access',
-      beta_title: 'Join the Limited Beta Program',
-      beta_sub:   'Be one of the first 200 users. Early access, exclusive discounts, and direct feedback to our team.',
+      beta_badge: 'Talk to Sales',
+      beta_title: 'Let\'s Discuss Your Plan',
+      beta_sub:   'Contact our sales team to bring your product catalog to 3D/AR with Iarone. We\'ll find the right credit and plan option together.',
       beta_ph:    'your email address',
-      beta_btn:   'Join the List',
+      beta_btn:   'Talk to Sales',
       beta_note:  '🔒 No spam. Unsubscribe anytime.',
     },
     market: {

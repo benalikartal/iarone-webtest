@@ -278,7 +278,7 @@ strong{color:var(--t1);font-weight:600}
 
 .nav__wrap{
   height:var(--nav-h);
-  display:flex;align-items:center;justify-content:space-between;gap:36px;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
 }
 .nav__logo{
   display:flex;
@@ -325,15 +325,15 @@ strong{color:var(--t1);font-weight:600}
 .nav__links{
   display:flex;
   align-items:center;
-  gap:16px;
+  gap:8px;
   list-style:none;
   padding:0;
-  margin:0 24px;
+  margin:0 10px;
   flex: 0 1 auto;
 }
 .nav__link{
   color:var(--t2);font-size:14px;font-weight:600;
-  padding:8px 16px;border-radius:var(--r-sm);
+  padding:8px 12px;border-radius:var(--r-sm);
   transition:all var(--t) var(--ease);
   white-space:nowrap;
   display:inline-block;
@@ -342,7 +342,9 @@ strong{color:var(--t1);font-weight:600}
 .nav__link.active{color:var(--ac-lt)}
 [data-theme="light"] .nav__link.active{color:var(--ac)}
 
-.nav__right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.nav__right{display:flex;align-items:center;gap:6px;flex-shrink:0}
+/* Compact nav buttons so the right-side CTA never clips on 1366/1440 desktops */
+.nav__right .btn{padding:9px 15px;font-size:13px;gap:6px}
 
 /* Lang Switcher */
 .lang-sw{position:relative}
@@ -775,7 +777,7 @@ body:not([data-theme="light"]) .blob-3{opacity:.055}
 .model-badge-warn{background:rgba(245,158,11,.12);color:var(--warn);border:1px solid rgba(245,158,11,.2)}
 
 /* ── PRICING ── */
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;align-items:start;max-width:1280px;margin:0 auto}
 .p-card{
   background:var(--bg-card);border:1px solid var(--border);
   border-radius:var(--r-xl);padding:36px 30px;
@@ -810,6 +812,19 @@ body:not([data-theme="light"]) .blob-3{opacity:.055}
 .p-feat{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--t2)}
 .p-feat::before{content:'✓';color:var(--success);font-weight:700;flex-shrink:0;margin-top:2px}
 .p-feat.star::before{content:'⚡';color:var(--warn)}
+
+/* Pricing section gets a slightly wider container so 4 cards breathe on desktop */
+#pricing > .container{max-width:1280px}
+
+/* Pricing grid responsive: 4 cols desktop → 2 cols tablet → 1 col mobile */
+@media(max-width:1279px){
+  .pricing-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:760px}
+  .p-card-hl{transform:none}
+  .p-card-hl:hover{transform:translateY(-8px)}
+}
+@media(max-width:720px){
+  .pricing-grid{grid-template-columns:1fr;max-width:420px}
+}
 
 /* ── BETA CTA ── */
 .beta-box{
@@ -949,9 +964,6 @@ body:not([data-theme="light"]) .blob-3{opacity:.055}
   .steps-grid{grid-template-columns:repeat(2,1fr)}
   .uc-grid{grid-template-columns:1fr}
   .proc-grid{grid-template-columns:repeat(2,1fr)}
-  .pricing-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}
-  .p-card-hl{transform:none}
-  .p-card-hl:hover{transform:translateY(-8px)}
   .footer__inner{grid-template-columns:1fr 1fr}
   .nav__links{display:none}
   .nav__burger{display:flex}
