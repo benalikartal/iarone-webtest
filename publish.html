@@ -53,7 +53,10 @@
     <a id="pub-dl" href="#" target="_blank" rel="noopener" class="btn btn-ghost" style="flex:1; min-width:140px; text-align:center; display:none;">
       İndir
     </a>
-    <a href="market.html#sell" class="btn btn-ghost" style="flex:1; min-width:140px; text-align:center;">
+    <!-- Phase 7C.1: marketplace CTA is HIDDEN on public pages by default. It is
+         only revealed when the package explicitly opts in (marketplaceApplyEnabled
+         / renderTemplate=MARKET_LISTING_APPLY). No SaaS/pricing/upgrade UI here. -->
+    <a id="market-apply-btn" href="market.html#sell" class="btn btn-ghost" style="flex:1; min-width:140px; text-align:center; display:none;">
       Apply to Market Beta
     </a>
   </div>
@@ -163,6 +166,13 @@
             dlBtn.href = dlUrl;
             dlBtn.innerText = glbUrl ? 'GLB İndir' : 'USDZ İndir';
             dlBtn.style.display = '';
+          }
+
+          // Phase 7C.1: marketplace CTA only if the package explicitly opts in.
+          // Default (no flag) → stays hidden. Public pages never show upgrade UI.
+          if (pkg.marketplaceApplyEnabled === true || pkg.renderTemplate === 'MARKET_LISTING_APPLY') {
+            const mb = document.getElementById('market-apply-btn');
+            if (mb) mb.style.display = '';
           }
 
           const viewer = document.getElementById('viewer');
