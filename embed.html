@@ -25,9 +25,12 @@
     Model Not Found or Unavailable
   </div>
   
-  <div id="ios-fallback" style="display:none; width:100%; height:100%; align-items:center; justify-content:center; flex-direction:column; background-color:#111; color:#fff; font-family:sans-serif; text-align:center;">
-    <div style="font-size:40px; margin-bottom:8px;">📱</div>
-    <div style="font-size:14px; margin-bottom:16px;">iOS AR Ready<br/><span style="color:#888;font-size:11px;">Open on iOS device</span></div>
+  <!-- Phase 7C.1: compact, iframe-friendly iOS AR fallback for USDZ-only packages
+       (USDZ has no web preview by design — never show a broken/empty viewer). -->
+  <div id="ios-fallback" style="display:none; width:100%; height:100%; align-items:center; justify-content:center; flex-direction:column; gap:12px; background-color:#111; color:#fff; font-family:sans-serif; text-align:center; padding:16px; box-sizing:border-box;">
+    <div style="font-size:36px;">📱</div>
+    <div style="font-size:13px; max-width:280px; line-height:1.5; color:#cbd5e1;">USDZ / iOS AR paketi — web önizleme mevcut değil.</div>
+    <a id="embed-usdz-btn" href="#" target="_blank" rel="noopener" style="display:inline-block; padding:8px 16px; border-radius:8px; background:#6366f1; color:#fff; text-decoration:none; font-size:13px; font-weight:600;">USDZ indir</a>
   </div>
 
   <!-- Phase 7C.1: inject build-time API base into the runtime global so the
@@ -59,38 +62,33 @@
           if(data.success && data.package) {
             const pkg = data.package;
             const viewer = document.getElementById('viewer');
-            // Phase 7C.1: graceful fallback if the GLB itself fails to load.
-            viewer.addEventListener('error', function(){
-              viewer.style.display = 'none';
-              const fb = document.getElementById('fallback');
-              fb.innerText = 'Model yüklenemedi';
-              fb.style.display = 'flex';
-            }, { once: true });
             const glbUrl    = publicOrNull(pkg.glbUrl);
             const usdzUrl   = publicOrNull(pkg.usdzUrl);
             const posterUrl = publicOrNull(pkg.posterImageUrl);
 
-            if(pkg.packageType === 'IOS_AR_ONLY') {
-              if(!glbUrl && usdzUrl) {
-                document.getElementById('ios-fallback').style.display = 'flex';
-              } else if(glbUrl) {
-                viewer.style.display = 'block';
-                viewer.src = glbUrl;
-              } else {
-                document.getElementById('fallback').innerText = 'Model source not ready';
-                document.getElementById('fallback').style.display = 'flex';
-              }
-            } else {
-              if(glbUrl) {
-                viewer.src = glbUrl;
-                viewer.style.display = 'block';
-              } else {
-                document.getElementById('fallback').innerText = 'Model source not ready';
-                document.getElementById('fallback').style.display = 'flex';
-              }
-            }
+            // USDZ as the iOS Quick Look source whenever present.
             if(usdzUrl) viewer.setAttribute('ios-src', usdzUrl);
             if(posterUrl) viewer.poster = posterUrl;
+
+            if(glbUrl) {
+              // Web-renderable GLB → render the viewer; graceful fallback on load fail.
+              viewer.addEventListener('error', function(){
+                viewer.style.display = 'none';
+                const fb = document.getElementById('fallback');
+                fb.innerText = 'Model yüklenemedi';
+                fb.style.display = 'flex';
+              }, { once: true });
+              viewer.src = glbUrl;
+              viewer.style.display = 'block';
+            } else if(usdzUrl) {
+              // USDZ-only → compact iOS AR card with a download button. Never show
+              // an empty/broken viewer for a package that has no web preview.
+              document.getElementById('embed-usdz-btn').href = usdzUrl;
+              document.getElementById('ios-fallback').style.display = 'flex';
+            } else {
+              document.getElementById('fallback').innerText = 'Model source not ready';
+              document.getElementById('fallback').style.display = 'flex';
+            }
           } else {
             document.getElementById('fallback').style.display = 'flex';
           }
