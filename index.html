@@ -71,10 +71,11 @@
 
         <!-- Theme Toggle removed for Iris Dual design -->
 
-        <!-- CTA Buttons -->
-        <a href="https://app.iarone.com/auth.html?returnUrl=/dashboard.html"      class="btn btn-ghost"   id="nav-login" data-i18n="nav.login">Giriş Yap</a>
-        <a href="https://app.iarone.com/auth.html?returnUrl=/dashboard.html"      class="btn btn-primary" id="nav-register" style="margin-right: 8px;">Kayıt Ol</a>
-        <a href="https://app.iarone.com" class="btn btn-primary" id="nav-cta">
+        <!-- CTA Buttons — data-auth-intent opens the auth intent modal (JS);
+             href stays a same-tab fallback to app auth when JS is disabled. -->
+        <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html"    class="btn btn-ghost"   id="nav-login" data-auth-intent="login" data-i18n="nav.login">Giriş Yap</a>
+        <a href="https://app.iarone.com/auth.html?mode=register&returnUrl=/dashboard.html" class="btn btn-primary" id="nav-register" data-auth-intent="register" style="margin-right: 8px;">Kayıt Ol</a>
+        <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html" class="btn btn-primary" id="nav-cta" data-auth-intent="create">
           <span data-i18n="nav.cta">Model Oluştur</span>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -95,9 +96,9 @@
   <a href="market.html"    class="nav__link" data-i18n="nav.market">Market</a>
   <a href="pricing.html"   class="nav__link" data-i18n="nav.pricing">Fiyatlandırma</a>
   <div class="nav__mobile-actions">
-    <a href="https://app.iarone.com/auth.html?returnUrl=/dashboard.html"      class="btn btn-ghost"   data-i18n="nav.login">Giriş Yap</a>
-    <a href="https://app.iarone.com/auth.html?returnUrl=/dashboard.html"      class="btn btn-primary" style="margin-bottom: 10px;">Kayıt Ol</a>
-    <a href="https://app.iarone.com" class="btn btn-primary" data-i18n="nav.cta">Model Oluştur</a>
+    <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html"    class="btn btn-ghost"   data-auth-intent="login" data-i18n="nav.login">Giriş Yap</a>
+    <a href="https://app.iarone.com/auth.html?mode=register&returnUrl=/dashboard.html" class="btn btn-primary" data-auth-intent="register" style="margin-bottom: 10px;">Kayıt Ol</a>
+    <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html" class="btn btn-primary" data-auth-intent="create" data-i18n="nav.cta">Model Oluştur</a>
   </div>
 </div>
 
@@ -118,7 +119,7 @@
           Ürün görsellerinden satışa hazır 3D deneyimler üretin. Iarone, modeli sadece oluşturmaz; kullanılabilirlik, kalite ve iyileştirme süreciyle birlikte sunar.
         </p>
         <div class="hero__actions reveal d3">
-          <a href="https://app.iarone.com" class="btn btn-primary btn-primary-lg" id="hero-cta-primary">
+          <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html" class="btn btn-primary btn-primary-lg" id="hero-cta-primary" data-auth-intent="create">
             <span data-i18n="home.hero_cta_primary">Hemen Model Oluştur</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -257,7 +258,7 @@
         <p data-i18n="home.usp_text">
           Modelinizin gerçekten kullanılabilir olup olmadığını bilin. Iarone, oluşturulan her modeli analiz eder, telefonda nasıl açılacağını test eder ve sade bir dille eksiklerini söyler.
         </p>
-        <a href="https://app.iarone.com" class="btn btn-primary btn-primary-lg" id="usp-cta">
+        <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html" class="btn btn-primary btn-primary-lg" id="usp-cta" data-auth-intent="create">
           <span data-i18n="home.usp_cta">Kalite Raporunu Gör</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -560,5 +561,6 @@
 </script>
 <script type="module" src="i18n.js"></script>
 <script type="module" src="app.v5.js"></script>
+<script type="module" src="auth-intent.js"></script>
 </body>
 </html>

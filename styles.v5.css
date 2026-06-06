@@ -3206,3 +3206,109 @@ body:not([data-theme="light"]) .blob-3{opacity:.055}
   transform: translateY(-4px) scale(1.02);
   box-shadow: 0 20px 50px rgba(101,31,255,0.25);
 }
+
+/* =====================================================
+   AUTH INTENT MODAL (fix(launch))
+   Polished "continue to app auth" intent dialog shown
+   before navigating same-tab to app.iarone.com/auth.html.
+   No JWT, no token handoff — pure navigation intent UX.
+   Markup is injected by auth-intent.js; styling lives here
+   so it inherits the active theme tokens automatically.
+   ===================================================== */
+.auth-modal{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.auth-modal[hidden]{display:none}
+.auth-modal__backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(5,2,16,.62);
+  backdrop-filter:blur(6px) saturate(140%);
+  -webkit-backdrop-filter:blur(6px) saturate(140%);
+  animation:authm-fade .2s var(--ease) both;
+}
+.auth-modal__dialog{
+  position:relative;
+  width:100%;
+  max-width:420px;
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--r-xl);
+  box-shadow:var(--sh-xl),0 0 0 1px var(--border);
+  padding:32px 28px 26px;
+  text-align:center;
+  animation:authm-pop .26s var(--ease) both;
+}
+.auth-modal__close{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:34px;
+  height:34px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:var(--r-full);
+  color:var(--t2);
+  background:transparent;
+  font-size:22px;
+  line-height:1;
+  transition:all var(--t) var(--ease);
+}
+.auth-modal__close:hover{background:var(--bg-card-hv);color:var(--t1)}
+.auth-modal__close:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.auth-modal__icon{
+  width:54px;
+  height:54px;
+  margin:0 auto 16px;
+  border-radius:var(--r);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--ac-bg);
+  color:var(--ac);
+}
+.auth-modal__icon svg{width:28px;height:28px}
+.auth-modal__title{
+  font-size:21px;
+  font-weight:800;
+  letter-spacing:-.02em;
+  color:var(--t1);
+  margin-bottom:10px;
+}
+.auth-modal__desc{
+  font-size:14.5px;
+  line-height:1.6;
+  color:var(--t2);
+  margin:0 auto 22px;
+  max-width:34ch;
+}
+.auth-modal__actions{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.auth-modal__actions .btn{width:100%;padding:13px 22px}
+.auth-modal__note{
+  margin-top:16px;
+  font-size:12px;
+  color:var(--t3);
+  line-height:1.5;
+}
+@keyframes authm-fade{from{opacity:0}to{opacity:1}}
+@keyframes authm-pop{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media (max-width:480px){
+  .auth-modal{padding:14px;align-items:flex-end}
+  .auth-modal__dialog{max-width:none;border-radius:var(--r-lg);padding:26px 20px 22px}
+  .auth-modal__dialog{animation:authm-sheet .28s var(--ease) both}
+}
+@keyframes authm-sheet{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){
+  .auth-modal__backdrop,.auth-modal__dialog{animation:none}
+}
