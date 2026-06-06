@@ -2984,7 +2984,7 @@ body:not([data-theme="light"]) .blob-3{opacity:.055}
 
 /* ── IRIS DUAL SPECIFIC OVERRIDES ── */
 
-{
+:root {
   --bg:           #ffffff;
   --bg-surface:   #f9fafb;
   --bg-card:      #ffffff;
