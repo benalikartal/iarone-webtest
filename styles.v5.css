@@ -301,19 +301,17 @@ strong{color:var(--t1);font-weight:600}
   display:inline-block;
 }
 .nav__link:hover,.nav__link.active{color:var(--t1);background:var(--bg-card)}
-.nav__link.active{color:var(--ac-lt)}
-[data-theme="light"] .nav__link.active{color:var(--ac)}
+.nav__link.active{color:var(--ac)}
 
-.nav__right{display:flex;align-items:center;gap:6px;flex-shrink:0}
-/* Compact nav buttons so the right-side CTA never clips on 1366/1440 desktops */
-.nav__right .btn{padding:9px 15px;font-size:13px;gap:6px}
+.nav__right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.nav__right .btn{padding:10px 20px;font-size:14px;border-radius:100px;}
 
 /* Lang Switcher */
 .lang-sw{position:relative}
 .lang-btn{
   display:flex;align-items:center;gap:6px;
   color:var(--t2);font-size:13px;font-weight:600;
-  padding:7px 12px;border-radius:var(--r-sm);
+  padding:8px 14px;border-radius:100px;
   border:1px solid var(--border);background:transparent;
   transition:all var(--t) var(--ease);cursor:pointer;
 }
@@ -3012,12 +3010,7 @@ body:not([data-theme="light"]) .blob-3{opacity:.055}
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.hero .gt {
-  background: linear-gradient(135deg, #ffffff, #e5e7eb, #9ca3af);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+
 .badge {
   background: rgba(101,31,255,0.08);
   border-color: rgba(101,31,255,0.2);
