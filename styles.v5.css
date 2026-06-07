@@ -2416,13 +2416,18 @@ body:not([data-theme="light"]) .blob-3{opacity:.055}
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   z-index: 9500;
-  display: flex;
+  display: none; /* hidden by default */
   align-items: center;
   justify-content: center;
   padding: 20px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s var(--ease);
+}
+.onboarding-overlay.visible {
+  display: flex; /* show when visible */
+  opacity: 1;
+  pointer-events: all;
 }
 .onboarding-overlay.visible {
   opacity: 1;
@@ -2452,6 +2457,7 @@ body:not([data-theme="light"]) .blob-3{opacity:.055}
   position: relative;
 }
 .onboarding-close {
+  cursor: pointer;
   position: absolute;
   top: 16px; right: 16px;
   width: 32px; height: 32px;

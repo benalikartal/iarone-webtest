@@ -1094,8 +1094,6 @@ function initEnhancedAIChat() {
 }
 
 function initOnboardingModal() {
-  return; // Disabled for now to prevent blocking the market page
-  
   const overlay = document.getElementById('onboarding-overlay');
   if (!overlay) return;
 
