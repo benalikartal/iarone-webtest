@@ -1192,8 +1192,11 @@ function initOnboardingModal() {
     }
   };
 
-  (document.getElementById('ob-close') || document.getElementById('onboarding-close'))?.addEventListener('click', closeOnboarding);
-  document.getElementById('ob-skip-btn') ?. addEventListener('click', closeOnboarding);
+  const closeBtnEl = document.getElementById('onboarding-close');
+  if (closeBtnEl) closeBtnEl.addEventListener('click', closeOnboarding);
+  
+  const skipBtnEl = document.getElementById('ob-skip-btn');
+  if (skipBtnEl) skipBtnEl.addEventListener('click', closeOnboarding);
 
   // Start with 2 seconds delay
   setTimeout(() => {
