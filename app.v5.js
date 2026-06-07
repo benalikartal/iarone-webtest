@@ -1171,9 +1171,20 @@ function initOnboardingModal() {
     nextBtn.textContent = s === 3 ? 'Hemen Başla' : 'Devam Et';
   };
 
-  const closeOnboarding = () => {
+  const closeOnboarding = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     overlay.classList.remove('visible');
-    localStorage.setItem('iarone-onboarded', 'true');
+    setTimeout(() => {
+      overlay.style.display = 'none';
+    }, 400); // match transition time
+    try {
+      localStorage.setItem('iarone-onboarded', 'true');
+    } catch (err) {
+      console.warn('Could not save onboarding state:', err);
+    }
   };
 
   nextBtn.onclick = () => {
@@ -1198,11 +1209,16 @@ function initOnboardingModal() {
   const skipBtnEl = document.getElementById('ob-skip-btn');
   if (skipBtnEl) skipBtnEl.addEventListener('click', closeOnboarding);
 
-  // Start with 2 seconds delay
+  // Start with 3 seconds delay
   setTimeout(() => {
-    overlay.classList.add('visible');
-    renderStep(1);
-  }, 2000);
+    if (localStorage.getItem('iarone-onboarded') === 'true') return;
+    try {
+      renderStep(1);
+      overlay.classList.add('visible');
+    } catch (err) {
+      console.error('Onboarding render error:', err);
+    }
+  }, 3000);
 }
 
 /* ─── FEATURE 5: DASHBOARD TABS, CODE SNIPPETS, SIDEBAR ─── */
