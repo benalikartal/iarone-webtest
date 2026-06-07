@@ -810,18 +810,20 @@ function initMarketFilters() {
   if (!filterPanel) return;
 
   // Toggle filter option selection
-  document.querySelectorAll('.filter-opt').forEach(opt => {
+  document.querySelectorAll('.filter-opt, .market-filter-pill').forEach(opt => {
     opt.addEventListener('click', () => {
       // For categories only 1 can be selected
       if (opt.closest('#category-opts')) {
-        opt.parentNode.querySelectorAll('.filter-opt').forEach(sibling => {
+        opt.parentNode.querySelectorAll('.filter-opt, .market-filter-pill').forEach(sibling => {
           sibling.classList.remove('selected');
-          sibling.querySelector('.filter-opt-check').textContent = '';
+          const check = sibling.querySelector('.filter-opt-check');
+          if (check) check.textContent = '';
         });
       }
       
       const selected = opt.classList.toggle('selected');
-      opt.querySelector('.filter-opt-check').textContent = selected ? '✓' : '';
+      const check = opt.querySelector('.filter-opt-check');
+      if (check) check.textContent = selected ? '✓' : '';
       
       filterPanel.classList.add('filters-active');
       applyMarketFilters();
@@ -839,15 +841,17 @@ function initMarketFilters() {
   });
 
   resetBtn?.addEventListener('click', () => {
-    document.querySelectorAll('.filter-opt').forEach(opt => {
+    document.querySelectorAll('.filter-opt, .market-filter-pill').forEach(opt => {
       opt.classList.remove('selected');
-      opt.querySelector('.filter-opt-check').textContent = '';
+      const check = opt.querySelector('.filter-opt-check');
+      if (check) check.textContent = '';
     });
     // Set default category to 'all'
     const defaultCat = document.querySelector('#category-opts [data-value="all"]');
     if (defaultCat) {
       defaultCat.classList.add('selected');
-      defaultCat.querySelector('.filter-opt-check').textContent = '✓';
+      const check = defaultCat.querySelector('.filter-opt-check');
+      if (check) check.textContent = '✓';
     }
 
     document.querySelectorAll('.price-pill').forEach(pill => pill.classList.remove('active'));
@@ -868,7 +872,7 @@ function applyMarketFilters() {
   const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
 
   // Get active filters
-  const selectedCatOpt = document.querySelector('#category-opts .filter-opt.selected');
+  const selectedCatOpt = document.querySelector('#category-opts .filter-opt.selected, #category-opts .market-filter-pill.selected');
   const categoryFilter = selectedCatOpt ? selectedCatOpt.getAttribute('data-value') : 'all';
 
   const formatFilters = Array.from(document.querySelectorAll('#format-opts .filter-opt.selected')).map(o => o.getAttribute('data-value'));

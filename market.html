@@ -19,13 +19,13 @@
     sessionStorage.removeItem('iar-pl');
   </script>
 </head>
-<body>
+<body class="market-page">
 
 <div id="preloader" class="pl" role="status" aria-label="Iarone yükleniyor">
   <div class="pl__logo">
     <img src="00_iarone_logo_exact_transparent_white_glow.png" class="logo-dark" alt="Iarone" />
     <img src="00_iarone_logo_exact_transparent_black.png" class="logo-light" alt="Iarone" />
-    <span class="logo-text">IARONE</span>
+    <span class="logo-text">Iarone</span>
   </div>
   <div class="pl__text">Yükleniyor<span class="pl__dots"></span></div>
 </div>
@@ -45,7 +45,7 @@
       <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa">
         <img src="00_iarone_logo_exact_transparent_white_glow.png" class="logo-dark" alt="Iarone" />
         <img src="00_iarone_logo_exact_transparent_black.png"     class="logo-light" alt="Iarone" />
-        <span class="logo-text">IARONE</span>
+        <span class="logo-text">Iarone</span>
       </a>
 
       <!-- Desktop Links -->
@@ -106,28 +106,24 @@
 </div>
 
 <!-- ═══ HERO ═══ -->
-<section class="section z1" style="padding-top: 160px; text-align: center;">
+<section class="market-hero section z1">
   <div class="container">
     <div class="reveal">
-      <span class="badge" data-i18n="market.badge">Marketplace</span>
-      <h1 class="gt-ac" style="margin: 20px 0; max-width: 800px; margin-left: auto; margin-right: auto;" data-i18n="market.h1">Satışa hazır AR modelleri keşfet</h1>
-      <p style="margin: 0 auto 30px; font-size: 18px;" data-i18n="market.sub">Iarone Market, gerçek dünyada denenebilir, mobil uyumlu ve kalite etiketiyle sunulan 3D modeller için yeni nesil bir vitrin.</p>
-      
-      <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-        <a href="#featured" class="btn btn-primary btn-primary-lg" data-i18n="market.cta1">AR Modelleri Keşfet</a>
-        <a href="#sell" class="btn btn-ghost btn-ghost-lg" data-i18n="market.cta2">Satıcı Başvurusu Yap</a>
-      </div>
-      <p style="margin-top: 20px; font-size: 13px; color: var(--warn);" data-i18n="market.scarcity">İlk satıcılar erken pazar yeri görünürlüğü avantajına sahip olacaktır.</p>
+      <span class="badge" style="background: rgba(255,255,255,0.8); border: 1px solid rgba(0,0,0,0.05); color: #651fff;">
+        <span style="display:inline-block; width:6px; height:6px; background:#651fff; border-radius:50%; margin-right:6px;"></span>3D & AR COMMERCE
+      </span>
+      <h1 class="market-hero-title">Marketplace for <br><span class="gt-ac">3D & AR</span> ready products.</h1>
+      <p class="market-hero-sub">Browse immersive commerce assets designed <br>for modern storefronts.</p>
     </div>
   </div>
 </section>
 
 <!-- ═══ MARKET LAYOUT WITH FILTERS ═══ -->
-<section class="section-sm z1" style="padding-top: 40px;">
+<section class="section-sm z1" style="padding-top: 20px;">
   <div class="container">
     
     <!-- Search Bar -->
-    <div class="market-search-wrap" id="market-search-wrap">
+    <div class="market-search-wrap" id="market-search-wrap" style="display: none;">
       <svg class="market-search-ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input type="text" class="market-search-input" id="market-search-input" placeholder="Model ara... (ör. koltuk, berjer, vazo)" data-i18n="market.search_ph" />
       <button class="market-search-clear" id="market-search-clear" aria-label="Aramayı Temizle">&times;</button>
@@ -136,79 +132,40 @@
     <div class="market-search-results-count" id="results-count"></div>
 
     <div class="market-layout">
-      <!-- Left Filter Panel -->
-      <aside class="market-filter-panel" id="filter-panel">
-        <div class="filter-panel-title">
-          <span>Filtreler</span>
-          <button class="filter-reset-btn" id="filter-reset-btn">Sıfırla</button>
-        </div>
-        
-        <!-- Category Group -->
-        <div class="filter-group">
-          <div class="filter-group-label">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            <span>Kategoriler</span>
-          </div>
-          <div class="filter-opts" id="category-opts">
-            <div class="filter-opt selected" data-value="all">
-              <div class="filter-opt-check">✓</div>
-              <span data-i18n="market.cat_all">Tümü</span>
-            </div>
-            <div class="filter-opt" data-value="furniture">
-              <div class="filter-opt-check"></div>
-              <span data-i18n="market.cat_furn">Mobilya</span>
-            </div>
-            <div class="filter-opt" data-value="decor">
-              <div class="filter-opt-check"></div>
-              <span data-i18n="market.cat_decor">Ev Dekorasyonu</span>
-            </div>
-            <div class="filter-opt" data-value="cafe">
-              <div class="filter-opt-check"></div>
-              <span data-i18n="market.cat_cafe">Kafe & Restoran</span>
-            </div>
-            <div class="filter-opt" data-value="stand">
-              <div class="filter-opt-check"></div>
-              <span data-i18n="market.cat_stand">Ürün Standları</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Format Group -->
-        <div class="filter-group">
-          <div class="filter-group-label">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-            <span>Formatlar</span>
-          </div>
-          <div class="filter-opts" id="format-opts">
-            <div class="filter-opt" data-value="glb">
-              <div class="filter-opt-check"></div>
-              <span>GLB</span>
-            </div>
-            <div class="filter-opt" data-value="usdz">
-              <div class="filter-opt-check"></div>
-              <span>USDZ</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Price Pills Group -->
-        <div class="filter-group">
-          <div class="filter-group-label">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-            <span>Fiyat</span>
-          </div>
-          <div class="price-filter-pills" id="price-opts">
-            <button class="price-pill active" data-value="all">Tümü</button>
-            <button class="price-pill" data-value="free">Ücretsiz</button>
-            <button class="price-pill" data-value="premium">Ücretli</button>
-          </div>
-        </div>
-      </aside>
-
       <!-- Right Side Grid & Content -->
       <div style="width: 100%;">
-        <div style="text-align: right; margin-bottom: 20px;">
-          <span style="font-size: 12px; color: var(--t3); font-style: italic;" data-i18n="market.preview_only">Sadece önizleme — ücretli indirmeler yakında</span>
+        
+        <!-- Horizontal Filters -->
+        <div class="market-filters-row" id="category-opts">
+          <div class="market-filter-pill selected" data-value="all">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            All
+          </div>
+          <div class="market-filter-pill" data-value="furniture">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9"/><path d="M9 22V12h6v10M2 10.6L12 2l10 8.6"/></svg>
+            Furniture
+          </div>
+          <div class="market-filter-pill" data-value="decor">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Decor
+          </div>
+          <div class="market-filter-pill" data-value="lighting">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v10M8 12h8l-2 10h-4z"/></svg>
+            Lighting
+          </div>
+          <div class="market-filter-pill" data-value="accessories">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/></svg>
+            Accessories
+          </div>
+          
+          <div style="flex-grow: 1;"></div>
+          
+          <div class="market-sort">
+            <select class="market-sort-select">
+              <option value="newest">Newest</option>
+              <option value="popular">Popular</option>
+            </select>
+          </div>
         </div>
 
         <!-- Skeleton grid to display before lazy loading -->
@@ -254,161 +211,73 @@
         <!-- Real Grid -->
         <div class="market-grid" id="market-real-grid" style="display: none;">
           <!-- Card 1 -->
-          <div class="market-card filtered-in" data-category="furniture" data-format="glb,usdz" data-price="0" data-quality="92">
-            <div class="mc-beta-lbl" data-i18n="market.beta_label">Örnek Ürün</div>
+          <div class="market-card filtered-in" data-category="furniture" data-format="glb,usdz" data-price="1249" data-quality="92">
             <div class="mc-img">
-              <div class="mc-3d-overlay">
-                <div class="mc-3d-play-btn">
-                  <div class="mc-3d-play-ico">✨</div>
-                  <span>3D Model Yükle</span>
-                </div>
-              </div>
-              <img src="06_furniture_use_case_web_ar.png" alt="Modern Lounge Chair" />
-              <!-- model-viewer slot will be injected here when played -->
+              <div class="mc-top-tags"><span class="mc-tag">3D</span><span class="mc-tag">AR</span></div>
+              <div class="mc-fav-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+              <img src="06_furniture_use_case_web_ar.png" alt="Luna Lounge Chair" />
             </div>
             <div class="mc-content">
-              <div class="mc-cat" data-i18n="market.cat_furn">Mobilya</div>
-              <div class="mc-title" data-i18n="market.card_lounge">Modern Dinlenme Koltuğu</div>
-              <div class="market-tags">
-                <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
-                <span class="market-tag" data-i18n="market.tag_mob">Mobil Uyumlu</span>
-                <span class="market-tag" data-i18n="market.tag_scale">Ölçek Onaylı</span>
+              <div class="mc-info-row">
+                <div class="mc-title">Luna Lounge Chair</div>
+                <div class="mc-price">$1,249</div>
               </div>
               <div class="mc-actions">
-                <a href="#waitlist" class="btn btn-primary btn-micro" data-i18n="market.btn_try">AR'de Dene</a>
-                <a href="#featured" class="btn btn-ghost btn-micro" data-i18n="market.btn_detail">Detaylar</a>
+                <a href="#waitlist" class="btn btn-ghost btn-full"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> Preview in AR</a>
               </div>
             </div>
           </div>
 
           <!-- Card 2 -->
-          <div class="market-card filtered-in" data-category="decor" data-format="glb,usdz" data-price="49" data-quality="88">
-            <div class="mc-beta-lbl" data-i18n="market.beta_label">Örnek Ürün</div>
+          <div class="market-card filtered-in" data-category="lighting" data-format="glb" data-price="369" data-quality="88">
             <div class="mc-img">
-              <div class="mc-3d-overlay">
-                <div class="mc-3d-play-btn">
-                  <div class="mc-3d-play-ico">✨</div>
-                  <span>3D Model Yükle</span>
-                </div>
-              </div>
-              <img src="09_decoration_use_case_web_ar.png" alt="Minimal Coffee Table" />
+              <div class="mc-top-tags"><span class="mc-tag">3D</span><span class="mc-tag">AR</span></div>
+              <div class="mc-fav-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+              <img src="09_decoration_use_case_web_ar.png" alt="Aurora Table Lamp" />
             </div>
             <div class="mc-content">
-              <div class="mc-cat" data-i18n="market.cat_decor">Ev Dekorasyonu</div>
-              <div class="mc-title" data-i18n="market.card_coffee">Minimal Orta Sehpa</div>
-              <div class="market-tags">
-                <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
-                <span class="market-tag" data-i18n="market.tag_comm">Ticari Lisans</span>
+              <div class="mc-info-row">
+                <div class="mc-title">Aurora Table Lamp</div>
+                <div class="mc-price">$369</div>
               </div>
               <div class="mc-actions">
-                <a href="#waitlist" class="btn btn-primary btn-micro" data-i18n="market.btn_try">AR'de Dene</a>
-                <a href="#featured" class="btn btn-ghost btn-micro" data-i18n="market.btn_detail">Detaylar</a>
+                <a href="#waitlist" class="btn btn-ghost btn-full"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> Preview in AR</a>
               </div>
             </div>
           </div>
 
           <!-- Card 3 -->
-          <div class="market-card filtered-in" data-category="decor" data-format="glb" data-price="0" data-quality="95">
-            <div class="mc-beta-lbl" data-i18n="market.beta_label">Örnek Ürün</div>
+          <div class="market-card filtered-in" data-category="decor" data-format="glb,usdz" data-price="189" data-quality="95">
             <div class="mc-img">
-              <div class="mc-3d-overlay">
-                <div class="mc-3d-play-btn">
-                  <div class="mc-3d-play-ico">✨</div>
-                  <span>3D Model Yükle</span>
-                </div>
-              </div>
-              <img src="09_decoration_use_case_web_ar.png" alt="Decorative Ceramic Vase" />
+              <div class="mc-top-tags"><span class="mc-tag">3D</span><span class="mc-tag">AR</span></div>
+              <div class="mc-fav-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+              <img src="07_shoes_use_case_web_ar.png" alt="Opal Glass Vase" style="object-fit: contain; padding:20px;" />
             </div>
             <div class="mc-content">
-              <div class="mc-cat" data-i18n="market.cat_decor">Ev Dekorasyonu</div>
-              <div class="mc-title" data-i18n="market.card_vase">Dekoratif Seramik Vazo</div>
-              <div class="market-tags">
-                <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
-                <span class="market-tag" data-i18n="market.tag_mob">Mobil Uyumlu</span>
-                <span class="market-tag" data-i18n="market.tag_scale">Ölçek Onaylı</span>
+              <div class="mc-info-row">
+                <div class="mc-title">Opal Glass Vase</div>
+                <div class="mc-price">$189</div>
               </div>
               <div class="mc-actions">
-                <a href="#waitlist" class="btn btn-primary btn-micro" data-i18n="market.btn_try">AR'de Dene</a>
-                <a href="#featured" class="btn btn-ghost btn-micro" data-i18n="market.btn_detail">Detaylar</a>
+                <a href="#waitlist" class="btn btn-ghost btn-full">View product <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:4px"><path d="M9 18l6-6-6-6"/></svg></a>
               </div>
             </div>
           </div>
 
           <!-- Card 4 -->
-          <div class="market-card filtered-in" data-category="cafe" data-format="glb,usdz" data-price="99" data-quality="90">
-            <div class="mc-beta-lbl" data-i18n="market.beta_label">Örnek Ürün</div>
+          <div class="market-card filtered-in" data-category="furniture" data-format="glb" data-price="2199" data-quality="90">
             <div class="mc-img">
-              <div class="mc-3d-overlay">
-                <div class="mc-3d-play-btn">
-                  <div class="mc-3d-play-ico">✨</div>
-                  <span>3D Model Yükle</span>
-                </div>
-              </div>
-              <img src="06_furniture_use_case_web_ar.png" alt="Cafe Table Set" />
+              <div class="mc-top-tags"><span class="mc-tag">3D</span><span class="mc-tag">AR</span></div>
+              <div class="mc-fav-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+              <img src="06_furniture_use_case_web_ar.png" alt="Milo 3-Seater Sofa" />
             </div>
             <div class="mc-content">
-              <div class="mc-cat" data-i18n="market.cat_cafe">Kafe & Restoran</div>
-              <div class="mc-title" data-i18n="market.card_cafe">Kafe Masa Seti</div>
-              <div class="market-tags">
-                <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
-                <span class="market-tag" data-i18n="market.tag_comm">Ticari Lisans</span>
+              <div class="mc-info-row">
+                <div class="mc-title">Milo 3-Seater Sofa</div>
+                <div class="mc-price">$2,199</div>
               </div>
               <div class="mc-actions">
-                <a href="#waitlist" class="btn btn-primary btn-micro" data-i18n="market.btn_try">AR'de Dene</a>
-                <a href="#featured" class="btn btn-ghost btn-micro" data-i18n="market.btn_detail">Detaylar</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 5 -->
-          <div class="market-card filtered-in" data-category="stand" data-format="glb" data-price="0" data-quality="85">
-            <div class="mc-beta-lbl" data-i18n="market.beta_label">Örnek Ürün</div>
-            <div class="mc-img">
-              <div class="mc-3d-overlay">
-                <div class="mc-3d-play-btn">
-                  <div class="mc-3d-play-ico">✨</div>
-                  <span>3D Model Yükle</span>
-                </div>
-              </div>
-              <img src="08_electronics_use_case_web_ar.png" alt="Retail Product Stand" />
-            </div>
-            <div class="mc-content">
-              <div class="mc-cat" data-i18n="market.cat_stand">Ürün Standları</div>
-              <div class="mc-title" data-i18n="market.card_stand">Retail Product Stand</div>
-              <div class="market-tags">
-                <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
-                <span class="market-tag" data-i18n="market.tag_scale">Ölçek Onaylı</span>
-              </div>
-              <div class="mc-actions">
-                <a href="#waitlist" class="btn btn-primary btn-micro" data-i18n="market.btn_try">AR'de Dene</a>
-                <a href="#featured" class="btn btn-ghost btn-micro" data-i18n="market.btn_detail">Detaylar</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 6 -->
-          <div class="market-card filtered-in" data-category="furniture" data-format="glb,usdz" data-price="120" data-quality="91">
-            <div class="mc-beta-lbl" data-i18n="market.beta_label">Örnek Ürün</div>
-            <div class="mc-img">
-              <div class="mc-3d-overlay">
-                <div class="mc-3d-play-btn">
-                  <div class="mc-3d-play-ico">✨</div>
-                  <span>3D Model Yükle</span>
-                </div>
-              </div>
-              <img src="06_furniture_use_case_web_ar.png" alt="Modular Cabinet Base" />
-            </div>
-            <div class="mc-content">
-              <div class="mc-cat" data-i18n="market.cat_furn">Mobilya</div>
-              <div class="mc-title" data-i18n="market.card_cabinet">Modüler Dolap Altlığı</div>
-              <div class="market-tags">
-                <span class="market-tag" data-i18n="market.tag_ar">AR Hazır</span>
-                <span class="market-tag" data-i18n="market.tag_mob">Mobil Uyumlu</span>
-                <span class="market-tag" data-i18n="market.tag_comm">Ticari Lisans</span>
-              </div>
-              <div class="mc-actions">
-                <a href="#waitlist" class="btn btn-primary btn-micro" data-i18n="market.btn_try">AR'de Dene</a>
-                <a href="#featured" class="btn btn-ghost btn-micro" data-i18n="market.btn_detail">Detaylar</a>
+                <a href="#waitlist" class="btn btn-ghost btn-full"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> Preview in AR</a>
               </div>
             </div>
           </div>
@@ -425,83 +294,39 @@
   </div>
 </section>
 
-<!-- ═══ QUALITY LABELS & AR READINESS ═══ -->
-<section class="section z1">
-  <div class="container">
-    <div class="sec-hd reveal">
-      <h2 class="gt">Iarone Farkı</h2>
-    </div>
-    <div style="display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: start;">
-      <div class="quality-label-grid reveal">
-        <div class="ql-card"><span style="color: var(--ac); font-size: 20px;">📱</span> <span data-i18n="market.tag_mob">Mobil Uyumlu</span></div>
-        <div class="ql-card"><span style="color: var(--success); font-size: 20px;">✓</span> <span data-i18n="market.tag_ar">AR Hazır</span></div>
-        <div class="ql-card"><span style="color: var(--gold); font-size: 20px;">📏</span> <span data-i18n="market.tag_scale">Ölçek Onaylı</span></div>
-        <div class="ql-card"><span style="color: var(--ac-lt); font-size: 20px;">💼</span> <span data-i18n="market.tag_comm">Ticari Lisans</span></div>
-        <div class="ql-card"><span style="color: var(--t2); font-size: 20px;">🖨️</span> <span data-i18n="market.cat_print">3D Baskıya Uygun</span></div>
-        <div class="ql-card"><span style="color: var(--t2); font-size: 20px;">⚙️</span> <span data-i18n="market.cat_conf">Konfigüratör Hazır</span></div>
-      </div>
-      
-      <div class="ar-readiness-card reveal d1">
-        <div class="ar-score-title" data-i18n="market.ar_score">AR Hazırlık Skoru</div>
-        <div class="ar-score-items">
-          <div class="ar-score-item ok">✓ <span data-i18n="market.score_mob">Mobil Hazır: 92/100</span></div>
-          <div class="ar-score-item ok">✓ <span data-i18n="market.score_fmt">Format: GLB + USDZ</span></div>
-          <div class="ar-score-item ok">✓ <span data-i18n="market.score_scale">Ölçek: Onaylı</span></div>
-          <div class="ar-score-item ok">✓ <span data-i18n="market.score_license">Lisans Hazır</span></div>
+        <!-- Bottom Feature Strip -->
+        <div class="market-feature-strip">
+          <div class="mf-item">
+            <div class="mf-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+            <div class="mf-text">
+              <strong>True 3D Assets</strong>
+              <span>High quality, production ready 3D models.</span>
+            </div>
+          </div>
+          <div class="mf-item">
+            <div class="mf-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+            <div class="mf-text">
+              <strong>AR Ready</strong>
+              <span>Place, scale and preview in real-world.</span>
+            </div>
+          </div>
+          <div class="mf-item">
+            <div class="mf-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            <div class="mf-text">
+              <strong>Commercial License</strong>
+              <span>Clear usage rights for your storefronts.</span>
+            </div>
+          </div>
+          <div class="mf-item">
+            <div class="mf-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+            <div class="mf-text">
+              <strong>Seamless Integration</strong>
+              <span>Optimized for modern commerce platforms.</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ═══ SELL ON IARONE ═══ -->
-<section class="container z1" id="sell">
-  <div class="sell-card reveal">
-    <h2 class="gt-ac" style="margin-bottom: 20px;" data-i18n="market.sell_title">Modelini Iarone'da Sat</h2>
-    <p style="margin: 0 auto 30px; font-size: 16px; color: var(--t2);" data-i18n="market.sell_text">3D tasarımcılar, ajanslar ve ürün üreticileri için AR-ready model satış kanalı. Modelini yükle, kalite kontrolünden geçir, AR önizlemeyle satışa aç.</p>
-    <a href="#waitlist" class="btn btn-primary btn-primary-lg" data-i18n="market.sell_cta">Satıcı Başvurusu Yap</a>
-  </div>
-</section>
-
-<!-- ═══ WAITLIST FORM ═══ -->
-<section class="section z1" id="waitlist">
-  <div class="container reveal">
-    <form class="waitlist-form" id="waitlist-form">
-      <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" />
-      <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px;" class="gt" data-i18n="market.wait_title">Bekleme Listesine Katıl</h3>
-      
-      <div class="wf-group">
-        <label data-i18n="market.wait_name">Ad Soyad</label>
-        <input type="text" required />
-      </div>
-      <div class="wf-group">
-        <label data-i18n="market.wait_email">E-posta adresi</label>
-        <input type="email" required />
-      </div>
-      <div class="wf-group">
-        <label data-i18n="market.wait_brand">Şirket / Marka (Opsiyonel)</label>
-        <input type="text" />
-      </div>
-      <div class="wf-group">
-        <label data-i18n="market.wait_intent">Amacınız:</label>
-        <div class="wf-radio-group">
-          <label class="wf-radio">
-            <input type="radio" name="intent" value="buy" required />
-            <span data-i18n="market.wait_intent1">Model satın almak</span>
-          </label>
-          <label class="wf-radio">
-            <input type="radio" name="intent" value="sell" />
-            <span data-i18n="market.wait_intent2">Kendi modellerimi satmak</span>
-          </label>
-          <label class="wf-radio">
-            <input type="radio" name="intent" value="generate" />
-            <span data-i18n="market.wait_intent3">Ürünümün modelini üretmek</span>
-          </label>
-        </div>
-      </div>
-      
-      <button type="submit" class="btn btn-primary btn-full btn-primary-lg" style="margin-top: 10px;" data-i18n="market.wait_btn">Gönder</button>
-    </form>
   </div>
 </section>
 
@@ -513,7 +338,7 @@
         <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa" style="margin-bottom: 16px;">
           <img src="00_iarone_logo_exact_transparent_white_glow.png" class="logo-dark" alt="Iarone" />
           <img src="00_iarone_logo_exact_transparent_black.png"     class="logo-light" alt="Iarone" />
-          <span class="logo-text">IARONE</span>
+          <span class="logo-text">Iarone</span>
         </a>
         <p data-i18n="footer.tagline">Ürün fotoğraflarından satışa hazır 3D ve AR modeller.</p>
       </div>
