@@ -289,6 +289,7 @@ strong{color:var(--t1);font-weight:600}
 .pl__logo .logo-text {
   font-size: 28px;
   animation: pulse-glow 2.5s ease-in-out infinite; 
+  color: #fff !important;
 }
 
 .nav__links{
@@ -3019,7 +3020,7 @@ body:not([data-theme="light"]) .blob-3{opacity:.055}
 
 /* V2 hero section gets deep purple gradient */
 .hero {
-  background: linear-gradient(180deg, #05020a 0%, #1a0836 55%, #5812c7 100%);
+  background: linear-gradient(145deg, #05020a 0%, #0d041a 40%, #2a0b5c 80%, #5812c7 100%);
   min-height: 100vh;
 }
 .hero h1,
@@ -3073,7 +3074,7 @@ body:not([data-theme="light"]) .blob-3{opacity:.055}
 .nav__link { color: rgba(255,255,255,0.62); }
 .nav__link:hover,
 .nav__link.active { color: rgba(255,255,255,0.95); background: rgba(255,255,255,0.07); }
-.nav__logo .logo-text { color: #fff; }
+.nav__logo .logo-text { color: #fff !important; }
 .logo-dark { display: block !important; }
 .logo-light { display: none !important; }
 .theme-tog,
@@ -3115,6 +3116,12 @@ body:not([data-theme="light"]) .blob-3{opacity:.055}
 }
 .gt {
   background: linear-gradient(135deg, #111827, #374151);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero .gt {
+  background: linear-gradient(135deg, #ffffff, #e5e7eb, #9ca3af);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

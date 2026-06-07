@@ -147,68 +147,21 @@
       <!-- Visual -->
       <!-- Visual: Hero Upload Zone -->
       <div class="hero__visual reveal d2" style="position: relative;">
-        <div class="hero-upload-zone" id="upload-zone">
-          <div class="upload-particles" id="upload-particles"></div>
-          
-          <div class="hero-upload-content">
-            <div class="hero-upload-ico">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-            </div>
-            <h3 class="hero-upload-title" data-i18n="dash.upload_title">Ürün Fotoğrafı Yükle</h3>
-            <p class="hero-upload-sub" data-i18n="dash.upload_desc">Sürükleyin ve bırakın ya da dosya seçin</p>
-            <div class="hero-upload-formats">
-              <span class="hero-upload-fmt">PNG</span>
-              <span class="hero-upload-fmt">JPG</span>
-              <span class="hero-upload-fmt">WEBP</span>
-            </div>
-          </div>
-
-          <div class="hero-upload-preview" id="upload-preview">
-            <img src="" class="upload-preview-img" id="upload-preview-img" alt="Yüklenen Ürün Fotoğrafı" />
-            
-            <div class="upload-overlay" id="upload-overlay">
-              <div class="upload-progress-ring">
-                <svg width="80" height="80">
-                  <circle class="upload-ring-bg" cx="40" cy="40" r="35" />
-                  <circle class="upload-ring-fill" id="upload-progress-fill" cx="40" cy="40" r="35" />
-                </svg>
-                <div class="upload-ring-icon" id="upload-ring-icon">📸</div>
-              </div>
-              <div>
-                <div class="upload-status-text" id="upload-status-text">Fotoğraf Analiz Ediliyor...</div>
-                <div class="upload-status-sub" id="upload-status-sub">%0</div>
-              </div>
-              <div class="upload-steps">
-                <div class="upload-step active" id="step-1">
-                  <div class="upload-step-dot"></div>
-                  <span data-i18n="dash.proc1_title">Fotoğraf Analizi</span>
-                </div>
-                <div class="upload-step" id="step-2">
-                  <div class="upload-step-dot"></div>
-                  <span data-i18n="dash.proc2_title">3D Üretim</span>
-                </div>
-                <div class="upload-step" id="step-3">
-                  <div class="upload-step-dot"></div>
-                  <span data-i18n="dash.proc3_title">Kalite Raporu</span>
-                </div>
-                <div class="upload-step" id="step-4">
-                  <div class="upload-step-dot"></div>
-                  <span data-i18n="dash.proc4_title">Akıllı İyileştirme</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="upload-done-badge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>AR Model Hazır!</span>
-            </div>
-
-            <a href="market.html" class="btn btn-primary upload-try-btn">
-              <span data-i18n="market.btn_try">AR'de Dene</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </div>
+        <style>
+          .hero-img { 
+            width: 100%; 
+            border-radius: 24px; 
+            box-shadow: 0 24px 80px rgba(0,0,0,0.6); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            transition: opacity 0.3s ease;
+          }
+          html[lang="tr"] #hero-img-en { display: none; }
+          html[lang="tr"] #hero-img-tr { display: block; }
+          html[lang="en"] #hero-img-tr { display: none; }
+          html[lang="en"] #hero-img-en { display: block; }
+        </style>
+        <img src="hero_visual_tr.png" alt="Iarone Hero" id="hero-img-tr" class="hero-img" />
+        <img src="hero_visual_en.png" alt="Iarone Hero" id="hero-img-en" class="hero-img" />
       </div>
 
     </div>
