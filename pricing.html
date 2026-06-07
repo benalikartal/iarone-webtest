@@ -3,24 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fiyatlandırma — Kredi Tabanlı Planlar | Iarone</title>
-  <meta name="description" content="Iarone kredi tabanlı planları: Starter, Plus, Pro, Business. Aylık krediler, AR/GLB/USDZ üretimi, yayınlama ve embed. Satış ekibiyle iletişime geçin." />
+  <title>Iarone — Kredi Tabanlı Planlar</title>
+  <meta name="description" content="Iarone kredi tabanlı planları: Başlangıç, Yayınlama, E-Ticaret, Kurumsal. Aylık krediler, AR/GLB/USDZ üretimi, yayınlama ve embed." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.v5.css" />
-  <script>
-    // Theme explicitly set to Iris Dual style
-  </script>
   <style>
-    /* Pricing-page tilt is handled via JS; ensure no overflow clip on grid */
     .pricing-grid { overflow: visible; }
-
-    /* FAQ Accordion */
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-      padding: 20px 0;
-    }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
     .faq-question {
       display: flex; align-items: center; justify-content: space-between;
       cursor: pointer; font-size: 16px; font-weight: 600; color: var(--t1);
@@ -44,19 +35,14 @@
     }
     .faq-item.open .faq-answer { max-height: 200px; padding-top: 14px; }
     .faq-answer p { max-width: none; }
-
-    /* Comparison Table */
     .compare-table {
-      width: 100%; border-collapse: collapse;
-      font-size: 14px;
+      width: 100%; border-collapse: collapse; font-size: 14px;
     }
     .compare-table th, .compare-table td {
-      padding: 14px 20px; text-align: center;
-      border-bottom: 1px solid var(--border);
+      padding: 14px 20px; text-align: center; border-bottom: 1px solid var(--border);
     }
     .compare-table th {
-      font-weight: 700; font-size: 13px; color: var(--t1);
-      background: var(--bg-card);
+      font-weight: 700; font-size: 13px; color: var(--t1); background: var(--bg-card);
     }
     .compare-table th:first-child, .compare-table td:first-child {
       text-align: left; color: var(--t2);
@@ -67,8 +53,6 @@
     .check { color: var(--success); font-size: 16px; }
     .dash  { color: var(--t3); }
     .star  { color: var(--warn); }
-
-    /* Trust logos strip */
     .trust-strip {
       display: flex; align-items: center; justify-content: center; gap: 48px;
       padding: 32px 0; flex-wrap: wrap;
@@ -82,33 +66,27 @@
 </head>
 <body>
 
-<!-- ═══ BG BLOBS ═══ -->
 <div class="bg-blobs" aria-hidden="true">
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
 </div>
 
-<!-- ═══ NAVBAR ═══ -->
 <nav class="nav" id="main-nav" role="navigation" aria-label="Ana navigasyon">
   <div class="container">
     <div class="nav__wrap">
-
       <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa">
         <img src="00_iarone_logo_exact_transparent_white_glow.png" class="logo-dark" alt="Iarone" />
         <img src="00_iarone_logo_exact_transparent_black.png"     class="logo-light" alt="Iarone" />
         <span class="logo-text">Iarone</span>
       </a>
-
       <ul class="nav__links" role="list">
         <li><a href="index.html"     class="nav__link" data-i18n="nav.home">Ana Sayfa</a></li>
         <li><a href="index.html#nasil-calisir" class="nav__link" data-i18n="nav.dashboard">Nasıl Çalışır</a></li>
-        <li><a href="market.html"    class="nav__link" data-i18n="nav.market">Market</a></li>
+        <li><a href="market.html"    class="nav__link" data-i18n="nav.market">Çözümler</a></li>
         <li><a href="pricing.html"   class="nav__link active" data-i18n="nav.pricing">Fiyatlandırma</a></li>
         <li><a href="dashboard.html" class="nav__link">Panel</a></li>
       </ul>
-
       <div class="nav__right">
-        <!-- Language -->
         <div class="lang-sw" id="lang-sw">
           <button class="lang-btn" id="lang-btn" aria-label="Dil seçin">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -120,18 +98,11 @@
             <div class="lang-opt"     data-lang="en" role="menuitem" tabindex="0">🇬🇧 &nbsp;English</div>
           </div>
         </div>
-
-        <!-- Theme Toggle removed for Iris Dual design -->
-
-        <!-- CTA Buttons — data-auth-intent opens the auth intent modal (JS);
-             href stays a same-tab fallback to app auth when JS is disabled. -->
         <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html"    class="btn btn-ghost"   id="nav-login" data-auth-intent="login" data-i18n="nav.login">Giriş Yap</a>
-        <a href="https://app.iarone.com/auth.html?mode=register&returnUrl=/dashboard.html" class="btn btn-primary" id="nav-register" data-auth-intent="register" style="margin-right: 8px;">Kayıt Ol</a>
         <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html" class="btn btn-primary" id="nav-cta" data-auth-intent="create">
           <span data-i18n="nav.cta">Model Oluştur</span>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-
         <button class="nav__burger" id="nav-burger" aria-label="Menüyü aç" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -140,117 +111,113 @@
   </div>
 </nav>
 
-<!-- Mobile Nav -->
 <div class="nav__mobile" id="nav-mobile" role="menu">
   <a href="index.html"     class="nav__link" data-i18n="nav.home">Ana Sayfa</a>
   <a href="index.html#nasil-calisir" class="nav__link" data-i18n="nav.dashboard">Nasıl Çalışır</a>
-  <a href="market.html"    class="nav__link" data-i18n="nav.market">Market</a>
+  <a href="market.html"    class="nav__link" data-i18n="nav.market">Çözümler</a>
   <a href="pricing.html"   class="nav__link active" data-i18n="nav.pricing">Fiyatlandırma</a>
   <div class="nav__mobile-actions">
     <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html"    class="btn btn-ghost"   data-auth-intent="login" data-i18n="nav.login">Giriş Yap</a>
-    <a href="https://app.iarone.com/auth.html?mode=register&returnUrl=/dashboard.html" class="btn btn-primary" data-auth-intent="register" style="margin-bottom: 10px;">Kayıt Ol</a>
     <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html" class="btn btn-primary" data-auth-intent="create" data-i18n="nav.cta">Model Oluştur</a>
   </div>
 </div>
 
-<!-- ═══ PRICING HERO ═══ -->
-<section class="section z1" id="pricing" aria-labelledby="pricing-heading"
-  style="padding-top:calc(var(--nav-h) + 104px);background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(99,102,241,.07) 0%,transparent 70%);">
+<section class="section z1" id="pricing" aria-labelledby="pricing-heading" style="padding-top:calc(var(--nav-h) + 104px);background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(99,102,241,.07) 0%,transparent 70%);">
   <div class="container">
     <div class="sec-hd reveal">
-      <span class="badge" data-i18n="pricing.badge">Fiyatlandırma · Kredi Tabanlı</span>
-      <h1 class="gt" id="pricing-heading">İhtiyacınıza Uygun Kredi Planı</h1>
-      <p>Aylık planlar kredi içerir. Her üretim kredi harcar; ihtiyaç olursa ek kredi alabilirsiniz.</p>
+      <span class="badge" data-i18n="pricing.badge">Kredi Tabanlı Kullanım</span>
+      <h1 class="gt" id="pricing-heading" data-i18n="pricing.title">İhtiyacınıza Uygun Plan</h1>
+      <p data-i18n="pricing.sub">3D üretim, AR export ve optimizasyon işlemleri krediyle çalışır. Planınıza göre aylık kredi tanımlanır; ihtiyaç halinde ek kredi eklenebilir.</p>
     </div>
 
-    <!-- Honest notice: billing activation in progress; buttons open contact/waitlist flow. -->
+    <!-- Production Notice -->
     <div class="reveal" style="max-width:640px;margin:0 auto 36px;padding:14px 20px;border:1px solid var(--border);border-radius:var(--r-lg);background:var(--bg-card,rgba(255,255,255,.04));text-align:center;">
-      <span style="color:var(--t2);font-size:14px;">Ödeme sistemi hazırlanıyor. Kredi planınızı görüşmek için satış ekibimizle iletişime geçin.</span>
+      <span style="color:var(--t2);font-size:14px;" data-i18n="pricing.notice">Plan aktivasyonu ve kredi tanımlamaları satış ekibi üzerinden yapılır.</span>
     </div>
 
-    <!-- 3-Column Pricing Grid -->
+    <!-- 4-Column Pricing Grid -->
     <div class="pricing-grid">
-
-      <!-- ── Card 1: Starter (FREE plan) ── -->
+      <!-- ── Card 1: Starter ── -->
       <div class="p-card reveal" id="plan-starter" role="article" aria-label="Starter Paketi">
-        <div class="p-plan">Starter</div>
-        <div class="p-price" style="font-size:22px;line-height:1.25;">Başlangıç Kredisi</div>
-        <div class="p-per">küçük ürün testleri için</div>
+        <div class="p-plan" data-i18n="pricing.p1_name">Başlangıç Kredisi</div>
+        <div class="p-price" style="font-size:22px;line-height:1.25;" data-i18n="pricing.p1_price">Ücretsiz</div>
+        <div class="p-per" data-i18n="pricing.p1_per">İlk modeller dahil</div>
         <hr class="p-hr" />
-        <p class="p-desc">Platforma alışmak ve birkaç ürünü 3D'ye dönüştürmek isteyenler için başlangıç kredisi.</p>
+        <p class="p-desc" data-i18n="pricing.p1_desc">Platforma alışmak ve ilk modeli denemek için ideal başlangıç noktası.</p>
         <ul class="p-feats" aria-label="Starter paketi özellikleri">
-          <li class="p-feat">Temel 3D üretim (standart kalite)</li>
-          <li class="p-feat">Web önizleme ve yayınlama</li>
-          <li class="p-feat">Kalite / AR hazırlık raporu</li>
-          <li class="p-feat">GLB + USDZ indirme</li>
+          <li class="p-feat" data-i18n="pricing.p1_f1">İlk 3 adet 3D model üretimi</li>
+          <li class="p-feat" data-i18n="pricing.p1_f2">Temel web önizleme</li>
+          <li class="p-feat" data-i18n="pricing.p1_f3">Basit kalite sonuç raporu</li>
+          <li class="p-feat" data-i18n="pricing.p1_f4">Standart işlem sırası</li>
         </ul>
-        <a href="mailto:hello@iarone.ai" class="btn btn-ghost btn-full btn-ghost-lg" id="plan-starter-cta">
+        <a href="#demo-section" class="btn btn-ghost btn-full btn-ghost-lg" id="plan-starter-cta" data-i18n="pricing.p1_cta">
           Kredi Talep Et
         </a>
       </div>
 
-      <!-- ── Card 2: Plus (Highlighted) ── -->
-      <div class="p-card p-card-hl reveal d1" id="plan-plus" role="article" aria-label="Plus Paketi — Önerilen">
-        <div class="p-pop">Önerilen</div>
-        <div class="p-plan">Plus</div>
-        <div class="p-price" style="font-size:22px;line-height:1.25;">Yayınlama Paketi</div>
-        <div class="p-per">aylık kredi paketi · yayınlama dahil</div>
+      <!-- ── Card 2: Plus ── -->
+      <div class="p-card p-card-hl reveal d1" id="plan-plus" role="article" aria-label="Plus Paketi">
+        <div class="p-pop" data-i18n="pricing.p2_badge">En Popüler</div>
+        <div class="p-plan" data-i18n="pricing.p2_name">Yayınlama Paketi</div>
+        <div class="p-price" style="font-size:22px;line-height:1.25;" data-i18n="pricing.p2_price">₺499</div>
+        <div class="p-per" data-i18n="pricing.p2_per">/ ay</div>
         <hr class="p-hr" />
-        <p class="p-desc">GLB/USDZ içerik üretimi, yayınlama, embed ve indirme — ürün sayfaları için eksiksiz içerik.</p>
+        <p class="p-desc" data-i18n="pricing.p2_desc">Ciddi satış hedefi olan e-ticaret işletmeleri için. Kalite + İyileştirme dahil.</p>
         <ul class="p-feats" aria-label="Plus paketi özellikleri">
-          <li class="p-feat">Aylık kredi paketi</li>
-          <li class="p-feat">Standart + yüksek kalite üretim</li>
-          <li class="p-feat star">Detaylı kalite ve AR hazırlık raporu</li>
-          <li class="p-feat">GLB + USDZ indirme</li>
-          <li class="p-feat">Web embed ve yayınlama</li>
-          <li class="p-feat">İhtiyaç halinde ek kredi alımı</li>
+          <li class="p-feat" data-i18n="pricing.p2_f1">Aylık 50 adet 3D model üretimi</li>
+          <li class="p-feat" data-i18n="pricing.p2_f2">Detaylı Kalite Raporu (3 kategori)</li>
+          <li class="p-feat star" data-i18n="pricing.p2_f3">Akıllı Model İyileştirme sistemi</li>
+          <li class="p-feat" data-i18n="pricing.p2_f4">Mobil AR hazır çıktı</li>
+          <li class="p-feat" data-i18n="pricing.p2_f5">Web embed + API erişimi</li>
+          <li class="p-feat" data-i18n="pricing.p2_f6">Öncelikli destek</li>
         </ul>
-        <a href="mailto:hello@iarone.ai" class="btn btn-primary btn-full btn-primary-lg" id="plan-plus-cta">
-          <span>Planı Görüşelim</span>
+        <a href="#demo-section" class="btn btn-primary btn-full btn-primary-lg" id="plan-plus-cta">
+          <span data-i18n="pricing.p2_cta">Planı Görüşelim</span>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
 
       <!-- ── Card 3: Pro ── -->
       <div class="p-card reveal d2" id="plan-pro" role="article" aria-label="Pro Paketi">
-        <div class="p-plan">Pro</div>
-        <div class="p-price" style="font-size:22px;line-height:1.25;">E-Ticaret Paketi</div>
-        <div class="p-per">e-ticaret ağırlıklı kullanım</div>
+        <div class="p-plan" data-i18n="pricing.p3_name">E-Ticaret Paketi</div>
+        <div class="p-price" style="font-size:22px;line-height:1.25;" data-i18n="pricing.p3_price">₺1499</div>
+        <div class="p-per" data-i18n="pricing.p3_per">/ ay</div>
         <hr class="p-hr" />
-        <p class="p-desc">E-ticaret ürün sayfaları için gelişmiş publish şablonları ve API erişimi.</p>
+        <p class="p-desc" data-i18n="pricing.p3_desc">Geniş ürün kataloğuna sahip markalar için kapsamlı üretim ve AR paketi.</p>
         <ul class="p-feats" aria-label="Pro paketi özellikleri">
-          <li class="p-feat">Plus özelliklerin tamamı</li>
-          <li class="p-feat star">E-ticaret ürün yayınlama</li>
-          <li class="p-feat">Ürün detay ve embed şablonları</li>
-          <li class="p-feat">API erişimi</li>
-          <li class="p-feat">Öncelikli destek</li>
+          <li class="p-feat" data-i18n="pricing.p3_f1">Aylık 200 adet 3D model üretimi</li>
+          <li class="p-feat star" data-i18n="pricing.p3_f2">Gelişmiş Kalite Kontrol ve Toplu İşlem</li>
+          <li class="p-feat" data-i18n="pricing.p3_f3">Satış kalitesi odaklı iyileştirme</li>
+          <li class="p-feat" data-i18n="pricing.p3_f4">Öncelikli işlem sırası</li>
+          <li class="p-feat" data-i18n="pricing.p3_f5">Sınırsız Web embed görünümü</li>
+          <li class="p-feat" data-i18n="pricing.p3_f6">Ayrılmış hesap yöneticisi</li>
         </ul>
-        <a href="mailto:hello@iarone.ai" class="btn btn-ghost btn-full btn-ghost-lg" id="plan-pro-cta">
+        <a href="#demo-section" class="btn btn-ghost btn-full btn-ghost-lg" id="plan-pro-cta" data-i18n="pricing.p3_cta">
           Satış Ekibiyle Görüş
         </a>
       </div>
 
       <!-- ── Card 4: Business ── -->
       <div class="p-card reveal d3" id="plan-business" role="article" aria-label="Business Paketi">
-        <div class="p-plan">Business</div>
-        <div class="p-price" style="font-size:22px;line-height:1.25;">Kurumsal Hacim</div>
-        <div class="p-per">ajans · katalog · marketplace</div>
+        <div class="p-plan" data-i18n="pricing.p4_name">Kurumsal Hacim</div>
+        <div class="p-price" style="font-size:22px;line-height:1.25;" data-i18n="pricing.p4_price">Özel Fiyat</div>
+        <div class="p-per" data-i18n="pricing.p4_per">Kurumsal ve ajanslar için</div>
         <hr class="p-hr" />
-        <p class="p-desc">Marketplace listesi, toplu katalog üretimi ve white-label seçenekleri.</p>
+        <p class="p-desc" data-i18n="pricing.p4_desc">Yüksek hacimli üretim, API entegrasyonu ve özel model gereksinimleri.</p>
         <ul class="p-feats" aria-label="Business paketi özellikleri">
-          <li class="p-feat">Pro özelliklerin tamamı</li>
-          <li class="p-feat star">Marketplace listesi ve başvurusu</li>
-          <li class="p-feat">Toplu katalog üretimi</li>
-          <li class="p-feat">White-label seçenekleri</li>
-          <li class="p-feat">Özel API entegrasyonu</li>
-          <li class="p-feat">Ayrılmış hesap yöneticisi</li>
+          <li class="p-feat" data-i18n="pricing.p4_f1">Sınırsız hacimde model üretimi</li>
+          <li class="p-feat" data-i18n="pricing.p4_f2">Özel API entegrasyon desteği</li>
+          <li class="p-feat star" data-i18n="pricing.p4_f3">Business plan ile marketplace başvurusu</li>
+          <li class="p-feat" data-i18n="pricing.p4_f4">Uzman kalite kontrol onayı</li>
+          <li class="p-feat" data-i18n="pricing.p4_f5">On-prem / özel sunucu seçenekleri</li>
+          <li class="p-feat" data-i18n="pricing.p4_f6">7/24 Özel Destek Hattı</li>
         </ul>
-        <a href="mailto:hello@iarone.ai" class="btn btn-ghost btn-full btn-ghost-lg" id="plan-business-cta">
+        <a href="#demo-section" class="btn btn-ghost btn-full btn-ghost-lg" id="plan-business-cta" data-i18n="pricing.p4_cta">
           Kurumsal Görüşme Al
         </a>
       </div>
 
-    </div><!-- /pricing-grid -->
+    </div>
   </div>
 </section>
 
@@ -265,10 +232,10 @@
         <thead>
           <tr>
             <th style="width:32%">Özellik</th>
-            <th>Starter</th>
-            <th class="col-hl">Plus</th>
-            <th>Pro</th>
-            <th>Business</th>
+            <th data-i18n="pricing.p1_name">Başlangıç</th>
+            <th class="col-hl" data-i18n="pricing.p2_name">Yayınlama</th>
+            <th data-i18n="pricing.p3_name">E-Ticaret</th>
+            <th data-i18n="pricing.p4_name">Kurumsal</th>
           </tr>
         </thead>
         <tbody>
@@ -280,7 +247,7 @@
             <td><span class="check">✓</span></td>
           </tr>
           <tr>
-            <td>Yüksek kalite üretim</td>
+            <td>Akıllı Model İyileştirme</td>
             <td><span class="dash">—</span></td>
             <td class="col-hl"><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
@@ -294,72 +261,29 @@
             <td><span class="check">✓</span></td>
           </tr>
           <tr>
-            <td>Yayınlama + Web Embed</td>
+            <td>Web Embed Görüntüleme</td>
             <td><span class="check">✓</span></td>
             <td class="col-hl"><span class="check">✓</span></td>
-            <td><span class="check">✓</span></td>
-            <td><span class="check">✓</span></td>
+            <td>Sınırsız</td>
+            <td>Sınırsız</td>
           </tr>
           <tr>
-            <td>E-ticaret publish</td>
-            <td><span class="dash">—</span></td>
-            <td class="col-hl"><span class="dash">—</span></td>
-            <td><span class="star">⚡</span></td>
-            <td><span class="star">⚡</span></td>
-          </tr>
-          <tr>
-            <td>Marketplace listesi</td>
-            <td><span class="dash">—</span></td>
-            <td class="col-hl"><span class="dash">—</span></td>
-            <td><span class="dash">—</span></td>
-            <td><span class="star">⚡</span></td>
-          </tr>
-          <tr>
-            <td>Ek kredi alımı</td>
+            <td>API Entegrasyonu</td>
             <td><span class="dash">—</span></td>
             <td class="col-hl"><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
-            <td><span class="check">✓</span></td>
+            <td>Özel Destek</td>
           </tr>
           <tr>
-            <td>Destek</td>
-            <td>Standart</td>
-            <td class="col-hl">Öncelikli</td>
-            <td>Öncelikli</td>
-            <td>Hesap Yöneticisi</td>
+            <td>Marketplace Başvurusu</td>
+            <td><span class="dash">—</span></td>
+            <td class="col-hl"><span class="dash">—</span></td>
+            <td><span class="dash">—</span></td>
+            <td><span class="check">✓</span></td>
           </tr>
         </tbody>
       </table>
     </div>
-  </div>
-</section>
-
-<!-- ═══ HOW CREDITS WORK (Phase 7C.1) ═══ -->
-<section class="section-sm z1" aria-labelledby="credits-heading">
-  <div class="container" style="max-width:760px">
-    <div class="sec-hd reveal">
-      <span class="badge">Kredi Sistemi</span>
-      <h2 class="gt" id="credits-heading">Krediler Nasıl Harcanır?</h2>
-      <p>Her plan aylık kredi içerir. Aşağıdaki değerler kavramsaldır ve güncellenebilir.</p>
-    </div>
-    <div class="reveal" style="border:1px solid var(--border);border-radius:var(--r-xl);overflow:hidden;">
-      <table class="compare-table" role="table" aria-label="Kredi harcama tablosu">
-        <thead>
-          <tr><th style="width:70%">İşlem</th><th>Kredi</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Standart 3D üretim</td><td>5 kredi</td></tr>
-          <tr><td>Yüksek kalite üretim</td><td>10 kredi</td></tr>
-          <tr><td>AR / USDZ dışa aktarma</td><td>Dahil (veya 1 kredi)</td></tr>
-          <tr><td>Yayınlama / embed</td><td>Dahil</td></tr>
-          <tr><td>Sağlayıcı başlamadan başarısız olursa</td><td>Kredi iadesi</td></tr>
-          <tr><td>Sağlayıcı kaynaklı hata / yeniden deneme</td><td>Politika yakında netleşecek</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p style="text-align:center;font-size:12px;color:var(--t3);margin-top:16px;">
-      Değerler kavramsaldır; ödeme sistemi hazırlanıyor. Nihai kredi maliyetleri duyurulacaktır.
-    </p>
   </div>
 </section>
 
@@ -375,28 +299,28 @@
           <span>Krediler nedir ve nasıl çalışır?</span>
           <span class="faq-icon" aria-hidden="true">+</span>
         </div>
-        <div class="faq-answer"><p>Her plan aylık kredi içerir. 3D üretim kredi harcar (standart üretim ~5 kredi, yüksek kalite ~10 kredi). Yayınlama ve embed dahildir. İhtiyaç olursa ileride ek kredi alabilirsiniz.</p></div>
+        <div class="faq-answer"><p>Her plan aylık kredi içerir. 3D üretim işlemleri kredinizden düşer. Web embed gösterimleri ve paylaşımlar plana dahil edilir.</p></div>
       </div>
       <div class="faq-item reveal d1" data-faq>
         <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
-          <span>Ödeme yapmam gerekiyor mu? Faturalandırma aktif mi?</span>
+          <span>Hesabımı nasıl aktif edebilirim?</span>
           <span class="faq-icon" aria-hidden="true">+</span>
         </div>
-        <div class="faq-answer"><p>Hayır. Ödeme sistemi hazırlanıyor. Kredi planınızı görüşmek için satış ekibimizle iletişime geçin; size uygun paketi birlikte belirleyelim.</p></div>
+        <div class="faq-answer"><p>Plan aktivasyonu ve kredi tanımlamaları satış ekibi üzerinden yapılır. Bizimle iletişime geçtiğinizde süreç hemen başlatılır.</p></div>
       </div>
       <div class="faq-item reveal d2" data-faq>
         <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
           <span>Üretim başarısız olursa kredim yanar mı?</span>
           <span class="faq-icon" aria-hidden="true">+</span>
         </div>
-        <div class="faq-answer"><p>Üretim sağlayıcı çalışmaya başlamadan önce başarısız olursa krediniz iade edilir. Sağlayıcı çalıştıktan sonra oluşan hatalara ilişkin iade politikası netleştirilmektedir.</p></div>
+        <div class="faq-answer"><p>Model üretilemezse veya sistem hatası oluşursa krediniz iade edilir. İptal edilen işlemler faturanıza yansımaz.</p></div>
       </div>
       <div class="faq-item reveal d3" data-faq>
         <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
           <span>Modellerim hangi formatlarda çıkar?</span>
           <span class="faq-icon" aria-hidden="true">+</span>
         </div>
-        <div class="faq-answer"><p>GLB ve USDZ formatları üretilir. Web AR (model-viewer) ve iOS AR Quick Look ile uyumludur; yayınlama paketi üzerinden paylaşılabilir veya sitenize embed edilebilir.</p></div>
+        <div class="faq-answer"><p>GLB ve USDZ formatları standart olarak sunulur. Bu formatlar web ve mobil AR cihazlarında doğrudan çalışacak şekilde optimize edilmiştir.</p></div>
       </div>
     </div>
   </div>
@@ -420,26 +344,26 @@
 </section>
 
 <!-- ═══ CONTACT CTA ═══ -->
-<section class="section-sm z1" id="contact-cta" aria-labelledby="contact-heading">
+<section class="section-sm z1" id="demo-section" aria-labelledby="contact-heading">
   <div class="container">
     <div class="beta-box reveal">
       <div class="beta-inner">
-        <span class="badge" data-i18n="pricing.beta_badge">Satış ile İletişim</span>
-        <h2 class="gt-ac" id="contact-heading" data-i18n="pricing.beta_title">
-          Planınızı Görüşelim
+        <span class="badge" data-i18n="pricing.demo_badge">İletişim</span>
+        <h2 class="gt-ac" id="contact-heading" data-i18n="pricing.demo_title">
+          Demo Talep Et
         </h2>
-        <p data-i18n="pricing.beta_sub">
-          Ürün kataloğunuzu Iarone ile 3D/AR'a taşımak için satış ekibimizle iletişime geçin. Size uygun kredi ve plan seçeneğini birlikte belirleyelim.
+        <p data-i18n="pricing.demo_sub">
+          Ürün kataloğunuzu Iarone ile 3D/AR'a taşımak için uzman ekibimizle iletişime geçin.
         </p>
         <form class="beta-form" id="beta-form">
           <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" />
-          <input type="email" class="beta-input" id="beta-email" aria-label="E-posta adresiniz" data-i18n="pricing.beta_ph" placeholder="e-posta adresiniz" required />
-          <button type="submit" class="btn btn-primary" id="beta-submit" data-i18n="pricing.beta_btn">
-            Satış Ekibiyle Görüş
+          <input type="email" class="beta-input" id="beta-email" aria-label="E-posta adresiniz" data-i18n="pricing.demo_ph" placeholder="e-posta adresiniz" required />
+          <button type="submit" class="btn btn-primary" id="beta-submit" data-i18n="pricing.demo_btn">
+            Gönder
           </button>
         </form>
-        <p class="beta-note" data-i18n="pricing.beta_note">
-          🔒 Spam yok. İstediğiniz zaman çıkabilirsiniz.
+        <p class="beta-note" data-i18n="pricing.demo_note">
+          🔒 Bilgileriniz gizli tutulur.
         </p>
       </div>
     </div>
@@ -462,10 +386,10 @@
         <div class="foot-col-title" data-i18n="footer.col1">Ürün</div>
         <div class="foot-links">
           <a href="index.html#nasil-calisir" data-i18n="footer.f_dash">Nasıl Çalışır</a>
-          <a href="market.html"              data-i18n="footer.f_market">Market</a>
+          <a href="market.html"              data-i18n="footer.f_market">Sektör Çözümleri</a>
           <a href="pricing.html"             data-i18n="footer.f_price">Fiyatlandırma</a>
-          <a href="market.html#sell"         data-i18n="footer.f_sell">Satış Yap</a>
-          <a href="#"                        data-i18n="footer.f_api">API Docs</a>
+          <a href="market.html#sell"         data-i18n="footer.f_sell">Marketplace Başvurusu</a>
+          <a href="#"                        data-i18n="footer.f_api">API Dokümantasyonu</a>
         </div>
       </div>
       <div>
@@ -474,7 +398,7 @@
           <a href="#" data-i18n="footer.c_about">Hakkımızda</a>
           <a href="#" data-i18n="footer.c_blog">Blog</a>
           <a href="#" data-i18n="footer.c_career">Kariyer</a>
-          <a href="#" data-i18n="footer.c_contact">İletişim</a>
+          <a href="#demo-section" data-i18n="footer.c_contact">İletişim</a>
         </div>
       </div>
       <div>
@@ -488,7 +412,7 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <span class="foot-copy" data-i18n="footer.copy">© 2025 Iarone. Tüm hakları saklıdır.</span>
+      <span class="foot-copy" data-i18n="footer.copy">© 2026 Iarone. Tüm hakları saklıdır.</span>
       <div class="foot-socials" aria-label="Sosyal medya">
         <a href="#" class="soc-btn" aria-label="Twitter/X">𝕏</a>
         <a href="#" class="soc-btn" aria-label="LinkedIn">in</a>
@@ -499,48 +423,6 @@
   </div>
 </footer>
 
-<!-- ═══ FLOATING WIDGETS ═══ -->
-<div class="floating-widgets">
-  <!-- AI Chatbot Widget -->
-  <div class="ai-widget" id="ai-widget">
-    <!-- Chat Window -->
-    <div class="ai-chat-window" id="ai-chat-window">
-      <div class="ai-chat-header">
-        <div class="ai-chat-title">
-          <span class="ai-avatar">✨</span>
-          <div>
-            <strong>Iarone AI Asistan</strong>
-            <span>Çevrimiçi</span>
-          </div>
-        </div>
-        <button class="ai-close-btn" id="ai-close-btn" aria-label="Kapat">&times;</button>
-      </div>
-      <div class="ai-chat-body" id="ai-chat-body">
-        <!-- Messages will be injected here via JS -->
-      </div>
-      <div class="ai-chat-footer">
-        <input type="text" class="ai-chat-input" id="ai-chat-input" placeholder="Asistana sorun..." />
-        <button class="ai-chat-send" id="ai-chat-send" aria-label="Gönder">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-        </button>
-      </div>
-    </div>
-    <!-- Toggle Button -->
-    <button class="ai-toggle-btn" id="ai-toggle-btn" aria-label="Asistanı Aç">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z"></path></svg>
-    </button>
-  </div>
-
-  <!-- Instagram Icon -->
-  <a href="https://www.instagram.com/iarone.ai/?hl=tr" target="_blank" rel="noopener noreferrer" class="ig-float-btn" aria-label="Instagram">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-  </a>
-</div>
-
-<!-- Phase 7C.1: inject build-time API base so app.v5.js lead capture (/api/leads,
-     used by the beta waitlist form below) hits the Railway API on Vercel. Vite
-     replaces the VITE token at build time; the guard uses startsWith (partial
-     prefix) — not full-token equality — so a correct URL is never overwritten. -->
 <script>
   window.IARONE_API_URL = "%VITE_IARONE_API_URL%";
   if (!window.IARONE_API_URL || window.IARONE_API_URL.startsWith("%VITE_")) {
@@ -551,7 +433,6 @@
 <script type="module" src="app.v5.js"></script>
 <script type="module" src="auth-intent.js"></script>
 <script>
-  // ── FAQ Accordion ──
   document.querySelectorAll('[data-faq]').forEach(item => {
     const q = item.querySelector('.faq-question');
     q.addEventListener('click', () => {

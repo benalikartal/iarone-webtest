@@ -1,40 +1,80 @@
 <!DOCTYPE html>
-<html lang="tr" data-theme="dark">
+<html lang="tr" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Iarone Publish Package</title>
+  <title>Iarone 3D Ürün Görüntüleyici</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.v5.css" />
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
-    body { display:flex; justify-content:center; align-items:center; min-height:100vh; background:var(--bg); margin:0; padding:20px; }
-    .publish-card { max-width:600px; width:100%; background:var(--bg-card, #1e1e1e); border-radius:var(--r-xl); padding:24px; border:1px solid var(--border); box-shadow:var(--sh-xl); }
-    model-viewer { width:100%; height:400px; background-color:#111; border-radius:12px; margin-bottom:20px; }
-    .title-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
-    h1 { margin:0; font-size:24px; color:var(--text); }
+    body { 
+      display:flex; justify-content:center; align-items:center; 
+      min-height:100vh; background:var(--bg); margin:0; padding:20px; 
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .publish-card { 
+      max-width:700px; width:100%; background:var(--bg-card); 
+      border-radius:var(--r-xl); padding:32px; border:1px solid var(--border); 
+      box-shadow:var(--sh-lg); 
+    }
+    model-viewer { 
+      width:100%; height:450px; background-color:var(--bg-surface); 
+      border-radius:16px; margin-bottom:24px; border:1px solid var(--border);
+    }
+    .title-row { 
+      display:flex; justify-content:space-between; align-items:flex-start; 
+      margin-bottom:20px; 
+    }
+    h1 { 
+      margin:0; font-size:24px; color:var(--text); font-weight:700;
+      line-height:1.2;
+    }
+    .ar-badge {
+      background: rgba(16, 185, 129, 0.1); color: #10b981;
+      padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .scale-badge {
+      font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 999px;
+      display: inline-flex; align-items: center; gap: 6px; margin-bottom: 24px;
+    }
+    .btn-group {
+      display:flex; gap:16px; margin-top:24px; flex-wrap:wrap;
+    }
+    .btn-group .btn {
+      flex:1; min-width:160px; justify-content: center;
+    }
+    .powered-by {
+      text-align:center; margin-top:32px; font-size:13px; color:var(--t3);
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .powered-by img { height: 16px; opacity: 0.5; }
   </style>
 </head>
 <body>
 
 <div class="publish-card" id="publish-container" style="display:none;">
   <div class="title-row">
-    <h1 id="pkg-title">Model</h1>
-    <span class="badge" style="background:rgba(16, 185, 129, 0.1); color:#10b981;">AR Readiness: <span id="pkg-ar"></span></span>
+    <h1 id="pkg-title">Model Yükleniyor...</h1>
+    <div class="ar-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      AR Hazır <span id="pkg-ar" style="margin-left:4px; opacity:0.8;"></span>
+    </div>
   </div>
 
-  <!-- Phase 7A (Part C5): honest scale trust chip. Never claims verified unless
-       the backend genuinely verified it. -->
-  <div id="pkg-scale-chip" style="display:inline-block; font-size:12px; font-weight:600; padding:4px 10px; border-radius:999px; margin-bottom:16px; background:rgba(148,163,184,0.12); color:var(--t3);">Ölçek bilinmiyor</div>
+  <div id="pkg-scale-chip" class="scale-badge" style="background:rgba(148,163,184,0.12); color:var(--t3);">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+    Ölçek bilinmiyor
+  </div>
 
-  <!-- Phase 7C.1: polished iOS AR card for USDZ-only packages. Shown instead of an
-       empty/failed model-viewer. USDZ has no web preview by design — this is NOT a
-       GLB load failure. -->
-  <div id="ios-fallback" style="display:none; flex-direction:column; align-items:center; justify-content:center; background:#111; min-height:340px; border-radius:12px; margin-bottom:20px; padding:32px 24px; text-align:center;">
+  <div id="ios-fallback" style="display:none; flex-direction:column; align-items:center; justify-content:center; background:var(--bg-surface); min-height:450px; border-radius:16px; margin-bottom:24px; border:1px solid var(--border); padding:32px 24px; text-align:center;">
     <div style="font-size:48px; margin-bottom:16px;">📱</div>
-    <h3 style="color:#fff; margin:0 0 10px 0;">iOS AR için hazır</h3>
-    <p style="color:var(--t3); font-size:14px; line-height:1.6; margin:0 0 22px 0; max-width:380px;">Bu paket USDZ formatında. Web önizleme için GLB gerekir; iPhone/iPad üzerinde AR olarak açabilirsiniz.</p>
-    <a id="ios-fallback-btn" href="#" target="_blank" rel="noopener" class="btn btn-primary">USDZ indir</a>
-    <p style="color:var(--t3); font-size:12px; margin:14px 0 0 0;">iPhone Safari ile açıldığında Quick Look/AR desteklenir.</p>
+    <h3 style="color:var(--text); margin:0 0 10px 0;">iOS AR için Hazır</h3>
+    <p style="color:var(--t2); font-size:15px; line-height:1.6; margin:0 0 24px 0; max-width:380px;">Bu ürün paketi USDZ formatındadır. Web önizlemesi mevcut değildir, iPhone/iPad üzerinden AR olarak görüntüleyebilirsiniz.</p>
+    <a id="ios-fallback-btn" href="#" target="_blank" rel="noopener" class="btn btn-primary">iPhone'da AR Olarak Aç</a>
   </div>
 
   <model-viewer id="viewer"
@@ -42,40 +82,41 @@
     auto-rotate 
     ar 
     ar-modes="webxr scene-viewer quick-look" 
-    ar-scale="fixed">
+    ar-scale="fixed"
+    shadow-intensity="1">
   </model-viewer>
 
-  <div style="display:flex; gap:16px; margin-top:20px; flex-wrap:wrap;">
-    <button id="ar-btn" class="btn btn-primary" onclick="document.querySelector('model-viewer').activateAR()" style="flex:1; min-width:140px;">
-      Open in AR
+  <div class="btn-group">
+    <button id="ar-btn" class="btn btn-primary" onclick="document.querySelector('model-viewer').activateAR()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      Mekanda Gör (AR)
     </button>
-    <!-- Phase 7C.1: format-aware download (GLB or USDZ). Set + revealed in JS. -->
-    <a id="pub-dl" href="#" target="_blank" rel="noopener" class="btn btn-ghost" style="flex:1; min-width:140px; text-align:center; display:none;">
-      İndir
+    <a id="pub-dl" href="#" target="_blank" rel="noopener" class="btn btn-ghost" style="display:none;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Modeli İndir
     </a>
-    <!-- Phase 7C.1: marketplace CTA is HIDDEN on public pages by default. It is
-         only revealed when the package explicitly opts in (marketplaceApplyEnabled
-         / renderTemplate=MARKET_LISTING_APPLY). No SaaS/pricing/upgrade UI here. -->
-    <a id="market-apply-btn" href="market.html#sell" class="btn btn-ghost" style="flex:1; min-width:140px; text-align:center; display:none;">
-      Mağaza Başvurusu
+    <a id="market-apply-btn" href="market.html#sell" class="btn btn-ghost" style="display:none;">
+      Satışa Çıkar
     </a>
   </div>
-  <!-- Phase 7C.1: shown if the GLB preview itself fails to load; the download
-       button above stays usable so the model can still be obtained. -->
-  <div id="viewer-error" style="display:none; margin-top:14px; padding:12px 14px; border:1px solid var(--border); border-radius:8px; background:rgba(245,158,11,0.08); color:var(--t2); font-size:13px; text-align:center;">
-    Model önizlemesi yüklenemedi, dosyayı indirebilirsiniz.
+
+  <div id="viewer-error" style="display:none; margin-top:16px; padding:12px 16px; border:1px solid rgba(245,158,11,0.3); border-radius:12px; background:rgba(245,158,11,0.05); color:#d97706; font-size:14px; text-align:center;">
+    Model önizlemesi yüklenemedi. Sorun devam ederse dosyayı cihazınıza indirebilirsiniz.
   </div>
-  <div style="text-align:center; margin-top:16px; font-size:12px; color:var(--t3);">Powered by Iarone</div>
+
+  <div class="powered-by">
+    <span>Powered by</span>
+    <img src="00_iarone_logo_exact_transparent_black.png" alt="Iarone Logo" />
+    <strong>Iarone</strong>
+  </div>
 </div>
 
-<div id="error-container" style="display:none; text-align:center;">
-  <h2>Package Not Found or Draft</h2>
+<div id="error-container" style="display:none; text-align:center; padding: 40px; background: var(--bg-card); border-radius: var(--r-xl); border: 1px solid var(--border); max-width: 500px; margin: 0 auto; box-shadow: var(--sh-lg);">
+  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.5" style="margin-bottom:16px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  <h2 style="margin:0 0 12px 0; color:var(--text); font-size:20px;">Ürün Bulunamadı</h2>
+  <p style="color:var(--t2); margin:0;">Bu model yayından kaldırılmış veya henüz hazırlık aşamasında olabilir.</p>
 </div>
 
-<!-- Phase 7C.1: inject build-time API base into the runtime global so the
-     plain inline script below can read it via window.IARONE_API_URL.
-     Vite replaces %VITE_IARONE_API_URL% at build time; the guard keeps
-     local dev working when the var is unset (token stays unreplaced). -->
 <script>
   window.IARONE_API_URL = "%VITE_IARONE_API_URL%";
   if (!window.IARONE_API_URL || window.IARONE_API_URL.startsWith("%VITE_")) {
@@ -84,14 +125,8 @@
 </script>
 
 <script>
-  // Phase 7A: config-driven API base (runtime global → local-dev default).
-  // Phase 7C.1: window.IARONE_API_URL is now set by the inject block above
-  //   (Vite build-time replacement) so Vercel staging resolves the correct API URL.
   const API_BASE = (typeof window !== 'undefined' && window.IARONE_API_URL) || 'http://localhost:3000/api';
 
-  // Phase 7A (Part C5): honest scale label. The client/web layer can NEVER claim
-  // a verified scale; only a backend-verified block (scale_verified + a
-  // trustworthy source + a valid bbox) reads as "Doğrulanmış ölçek".
   const _TRUSTWORTHY_SCALE_SOURCES = ['reference_object', 'user_input', 'sensor_depth'];
   function _extractScaleMeta(pkg) {
     if (!pkg || typeof pkg !== 'object') return null;
@@ -109,21 +144,20 @@
     const chip = document.getElementById('pkg-scale-chip');
     if (!chip) return;
     const sm = _extractScaleMeta(pkg);
+    const svgIcon = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>`;
+    
     if (_isScaleVerified(sm)) {
-      chip.innerText = 'Doğrulanmış ölçek';
-      chip.style.background = 'rgba(46,158,91,0.12)'; chip.style.color = '#2e9e5b';
+      chip.innerHTML = svgIcon + 'Gerçek Ölçek Doğrulandı';
+      chip.style.background = 'rgba(16, 185, 129, 0.1)'; chip.style.color = '#059669';
     } else if (sm && sm.scale_source && sm.scale_source !== 'unknown') {
-      chip.innerText = 'Yaklaşık ölçek (doğrulanmadı)';
-      chip.style.background = 'rgba(201,138,27,0.12)'; chip.style.color = '#c98a1b';
+      chip.innerHTML = svgIcon + 'Yaklaşık Ölçek';
+      chip.style.background = 'rgba(245, 158, 11, 0.1)'; chip.style.color = '#d97706';
     } else {
-      chip.innerText = 'Ölçek bilinmiyor';
-      chip.style.background = 'rgba(148,163,184,0.12)'; chip.style.color = 'var(--t3)';
+      chip.innerHTML = svgIcon + 'Ölçek Bilinmiyor';
+      chip.style.background = 'var(--bg-surface)'; chip.style.color = 'var(--t3)';
     }
   }
 
-  // Phase 7B.1: core invariant — only an absolute http(s) URL is renderable.
-  // A storage_key or local path must NEVER become a viewer src / href. The API
-  // already guarantees public glbUrl, but the page enforces it defensively.
   function isPublicUrl(u) {
     return typeof u === 'string' && /^https?:\/\//i.test(u.trim());
   }
@@ -138,61 +172,48 @@
       .then(data => {
         if(data.success && data.package) {
           const pkg = data.package;
-          // Phase 7B.1: sanitize all renderable URLs up front — non-public values
-          // (storage_key / local path) are dropped to null, never rendered.
           const glbUrl    = publicOrNull(pkg.glbUrl);
           const usdzUrl   = publicOrNull(pkg.usdzUrl);
           const posterUrl = publicOrNull(pkg.posterImageUrl);
 
-          // No public artifact at all → show the not-available fallback.
           if(!glbUrl && !usdzUrl) {
             document.getElementById('error-container').style.display = 'block';
-            document.querySelector('#error-container h2').innerText =
-              'Bu model için yayın bağlantısı henüz hazır değil.';
             return;
           }
 
           document.getElementById('publish-container').style.display = 'block';
-          document.getElementById('pkg-title').innerText = pkg.title || 'Model';
-          document.getElementById('pkg-ar').innerText = pkg.arReadinessScore ? pkg.arReadinessScore+'/100' : 'N/A';
+          document.getElementById('pkg-title').innerText = pkg.title || 'İsimsiz Model';
+          
+          let scoreText = 'N/A';
+          if (pkg.arReadinessScore) {
+            scoreText = pkg.arReadinessScore + '/100';
+          }
+          document.getElementById('pkg-ar').innerText = scoreText;
           renderScaleChip(pkg);
 
-          // Phase 7C.1: format-aware download button in the main action row.
-          // Prefer GLB, else USDZ. Labels honestly (never "GLB" for a USDZ) and
-          // only shown when a public URL exists.
           const dlBtn = document.getElementById('pub-dl');
           const dlUrl = glbUrl || usdzUrl;
           if (dlUrl) {
             dlBtn.href = dlUrl;
-            dlBtn.innerText = glbUrl ? 'GLB İndir' : 'USDZ İndir';
-            dlBtn.style.display = '';
+            dlBtn.style.display = 'inline-flex';
           }
 
-          // Phase 7C.1: marketplace CTA only if the package explicitly opts in.
-          // Default (no flag) → stays hidden. Public pages never show upgrade UI.
           if (pkg.marketplaceApplyEnabled === true || pkg.renderTemplate === 'MARKET_LISTING_APPLY') {
             const mb = document.getElementById('market-apply-btn');
-            if (mb) mb.style.display = '';
+            if (mb) mb.style.display = 'inline-flex';
           }
 
           const viewer = document.getElementById('viewer');
-          // USDZ is the iOS Quick Look source whenever present.
           if (usdzUrl) viewer.setAttribute('ios-src', usdzUrl);
           if (posterUrl) viewer.poster = posterUrl;
 
           if (glbUrl) {
-            // Web-renderable GLB → render model-viewer normally. If the GLB itself
-            // fails to load (network / corrupt / CORS), keep the card + download
-            // button and surface a clear note instead of blanking the page.
             viewer.addEventListener('error', function(){
               viewer.style.display = 'none';
               document.getElementById('viewer-error').style.display = 'block';
             }, { once: true });
             viewer.src = glbUrl;
           } else {
-            // USDZ-only (no public GLB) → polished iOS AR card. This is by design,
-            // NOT a viewer failure: never show an empty model-viewer here. The card
-            // carries the "USDZ indir" CTA, so hide the row's AR + download buttons.
             viewer.style.display = 'none';
             document.getElementById('ar-btn').style.display = 'none';
             dlBtn.style.display = 'none';
