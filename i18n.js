@@ -19,9 +19,9 @@ export const i18n = {
       hero_h2:            'Iarone, ürün fotoğraflarını veya mevcut 3D dosyaları web, mobil AR ve e-ticaret ürün sayfaları için optimize edilmiş yayın paketlerine dönüştürür.',
       hero_cta_primary:   'Model Oluştur',
       hero_cta_secondary: 'Demo Talep Et',
-      stat1_v: '10×',    stat1_l: 'Geleneksele göre daha hızlı',
-      stat2_v: '%100',   stat2_l: 'Teknik bilgi gerekmez',
-      stat3_v: 'AR',     stat3_l: 'Mobil & Web hazır çıktı',
+      stat1_v: 'Hızlı',    stat1_l: 'Daha hızlı yayın süreci',
+      stat2_v: 'Kolay',   stat2_l: 'Teknik bilgi gerektirmez',
+      stat3_v: 'Çıktı',     stat3_l: 'Web ve AR için hazır çıktı',
 
       usp_badge:   'Farkımız',
       usp_title:   'Sadece 3D model üretmeyiz. Yayına hazır deneyim paketi oluştururuz.',
@@ -34,7 +34,7 @@ export const i18n = {
 
       steps_badge:    'Nasıl Çalışır',
       steps_title:    'Dört Adımda Satışa Hazır',
-      steps_sub:      'Tek fotoğraftan kalite onaylı AR modele saniyeler içinde.',
+      steps_sub:      'Tek fotoğraftan satışa hazır AR paketine hızlı dönüşüm.',
       step1_title:    'Fotoğraf Yükleme',
       step1_desc:     'Ürün görselini veya 3D dosyanı yükle.',
       step2_title:    'Analiz',
@@ -80,7 +80,7 @@ export const i18n = {
       proc1_desc:     'Işık, açı ve arka plan otomatik kontrol edilir.',
       proc1_stat:     'Tamamlandı',
       proc2_title:    '3D Üretim',
-      proc2_desc:     'Model saniyeler içinde oluşturulur.',
+      proc2_desc:     'Model otomatik olarak oluşturulur.',
       proc2_stat:     'İşleniyor...',
       proc3_title:    'Kalite Raporu',
       proc3_desc:     'AR ve e-ticaret uygunluğu test edilir.',
@@ -220,7 +220,7 @@ export const i18n = {
       premium_val: 'Doğrula',
       premium_pub: 'Yayınla',
       premium_sell: 'Sat',
-      scarcity: 'Platform üzerinden saniyeler içinde binlerce ürünü 3D\'ye dönüştürebilirsiniz.',
+      scarcity: 'Platform üzerinden ürün kataloğunuzu 3D\'ye dönüştürebilirsiniz.',
       beta_label: 'Kullanım Örneği'
     },
     footer: {
@@ -261,9 +261,9 @@ export const i18n = {
       hero_h2:            'Iarone converts product photos or existing 3D files into optimized publish packages for web, mobile AR, and e-commerce product pages.',
       hero_cta_primary:   'Create Model',
       hero_cta_secondary: 'Request Demo',
-      stat1_v: '10×',    stat1_l: 'Faster than traditional workflows',
-      stat2_v: '100%',   stat2_l: 'No 3D technical skills required',
-      stat3_v: 'AR',     stat3_l: 'Ready for Web & Mobile AR',
+      stat1_v: 'Speed',    stat1_l: 'Faster publishing process',
+      stat2_v: 'Easy',   stat2_l: 'No technical skills required',
+      stat3_v: 'Output',     stat3_l: 'Ready for Web & AR',
 
       usp_badge:   'The Iarone Difference',
       usp_title:   'We don\'t just generate 3D models. We build publish-ready experience packages.',
@@ -276,7 +276,7 @@ export const i18n = {
 
       steps_badge:    'How It Works',
       steps_title:    'Sales-Ready in Four Steps',
-      steps_sub:      'From a single image to a validated AR model in seconds.',
+      steps_sub:      'From a single image to a validated AR model.',
       step1_title:    'Upload',
       step1_desc:     'Upload a product image or your existing 3D file.',
       step2_title:    'Analyze',
@@ -322,7 +322,7 @@ export const i18n = {
       proc1_desc:     'Lighting, angle, and background are automatically checked.',
       proc1_stat:     'Completed',
       proc2_title:    '3D Generation',
-      proc2_desc:     'Model is generated in seconds.',
+      proc2_desc:     'Model is generated automatically.',
       proc2_stat:     'Processing...',
       proc3_title:    'Quality Report',
       proc3_desc:     'AR and e-commerce readiness is tested.',
@@ -462,7 +462,7 @@ export const i18n = {
       premium_val: 'Validate',
       premium_pub: 'Publish',
       premium_sell: 'Sell',
-      scarcity: 'Convert thousands of products to 3D in seconds through our platform.',
+      scarcity: 'Convert products to 3D efficiently through our platform.',
       beta_label: 'Example Output'
     },
     footer: {
