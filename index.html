@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Iarone — 3D & AR Commerce Platform</title>
-  <meta name="description" content="Ürün fotoğraflarından saniyeler içinde satışa hazır 3D ve AR modeller üretin. Iarone kalite kontrol ve akıllı iyileştirme ile birlikte sunar." />
+  <meta name="description" content="Ürün fotoğraflarından satışa hazır 3D ve AR modeller üretin. Iarone kalite kontrol ve akıllı iyileştirme ile birlikte sunar." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -104,32 +104,24 @@
             <span data-i18n="home.hero_cta_secondary">Demo Talep Et</span>
           </a>
         </div>
-        <div class="hero__stats reveal d4">
-          <div>
-            <div class="hero__sv" data-i18n="home.stat1_v">10×</div>
-            <div class="hero__sl" data-i18n="home.stat1_l">Geleneksele göre daha hızlı</div>
+        <div class="hero__stats reveal d4" style="display: flex; flex-wrap: wrap; gap: 24px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            <div class="hero__sl" style="font-size: 14px; font-weight: 600; color: var(--t1); margin: 0;" data-i18n="home.stat1_l">Daha hızlı yayın süreci</div>
           </div>
-          <div>
-            <div class="hero__sv" data-i18n="home.stat2_v">%100</div>
-            <div class="hero__sl" data-i18n="home.stat2_l">Teknik bilgi gerekmez</div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            <div class="hero__sl" style="font-size: 14px; font-weight: 600; color: var(--t1); margin: 0;" data-i18n="home.stat2_l">Teknik bilgi gerektirmez</div>
           </div>
-          <div>
-            <div class="hero__sv" data-i18n="home.stat3_v">AR</div>
-            <div class="hero__sl" data-i18n="home.stat3_l">Mobil & Web hazır çıktı</div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            <div class="hero__sl" style="font-size: 14px; font-weight: 600; color: var(--t1); margin: 0;" data-i18n="home.stat3_l">Web ve AR için hazır çıktı</div>
           </div>
         </div>
       </div>
 
-      <div class="hero__visual reveal d2" style="position: relative;">
-        <style>
-          .hero-img { 
-            width: 100%; 
-            border-radius: 24px; 
-            box-shadow: 0 24px 80px rgba(0,0,0,0.6); 
-            border: 1px solid rgba(255,255,255,0.1); 
-          }
-        </style>
-        <img src="hero_visual_tr.png" alt="Iarone 3D/AR Platform" class="hero-img" />
+      <div class="hero__visual reveal d2" style="position: relative; padding: 12px; background: #ffffff; border-radius: 32px; box-shadow: var(--sh-xl); border: 1px solid var(--border);">
+        <img src="hero_visual_tr.png" alt="Iarone 3D/AR Platform" style="width: 100%; border-radius: 20px; display: block;" />
       </div>
 
     </div>
@@ -143,7 +135,7 @@
     <div class="sec-hd reveal">
       <span class="badge" data-i18n="home.steps_badge">Nasıl Çalışır</span>
       <h2 class="gt" id="steps-heading" data-i18n="home.steps_title">Dört Adımda Satışa Hazır</h2>
-      <p data-i18n="home.steps_sub">Tek fotoğraftan kalite onaylı AR modele saniyeler içinde.</p>
+      <p data-i18n="home.steps_sub">Tek fotoğraftan satışa hazır AR paketine hızlı dönüşüm.</p>
     </div>
 
     <div class="steps-grid">
@@ -208,22 +200,22 @@
   <div class="container">
     <div class="usp__inner">
       <div class="reveal">
-        <div class="usp__img-wrap">
-          <img src="04_smart_quality_check_report.png" alt="Iarone kalite raporu" />
-        </div>
-        <div class="quality-card">
-          <div class="q-title" data-i18n="home.usp_q_title">Model Kalite Raporu</div>
-          <div class="q-item q-ok">
-            <span class="qi">✅</span>
-            <span data-i18n="home.usp_q_prev">Önizleme: Uygun</span>
+        <div class="usp__img-wrap" style="background: var(--bg-surface); padding: 28px; border-radius: var(--r-xl); box-shadow: var(--sh-xl); border: 1px solid var(--border); display: flex; flex-direction: column; gap: 20px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 16px;">
+            <div style="font-size: 15px; font-weight: 700;">AR Readiness Score</div>
+            <div style="color: var(--success); font-weight: 700; background: rgba(16,185,129,0.1); padding: 6px 14px; border-radius: 100px; font-size: 13px;">%98 Mükemmel</div>
           </div>
-          <div class="q-item q-ok">
-            <span class="qi">✅</span>
-            <span data-i18n="home.usp_q_mob">Mobil AR: Uygun</span>
+          <div style="display: flex; gap: 10px;">
+            <span style="background: var(--bg-input); padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; color: var(--t1);">GLB (Web)</span>
+            <span style="background: var(--bg-input); padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; color: var(--t1);">USDZ (iOS AR)</span>
           </div>
-          <div class="q-item q-warn">
-            <span>⚠️</span>
-            <span data-i18n="home.usp_q_sale">Satış Kalitesi: İyileştirme Gerekiyor</span>
+          <div style="height: 160px; background: var(--bg-input); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; color: var(--t3); font-size: 14px; font-weight: 500;">[ Interactive Web Preview ]</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div style="border: 1px solid var(--border); padding: 14px; border-radius: var(--r-sm); font-size: 13px; font-weight: 500; text-align: center;">Public Publish Page</div>
+            <div style="border: 1px solid var(--border); padding: 14px; border-radius: var(--r-sm); font-size: 13px; font-weight: 500; text-align: center;">&lt;iframe&gt; Embed Code</div>
+          </div>
+          <div style="font-size: 12px; font-weight: 500; color: var(--warn); display: flex; align-items: center; gap: 8px; margin-top: 4px; background: rgba(245,158,11,0.1); padding: 10px 14px; border-radius: 8px;">
+            <span>⚠️</span> <span>Poligon sayısı ve doku mobil için optimize edildi.</span>
           </div>
         </div>
       </div>
@@ -248,33 +240,62 @@
       <h2 class="gt" data-i18n="market.h1">3D ve AR destekli ürün deneyimleri için sektör çözümleri</h2>
       <p data-i18n="market.sub">Iarone, markaların ürünlerini web, mobil ve AR ortamlarında daha etkileşimli sunmasına yardımcı olur.</p>
     </div>
-    <div class="uc-grid">
-      <div class="uc-card reveal">
-        <img src="06_furniture_use_case_web_ar.png" alt="Mobilya" />
-        <div style="padding:16px;">
+    <style>
+      .uc-card-clean {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--r-lg);
+        padding: 32px;
+        transition: all var(--t);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        box-shadow: var(--sh-sm);
+      }
+      .uc-card-clean:hover {
+        border-color: var(--ac);
+        box-shadow: var(--sh-md);
+        transform: translateY(-4px);
+      }
+      .uc-icon {
+        width: 48px; height: 48px; border-radius: 12px; background: var(--ac-bg);
+        display: flex; align-items: center; justify-content: center; font-size: 24px;
+      }
+    </style>
+    <div class="uc-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
+      <div class="uc-card-clean reveal">
+        <div class="uc-icon">🛋️</div>
+        <div>
           <h4 data-i18n="market.cat_furn" style="margin-bottom:8px;">Mobilya & Dekor</h4>
-          <p style="font-size:14px;color:var(--text-sec);" data-i18n="market.card_chair">Modern Berjer — Mobilya</p>
+          <p style="font-size:14px;color:var(--t2);">Kumaş ve doku detaylarıyla gerçeğe en yakın AR gösterimi.</p>
         </div>
       </div>
-      <div class="uc-card reveal d1">
-        <img src="07_shoes_use_case_web_ar.png" alt="Ayakkabı" />
-        <div style="padding:16px;">
+      <div class="uc-card-clean reveal d1">
+        <div class="uc-icon">👟</div>
+        <div>
           <h4 data-i18n="market.cat_cafe" style="margin-bottom:8px;">Ayakkabı & Moda</h4>
-          <p style="font-size:14px;color:var(--text-sec);" data-i18n="market.card_cafe">Spor Ayakkabı — Moda</p>
+          <p style="font-size:14px;color:var(--t2);">Malzeme kalitesini ön plana çıkaran interaktif 3D deneyimi.</p>
         </div>
       </div>
-      <div class="uc-card reveal d2">
-        <img src="08_electronics_use_case_web_ar.png" alt="Elektronik" />
-        <div style="padding:16px;">
+      <div class="uc-card-clean reveal d2">
+        <div class="uc-icon">⌚</div>
+        <div>
+          <h4 data-i18n="market.cat_stand" style="margin-bottom:8px;">Takı & Saat</h4>
+          <p style="font-size:14px;color:var(--t2);">Metalik yansımalar ve mikro detaylar için yüksek hassasiyet.</p>
+        </div>
+      </div>
+      <div class="uc-card-clean reveal d3">
+        <div class="uc-icon">🎧</div>
+        <div>
           <h4 data-i18n="market.cat_print" style="margin-bottom:8px;">Elektronik</h4>
-          <p style="font-size:14px;color:var(--text-sec);" data-i18n="market.card_lamp">Kablosuz Kulaklık — Elektronik</p>
+          <p style="font-size:14px;color:var(--t2);">Tüm açılardan ürün inceleme şansı ve boyut güveni.</p>
         </div>
       </div>
-      <div class="uc-card reveal d3">
-        <img src="09_decoration_use_case_web_ar.png" alt="Dekorasyon" />
-        <div style="padding:16px;">
-          <h4 data-i18n="market.cat_decor" style="margin-bottom:8px;">Ev Dekorasyonu</h4>
-          <p style="font-size:14px;color:var(--text-sec);" data-i18n="market.card_vase">Dekoratif Vazo — Dekor</p>
+      <div class="uc-card-clean reveal d4">
+        <div class="uc-icon">🏢</div>
+        <div>
+          <h4 data-i18n="market.cat_conf" style="margin-bottom:8px;">Ajans & Katalog</h4>
+          <p style="font-size:14px;color:var(--t2);">Toplu ürün dönüştürme ve API entegrasyon çözümleri.</p>
         </div>
       </div>
     </div>
@@ -301,16 +322,16 @@
           <li style="display: flex; align-items: center; gap: 12px;"><span style="color:var(--success)">✓</span> Teknik API entegrasyonu</li>
         </ul>
       </div>
-      <div class="reveal d1" style="background: var(--bg); padding: 40px; border-radius: var(--r-xl); border: 1px solid var(--border); box-shadow: var(--sh-lg);">
-        <form id="beta-form" class="beta-form" style="display:flex; flex-direction:column; gap:16px;">
+      <div class="reveal d1" style="background: var(--bg); padding: 48px; border-radius: var(--r-xl); border: 1px solid var(--border); box-shadow: var(--sh-lg);">
+        <form id="beta-form" class="beta-form" style="display:flex; flex-direction:column; gap:20px;">
           <div class="demo-fields">
-            <input type="text" id="wait_name" placeholder="Ad Soyad" required style="padding:14px; border-radius:var(--r-md); border:1px solid var(--border); background:var(--bg-card); color:var(--text); font-family:inherit; font-size:15px;"/>
-            <input type="email" id="beta-email" placeholder="E-posta Adresi" required style="padding:14px; border-radius:var(--r-md); border:1px solid var(--border); background:var(--bg-card); color:var(--text); font-family:inherit; font-size:15px;"/>
+            <input type="text" id="wait_name" placeholder="Ad Soyad" required style="padding:16px; border-radius:var(--r-md); border:1px solid var(--border); background:var(--bg-card); color:var(--text); font-family:inherit; font-size:15px; width:100%;"/>
+            <input type="email" id="beta-email" placeholder="E-posta Adresi" required style="padding:16px; border-radius:var(--r-md); border:1px solid var(--border); background:var(--bg-card); color:var(--text); font-family:inherit; font-size:15px; width:100%;"/>
           </div>
-          <input type="text" id="wait_brand" placeholder="Şirket / Marka" style="padding:14px; border-radius:var(--r-md); border:1px solid var(--border); background:var(--bg-card); color:var(--text); font-family:inherit; font-size:15px;"/>
+          <input type="text" id="wait_brand" placeholder="Şirket / Marka" style="padding:16px; border-radius:var(--r-md); border:1px solid var(--border); background:var(--bg-card); color:var(--text); font-family:inherit; font-size:15px; width:100%;"/>
           <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" />
-          <button type="submit" id="beta-submit" class="btn btn-primary" style="justify-content:center; padding: 16px; font-size: 16px; margin-top: 8px;" data-i18n="pricing.demo_btn">Gönder</button>
-          <small style="text-align:center; color:var(--text-mut); margin-top: 8px;" data-i18n="pricing.demo_note">🔒 Bilgileriniz gizli tutulur.</small>
+          <button type="submit" id="beta-submit" class="btn btn-primary" style="justify-content:center; padding: 18px; font-size: 16px; margin-top: 12px;" data-i18n="pricing.demo_btn">Gönder</button>
+          <small style="text-align:center; color:var(--t3); margin-top: 4px;" data-i18n="pricing.demo_note">🔒 Bilgileriniz gizli tutulur.</small>
         </form>
       </div>
     </div>
