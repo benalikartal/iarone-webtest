@@ -96,30 +96,31 @@
   <div class="container">
     <style>
       .sector-card {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: var(--r-xl);
+        background: #ffffff;
+        border: 1px solid rgba(0,0,0,0.04);
+        border-radius: 24px;
         padding: 40px;
-        box-shadow: var(--sh-sm);
-        transition: all var(--t);
+        box-shadow: 0 4px 24px rgba(0,0,0,0.02);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         display: flex;
         flex-direction: column;
-        gap: 24px;
+        gap: 32px;
       }
       .sector-card:hover {
-        box-shadow: var(--sh-md);
-        border-color: var(--ac);
+        box-shadow: 0 20px 40px rgba(99,102,241,0.08), 0 1px 3px rgba(0,0,0,0.02);
+        border-color: rgba(99,102,241,0.2);
         transform: translateY(-4px);
       }
-      .sc-head { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-      .sc-icon { width: 56px; height: 56px; border-radius: 16px; background: var(--ac-bg); display: flex; align-items: center; justify-content: center; font-size: 28px; }
-      .sc-title { font-size: 20px; font-weight: 700; color: var(--t1); margin: 0; }
+      .sc-head { display: flex; align-items: center; gap: 20px; margin-bottom: 8px; }
+      .sc-icon { width: 64px; height: 64px; border-radius: 16px; background: linear-gradient(135deg, rgba(67,56,202,0.08), rgba(99,102,241,0.03)); border: 1px solid rgba(99,102,241,0.1); display: flex; align-items: center; justify-content: center; font-size: 32px; color: var(--ac); transition: all 0.4s ease; }
+      .sector-card:hover .sc-icon { background: linear-gradient(135deg, rgba(67,56,202,0.12), rgba(99,102,241,0.05)); transform: scale(1.05); }
+      .sc-title { font-size: 24px; font-weight: 700; color: var(--t1); margin: 0; }
       .sc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
       @media (max-width: 768px) { .sc-grid { grid-template-columns: 1fr; } }
-      .sc-box { background: var(--bg); border: 1px solid var(--border); padding: 20px; border-radius: var(--r-md); }
-      .sc-box-title { font-size: 13px; font-weight: 700; color: var(--t3); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
-      .sc-box-text { font-size: 14px; color: var(--t2); line-height: 1.6; margin: 0; }
-      .sc-output { background: linear-gradient(135deg, rgba(99,102,241,0.05), rgba(124,58,237,0.05)); border: 1px solid var(--border-ac); padding: 20px; border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; height: 100%; color: var(--t1); font-weight: 600; font-size: 14px; text-align: center; }
+      .sc-box { background: #fcfcfd; border: 1px solid rgba(0,0,0,0.04); padding: 24px; border-radius: 16px; }
+      .sc-box-title { font-size: 13px; font-weight: 700; color: var(--t3); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+      .sc-box-text { font-size: 15px; color: var(--t1); line-height: 1.6; margin: 0; }
+      .sc-output { background: linear-gradient(135deg, rgba(67,56,202,0.03), rgba(99,102,241,0.05)); border: 1px solid rgba(99,102,241,0.15); padding: 24px; border-radius: 16px; display: flex; align-items: center; justify-content: center; height: 100%; color: var(--ac); font-weight: 600; font-size: 15px; text-align: center; }
     </style>
     <div style="display: grid; grid-template-columns: 1fr; gap: 32px;">
       <!-- Mobilya -->
@@ -209,15 +210,15 @@
       <h2 class="gt" data-i18n="pricing.demo_title">Demo Talep Et</h2>
       <p data-i18n="pricing.demo_sub">Ürün kataloğunuzu Iarone ile 3D/AR'a taşımak için uzman ekibimizle iletişime geçin.</p>
     </div>
-    <form id="beta-form" class="demo-form reveal d1" action="#" method="POST" style="display:flex;flex-direction:column;gap:20px;">
+    <form id="beta-form" class="demo-form reveal d1" action="#" method="POST" style="display:flex;flex-direction:column;gap:20px; background:#ffffff; padding:40px; border-radius:24px; border:1px solid rgba(0,0,0,0.06); box-shadow:0 32px 64px rgba(0,0,0,0.04);">
       <div style="display:flex;gap:16px;">
-        <input type="text" id="wait_name" placeholder="Ad Soyad" required style="padding:16px;border-radius:var(--r-md);border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-family:inherit;font-size:15px;width:100%;"/>
-        <input type="email" id="beta-email" placeholder="E-posta Adresi" required style="padding:16px;border-radius:var(--r-md);border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-family:inherit;font-size:15px;width:100%;"/>
+        <input type="text" id="wait_name" class="demo-input" placeholder="Ad Soyad" required />
+        <input type="email" id="beta-email" class="demo-input" placeholder="E-posta Adresi" required />
       </div>
-      <input type="text" id="wait_brand" placeholder="Şirket / Marka" style="padding:16px;border-radius:var(--r-md);border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-family:inherit;font-size:15px;"/>
+      <input type="text" id="wait_brand" class="demo-input" placeholder="Şirket / Marka" />
       <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" />
-      <button type="submit" id="beta-submit" class="btn btn-primary" style="justify-content:center;padding:18px;font-size:16px;margin-top:12px;" data-i18n="pricing.demo_btn">Gönder</button>
-      <small style="text-align:center;color:var(--t3);margin-top:4px;" data-i18n="pricing.demo_note"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-top:-2px;margin-right:4px"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> Bilgileriniz gizli tutulur.</small>
+      <button type="submit" id="beta-submit" class="btn btn-primary" style="justify-content:center;padding:18px;font-size:16px;margin-top:12px; border-radius:12px; box-shadow:0 8px 16px rgba(99,102,241,0.2);" data-i18n="pricing.demo_btn">Gönder</button>
+      <small class="demo-note" style="text-align:center;display:block;" data-i18n="pricing.demo_note"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-top:-2px;margin-right:4px"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> Bilgileriniz gizli tutulur.</small>
     </form>
   </div>
 </section>
