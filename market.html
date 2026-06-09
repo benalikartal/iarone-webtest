@@ -94,53 +94,107 @@
 <!-- SOLUTIONS GRID -->
 <section class="section z1">
   <div class="container">
-    <div class="uc-grid">
+    <style>
+      .sector-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--r-xl);
+        padding: 40px;
+        box-shadow: var(--sh-sm);
+        transition: all var(--t);
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      .sector-card:hover {
+        box-shadow: var(--sh-md);
+        border-color: var(--ac);
+        transform: translateY(-4px);
+      }
+      .sc-head { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+      .sc-icon { width: 56px; height: 56px; border-radius: 16px; background: var(--ac-bg); display: flex; align-items: center; justify-content: center; font-size: 28px; }
+      .sc-title { font-size: 20px; font-weight: 700; color: var(--t1); margin: 0; }
+      .sc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+      @media (max-width: 768px) { .sc-grid { grid-template-columns: 1fr; } }
+      .sc-box { background: var(--bg); border: 1px solid var(--border); padding: 20px; border-radius: var(--r-md); }
+      .sc-box-title { font-size: 13px; font-weight: 700; color: var(--t3); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+      .sc-box-text { font-size: 14px; color: var(--t2); line-height: 1.6; margin: 0; }
+      .sc-output { background: linear-gradient(135deg, rgba(99,102,241,0.05), rgba(124,58,237,0.05)); border: 1px solid var(--border-ac); padding: 20px; border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; height: 100%; color: var(--t1); font-weight: 600; font-size: 14px; text-align: center; }
+    </style>
+    <div style="display: grid; grid-template-columns: 1fr; gap: 32px;">
       <!-- Mobilya -->
-      <div class="market-card reveal">
-        <div class="mc-img">
-          <div class="mc-top-tags"><span class="mc-tag" data-i18n="market.tag_ar">AR Hazır</span></div>
-          <img src="06_furniture_use_case_web_ar.png" alt="Mobilya" />
+      <div class="sector-card reveal">
+        <div class="sc-head">
+          <div class="sc-icon">🛋️</div>
+          <h3 class="sc-title" data-i18n="market.cat_furn">Mobilya & Dekor</h3>
         </div>
-        <div class="mc-content">
-          <h3 data-i18n="market.cat_furn" style="margin-bottom:8px;">Mobilya & Dekor</h3>
-          <p style="font-size:14px;color:var(--text-sec);margin-bottom:16px;">Kullanıcıların mobilyaları kendi evlerinde gerçek boyutlarıyla görmelerini sağlayın. Boyut iadelerini azaltın.</p>
-          <a href="#demo" class="btn btn-ghost btn-full" data-i18n="home.hero_cta_secondary">Demo Talep Et</a>
+        <div class="sc-grid">
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div class="sc-box">
+              <div class="sc-box-title">Problem</div>
+              <p class="sc-box-text">Kullanıcılar mobilyanın kendi odalarına uyup uymayacağından ve gerçek boyutundan emin olamaz, bu da iadeleri artırır.</p>
+            </div>
+            <div class="sc-box">
+              <div class="sc-box-title">Iarone Çözümü</div>
+              <p class="sc-box-text">Gerçek ölçekli (1:1) ve yüksek kaliteli AR modelleriyle kullanıcıların ürünü kendi evlerinde denemelerini sağlar.</p>
+            </div>
+          </div>
+          <div>
+            <div class="sc-output">Örnek Çıktı:<br/>Modern Berjer Web AR Deneyimi</div>
+          </div>
+        </div>
+        <div>
+          <a href="#demo" class="btn btn-primary" data-i18n="home.hero_cta_secondary">Demo Talep Et</a>
         </div>
       </div>
       <!-- Ayakkabı -->
-      <div class="market-card reveal d1">
-        <div class="mc-img">
-          <div class="mc-top-tags"><span class="mc-tag" data-i18n="market.tag_mob">Mobil Uyumlu</span></div>
-          <img src="07_shoes_use_case_web_ar.png" alt="Ayakkabı" />
+      <div class="sector-card reveal d1">
+        <div class="sc-head">
+          <div class="sc-icon">👟</div>
+          <h3 class="sc-title" data-i18n="market.cat_cafe">Ayakkabı & Moda</h3>
         </div>
-        <div class="mc-content">
-          <h3 data-i18n="market.cat_cafe" style="margin-bottom:8px;">Ayakkabı & Moda</h3>
-          <p style="font-size:14px;color:var(--text-sec);margin-bottom:16px;">Detayları ve dokuları interaktif 3D olarak sunarak satın alma kararını hızlandırın.</p>
-          <a href="#demo" class="btn btn-ghost btn-full" data-i18n="home.hero_cta_secondary">Demo Talep Et</a>
+        <div class="sc-grid">
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div class="sc-box">
+              <div class="sc-box-title">Problem</div>
+              <p class="sc-box-text">Düz fotoğraflar ürünün malzeme kalitesini ve ince detaylarını yansıtmakta yetersiz kalır.</p>
+            </div>
+            <div class="sc-box">
+              <div class="sc-box-title">Iarone Çözümü</div>
+              <p class="sc-box-text">Kumaş, deri ve dikiş detaylarını öne çıkaran, 360 derece incelenebilir interaktif 3D deneyimleri sunar.</p>
+            </div>
+          </div>
+          <div>
+            <div class="sc-output">Örnek Çıktı:<br/>Spor Ayakkabı 3D Görünümü</div>
+          </div>
+        </div>
+        <div>
+          <a href="#demo" class="btn btn-primary" data-i18n="home.hero_cta_secondary">Demo Talep Et</a>
         </div>
       </div>
       <!-- Elektronik -->
-      <div class="market-card reveal d2">
-        <div class="mc-img">
-          <div class="mc-top-tags"><span class="mc-tag" data-i18n="market.tag_comm">E-Ticaret Hazır</span></div>
-          <img src="08_electronics_use_case_web_ar.png" alt="Elektronik" />
+      <div class="sector-card reveal d2">
+        <div class="sc-head">
+          <div class="sc-icon">🎧</div>
+          <h3 class="sc-title" data-i18n="market.cat_print">Elektronik</h3>
         </div>
-        <div class="mc-content">
-          <h3 data-i18n="market.cat_print" style="margin-bottom:8px;">Elektronik</h3>
-          <p style="font-size:14px;color:var(--text-sec);margin-bottom:16px;">Giriş portları ve teknik detayları 360 derece inceleme fırsatı verin.</p>
-          <a href="#demo" class="btn btn-ghost btn-full" data-i18n="home.hero_cta_secondary">Demo Talep Et</a>
+        <div class="sc-grid">
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div class="sc-box">
+              <div class="sc-box-title">Problem</div>
+              <p class="sc-box-text">Müşteriler cihazın portlarını, tuşlarını ve malzeme yapısını detaylı incelemek ister.</p>
+            </div>
+            <div class="sc-box">
+              <div class="sc-box-title">Iarone Çözümü</div>
+              <p class="sc-box-text">Ürünün tüm açılardan ve gerçek fiziksel yansımalarla incelenebilmesini sağlayan 3D web entegrasyonu sağlar.</p>
+            </div>
+          </div>
+          <div>
+            <div class="sc-output">Örnek Çıktı:<br/>Kablosuz Kulaklık İnteraktif Model</div>
+          </div>
         </div>
-      </div>
-      <!-- Dekorasyon -->
-      <div class="market-card reveal d3">
-        <div class="mc-img">
-          <div class="mc-top-tags"><span class="mc-tag" data-i18n="market.tag_scale">Ölçek Onaylı</span></div>
-          <img src="09_decoration_use_case_web_ar.png" alt="Dekor" />
-        </div>
-        <div class="mc-content">
-          <h3 data-i18n="market.cat_decor" style="margin-bottom:8px;">Ev Dekorasyonu</h3>
-          <p style="font-size:14px;color:var(--text-sec);margin-bottom:16px;">Işık, doku ve materyal yansımalarını yüksek kaliteli renderlar ile sergileyin.</p>
-          <a href="#demo" class="btn btn-ghost btn-full" data-i18n="home.hero_cta_secondary">Demo Talep Et</a>
+        <div>
+          <a href="#demo" class="btn btn-primary" data-i18n="home.hero_cta_secondary">Demo Talep Et</a>
         </div>
       </div>
     </div>
@@ -155,12 +209,15 @@
       <h2 class="gt" data-i18n="pricing.demo_title">Demo Talep Et</h2>
       <p data-i18n="pricing.demo_sub">Ürün kataloğunuzu Iarone ile 3D/AR'a taşımak için uzman ekibimizle iletişime geçin.</p>
     </div>
-    <form class="demo-form reveal d1" action="#" method="POST" style="display:flex;flex-direction:column;gap:16px;">
-      <input type="text" placeholder="Ad Soyad" required style="padding:12px;border-radius:var(--r-md);border:1px solid var(--border);background:var(--bg);color:var(--text);font-family:inherit;font-size:15px;"/>
-      <input type="email" placeholder="E-posta Adresi" required style="padding:12px;border-radius:var(--r-md);border:1px solid var(--border);background:var(--bg);color:var(--text);font-family:inherit;font-size:15px;"/>
-      <input type="text" placeholder="Şirket / Marka" style="padding:12px;border-radius:var(--r-md);border:1px solid var(--border);background:var(--bg);color:var(--text);font-family:inherit;font-size:15px;"/>
-      <button type="submit" class="btn btn-primary" style="justify-content:center;" data-i18n="pricing.demo_btn">Gönder</button>
-      <small style="text-align:center;color:var(--text-mut);" data-i18n="pricing.demo_note">🔒 Bilgileriniz gizli tutulur.</small>
+    <form id="beta-form" class="demo-form reveal d1" action="#" method="POST" style="display:flex;flex-direction:column;gap:20px;">
+      <div style="display:flex;gap:16px;">
+        <input type="text" id="wait_name" placeholder="Ad Soyad" required style="padding:16px;border-radius:var(--r-md);border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-family:inherit;font-size:15px;width:100%;"/>
+        <input type="email" id="beta-email" placeholder="E-posta Adresi" required style="padding:16px;border-radius:var(--r-md);border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-family:inherit;font-size:15px;width:100%;"/>
+      </div>
+      <input type="text" id="wait_brand" placeholder="Şirket / Marka" style="padding:16px;border-radius:var(--r-md);border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-family:inherit;font-size:15px;"/>
+      <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" />
+      <button type="submit" id="beta-submit" class="btn btn-primary" style="justify-content:center;padding:18px;font-size:16px;margin-top:12px;" data-i18n="pricing.demo_btn">Gönder</button>
+      <small style="text-align:center;color:var(--t3);margin-top:4px;" data-i18n="pricing.demo_note">🔒 Bilgileriniz gizli tutulur.</small>
     </form>
   </div>
 </section>
