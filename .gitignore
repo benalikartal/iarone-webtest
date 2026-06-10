@@ -3,3 +3,15 @@ dist
 .env
 .DS_Store
 .vercel
+
+# Design drafts / scratch assets (not part of the production site)
+concept-*.html
+design_concepts.html
+media__*.png
+arkaplan.webp.png
+ar_hand_phone_*.png
+chair_render_*.png
+crafter_product_depth.webp.png
+geometric_glass_cube_*.png
+glass_logo_*.png
+laptop_phone_mockup_*.png

@@ -277,6 +277,7 @@ strong{color:var(--t1);font-weight:600}
   display: inline-block;
   vertical-align: middle;
   white-space: nowrap;
+  transform: translateY(1.5px);
 }
 .pl__logo .logo-text {
   font-size: 28px;
