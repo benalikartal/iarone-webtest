@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https: http://localhost:3000 http://127.0.0.1:3000; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'" />
   <title>Iarone — 3D & AR Commerce Platform</title>
   <meta name="description" content="Ürün fotoğraflarından satışa hazır 3D ve AR modeller üretin. Iarone kalite kontrol ve akıllı iyileştirme ile birlikte sunar." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,8 +18,8 @@
 
 <div id="preloader" class="pl" role="status" aria-label="Iarone yükleniyor">
   <div class="pl__logo">
-    <img src="00_iarone_logo_exact_transparent_white_glow.png" class="logo-dark" alt="Iarone" />
-    <img src="00_iarone_logo_exact_transparent_black.png" class="logo-light" alt="Iarone" />
+    <img src="00_iarone_logo_exact_transparent_white_glow.webp" class="logo-dark" alt="Iarone" />
+    <img src="00_iarone_logo_exact_transparent_black.webp" class="logo-light" alt="Iarone" />
     <span class="logo-text">Iarone</span>
   </div>
   <div class="pl__text">Yükleniyor<span class="pl__dots"></span></div>
@@ -34,8 +35,8 @@
   <div class="container">
     <div class="nav__wrap">
       <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa">
-        <img src="00_iarone_logo_exact_transparent_white_glow.png" class="logo-dark" alt="Iarone" />
-        <img src="00_iarone_logo_exact_transparent_black.png"     class="logo-light" alt="Iarone" />
+        <img src="00_iarone_logo_exact_transparent_white_glow.webp" class="logo-dark" alt="Iarone" loading="lazy" decoding="async" />
+        <img src="00_iarone_logo_exact_transparent_black.webp"     class="logo-light" alt="Iarone" loading="lazy" decoding="async" />
         <span class="logo-text">Iarone</span>
       </a>
       <ul class="nav__links" role="list">
@@ -121,7 +122,7 @@
       </div>
 
       <div class="hero__visual reveal d2" style="position: relative; padding: 16px; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px); border-radius: 32px; box-shadow: 0 32px 64px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.05);">
-        <img src="hero_visual_tr.png" alt="Iarone 3D/AR Platform" style="width: 100%; border-radius: 20px; display: block; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
+        <img src="hero_visual_tr.webp" alt="Iarone 3D/AR Platform" style="width: 100%; border-radius: 20px; display: block; box-shadow: 0 8px 24px rgba(0,0,0,0.08);" />
       </div>
 
     </div>
@@ -130,7 +131,7 @@
 
 <!-- HOW IT WORKS -->
 <section class="section z1" id="nasil-calisir" aria-labelledby="steps-heading"
-  style="background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(99,102,241,.06) 0%,transparent 70%)">
+  style="background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(37,99,235,.06) 0%,transparent 70%)">
   <div class="container">
     <div class="sec-hd reveal">
       <span class="badge" data-i18n="home.steps_badge">Nasıl Çalışır</span>
@@ -164,7 +165,7 @@
         <div class="step-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
         <h3 data-i18n="home.step3_title">Optimizasyon</h3>
         <p data-i18n="home.step3_desc">Web/AR uyumlu ve optimize edilmiş model oluşturulur.</p>
-        <div class="step-img" style="margin-top:auto; height:140px; background:linear-gradient(135deg, rgba(67,56,202,0.03), rgba(99,102,241,0.08)); border:1px solid rgba(99,102,241,0.1); border-radius:12px; display:flex; align-items:center; justify-content:center;">
+        <div class="step-img" style="margin-top:auto; height:140px; background:linear-gradient(135deg, rgba(30,58,138,0.03), rgba(37,99,235,0.08)); border:1px solid rgba(37,99,235,0.1); border-radius:12px; display:flex; align-items:center; justify-content:center;">
            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:6px;">
              <div style="width:12px; height:12px; border-radius:3px; background:var(--ac); opacity:0.4;"></div><div style="width:12px; height:12px; border-radius:3px; background:var(--ac); opacity:0.7;"></div><div style="width:12px; height:12px; border-radius:3px; background:var(--ac);"></div>
              <div style="width:12px; height:12px; border-radius:3px; background:var(--ac); opacity:0.3;"></div><div style="width:12px; height:12px; border-radius:3px; background:var(--ac); opacity:0.6;"></div><div style="width:12px; height:12px; border-radius:3px; background:var(--ac); opacity:0.9;"></div>
@@ -194,9 +195,9 @@
       <p data-i18n="home.uc_sub">Daha iyi ürün algısı, AR ile boyut güveni ve satışa hazır entegrasyon.</p>
     </div>
     <div class="reveal">
-      <img src="02_sales_ready_desktop_and_mobile_ar.png"
+      <img src="02_sales_ready_desktop_and_mobile_ar.webp"
            alt="Sales Ready Output"
-           style="width:100%;border-radius:var(--r-xl);border:1px solid var(--border);box-shadow:var(--sh-xl),var(--sh-ac);" />
+           style="width:100%;border-radius:var(--r-xl);border:1px solid var(--border);box-shadow:var(--sh-xl),var(--sh-ac);" loading="lazy" decoding="async" />
     </div>
   </div>
 </section>
@@ -265,20 +266,20 @@
         box-shadow: 0 4px 24px rgba(0,0,0,0.02);
       }
       .uc-card-clean:hover {
-        border-color: rgba(99,102,241,0.2);
-        box-shadow: 0 20px 40px rgba(99,102,241,0.08), 0 1px 3px rgba(0,0,0,0.02);
+        border-color: rgba(37,99,235,0.2);
+        box-shadow: 0 20px 40px rgba(37,99,235,0.08), 0 1px 3px rgba(0,0,0,0.02);
         transform: translateY(-4px);
       }
       .uc-icon {
         width: 52px; height: 52px; border-radius: 14px; 
-        background: linear-gradient(135deg, rgba(67,56,202,0.08), rgba(99,102,241,0.03));
-        border: 1px solid rgba(99,102,241,0.1);
+        background: linear-gradient(135deg, rgba(30,58,138,0.08), rgba(37,99,235,0.03));
+        border: 1px solid rgba(37,99,235,0.1);
         display: flex; align-items: center; justify-content: center; font-size: 24px;
         color: var(--ac);
         transition: all 0.4s ease;
       }
       .uc-card-clean:hover .uc-icon {
-        background: linear-gradient(135deg, rgba(67,56,202,0.12), rgba(99,102,241,0.05));
+        background: linear-gradient(135deg, rgba(30,58,138,0.12), rgba(37,99,235,0.05));
         transform: scale(1.05);
       }
     </style>
@@ -337,9 +338,9 @@
         <h2 class="gt-ac" style="font-size: 36px; margin-top: 16px; margin-bottom: 24px;" data-i18n="home.demo_h2">Katalog dönüşümünüzü birlikte planlayalım.</h2>
         <p style="font-size: 18px; color: var(--text-sec); line-height: 1.6;" data-i18n="pricing.demo_sub">Ürün kataloğunuzu Iarone ile 3D/AR'a taşımak için uzman ekibimizle iletişime geçin.</p>
         <ul style="margin-top: 32px; list-style: none; padding: 0; color: var(--t1); font-size: 16px; font-weight: 500;">
-          <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 12px;"><span style="color:var(--ac); background:rgba(99,102,241,0.1); border-radius:50%; padding:4px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> İşletmenize özel üretim planı</li>
-          <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 12px;"><span style="color:var(--ac); background:rgba(99,102,241,0.1); border-radius:50%; padding:4px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Toplu dönüştürme hizmetleri</li>
-          <li style="display: flex; align-items: center; gap: 12px;"><span style="color:var(--ac); background:rgba(99,102,241,0.1); border-radius:50%; padding:4px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Teknik API entegrasyonu</li>
+          <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 12px;"><span style="color:var(--ac); background:rgba(37,99,235,0.1); border-radius:50%; padding:4px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> İşletmenize özel üretim planı</li>
+          <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 12px;"><span style="color:var(--ac); background:rgba(37,99,235,0.1); border-radius:50%; padding:4px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Toplu dönüştürme hizmetleri</li>
+          <li style="display: flex; align-items: center; gap: 12px;"><span style="color:var(--ac); background:rgba(37,99,235,0.1); border-radius:50%; padding:4px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Teknik API entegrasyonu</li>
         </ul>
       </div>
       <div class="reveal d1" style="background: #ffffff; padding: 48px; border-radius: 24px; border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 32px 64px rgba(0,0,0,0.04);">
@@ -350,7 +351,7 @@
           </div>
           <input type="text" id="wait_brand" class="demo-input" placeholder="Şirket / Marka" />
           <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" />
-          <button type="submit" id="beta-submit" class="btn btn-primary" style="justify-content:center; padding: 18px; font-size: 16px; margin-top: 12px; border-radius: 12px; box-shadow: 0 8px 16px rgba(99,102,241,0.2);" data-i18n="pricing.demo_btn">Gönder</button>
+          <button type="submit" id="beta-submit" class="btn btn-primary" style="justify-content:center; padding: 18px; font-size: 16px; margin-top: 12px; border-radius: 12px; box-shadow: 0 8px 16px rgba(37,99,235,0.2);" data-i18n="pricing.demo_btn">Gönder</button>
           <small class="demo-note" style="text-align:center; display:block;" data-i18n="pricing.demo_note"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-top:-2px;margin-right:4px"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> Bilgileriniz gizli tutulur.</small>
         </form>
       </div>
@@ -376,13 +377,13 @@
 <footer class="footer z1" role="contentinfo">
   <div class="container">
     <div class="footer__inner">
-      <div class="foot-brand">
-        <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa" style="margin-bottom: 16px;">
-          <img src="00_iarone_logo_exact_transparent_white_glow.png" class="logo-dark" alt="Iarone" />
-          <img src="00_iarone_logo_exact_transparent_black.png"     class="logo-light" alt="Iarone" />
+      <div class="foot-brand" style="max-width: 320px;">
+        <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa" style="margin-bottom: 20px; display: inline-flex;">
+          <img src="00_iarone_logo_exact_transparent_white_glow.webp" class="logo-dark" alt="Iarone" loading="lazy" decoding="async" />
+          <img src="00_iarone_logo_exact_transparent_black.webp"     class="logo-light" alt="Iarone" loading="lazy" decoding="async" />
           <span class="logo-text">Iarone</span>
         </a>
-        <p data-i18n="footer.tagline">Ürün fotoğraflarından satışa hazır 3D ve AR modeller.</p>
+        <p style="font-size: 15px; color: var(--t2); line-height: 1.6;">E-ticaret ürünlerini 3D ve AR deneyimlerine dönüştüren yayın platformu.</p>
       </div>
       <div>
         <div class="foot-col-title" data-i18n="footer.col1">Ürün</div>
@@ -390,26 +391,22 @@
           <a href="index.html#nasil-calisir" data-i18n="footer.f_dash">Nasıl Çalışır</a>
           <a href="market.html"              data-i18n="footer.f_market">Sektör Çözümleri</a>
           <a href="pricing.html"             data-i18n="footer.f_price">Fiyatlandırma</a>
-          <a href="market.html#sell"         data-i18n="footer.f_sell">Marketplace Başvurusu</a>
-          <a href="#"                        data-i18n="footer.f_api">API Dokümantasyonu</a>
+          <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html">Panel</a>
         </div>
       </div>
       <div>
         <div class="foot-col-title" data-i18n="footer.col2">Şirket</div>
         <div class="foot-links">
-          <a href="#" data-i18n="footer.c_about">Hakkımızda</a>
-          <a href="#" data-i18n="footer.c_blog">Blog</a>
-          <a href="#" data-i18n="footer.c_career">Kariyer</a>
+          <a href="#demo">Demo Talep Et</a>
           <a href="#demo" data-i18n="footer.c_contact">İletişim</a>
         </div>
       </div>
       <div>
         <div class="foot-col-title" data-i18n="footer.col3">Yasal</div>
         <div class="foot-links">
-          <a href="#" data-i18n="footer.l_priv">Gizlilik Politikası</a>
-          <a href="#" data-i18n="footer.l_terms">Kullanım Koşulları</a>
+          <a href="#" data-i18n="footer.l_priv">Gizlilik</a>
           <a href="#" data-i18n="footer.l_kvkk">KVKK</a>
-          <a href="#" data-i18n="footer.l_cookie">Çerez Politikası</a>
+          <a href="#" data-i18n="footer.l_terms">Kullanım Şartları</a>
         </div>
       </div>
     </div>
