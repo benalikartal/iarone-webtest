@@ -3560,6 +3560,15 @@ body:not([data-theme="light"]) .blob-3{opacity:.055}
   letter-spacing: 0.1em;
   box-shadow: 0 4px 12px rgba(59,130,246,0.08);
 }
+
+/* --- WORKFLOW GRID --- */
+.ix-workflow-grid {
+  display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 16px; align-items: stretch; width: 100%;
+}
+@media (max-width: 900px) {
+  .ix-workflow-grid { grid-template-columns: 1fr; }
+  .ix-mini-pipeline { display: none !important; }
+}
 .ix-premium-badge svg {
   fill: rgba(59,130,246,0.2);
 }
