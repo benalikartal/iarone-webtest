@@ -3485,11 +3485,11 @@ body:not([data-theme="light"]) .blob-3{opacity:.055}
   display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 40px;
 }
 .hero-left {
-  flex: 0 0 36%;
+  flex: 0 0 45%;
   display: flex; flex-direction: column; justify-content: center;
 }
 .hero-right {
-  flex: 0 0 62%;
+  flex: 0 0 50%;
 }
 
 .fg-features-vertical {
@@ -3561,14 +3561,7 @@ body:not([data-theme="light"]) .blob-3{opacity:.055}
   box-shadow: 0 4px 12px rgba(59,130,246,0.08);
 }
 
-/* --- WORKFLOW GRID --- */
-.ix-workflow-grid {
-  display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 16px; align-items: stretch; width: 100%;
-}
-@media (max-width: 900px) {
-  .ix-workflow-grid { grid-template-columns: 1fr; }
-  .ix-mini-pipeline { display: none !important; }
-}
+/* --- WORKFLOW GRID (Removed) --- */
 .ix-premium-badge svg {
   fill: rgba(59,130,246,0.2);
 }
