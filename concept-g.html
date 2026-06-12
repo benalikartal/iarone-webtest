@@ -262,26 +262,27 @@
       <style>
         .hc-btn-arrow {
           position: absolute; top: 50%; transform: translateY(-50%);
-          width: 28px; height: 28px; border-radius: 50%;
-          background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);
-          border: 1px solid rgba(255,255,255,0.3);
-          box-shadow: 0 4px 12px rgba(15,23,42,0.02);
+          width: 40px; height: 40px; border-radius: 50%;
+          background: rgba(255,255,255,0.85); backdrop-filter: blur(16px);
+          border: 1px solid rgba(226,232,240,0.8);
+          box-shadow: 0 8px 20px rgba(15,23,42,0.06), 0 2px 6px rgba(15,23,42,0.04);
           display: flex; justify-content: center; align-items: center;
-          cursor: pointer; z-index: 40; transition: all 0.3s ease;
+          cursor: pointer; z-index: 50; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .hc-btn-arrow:hover {
-          background: rgba(255,255,255,0.4);
-          box-shadow: 0 6px 16px rgba(15,23,42,0.06);
+          background: #ffffff;
+          transform: translateY(-50%) scale(1.05);
+          box-shadow: 0 12px 28px rgba(15,23,42,0.1), 0 4px 10px rgba(15,23,42,0.05);
         }
       </style>
       <div style="position: relative; width: 100%; width: 520px; height: 560px; z-index: 1;">
         
-        <!-- Minimal Navigation Buttons -->
-        <button class="hc-btn-arrow" aria-label="Önceki" onclick="heroPrev()" style="left: -16px;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <!-- Premium Navigation Buttons -->
+        <button class="hc-btn-arrow" aria-label="Önceki" onclick="heroPrev()" style="left: -20px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
         </button>
-        <button class="hc-btn-arrow" aria-label="Sonraki" onclick="heroNext()" style="right: -16px;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        <button class="hc-btn-arrow" aria-label="Sonraki" onclick="heroNext()" style="right: -20px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </button>
 
         <!-- Ambient Blue Glow -->
