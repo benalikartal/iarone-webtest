@@ -160,6 +160,25 @@
   <div class="blob blob-3"></div>
 </div>
 
+<style>
+/* NAVBAR MOBILE FIXES */
+@media (max-width: 430px) {
+  #nav-login { display: none !important; }
+  .lang-sw { min-width: auto !important; }
+  .lang-btn { padding-left: 8px !important; padding-right: 8px !important; }
+  #nav-cta { padding-left: 12px !important; padding-right: 12px !important; font-size: 12px !important; white-space: nowrap; }
+  #nav-burger { display: inline-flex !important; flex-shrink: 0 !important; }
+  .nav__right { flex-shrink: 0 !important; gap: 8px !important; }
+  .nav__wrap { gap: 8px !important; overflow: hidden !important; }
+  .nav__logo { min-width: 0 !important; }
+  .logo-text { font-size: 18px !important; }
+}
+@media (max-width: 360px) {
+  .lang-sw { display: none !important; }
+  #nav-cta { padding-left: 10px !important; padding-right: 10px !important; font-size: 11px !important; }
+}
+</style>
+
 <nav class="nav" id="main-nav" role="navigation" aria-label="Ana navigasyon">
   <div class="container">
     <div class="nav__wrap">
@@ -236,23 +255,32 @@
       
       /* 1024-1199 Portrait specific */
       @media (max-width: 1199px) and (orientation: portrait) {
-        .hero-split-align { flex-direction: column !important; align-items: center !important; }
-        .hero-left-col { padding-right: 0; padding-top: 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
-        .hero-actions { justify-content: center; }
-        .hero-experience { align-items: center; }
+        .hero-split-align { flex-direction: column !important; align-items: center !important; text-align: center; }
+        .hero-left-col { display: contents; } /* Unboxes children for flex ordering */
+        .hero-badge-wrap { order: 1; justify-content: center !important; margin-bottom: 16px !important; }
+        .hero-title { order: 2; }
+        .hero-desc { order: 3; }
+        .hero-actions { order: 4; justify-content: center; margin-bottom: 24px; }
+        .hero-chips-wrap { order: 5; margin-top: 0 !important; margin-bottom: 32px; }
+        .hero-right { order: 6; }
+        .hero-experience { order: 7; align-items: center; margin-top: 16px !important; }
         .hero-chips-flex { justify-content: center; }
-        .hero-right-offset { margin-top: 40px; margin-right: 0; }
+        .hero-right-offset { margin-top: 0px; margin-right: 0; }
       }
 
       /* Tablet Portrait (768px - 1023px) */
       @media (max-width: 1023px) {
-        .hero-split-align { align-items: center !important; flex-direction: column !important; }
-        .hero-left-col { padding-right: 0; padding-top: 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
-        .hero-actions { justify-content: center; }
-        .hero-experience { align-items: center; }
+        .hero-split-align { flex-direction: column !important; align-items: center !important; text-align: center; }
+        .hero-left-col { display: contents; }
+        .hero-badge-wrap { order: 1; justify-content: center !important; margin-bottom: 16px !important; }
+        .hero-title { order: 2; font-size: clamp(42px, 6vw, 56px); }
+        .hero-desc { order: 3; }
+        .hero-actions { order: 4; justify-content: center; margin-bottom: 24px; }
+        .hero-chips-wrap { order: 5; margin-top: 0 !important; margin-bottom: 32px; }
+        .hero-right { order: 6; }
+        .hero-experience { order: 7; align-items: center; margin-top: 16px !important; }
         .hero-chips-flex { justify-content: center; }
-        .hero-title { font-size: clamp(42px, 6vw, 56px); }
-        .hero-right-offset { margin-top: 40px; margin-right: 0; }
+        .hero-right-offset { margin-top: 0px; margin-right: 0; }
       }
 
       /* Mobile (< 768px) */
@@ -263,7 +291,8 @@
         #hc-float1-img, #hc-float2-img { display: none !important; }
         #hc-main-img { left: 0 !important; right: 0 !important; margin: 0 auto !important; top: 40px !important; }
         
-        .hero-right-offset { margin-top: clamp(24px, 6vw, 40px); margin-right: 0; }
+        .hero-right-offset { margin-top: 0px !important; margin-right: 0 !important; }
+        .hero-chips-wrap { margin-bottom: clamp(24px, 6vw, 40px) !important; }
         
         .hc-btn-prev { left: 0px !important; }
         .hc-btn-next { right: 0px !important; }
@@ -311,7 +340,7 @@
     <div class="hero-split hero-split-align">
     <!-- Left Column: Text & CTAs -->
     <div class="hero-left hero-left-col">
-      <div style="display: flex; justify-content: flex-start; margin-bottom: 24px;">
+      <div class="hero-badge-wrap" style="display: flex; justify-content: flex-start; margin-bottom: 24px;">
         <div class="ix-premium-badge">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
           3D & AR PLATFORMU
