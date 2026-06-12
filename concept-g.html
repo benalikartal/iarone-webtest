@@ -238,6 +238,18 @@
         <a href="#demo" class="btn btn-ghost btn-ghost-lg" style="padding: 14px 28px; font-size: 15px;">Demo Talep Et</a>
       </div>
 
+      <!-- Deneyim Modu -->
+      <div style="margin-top: 32px; margin-bottom: 8px;">
+        <span style="font-size: 13px; font-weight: 600; color: #64748b; display: block; margin-bottom: 12px;">Deneyim modu</span>
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <div style="display: inline-flex; border-radius: 9999px; border: 1px solid rgba(226,232,240,0.7); background: rgba(255,255,255,0.8); padding: 4px; box-shadow: 0 16px 40px rgba(15,23,42,0.08); backdrop-filter: blur(24px);">
+            <button id="hc-btn-ar" onclick="setMode('ar')" style="border-radius: 9999px; background: transparent; padding: 6px 20px; font-size: 13px; font-weight: 600; color: #64748b; border: none; cursor: pointer; transition: all 0.2s;">AR</button>
+            <button id="hc-btn-obj" onclick="setMode('object')" style="border-radius: 9999px; background: #0f172a; padding: 6px 20px; font-size: 13px; font-weight: 600; color: #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.05); border: none; cursor: pointer; transition: all 0.2s;">Object</button>
+          </div>
+          <span style="font-size: 13px; font-weight: 500; color: #64748b; line-height: 1.4;">AR’de yerleştir, Object modunda<br/>detayları incele.</span>
+        </div>
+      </div>
+
       <!-- Output Chips -->
       <div style="margin-top: 24px;">
         <span style="font-size: 13px; font-weight: 600; color: #64748b; margin-right: 8px;">Hazır çıktılar:</span>
@@ -308,12 +320,6 @@
           <img id="preload-lamp-object" src="lamp-object.svg" />
           <img id="preload-lamp-ar" src="lamp-ar.svg" />
         </div>
-      </div>
-      
-      <!-- Premium Compact ViewModeToggle (Bottom Center) -->
-      <div style="margin-top: 16px; display: inline-flex; justify-content: center; z-index: 40; border-radius: 9999px; border: 1px solid rgba(226,232,240,0.7); background: rgba(255,255,255,0.8); padding: 4px; box-shadow: 0 16px 40px rgba(15,23,42,0.08); backdrop-filter: blur(24px);">
-        <button id="hc-btn-ar" onclick="setMode('ar')" style="border-radius: 9999px; background: transparent; padding: 8px 24px; font-size: 14px; font-weight: 600; color: #64748b; border: none; cursor: pointer; transition: all 0.2s;">AR</button>
-        <button id="hc-btn-obj" onclick="setMode('object')" style="border-radius: 9999px; background: #020617; padding: 8px 24px; font-size: 14px; font-weight: 600; color: #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.05); border: none; cursor: pointer; transition: all 0.2s;">Object</button>
       </div>
     </div>
     </div>
