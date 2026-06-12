@@ -277,11 +277,11 @@
           <div style="width: 280px; height: auto; position: relative; z-index: 2;" class="hero-carousel-item" id="hc-main-card">
             <!-- AR/Object Toggle over Main Card -->
             <div style="position: absolute; top: -16px; left: 50%; transform: translateX(-50%); display: flex; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); padding: 4px; border-radius: 100px; box-shadow: 0 12px 32px rgba(15,23,42,0.15); border: 1px solid rgba(255,255,255,1); z-index: 10;">
-               <span id="hc-main-badge" style="font-size: 11px; font-weight: 700; padding: 6px 16px; background: #0f172a; color: #fff; border-radius: 100px;">AR</span>
-               <span id="hc-main-badge-inactive" style="font-size: 11px; font-weight: 600; padding: 6px 16px; color: #64748b;">Object</span>
+               <button id="hc-btn-ar" onclick="setMode('ar')" style="border:none; cursor:pointer; font-size: 11px; font-weight: 700; padding: 6px 16px; background: #0f172a; color: #fff; border-radius: 100px; transition: all 0.2s;">AR</button>
+               <button id="hc-btn-obj" onclick="setMode('object')" style="border:none; cursor:pointer; font-size: 11px; font-weight: 600; padding: 6px 16px; background: transparent; color: #64748b; border-radius: 100px; transition: all 0.2s;">Object</button>
             </div>
             
-            <img src="watch-ar.svg" id="hc-main-img" style="width: 100%; height: auto; display: block; filter: drop-shadow(0 24px 48px rgba(15,23,42,0.15));" alt="Main AR">
+            <img src="watch-ar.svg" id="hc-main-img" style="width: 100%; height: auto; display: block; filter: drop-shadow(0 24px 48px rgba(15,23,42,0.15)); transition: opacity 0.3s ease;" alt="Main AR">
           </div>
 
           <!-- Mini Floating Card 1 (Lamp Object) -->
@@ -737,23 +737,53 @@
 
 <script>
   // Hero Carousel Logic
-  const heroStates = [
-    { main: 'watch-ar.svg', badge: 'AR', f1: 'lamp-object.svg', f2: 'dessert-ar.svg' },
-    { main: 'lamp-object.svg', badge: 'Object', f1: 'dessert-ar.svg', f2: 'watch-ar.svg' },
-    { main: 'dessert-ar.svg', badge: 'AR', f1: 'watch-ar.svg', f2: 'lamp-object.svg' }
+  // Hero Carousel & Toggle Logic
+  const heroItems = [
+    { name: 'watch', f1: 'lamp-object.svg', f2: 'dessert-ar.svg' },
+    { name: 'lamp', f1: 'dessert-ar.svg', f2: 'watch-ar.svg' },
+    { name: 'dessert', f1: 'watch-ar.svg', f2: 'lamp-object.svg' }
   ];
   let hcIdx = 0;
   let isAnimating = false;
+  let currentMode = 'ar';
+
+  function updateModeButtons() {
+    const btnAr = document.getElementById('hc-btn-ar');
+    const btnObj = document.getElementById('hc-btn-obj');
+    if (!btnAr || !btnObj) return;
+    if (currentMode === 'ar') {
+      btnAr.style.background = '#0f172a'; btnAr.style.color = '#fff'; btnAr.style.fontWeight = '700';
+      btnObj.style.background = 'transparent'; btnObj.style.color = '#64748b'; btnObj.style.fontWeight = '600';
+    } else {
+      btnObj.style.background = '#0f172a'; btnObj.style.color = '#fff'; btnObj.style.fontWeight = '700';
+      btnAr.style.background = 'transparent'; btnAr.style.color = '#64748b'; btnAr.style.fontWeight = '600';
+    }
+  }
+
+  window.setMode = function(mode) {
+    if (isAnimating || currentMode === mode) return;
+    currentMode = mode;
+    updateModeButtons();
+    const mainImg = document.getElementById('hc-main-img');
+    const itemName = heroItems[hcIdx].name;
+    
+    // Quick fade just for the image src swap
+    mainImg.style.opacity = 0;
+    setTimeout(() => {
+      mainImg.src = itemName + '-' + mode + '.svg';
+      mainImg.style.opacity = 1;
+    }, 300);
+  };
 
   function setHeroCarousel(idx) {
     if (isAnimating) return;
     isAnimating = true;
+    currentMode = 'ar'; // Reset to AR default
+    updateModeButtons();
 
     const mainImg = document.getElementById('hc-main-img');
     const f1Img = document.getElementById('hc-float1-img');
     const f2Img = document.getElementById('hc-float2-img');
-    const mainBadge = document.getElementById('hc-main-badge');
-    const mainBadgeInactive = document.getElementById('hc-main-badge-inactive');
     
     const cMain = document.getElementById('hc-main-card');
     const cF1 = document.getElementById('hc-float1-card');
@@ -769,39 +799,30 @@
     setTimeout(() => { cF1.classList.remove('fade-in'); cF1.classList.add('fade-out'); }, 100);
     setTimeout(() => { cF2.classList.remove('fade-in'); cF2.classList.add('fade-out'); }, 200);
     
-    // Swap source after the first one is mostly faded (500ms transition time, so at 500ms it's clean)
+    // Swap source after the first one is mostly faded
     setTimeout(() => {
-      const st = heroStates[idx];
-      mainImg.src = st.main;
+      const st = heroItems[idx];
+      mainImg.style.opacity = 1; // ensure opacity is 1 before bringing container back
+      mainImg.src = st.name + '-ar.svg';
       f1Img.src = st.f1;
       f2Img.src = st.f2;
-      
-      if (st.badge === 'AR') {
-        mainBadge.textContent = 'AR';
-        mainBadgeInactive.textContent = 'Object';
-      } else {
-        mainBadge.textContent = 'Object';
-        mainBadgeInactive.textContent = 'AR';
-      }
       
       // Domino Fade In
       cMain.classList.remove('fade-out'); cMain.classList.add('fade-in');
       setTimeout(() => { cF1.classList.remove('fade-out'); cF1.classList.add('fade-in'); }, 100);
       setTimeout(() => { 
         cF2.classList.remove('fade-out'); cF2.classList.add('fade-in'); 
-        
-        // Unlock after the last element fully fades in (500ms transition)
         setTimeout(() => { isAnimating = false; }, 500);
       }, 200);
     }, 550);
   }
 
   window.heroNext = function() {
-    hcIdx = (hcIdx + 1) % heroStates.length;
+    hcIdx = (hcIdx + 1) % heroItems.length;
     setHeroCarousel(hcIdx);
   };
   window.heroPrev = function() {
-    hcIdx = (hcIdx - 1 + heroStates.length) % heroStates.length;
+    hcIdx = (hcIdx - 1 + heroItems.length) % heroItems.length;
     setHeroCarousel(hcIdx);
   };
 </script>
