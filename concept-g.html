@@ -742,9 +742,9 @@
   // Figma'dan çıkan SVG'lerin içindeki telefon çizim boyutları farklı olduğu için,
   // görseller değiştiğinde boyutların aynı kalmasını sağlayan ölçekleme ayarları.
   const imgScale = {
-    'dessert': 1.0,   // Referans boyut
-    'watch': 0.92,    // Saat SVG'si çok büyükse küçültüyoruz
-    'lamp': 1.0       // Lamba SVG'sini sıfırladık
+    'dessert': 1.0,   // Referans boyut (en ferah duran bu)
+    'watch': 0.85,    // Saat SVG'si çok büyük ve taşıyor, %15 küçültüldü
+    'lamp': 0.85      // Lamba SVG'si de taşıyor, %15 küçültüldü
   };
 
   let hcIdx = 0;
