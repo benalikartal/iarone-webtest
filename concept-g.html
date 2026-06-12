@@ -258,7 +258,7 @@
         .hero-right-offset { margin-top: 40px; }
       }
     </style>
-    <div class="hero-right hero-right-offset" style="display: flex; justify-content: flex-end; align-items: center;">
+    <div class="hero-right hero-right-offset" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 50px;">
       <style>
         .hc-btn-arrow {
           position: absolute; top: 50%; transform: translateY(-50%);
@@ -274,7 +274,7 @@
           box-shadow: 0 6px 16px rgba(15,23,42,0.06);
         }
       </style>
-      <div style="position: relative; width: 100%; max-width: 520px; height: 560px; z-index: 1; margin-right: 50px;">
+      <div style="position: relative; width: 100%; width: 520px; height: 560px; z-index: 1;">
         
         <!-- Minimal Navigation Buttons -->
         <button class="hc-btn-arrow" aria-label="Önceki" onclick="heroPrev()" style="left: -16px;">
@@ -286,26 +286,6 @@
 
         <!-- Ambient Blue Glow -->
         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 60% 45%, rgba(59,130,246,0.16) 0%, transparent 55%); z-index: 0; pointer-events: none;"></div>
-
-        <!-- Pipeline Header -->
-        <div class="ix-mini-pipeline" style="position: absolute; top: -10px; right: 12%; z-index: 30; display: flex; justify-content: center; align-items: center; background: rgba(255,255,255,0.9); padding: 8px 16px; border-radius: 100px; font-size: 11px; font-weight: 700; color: #475569; border: 1px solid rgba(59,130,246,0.1); gap: 8px; backdrop-filter: blur(12px); box-shadow: 0 4px 12px rgba(59,130,246,0.04);">
-          <span style="color: #0f172a; display: flex; align-items: center; gap: 4px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg> Fotoğraf</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          <span style="color: #0f172a; display: flex; align-items: center; gap: 4px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg> 3D Model</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          <span style="color: #3b82f6; display: flex; align-items: center; gap: 4px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg> Web / AR Yayın</span>
-        </div>
-
-        <!-- Premium External AR / Object Segmented Control -->
-        <div style="position: absolute; right: 12%; top: 15px; width: 330px; z-index: 40; display: flex; flex-direction: column; align-items: center; gap: 6px; pointer-events: none;">
-          
-          <div style="display: flex; background: rgba(255,255,255,0.85); backdrop-filter: blur(24px); padding: 4px; border-radius: 100px; box-shadow: 0 8px 24px rgba(15,23,42,0.08); border: 1px solid rgba(255,255,255,1); pointer-events: auto;">
-             <button id="hc-btn-ar" onclick="setMode('ar')" style="border:none; cursor:pointer; font-size: 12px; font-weight: 600; padding: 6px 20px; background: transparent; color: #64748b; border-radius: 100px; transition: all 0.2s;">AR</button>
-             <button id="hc-btn-obj" onclick="setMode('object')" style="border:none; cursor:pointer; font-size: 12px; font-weight: 700; padding: 6px 20px; background: #0f172a; color: #fff; border-radius: 100px; transition: all 0.2s;">Object</button>
-          </div>
-          
-          <span style="font-size: 11px; font-weight: 600; color: #475569; text-align: center; line-height: 1.4;">AR'de yerleştir, Object modunda<br/>detayları incele.</span>
-        </div>
 
         <!-- Central Cinematic Visual -->
         
@@ -328,6 +308,13 @@
           <img id="preload-lamp-ar" src="lamp-ar.svg" />
         </div>
       </div>
+      
+      <!-- Premium Compact ViewModeToggle (Bottom Center) -->
+      <div style="margin-top: 16px; display: inline-flex; justify-content: center; z-index: 40; border-radius: 9999px; border: 1px solid rgba(226,232,240,0.7); background: rgba(255,255,255,0.8); padding: 4px; box-shadow: 0 16px 40px rgba(15,23,42,0.08); backdrop-filter: blur(24px);">
+        <button id="hc-btn-ar" onclick="setMode('ar')" style="border-radius: 9999px; background: transparent; padding: 8px 24px; font-size: 14px; font-weight: 600; color: #64748b; border: none; cursor: pointer; transition: all 0.2s;">AR</button>
+        <button id="hc-btn-obj" onclick="setMode('object')" style="border-radius: 9999px; background: #020617; padding: 8px 24px; font-size: 14px; font-weight: 600; color: #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.05); border: none; cursor: pointer; transition: all 0.2s;">Object</button>
+      </div>
+    </div>
     </div>
   </div>
 </section>
