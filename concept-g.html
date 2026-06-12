@@ -226,7 +226,7 @@
       
       <h1 style="font-size:44px; line-height:1.15; margin-bottom: 20px; font-weight:800; letter-spacing: -0.02em;">Ürün görsellerini etkileşimli <span style="color:#3b82f6;">3D</span> ve <span style="color:#3b82f6;">AR</span> deneyimlerine dönüştürün.</h1>
       
-      <p style="font-size:18px; line-height: 1.6; color:#475569; margin-bottom: 32px;">Ürün görselinizi veya mevcut 3D dosyanızı yükleyin; Iarone web, mobil AR ve e-ticaret ürün sayfaları için optimize edilmiş yayın çıktıları oluştursun.</p>
+      <p style="font-size:18px; line-height: 1.6; color:#475569; margin-bottom: 32px;">Ürün fotoğrafınızı veya mevcut 3D dosyanızı yükleyin; Iarone, web, mobil AR ve e-ticaret sayfaları için optimize edilmiş yayın paketleri oluştursun.</p>
       
       <div style="display: flex; gap: 16px;">
         <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html" class="btn btn-primary btn-primary-lg" data-auth-intent="create" style="padding: 14px 28px; font-size: 15px;">Model Oluştur</a>
@@ -247,22 +247,14 @@
     </div>
 
     <!-- Right Column: Workflow Showcase -->
-    <div class="hero-right" style="display: flex; justify-content: flex-end;">
-      <div class="hero-showcase-card" style="padding: 16px; display: flex; flex-direction: column; gap: 16px; position: relative; overflow: visible; width: 100%; max-width: 520px; z-index: 1;">
+    <div class="hero-right" style="display: flex; justify-content: flex-end; align-items: center; margin-top: -24px;">
+      <div style="position: relative; width: 100%; max-width: 520px; height: 560px; z-index: 1;">
         
-        <!-- Navigation Buttons -->
-        <button class="hc-btn hc-prev" aria-label="Önceki" onclick="heroPrev()" style="left: -10px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-        </button>
-        <button class="hc-btn hc-next" aria-label="Sonraki" onclick="heroNext()" style="right: -10px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-        </button>
-
         <!-- Ambient Blue Glow -->
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(255,255,255,0) 70%); z-index: 0; pointer-events: none;"></div>
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 60% 45%, rgba(59,130,246,0.16) 0%, transparent 55%); z-index: 0; pointer-events: none;"></div>
 
         <!-- Pipeline Header -->
-        <div class="ix-mini-pipeline" style="position: relative; z-index: 2; display: flex; justify-content: center; align-items: center; background: rgba(255,255,255,0.9); padding: 8px 16px; border-radius: 100px; font-size: 11px; font-weight: 700; color: #475569; border: 1px solid rgba(59,130,246,0.1); margin: 0 auto; width: max-content; gap: 8px; backdrop-filter: blur(12px); box-shadow: 0 4px 12px rgba(59,130,246,0.04);">
+        <div class="ix-mini-pipeline" style="position: absolute; top: 16px; right: 40px; z-index: 30; display: flex; justify-content: center; align-items: center; background: rgba(255,255,255,0.9); padding: 8px 16px; border-radius: 100px; font-size: 11px; font-weight: 700; color: #475569; border: 1px solid rgba(59,130,246,0.1); gap: 8px; backdrop-filter: blur(12px); box-shadow: 0 4px 12px rgba(59,130,246,0.04);">
           <span style="color: #0f172a; display: flex; align-items: center; gap: 4px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg> Fotoğraf</span>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           <span style="color: #0f172a; display: flex; align-items: center; gap: 4px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg> 3D Model</span>
@@ -270,41 +262,23 @@
           <span style="color: #3b82f6; display: flex; align-items: center; gap: 4px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg> Web / AR Yayın</span>
         </div>
 
+        <!-- AR / Object Segmented Control (Floating over Main Phone) -->
+        <div style="position: absolute; top: 76px; left: 50%; transform: translateX(-40%); z-index: 30; display: flex; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); padding: 4px; border-radius: 100px; box-shadow: 0 12px 32px rgba(15,23,42,0.15); border: 1px solid rgba(255,255,255,1);">
+           <span style="font-size: 11px; font-weight: 600; padding: 6px 16px; color: #64748b; background: transparent; border-radius: 100px;">AR</span>
+           <span style="font-size: 11px; font-weight: 700; padding: 6px 16px; background: #0f172a; color: #fff; border-radius: 100px;">Object</span>
+        </div>
+
         <!-- Central Cinematic Visual -->
-        <div style="position: relative; flex: 1; display: flex; align-items: center; justify-content: center; width: 100%; padding: 20px 0 12px; z-index: 2;">
-          
-          <!-- Main SVG Card (Watch AR) -->
-          <div style="width: 280px; height: auto; position: relative; z-index: 2;" class="hero-carousel-item" id="hc-main-card">
-            <!-- AR/Object Toggle over Main Card -->
-            <div style="position: absolute; top: -16px; left: 50%; transform: translateX(-50%); display: flex; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); padding: 4px; border-radius: 100px; box-shadow: 0 12px 32px rgba(15,23,42,0.15); border: 1px solid rgba(255,255,255,1); z-index: 10;">
-               <button id="hc-btn-ar" onclick="setMode('ar')" style="border:none; cursor:pointer; font-size: 11px; font-weight: 700; padding: 6px 16px; background: #0f172a; color: #fff; border-radius: 100px; transition: all 0.2s;">AR</button>
-               <button id="hc-btn-obj" onclick="setMode('object')" style="border:none; cursor:pointer; font-size: 11px; font-weight: 600; padding: 6px 16px; background: transparent; color: #64748b; border-radius: 100px; transition: all 0.2s;">Object</button>
-            </div>
-            
-            <img src="watch-ar.svg" id="hc-main-img" style="width: 100%; height: auto; display: block; filter: drop-shadow(0 24px 48px rgba(15,23,42,0.15)); transition: opacity 0.3s ease;" alt="Main AR">
-          </div>
+        
+        <!-- Main Phone (Dessert Object) -->
+        <img src="dessert-object.svg" style="position: absolute; right: 12%; top: 90px; z-index: 20; width: 330px; height: auto; display: block; filter: drop-shadow(0 40px 90px rgba(15,23,42,0.22));" alt="Main Object">
 
-          <!-- Mini Floating Card 1 (Lamp Object) -->
-          <div style="position: absolute; top: 0%; right: 10px; width: 130px; z-index: 3; transform: rotate(4deg);" class="hero-carousel-item" id="hc-float1-card">
-             <img src="lamp-object.svg" id="hc-float1-img" style="width: 100%; height: auto; display: block; filter: drop-shadow(0 20px 40px rgba(15,23,42,0.15));" alt="Float 1">
-          </div>
+        <!-- Back Phone 1 (Watch AR) -->
+        <img src="watch-ar.svg" style="position: absolute; right: 2%; top: 80px; z-index: 10; width: 190px; height: auto; display: block; transform: rotate(8deg); opacity: 0.92; filter: drop-shadow(0 24px 60px rgba(15,23,42,0.16));" alt="Back Phone AR">
 
-          <!-- Mini Floating Card 2 (Dessert AR) -->
-          <div style="position: absolute; bottom: -5%; left: 10px; width: 140px; z-index: 3; transform: rotate(-3deg);" class="hero-carousel-item" id="hc-float2-card">
-             <img src="dessert-ar.svg" id="hc-float2-img" style="width: 100%; height: auto; display: block; filter: drop-shadow(0 20px 40px rgba(15,23,42,0.15));" alt="Float 2">
-          </div>
-          
-        </div>
+        <!-- Back Phone 2 (Lamp AR) -->
+        <img src="lamp-ar.svg" style="position: absolute; left: 14%; bottom: 50px; z-index: 10; width: 210px; height: auto; display: block; transform: rotate(-7deg); opacity: 0.92; filter: drop-shadow(0 24px 60px rgba(15,23,42,0.16));" alt="Front Phone AR">
 
-        <!-- Output Status Strip -->
-        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; margin-top: 8px; margin-bottom: 4px;">
-          <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; color: #10B981; padding: 4px 12px; background: rgba(16,185,129,0.1); border-radius: 100px;">
-            <span style="width: 4px; height: 4px; background: #10B981; border-radius: 50%; box-shadow: 0 0 6px rgba(16,185,129,0.8);"></span> Yayın paketi hazır
-          </div>
-          <div style="font-size: 10px; font-weight: 600; color: #94a3b8; letter-spacing: 0.02em;">
-            GLB · USDZ · Embed · Public Link
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -735,97 +709,7 @@
 </div>
 </div>
 
-<script>
-  // Hero Carousel Logic
-  // Hero Carousel & Toggle Logic
-  const heroItems = [
-    { name: 'watch', f1: 'lamp-object.svg', f2: 'dessert-ar.svg' },
-    { name: 'lamp', f1: 'dessert-ar.svg', f2: 'watch-ar.svg' },
-    { name: 'dessert', f1: 'watch-ar.svg', f2: 'lamp-object.svg' }
-  ];
-  let hcIdx = 0;
-  let isAnimating = false;
-  let currentMode = 'ar';
 
-  function updateModeButtons() {
-    const btnAr = document.getElementById('hc-btn-ar');
-    const btnObj = document.getElementById('hc-btn-obj');
-    if (!btnAr || !btnObj) return;
-    if (currentMode === 'ar') {
-      btnAr.style.background = '#0f172a'; btnAr.style.color = '#fff'; btnAr.style.fontWeight = '700';
-      btnObj.style.background = 'transparent'; btnObj.style.color = '#64748b'; btnObj.style.fontWeight = '600';
-    } else {
-      btnObj.style.background = '#0f172a'; btnObj.style.color = '#fff'; btnObj.style.fontWeight = '700';
-      btnAr.style.background = 'transparent'; btnAr.style.color = '#64748b'; btnAr.style.fontWeight = '600';
-    }
-  }
-
-  window.setMode = function(mode) {
-    if (isAnimating || currentMode === mode) return;
-    currentMode = mode;
-    updateModeButtons();
-    const mainImg = document.getElementById('hc-main-img');
-    const itemName = heroItems[hcIdx].name;
-    
-    // Quick fade just for the image src swap
-    mainImg.style.opacity = 0;
-    setTimeout(() => {
-      mainImg.src = itemName + '-' + mode + '.svg';
-      mainImg.style.opacity = 1;
-    }, 300);
-  };
-
-  function setHeroCarousel(idx) {
-    if (isAnimating) return;
-    isAnimating = true;
-    currentMode = 'ar'; // Reset to AR default
-    updateModeButtons();
-
-    const mainImg = document.getElementById('hc-main-img');
-    const f1Img = document.getElementById('hc-float1-img');
-    const f2Img = document.getElementById('hc-float2-img');
-    
-    const cMain = document.getElementById('hc-main-card');
-    const cF1 = document.getElementById('hc-float1-card');
-    const cF2 = document.getElementById('hc-float2-card');
-    
-    if(!mainImg || !f1Img || !f2Img) {
-      isAnimating = false;
-      return;
-    }
-
-    // Domino Fade Out
-    cMain.classList.remove('fade-in'); cMain.classList.add('fade-out');
-    setTimeout(() => { cF1.classList.remove('fade-in'); cF1.classList.add('fade-out'); }, 100);
-    setTimeout(() => { cF2.classList.remove('fade-in'); cF2.classList.add('fade-out'); }, 200);
-    
-    // Swap source after the first one is mostly faded
-    setTimeout(() => {
-      const st = heroItems[idx];
-      mainImg.style.opacity = 1; // ensure opacity is 1 before bringing container back
-      mainImg.src = st.name + '-ar.svg';
-      f1Img.src = st.f1;
-      f2Img.src = st.f2;
-      
-      // Domino Fade In
-      cMain.classList.remove('fade-out'); cMain.classList.add('fade-in');
-      setTimeout(() => { cF1.classList.remove('fade-out'); cF1.classList.add('fade-in'); }, 100);
-      setTimeout(() => { 
-        cF2.classList.remove('fade-out'); cF2.classList.add('fade-in'); 
-        setTimeout(() => { isAnimating = false; }, 500);
-      }, 200);
-    }, 550);
-  }
-
-  window.heroNext = function() {
-    hcIdx = (hcIdx + 1) % heroItems.length;
-    setHeroCarousel(hcIdx);
-  };
-  window.heroPrev = function() {
-    hcIdx = (hcIdx - 1 + heroItems.length) % heroItems.length;
-    setHeroCarousel(hcIdx);
-  };
-</script>
 
 <script>
   window.IARONE_API_URL = "%VITE_IARONE_API_URL%";
