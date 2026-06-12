@@ -211,17 +211,83 @@
 </div>
 
 <!-- UNIVERSAL HERO (Old Section 1) -->
-<section class="premium-section" style="padding-top: 96px; padding-bottom: 0px;">
+<section class="premium-section hero-section">
   <div class="container">
     <style>
+      /* HERO RESPONSIVE REFACTOR */
+      .hero-section { padding-top: 96px; padding-bottom: 0px; }
       .hero-split-align { align-items: flex-start !important; }
-      @media (max-width: 1200px) {
-        .hero-split-align { align-items: center !important; }
+      .hero-left-col { text-align: left; padding-right: 20px; padding-top: 10px; }
+      .hero-title { font-size: 44px; line-height: 1.15; margin-bottom: 20px; font-weight: 800; letter-spacing: -0.02em; }
+      .hero-desc { font-size: 18px; line-height: 1.6; color: #475569; margin-bottom: 32px; }
+      .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+      .hero-experience { margin-top: 30px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+      .hero-chips-wrap { margin-top: 20px; }
+      .hero-chips-flex { display: inline-flex; flex-wrap: wrap; gap: 8px; vertical-align: middle; justify-content: flex-start; }
+      .hero-right-offset { margin-top: -10px; margin-right: 50px; }
+      .hero-visual-wrapper { position: relative; width: 100%; max-width: 520px; height: 560px; z-index: 1; --hero-phone-main-width: 300px; }
+      
+      /* Desktop (>= 1280px) remains as is */
+      
+      /* Tablet Landscape / Small Desktop (1024px - 1279px) */
+      @media (max-width: 1279px) {
+        .hero-visual-wrapper { --hero-phone-main-width: 260px; }
+      }
+      
+      /* 1024-1199 Portrait specific */
+      @media (max-width: 1199px) and (orientation: portrait) {
+        .hero-split-align { flex-direction: column !important; align-items: center !important; }
+        .hero-left-col { padding-right: 0; padding-top: 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .hero-actions { justify-content: center; }
+        .hero-experience { align-items: center; }
+        .hero-chips-flex { justify-content: center; }
+        .hero-right-offset { margin-top: 40px; margin-right: 0; }
+      }
+
+      /* Tablet Portrait (768px - 1023px) */
+      @media (max-width: 1023px) {
+        .hero-split-align { align-items: center !important; flex-direction: column !important; }
+        .hero-left-col { padding-right: 0; padding-top: 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .hero-actions { justify-content: center; }
+        .hero-experience { align-items: center; }
+        .hero-chips-flex { justify-content: center; }
+        .hero-title { font-size: clamp(42px, 6vw, 56px); }
+        .hero-right-offset { margin-top: 40px; margin-right: 0; }
+      }
+
+      /* Mobile (< 768px) */
+      @media (max-width: 767px) {
+        .hero-visual-wrapper { --hero-phone-main-width: 240px; min-height: auto; height: 480px; }
+        .hero-title { font-size: clamp(32px, 9vw, 44px); }
+        .hero-desc { font-size: clamp(15px, 3vw, 18px); margin-bottom: 24px; }
+        #hc-float1-img, #hc-float2-img { display: none !important; }
+        #hc-main-img { left: 0 !important; right: 0 !important; margin: 0 auto !important; top: 40px !important; }
+        
+        .hero-right-offset { margin-top: clamp(24px, 6vw, 40px); margin-right: 0; }
+        
+        .hc-btn-prev { left: 0px !important; }
+        .hc-btn-next { right: 0px !important; }
+      }
+
+      /* Mobile CTA stack */
+      @media (max-width: 360px) {
+        .hero-actions { flex-direction: column; width: 100%; }
+        .hero-actions .btn { width: 100%; text-align: center; }
+      }
+
+      /* Short-height screens */
+      @media (max-height: 700px) and (max-width: 1023px) {
+        .hero-section { padding-top: 40px; }
+        .hero-title { margin-bottom: 12px; }
+        .hero-desc { margin-bottom: 16px; }
+      }
+      @media (max-height: 700px) and (min-width: 1024px) {
+        .hero-section { padding-top: 60px; }
       }
     </style>
     <div class="hero-split hero-split-align">
     <!-- Left Column: Text & CTAs -->
-    <div class="hero-left" style="text-align: left; padding-right: 20px; padding-top: 10px;">
+    <div class="hero-left hero-left-col">
       <div style="display: flex; justify-content: flex-start; margin-bottom: 24px;">
         <div class="ix-premium-badge">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
@@ -229,17 +295,17 @@
         </div>
       </div>
       
-      <h1 style="font-size:44px; line-height:1.15; margin-bottom: 20px; font-weight:800; letter-spacing: -0.02em;">Ürün görsellerini etkileşimli <span style="color:#3b82f6;">3D</span> ve <span style="color:#3b82f6;">AR</span> deneyimlerine dönüştürün.</h1>
+      <h1 class="hero-title">Ürün görsellerini etkileşimli <span style="color:#3b82f6;">3D</span> ve <span style="color:#3b82f6;">AR</span> deneyimlerine dönüştürün.</h1>
       
-      <p style="font-size:18px; line-height: 1.6; color:#475569; margin-bottom: 32px;">Ürün fotoğrafınızı veya mevcut 3D dosyanızı yükleyin; Iarone, web, mobil AR ve e-ticaret sayfaları için optimize edilmiş yayın paketleri oluştursun.</p>
+      <p class="hero-desc">Ürün fotoğrafınızı veya mevcut 3D dosyanızı yükleyin; Iarone, web, mobil AR ve e-ticaret sayfaları için optimize edilmiş yayın paketleri oluştursun.</p>
       
-      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+      <div class="hero-actions">
         <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html" class="btn btn-primary btn-primary-lg" data-auth-intent="create" style="padding: 14px 28px; font-size: 15px;">Model Oluştur</a>
         <a href="#demo" class="btn btn-ghost btn-ghost-lg" style="padding: 14px 28px; font-size: 15px;">Demo Talep Et</a>
       </div>
 
       <!-- Deneyim Modu -->
-      <div style="margin-top: 30px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px;">
+      <div class="hero-experience">
         <span style="font-size: 13px; font-weight: 600; color: #64748b;">Deneyim modu</span>
         <div style="display: inline-flex; border-radius: 9999px; border: 1px solid rgba(226,232,240,0.7); background: rgba(255,255,255,0.8); padding: 4px; box-shadow: 0 8px 24px rgba(15,23,42,0.06); backdrop-filter: blur(24px);">
           <button id="hc-btn-ar" onclick="setMode('ar')" style="border-radius: 9999px; background: transparent; padding: 6px 20px; font-size: 13px; font-weight: 600; color: #64748b; border: none; cursor: pointer; transition: all 0.2s;">AR</button>
@@ -248,9 +314,9 @@
       </div>
 
       <!-- Output Chips -->
-      <div style="margin-top: 20px;">
+      <div class="hero-chips-wrap">
         <span style="font-size: 13px; font-weight: 600; color: #64748b; margin-right: 8px;">Hazır çıktılar:</span>
-        <div style="display: inline-flex; flex-wrap: wrap; gap: 8px; vertical-align: middle;">
+        <div class="hero-chips-flex">
           <span class="ix-badge" style="margin-top: 0;">GLB</span>
           <span class="ix-badge" style="margin-top: 0;">USDZ</span>
           <span class="ix-badge" style="margin-top: 0;">Embed</span>
@@ -261,16 +327,6 @@
     </div>
 
     <!-- Right Column: Workflow Showcase -->
-    <style>
-      .hero-right-offset { margin-top: -10px; margin-right: 50px; }
-      @media (max-width: 1200px) {
-        .hero-right-offset { margin-top: 40px; margin-right: 0; }
-      }
-      @media (max-width: 768px) {
-        #hc-float1-img, #hc-float2-img { display: none !important; }
-        #hc-main-img { left: 0 !important; right: 0 !important; margin: 0 auto !important; }
-      }
-    </style>
     <div class="hero-right hero-right-offset" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
       <style>
         .hc-btn-arrow {
@@ -288,13 +344,13 @@
           box-shadow: 0 12px 28px rgba(15,23,42,0.1), 0 4px 10px rgba(15,23,42,0.05);
         }
       </style>
-      <div style="position: relative; width: 100%; max-width: 520px; height: 560px; z-index: 1;">
+      <div class="hero-visual-wrapper">
         
         <!-- Premium Navigation Buttons -->
-        <button class="hc-btn-arrow" aria-label="Önceki" onclick="heroPrev()" style="left: -20px;">
+        <button class="hc-btn-arrow hc-btn-prev" aria-label="Önceki" onclick="heroPrev()" style="left: -20px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
         </button>
-        <button class="hc-btn-arrow" aria-label="Sonraki" onclick="heroNext()" style="right: -20px;">
+        <button class="hc-btn-arrow hc-btn-next" aria-label="Sonraki" onclick="heroNext()" style="right: -20px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </button>
 
@@ -304,7 +360,7 @@
         <!-- Central Cinematic Visual -->
         
         <!-- Main Phone (Dessert AR Default) -->
-        <img src="dessert-ar.svg" id="hc-main-img" style="position: absolute; right: 12%; top: 90px; z-index: 20; width: 300px; height: auto; display: block; filter: drop-shadow(0 40px 90px rgba(15,23,42,0.22)); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);" alt="Iarone 3D ve AR Ürün Görüntüleme - Ana Ekran">
+        <img src="dessert-ar.svg" id="hc-main-img" style="position: absolute; right: 12%; top: 90px; z-index: 20; width: var(--hero-phone-main-width); height: auto; display: block; filter: drop-shadow(0 40px 90px rgba(15,23,42,0.22)); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);" alt="Iarone 3D ve AR Ürün Görüntüleme - Ana Ekran">
 
         <!-- Back Phone 1 (Watch AR) -->
         <img src="watch-ar.svg" id="hc-float1-img" style="position: absolute; right: 10%; top: 75px; z-index: 5; width: 148px; height: auto; display: block; transform: rotate(8deg); opacity: 0.8; filter: drop-shadow(0 16px 40px rgba(15,23,42,0.12)); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);" alt="Iarone AR Deneyimi - Saat Önizleme">
