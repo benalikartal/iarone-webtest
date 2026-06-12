@@ -743,20 +743,33 @@
     { main: 'dessert-ar.svg', badge: 'AR', f1: 'watch-ar.svg', f2: 'lamp-object.svg' }
   ];
   let hcIdx = 0;
+  let isAnimating = false;
 
   function setHeroCarousel(idx) {
+    if (isAnimating) return;
+    isAnimating = true;
+
     const mainImg = document.getElementById('hc-main-img');
     const f1Img = document.getElementById('hc-float1-img');
     const f2Img = document.getElementById('hc-float2-img');
     const mainBadge = document.getElementById('hc-main-badge');
     const mainBadgeInactive = document.getElementById('hc-main-badge-inactive');
-    const cards = document.querySelectorAll('.hero-carousel-item');
     
-    if(!mainImg || !f1Img || !f2Img) return;
+    const cMain = document.getElementById('hc-main-card');
+    const cF1 = document.getElementById('hc-float1-card');
+    const cF2 = document.getElementById('hc-float2-card');
+    
+    if(!mainImg || !f1Img || !f2Img) {
+      isAnimating = false;
+      return;
+    }
 
-    cards.forEach(c => c.classList.add('fade-out'));
-    cards.forEach(c => c.classList.remove('fade-in'));
+    // Domino Fade Out
+    cMain.classList.remove('fade-in'); cMain.classList.add('fade-out');
+    setTimeout(() => { cF1.classList.remove('fade-in'); cF1.classList.add('fade-out'); }, 100);
+    setTimeout(() => { cF2.classList.remove('fade-in'); cF2.classList.add('fade-out'); }, 200);
     
+    // Swap source after the first one is mostly faded (500ms transition time, so at 500ms it's clean)
     setTimeout(() => {
       const st = heroStates[idx];
       mainImg.src = st.main;
@@ -771,9 +784,16 @@
         mainBadgeInactive.textContent = 'AR';
       }
       
-      cards.forEach(c => c.classList.remove('fade-out'));
-      cards.forEach(c => c.classList.add('fade-in'));
-    }, 400);
+      // Domino Fade In
+      cMain.classList.remove('fade-out'); cMain.classList.add('fade-in');
+      setTimeout(() => { cF1.classList.remove('fade-out'); cF1.classList.add('fade-in'); }, 100);
+      setTimeout(() => { 
+        cF2.classList.remove('fade-out'); cF2.classList.add('fade-in'); 
+        
+        // Unlock after the last element fully fades in (500ms transition)
+        setTimeout(() => { isAnimating = false; }, 500);
+      }, 200);
+    }, 550);
   }
 
   window.heroNext = function() {
