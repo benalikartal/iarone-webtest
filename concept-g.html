@@ -248,8 +248,16 @@
 
     <!-- Right Column: Workflow Showcase -->
     <div class="hero-right" style="display: flex; justify-content: flex-end;">
-      <div class="hero-showcase-card" style="background: #ffffff; border-radius: 32px; box-shadow: 0 24px 64px rgba(59,130,246,0.06); border: 1px solid rgba(59,130,246,0.1); padding: 16px; display: flex; flex-direction: column; gap: 16px; position: relative; overflow: hidden; width: 100%; max-width: 460px; z-index: 1;">
+      <div class="hero-showcase-card" style="background: #ffffff; border-radius: 32px; box-shadow: 0 24px 64px rgba(59,130,246,0.06); border: 1px solid rgba(59,130,246,0.1); padding: 16px; display: flex; flex-direction: column; gap: 16px; position: relative; overflow: visible; width: 100%; max-width: 520px; z-index: 1;">
         
+        <!-- Navigation Buttons -->
+        <button class="hc-btn hc-prev" aria-label="Önceki" onclick="heroPrev()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button class="hc-btn hc-next" aria-label="Sonraki" onclick="heroNext()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+
         <!-- Ambient Blue Glow -->
         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60%; height: 60%; background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, rgba(255,255,255,0) 70%); z-index: 0; pointer-events: none;"></div>
 
@@ -266,29 +274,29 @@
         <div style="position: relative; flex: 1; display: flex; align-items: center; justify-content: center; width: 100%; padding: 8px 0 0; z-index: 2;">
           
           <!-- Main SVG Card (Watch AR) -->
-          <div style="width: 195px; height: auto; background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); border-radius: 24px; padding: 10px; box-shadow: 0 32px 64px rgba(15,23,42,0.1), inset 0 2px 4px rgba(255,255,255,1); border: 1px solid rgba(226,232,240,0.8); position: relative; z-index: 2;">
+          <div style="width: 240px; height: auto; background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); border-radius: 28px; padding: 12px; box-shadow: 0 32px 64px rgba(15,23,42,0.1), inset 0 2px 4px rgba(255,255,255,1); border: 1px solid rgba(226,232,240,0.8); position: relative; z-index: 2;" class="hero-carousel-item" id="hc-main-card">
             <!-- AR/Object Toggle inside Main Card -->
             <div style="position: absolute; top: 16px; left: 50%; transform: translateX(-50%); display: flex; background: rgba(255,255,255,0.9); backdrop-filter: blur(8px); padding: 4px; border-radius: 100px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.03); z-index: 10;">
-               <span style="font-size: 9px; font-weight: 700; padding: 4px 12px; background: #0f172a; color: #fff; border-radius: 100px;">AR</span>
-               <span style="font-size: 9px; font-weight: 600; padding: 4px 12px; color: #64748b;">Object</span>
+               <span id="hc-main-badge" style="font-size: 10px; font-weight: 700; padding: 4px 14px; background: #0f172a; color: #fff; border-radius: 100px;">AR</span>
+               <span id="hc-main-badge-inactive" style="font-size: 10px; font-weight: 600; padding: 4px 14px; color: #64748b;">Object</span>
             </div>
             
-            <div style="width: 100%; border-radius: 16px; overflow: hidden; background: #000; box-shadow: inner 0 0 10px rgba(0,0,0,0.5);">
-               <img src="watch-ar.svg" style="width: 100%; height: auto; display: block; opacity: 0.95;" alt="Watch AR">
+            <div style="width: 100%; border-radius: 18px; overflow: hidden; background: #000; box-shadow: inner 0 0 10px rgba(0,0,0,0.5);">
+               <img src="watch-ar.svg" id="hc-main-img" style="width: 100%; height: auto; display: block; opacity: 0.95;" alt="Main AR">
             </div>
           </div>
 
           <!-- Mini Floating Card 1 (Lamp Object) -->
-          <div style="position: absolute; top: 15%; right: 25px; width: 85px; background: rgba(255,255,255,0.85); backdrop-filter: blur(16px); border-radius: 16px; padding: 6px; box-shadow: 0 20px 40px rgba(15,23,42,0.08); border: 1px solid rgba(255,255,255,0.9); z-index: 3; transform: rotate(4deg);">
-            <div style="width: 100%; border-radius: 10px; overflow: hidden; background: radial-gradient(circle, #ffffff 0%, #f1f5f9 100%);">
-               <img src="lamp-object.svg" style="width: 100%; height: auto; display: block; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.08)); transform: scale(1.1) translateY(4px);" alt="Lamp Object">
+          <div style="position: absolute; top: 10%; right: 20px; width: 110px; background: rgba(255,255,255,0.85); backdrop-filter: blur(16px); border-radius: 20px; padding: 8px; box-shadow: 0 20px 40px rgba(15,23,42,0.08); border: 1px solid rgba(255,255,255,0.9); z-index: 3; transform: rotate(4deg);" class="hero-carousel-item" id="hc-float1-card">
+            <div style="width: 100%; border-radius: 12px; overflow: hidden; background: radial-gradient(circle, #ffffff 0%, #f1f5f9 100%);">
+               <img src="lamp-object.svg" id="hc-float1-img" style="width: 100%; height: auto; display: block; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.08)); transform: scale(1.1) translateY(4px);" alt="Float 1">
             </div>
           </div>
 
           <!-- Mini Floating Card 2 (Dessert AR) -->
-          <div style="position: absolute; bottom: 10%; left: 25px; width: 88px; background: rgba(255,255,255,0.85); backdrop-filter: blur(16px); border-radius: 16px; padding: 6px; box-shadow: 0 20px 40px rgba(15,23,42,0.08); border: 1px solid rgba(255,255,255,0.9); z-index: 3; transform: rotate(-3deg);">
-            <div style="width: 100%; border-radius: 10px; overflow: hidden; background: #000;">
-               <img src="dessert-ar.svg" style="width: 100%; height: auto; display: block; opacity: 0.9;" alt="Dessert AR">
+          <div style="position: absolute; bottom: 5%; left: 20px; width: 120px; background: rgba(255,255,255,0.85); backdrop-filter: blur(16px); border-radius: 20px; padding: 8px; box-shadow: 0 20px 40px rgba(15,23,42,0.08); border: 1px solid rgba(255,255,255,0.9); z-index: 3; transform: rotate(-3deg);" class="hero-carousel-item" id="hc-float2-card">
+            <div style="width: 100%; border-radius: 12px; overflow: hidden; background: #000;">
+               <img src="dessert-ar.svg" id="hc-float2-img" style="width: 100%; height: auto; display: block; opacity: 0.9;" alt="Float 2">
             </div>
           </div>
           
@@ -731,6 +739,58 @@
     </button>
   </div>
 </div>
+</div>
+
+<script>
+  // Hero Carousel Logic
+  const heroStates = [
+    { main: 'watch-ar.svg', badge: 'AR', f1: 'lamp-object.svg', f2: 'dessert-ar.svg' },
+    { main: 'lamp-object.svg', badge: 'Object', f1: 'dessert-ar.svg', f2: 'watch-ar.svg' },
+    { main: 'dessert-ar.svg', badge: 'AR', f1: 'watch-ar.svg', f2: 'lamp-object.svg' }
+  ];
+  let hcIdx = 0;
+
+  function setHeroCarousel(idx) {
+    const mainImg = document.getElementById('hc-main-img');
+    const f1Img = document.getElementById('hc-float1-img');
+    const f2Img = document.getElementById('hc-float2-img');
+    const mainBadge = document.getElementById('hc-main-badge');
+    const mainBadgeInactive = document.getElementById('hc-main-badge-inactive');
+    const cards = document.querySelectorAll('.hero-carousel-item');
+    
+    if(!mainImg || !f1Img || !f2Img) return;
+
+    cards.forEach(c => c.classList.add('fade-out'));
+    cards.forEach(c => c.classList.remove('fade-in'));
+    
+    setTimeout(() => {
+      const st = heroStates[idx];
+      mainImg.src = st.main;
+      f1Img.src = st.f1;
+      f2Img.src = st.f2;
+      
+      if (st.badge === 'AR') {
+        mainBadge.textContent = 'AR';
+        mainBadgeInactive.textContent = 'Object';
+      } else {
+        mainBadge.textContent = 'Object';
+        mainBadgeInactive.textContent = 'AR';
+      }
+      
+      cards.forEach(c => c.classList.remove('fade-out'));
+      cards.forEach(c => c.classList.add('fade-in'));
+    }, 400);
+  }
+
+  window.heroNext = function() {
+    hcIdx = (hcIdx + 1) % heroStates.length;
+    setHeroCarousel(hcIdx);
+  };
+  window.heroPrev = function() {
+    hcIdx = (hcIdx - 1 + heroStates.length) % heroStates.length;
+    setHeroCarousel(hcIdx);
+  };
+</script>
 
 <script>
   window.IARONE_API_URL = "%VITE_IARONE_API_URL%";
