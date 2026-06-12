@@ -284,6 +284,29 @@
       @media (max-height: 700px) and (min-width: 1024px) {
         .hero-section { padding-top: 60px; }
       }
+
+      /* Tablet Short Landscape (e.g. 768x642, 965x642) */
+      @media (min-width: 768px) and (max-height: 700px) and (orientation: landscape) {
+        .hero-split-align { flex-direction: row !important; align-items: center !important; }
+        .hero-left-col { padding-right: 20px !important; padding-top: 0 !important; display: block !important; text-align: left !important; }
+        .hero-actions { justify-content: flex-start !important; }
+        .hero-experience { align-items: flex-start !important; margin-top: 16px !important; }
+        .hero-chips-wrap { margin-top: 16px !important; }
+        .hero-chips-flex { justify-content: flex-start !important; }
+        
+        .hero-section { padding-top: 40px !important; }
+        .hero-title { font-size: clamp(36px, 5vw, 56px) !important; line-height: 1.05 !important; margin-bottom: 12px !important; }
+        .hero-desc { margin-bottom: 16px !important; }
+        
+        .hero-visual-wrapper { --hero-phone-main-width: 220px; min-height: auto; height: 440px; }
+        #hc-float1-img, #hc-float2-img { display: none !important; }
+        #hc-main-img { left: 0 !important; right: 0 !important; margin: 0 auto !important; top: 0px !important; width: var(--hero-phone-main-width) !important; }
+        
+        .hero-right-offset { margin-top: 0px !important; margin-right: 0 !important; }
+        
+        .hc-btn-prev { left: 10px !important; }
+        .hc-btn-next { right: 10px !important; }
+      }
     </style>
     <div class="hero-split hero-split-align">
     <!-- Left Column: Text & CTAs -->
