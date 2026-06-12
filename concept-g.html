@@ -271,7 +271,7 @@
         </div>
 
         <!-- AR / Object Segmented Control (Floating over Main Phone) -->
-        <div style="position: absolute; top: 76px; left: 50%; transform: translateX(-40%); z-index: 30; display: flex; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); padding: 4px; border-radius: 100px; box-shadow: 0 12px 32px rgba(15,23,42,0.15); border: 1px solid rgba(255,255,255,1);">
+        <div style="position: absolute; top: 40px; left: 50%; transform: translateX(-50%); z-index: 30; display: flex; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); padding: 4px; border-radius: 100px; box-shadow: 0 12px 32px rgba(15,23,42,0.15); border: 1px solid rgba(255,255,255,1);">
            <button id="hc-btn-ar" onclick="setMode('ar')" style="border:none; cursor:pointer; font-size: 11px; font-weight: 600; padding: 6px 16px; background: transparent; color: #64748b; border-radius: 100px; transition: all 0.2s;">AR</button>
            <button id="hc-btn-obj" onclick="setMode('object')" style="border:none; cursor:pointer; font-size: 11px; font-weight: 700; padding: 6px 16px; background: #0f172a; color: #fff; border-radius: 100px; transition: all 0.2s;">Object</button>
         </div>
@@ -284,9 +284,18 @@
         <!-- Back Phone 1 (Watch AR) -->
         <img src="watch-ar.svg" id="hc-float1-img" style="position: absolute; right: 2%; top: 80px; z-index: 10; width: 190px; height: auto; display: block; transform: rotate(8deg); opacity: 0.92; filter: drop-shadow(0 24px 60px rgba(15,23,42,0.16)); transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);" alt="Back Phone AR">
 
-        <!-- Back Phone 2 (Lamp AR) -->
+        <!-- Front Phone AR -->
         <img src="lamp-ar.svg" id="hc-float2-img" style="position: absolute; left: 14%; bottom: 50px; z-index: 10; width: 210px; height: auto; display: block; transform: rotate(-7deg); opacity: 0.92; filter: drop-shadow(0 24px 60px rgba(15,23,42,0.16)); transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);" alt="Front Phone AR">
 
+        <!-- Preload Images for Vite Bundler -->
+        <div id="hc-preload" style="display: none;">
+          <img id="preload-dessert-object" src="dessert-object.svg" />
+          <img id="preload-dessert-ar" src="dessert-ar.svg" />
+          <img id="preload-watch-object" src="watch-object.svg" />
+          <img id="preload-watch-ar" src="watch-ar.svg" />
+          <img id="preload-lamp-object" src="lamp-object.svg" />
+          <img id="preload-lamp-ar" src="lamp-ar.svg" />
+        </div>
       </div>
     </div>
   </div>
@@ -722,9 +731,9 @@
 <script>
   // Hero Carousel & Toggle Logic
   const heroStates = [
-    { name: 'dessert', mode: 'object', main: 'dessert-object.svg', f1: 'watch-ar.svg', f2: 'lamp-ar.svg' },
-    { name: 'watch', mode: 'ar', main: 'watch-ar.svg', f1: 'lamp-ar.svg', f2: 'dessert-object.svg' },
-    { name: 'lamp', mode: 'ar', main: 'lamp-ar.svg', f1: 'dessert-object.svg', f2: 'watch-ar.svg' }
+    { name: 'dessert', mode: 'object', mainId: 'preload-dessert-object', f1Id: 'preload-watch-ar', f2Id: 'preload-lamp-ar' },
+    { name: 'watch', mode: 'ar', mainId: 'preload-watch-ar', f1Id: 'preload-lamp-ar', f2Id: 'preload-dessert-object' },
+    { name: 'lamp', mode: 'ar', mainId: 'preload-lamp-ar', f1Id: 'preload-dessert-object', f2Id: 'preload-watch-ar' }
   ];
   let hcIdx = 0;
   let isAnimating = false;
@@ -753,7 +762,7 @@
     // Quick fade for image swap
     mainImg.style.opacity = 0;
     setTimeout(() => {
-      mainImg.src = itemName + '-' + mode + '.svg';
+      mainImg.src = document.getElementById('preload-' + itemName + '-' + mode).src;
       mainImg.style.opacity = 1;
     }, 300);
   };
@@ -782,9 +791,9 @@
     
     // Swap source after faded
     setTimeout(() => {
-      mainImg.src = st.main;
-      f1Img.src = st.f1;
-      f2Img.src = st.f2;
+      mainImg.src = document.getElementById(st.mainId).src;
+      f1Img.src = document.getElementById(st.f1Id).src;
+      f2Img.src = document.getElementById(st.f2Id).src;
       
       // Domino Fade In
       mainImg.style.opacity = 1;
