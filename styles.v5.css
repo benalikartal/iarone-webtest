@@ -3664,11 +3664,11 @@ body:not([data-theme="light"]) .blob-3{opacity:.055}
 
 /* --- HERO CAROUSEL --- */
 .hero-carousel-item {
-  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .hero-carousel-item.fade-out {
   opacity: 0;
-  transform: scale(0.95);
+  transform: scale(0.85);
 }
 .hero-carousel-item.fade-in {
   opacity: 1;
