@@ -213,7 +213,13 @@
 <!-- UNIVERSAL HERO (Old Section 1) -->
 <section class="premium-section" style="padding-top: 60px; padding-bottom: 0px;">
   <div class="container">
-    <div class="hero-split">
+    <style>
+      .hero-split-align { align-items: flex-start !important; }
+      @media (max-width: 1200px) {
+        .hero-split-align { align-items: center !important; }
+      }
+    </style>
+    <div class="hero-split hero-split-align">
     <!-- Left Column: Text & CTAs -->
     <div class="hero-left" style="text-align: left; padding-right: 20px;">
       <div style="display: flex; justify-content: flex-start; margin-bottom: 24px;">
@@ -246,7 +252,13 @@
     </div>
 
     <!-- Right Column: Workflow Showcase -->
-    <div class="hero-right" style="display: flex; justify-content: flex-end; align-items: center; margin-top: -24px;">
+    <style>
+      .hero-right-offset { margin-top: -10px; }
+      @media (max-width: 1200px) {
+        .hero-right-offset { margin-top: 40px; }
+      }
+    </style>
+    <div class="hero-right hero-right-offset" style="display: flex; justify-content: flex-end; align-items: center;">
       <style>
         .hc-btn-arrow {
           position: absolute; top: 50%; transform: translateY(-50%);
