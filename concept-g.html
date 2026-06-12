@@ -280,8 +280,8 @@
 
         <!-- Central Cinematic Visual -->
         
-        <!-- Main Phone (Dessert Object) -->
-        <img src="dessert-object.svg" id="hc-main-img" style="position: absolute; right: 12%; top: 120px; z-index: 20; width: 330px; height: auto; display: block; filter: drop-shadow(0 40px 90px rgba(15,23,42,0.22)); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);" alt="Main Object">
+        <!-- Main Phone (Dessert AR Default) -->
+        <img src="dessert-ar.svg" id="hc-main-img" style="position: absolute; right: 12%; top: 120px; z-index: 20; width: 330px; height: auto; display: block; filter: drop-shadow(0 40px 90px rgba(15,23,42,0.22)); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);" alt="Main AR">
 
         <!-- Back Phone 1 (Watch AR) -->
         <img src="watch-ar.svg" id="hc-float1-img" style="position: absolute; right: 2%; top: 110px; z-index: 10; width: 190px; height: auto; display: block; transform: rotate(8deg); opacity: 0.92; filter: drop-shadow(0 24px 60px rgba(15,23,42,0.16)); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);" alt="Back Phone AR">
@@ -731,25 +731,26 @@
 
 
 <script>
-  // Hero Carousel & Toggle Logic
+  // Hero Carousel & Toggle Logic (6-Step Sequence)
   const heroStates = [
+    { name: 'dessert', mode: 'ar',     mainId: 'preload-dessert-ar',     f1Id: 'preload-watch-ar', f2Id: 'preload-lamp-ar', f1Name: 'watch', f2Name: 'lamp' },
     { name: 'dessert', mode: 'object', mainId: 'preload-dessert-object', f1Id: 'preload-watch-ar', f2Id: 'preload-lamp-ar', f1Name: 'watch', f2Name: 'lamp' },
-    { name: 'watch', mode: 'ar', mainId: 'preload-watch-ar', f1Id: 'preload-lamp-ar', f2Id: 'preload-dessert-object', f1Name: 'lamp', f2Name: 'dessert' },
-    { name: 'lamp', mode: 'ar', mainId: 'preload-lamp-ar', f1Id: 'preload-dessert-object', f2Id: 'preload-watch-ar', f1Name: 'dessert', f2Name: 'watch' }
+    { name: 'watch',   mode: 'ar',     mainId: 'preload-watch-ar',       f1Id: 'preload-lamp-ar',  f2Id: 'preload-dessert-ar', f1Name: 'lamp', f2Name: 'dessert' },
+    { name: 'watch',   mode: 'object', mainId: 'preload-watch-object',   f1Id: 'preload-lamp-ar',  f2Id: 'preload-dessert-ar', f1Name: 'lamp', f2Name: 'dessert' },
+    { name: 'lamp',    mode: 'ar',     mainId: 'preload-lamp-ar',        f1Id: 'preload-dessert-ar',f2Id: 'preload-watch-ar', f1Name: 'dessert', f2Name: 'watch' },
+    { name: 'lamp',    mode: 'object', mainId: 'preload-lamp-object',    f1Id: 'preload-dessert-ar',f2Id: 'preload-watch-ar', f1Name: 'dessert', f2Name: 'watch' }
   ];
 
   // SVG İç Boşluk (Padding) Kalibrasyonu:
-  // Figma'dan çıkan SVG'lerin içindeki telefon çizim boyutları farklı olduğu için,
-  // görseller değiştiğinde boyutların aynı kalmasını sağlayan ölçekleme ayarları.
   const imgScale = {
     'dessert': 1.0,   // Referans boyut (en ferah duran bu)
-    'watch': 0.94,    // 0.85 küçük kaldı, 1.0 büyük geliyordu, altın oran 0.94
-    'lamp': 0.94      // 0.85 küçük kaldı, 1.0 büyük geliyordu, altın oran 0.94
+    'watch': 0.94,    // Altın oran 0.94
+    'lamp': 0.94      // Altın oran 0.94
   };
 
-  let hcIdx = 0;
+  let hcIdx = 0; // Starts at Dessert AR
   let isAnimating = false;
-  let currentMode = 'object';
+  let currentMode = 'ar'; // Default mode is now AR
 
   function updateModeButtons() {
     const btnAr = document.getElementById('hc-btn-ar');
@@ -764,19 +765,21 @@
     }
   }
 
-  window.setMode = function(mode) {
-    if (isAnimating || currentMode === mode) return;
-    currentMode = mode;
+  // Ensure default state is applied on load
+  document.addEventListener('DOMContentLoaded', () => {
     updateModeButtons();
-    const mainImg = document.getElementById('hc-main-img');
-    const itemName = heroStates[hcIdx].name;
-    
-    // Quick fade for image swap
-    mainImg.style.opacity = 0;
-    setTimeout(() => {
-      mainImg.src = document.getElementById('preload-' + itemName + '-' + mode).src;
-      mainImg.style.opacity = 1;
-    }, 300);
+  });
+
+  window.setMode = function(mode) {
+    if (isAnimating) return;
+    const oldSt = heroStates[hcIdx];
+    if (oldSt.mode === mode) return; 
+
+    // Find the state index for the current item with the requested mode
+    const targetIdx = heroStates.findIndex(s => s.name === oldSt.name && s.mode === mode);
+    if (targetIdx !== -1) {
+       setHeroCarousel(targetIdx);
+    }
   };
 
   function setHeroCarousel(idx) {
@@ -784,6 +787,9 @@
     isAnimating = true;
     
     const st = heroStates[idx];
+    const oldSt = heroStates[hcIdx];
+    
+    hcIdx = idx;
     currentMode = st.mode;
     updateModeButtons();
 
@@ -796,39 +802,56 @@
       return;
     }
 
-    // Domino Fade Out
-    mainImg.style.opacity = 0;
-    setTimeout(() => { f1Img.style.opacity = 0; }, 100);
-    setTimeout(() => { f2Img.style.opacity = 0; }, 200);
-    
-    // Swap source after faded
-    setTimeout(() => {
-      mainImg.src = document.getElementById(st.mainId).src;
-      f1Img.src = document.getElementById(st.f1Id).src;
-      f2Img.src = document.getElementById(st.f2Id).src;
+    // Check if the product item changed or just the mode
+    const isSameItem = (oldSt && oldSt.name === st.name);
 
-      // Apply dynamic scale calibration to fix differing SVG paddings
+    // Fade Out
+    mainImg.style.opacity = 0;
+    if (!isSameItem) {
+      setTimeout(() => { f1Img.style.opacity = 0; }, 100);
+      setTimeout(() => { f2Img.style.opacity = 0; }, 200);
+    }
+    
+    // Wait for fade out to complete before swapping
+    const waitTime = isSameItem ? 400 : 550;
+
+    setTimeout(() => {
+      // Swap main source
+      mainImg.src = document.getElementById(st.mainId).src;
       mainImg.style.transform = `scale(${imgScale[st.name]})`;
-      f1Img.style.transform = `rotate(8deg) scale(${imgScale[st.f1Name]})`;
-      f2Img.style.transform = `rotate(-7deg) scale(${imgScale[st.f2Name]})`;
+
+      if (!isSameItem) {
+        // Swap floating sources
+        f1Img.src = document.getElementById(st.f1Id).src;
+        f2Img.src = document.getElementById(st.f2Id).src;
+        // Apply calibration
+        f1Img.style.transform = `rotate(8deg) scale(${imgScale[st.f1Name]})`;
+        f2Img.style.transform = `rotate(-7deg) scale(${imgScale[st.f2Name]})`;
+      }
       
-      // Domino Fade In
+      // Fade In
       mainImg.style.opacity = 1;
-      setTimeout(() => { f1Img.style.opacity = 0.92; }, 100); // 0.92 is back phone opacity
-      setTimeout(() => { 
-        f2Img.style.opacity = 0.92; 
+      if (!isSameItem) {
+        // Domino Fade In
+        setTimeout(() => { f1Img.style.opacity = 0.92; }, 100);
+        setTimeout(() => { 
+          f2Img.style.opacity = 0.92; 
+          setTimeout(() => { isAnimating = false; }, 400);
+        }, 200);
+      } else {
+        // Just fade in main image
         setTimeout(() => { isAnimating = false; }, 400);
-      }, 200);
-    }, 550);
+      }
+    }, waitTime);
   }
 
   window.heroNext = function() {
-    hcIdx = (hcIdx + 1) % heroStates.length;
-    setHeroCarousel(hcIdx);
+    let nextIdx = (hcIdx + 1) % heroStates.length;
+    setHeroCarousel(nextIdx);
   };
   window.heroPrev = function() {
-    hcIdx = (hcIdx - 1 + heroStates.length) % heroStates.length;
-    setHeroCarousel(hcIdx);
+    let nextIdx = (hcIdx - 1 + heroStates.length) % heroStates.length;
+    setHeroCarousel(nextIdx);
   };
 
   // Add hover effect style dynamically to minimal buttons
