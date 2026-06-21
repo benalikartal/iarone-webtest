@@ -256,7 +256,7 @@ function initBetaForm() {
       // Kaydedilemeyenleri localStorage'a at
       try {
         const payload = {
-          email: input.value, intent: 'EARLY_ACCESS', source: 'LANDING_PRICING_BETA',
+          email: input.value, intent: 'WAITLIST', source: 'LANDING_PRICING_BETA',
           pageUrl: window.location.href, timestamp: Date.now()
         };
         const pending = JSON.parse(localStorage.getItem('pending_leads') || '[]');
