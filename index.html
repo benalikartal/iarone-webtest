@@ -27,7 +27,6 @@
 
   <link rel="alternate" hreflang="tr" href="https://iarone.com/?lang=tr" />
   <link rel="alternate" hreflang="en" href="https://iarone.com/?lang=en" />
-  <link rel="alternate" hreflang="de" href="https://iarone.com/?lang=de" />
   <link rel="alternate" hreflang="ar" href="https://iarone.com/?lang=ar" />
   <link rel="alternate" hreflang="x-default" href="https://iarone.com/" />
   
@@ -178,13 +177,62 @@
       scStart();
     });
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "Iarone sadece 3D model mi üretiyor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hayır. Iarone sadece model değil, bu modellerin e-ticaret sitenizde çalışmasını sağlayan Yayın Paketi'ni hazırlar. Bu paket içerisinde AR görüntüleyici ve hazır kodlar bulunur."
+      }
+    }, {
+      "@type": "Question",
+      "name": "Kendi ürettiğim 3D modelleri platforma yükleyebilir miyim?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Evet. Mevcut 3D modellerinizi sisteme yükleyerek Iarone'un kalite kontrol, optimizasyon ve web yayınlama altyapısından faydalanabilirsiniz."
+      }
+    }, {
+      "@type": "Question",
+      "name": "Entegrasyon gerektiriyor mu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "İster Embed kodu ile kodlama bilmeden anında e-ticaret sitenize ekleyebilir, isterseniz API entegrasyon çözümleriyle sisteminize bağlayabilirsiniz."
+      }
+    }]
+  }
+  </script>
+
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Iarone",
+    "url": "https://iarone.com",
+    "logo": "https://iarone.com/00_iarone_logo_exact_transparent_white_glow.png"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Iarone",
+    "url": "https://iarone.com"
+  }
+  </script>
+
 </head>
 <body>
 
 <div id="preloader" class="pl" role="status" aria-label="Iarone yükleniyor">
   <div class="pl__logo">
-    <img src="00_iarone_logo_exact_transparent_white_glow.webp" class="logo-dark" alt="Iarone" />
-    <img src="00_iarone_logo_exact_transparent_black.webp" class="logo-light" alt="Iarone" />
+    <img src="00_iarone_logo_exact_transparent_white_glow.webp" class="logo-dark" alt="Iarone 3D and AR Commerce Platform Logo" />
+    <img src="00_iarone_logo_exact_transparent_black.webp" class="logo-light" alt="Iarone 3D and AR Commerce Platform Logo" />
     <span class="logo-text">Iarone</span>
   </div>
   <div class="pl__text">Yükleniyor<span class="pl__dots"></span></div>
@@ -219,7 +267,7 @@
   <div class="container">
     <div class="nav__wrap">
       <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa" style="gap: 8px;">
-        <img src="00_iarone_logo_exact_transparent_black.webp" class="logo-light" alt="Iarone" loading="lazy" decoding="async" />
+        <img src="00_iarone_logo_exact_transparent_black.webp" class="logo-light" alt="Iarone 3D and AR Commerce Platform Logo" loading="lazy" decoding="async" />
         <span class="logo-text">Iarone</span>
       </a>
       <ul class="nav__links" role="list">
@@ -236,7 +284,6 @@
           </button>
           <div class="lang-drop" role="menu">
             <div class="lang-opt sel" data-lang="tr" role="menuitem" tabindex="0">🇹🇷 &nbsp;Türkçe</div>
-            <div class="lang-opt"     data-lang="de" role="menuitem" tabindex="0">🇩🇪 &nbsp;Deutsch</div>
             <div class="lang-opt"     data-lang="en" role="menuitem" tabindex="0">🇺🇸 &nbsp;English</div>
             <div class="lang-opt"     data-lang="ar" role="menuitem" tabindex="0">🇸🇦 &nbsp;العربية</div>
           </div>
@@ -444,13 +491,13 @@
         <!-- Central Cinematic Visual -->
         
         <!-- Main Phone (Dessert AR Default) -->
-        <img src="dessert-ar.svg" id="hc-main-img" style="position: absolute; right: 12%; top: 90px; z-index: 20; width: var(--hero-phone-main-width); height: auto; display: block; filter: drop-shadow(0 40px 90px rgba(15,23,42,0.22)); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);" alt="Iarone 3D ve AR Ürün Görüntüleme - Ana Ekran">
+        <img src="dessert-ar.svg" id="hc-main-img" style="position: absolute; right: 12%; top: 90px; z-index: 20; width: var(--hero-phone-main-width); height: auto; display: block; filter: drop-shadow(0 40px 90px rgba(15,23,42,0.22)); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);" alt="Iarone mobile AR preview showing an e-commerce product as an interactive 3D experience">
 
         <!-- Back Phone 1 (Watch AR) -->
-        <img src="watch-ar.svg" id="hc-float1-img" style="position: absolute; right: 10%; top: 75px; z-index: 5; width: 148px; height: auto; display: block; transform: rotate(8deg); opacity: 0.8; filter: drop-shadow(0 16px 40px rgba(15,23,42,0.12)); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);" alt="Iarone AR Deneyimi - Saat Önizleme">
+        <img src="watch-ar.svg" id="hc-float1-img" style="position: absolute; right: 10%; top: 75px; z-index: 5; width: 148px; height: auto; display: block; transform: rotate(8deg); opacity: 0.8; filter: drop-shadow(0 16px 40px rgba(15,23,42,0.12)); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);" alt="Iarone AR preview displaying a 3D watch model for e-commerce integration">
 
         <!-- Front Phone AR -->
-        <img src="lamp-ar.svg" id="hc-float2-img" style="position: absolute; left: 14%; bottom: 35px; z-index: 5; width: 180px; height: auto; display: block; transform: rotate(-7deg); opacity: 0.8; filter: drop-shadow(0 16px 40px rgba(15,23,42,0.12)); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);" alt="Iarone AR Deneyimi - Lamba Önizleme">
+        <img src="lamp-ar.svg" id="hc-float2-img" style="position: absolute; left: 14%; bottom: 35px; z-index: 5; width: 180px; height: auto; display: block; transform: rotate(-7deg); opacity: 0.8; filter: drop-shadow(0 16px 40px rgba(15,23,42,0.12)); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);" alt="Iarone AR preview displaying a 3D furniture lamp model for e-commerce integration">
 
         <!-- Preload Images for Vite Bundler -->
         <div id="hc-preload" style="display: none;">
@@ -487,7 +534,7 @@
       </p>
     </div>
     <div class="visual-stage reveal">
-      <img src="chair_render_1781017627524.png" alt="Chair 3D Render">
+      <img src="chair_render_1781017627524.png" alt="3D render of a chair showcasing Iarone's high-quality 3D modeling output for furniture e-commerce">
       <div class="float-panel left">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
         Original Photo
@@ -506,7 +553,7 @@
   <!-- Section 3: AR Preview -->
   <section class="premium-section container">
     <div class="sec-ar reveal">
-      <img src="ar_hand_phone_1781017648831.png" alt="AR Preview" class="sec-ar-bg">
+      <img src="ar_hand_phone_1781017648831.png" alt="A smartphone displaying an Augmented Reality preview of a product in a real-world environment" class="sec-ar-bg">
       <div class="sec-ar-overlay"></div>
       <div class="sec-ar-content">
         <div>
@@ -560,7 +607,7 @@
         </div>
       </div>
       <div class="reveal d1">
-        <img src="laptop_phone_mockup_1781017660549.png" alt="Laptop Preview" class="web-img">
+        <img src="laptop_phone_mockup_1781017660549.png" alt="Iarone 3D web viewer interface converting 2D e-commerce photos into interactive experiences on a laptop" class="web-img">
       </div>
     </div>
   </section>
@@ -634,7 +681,7 @@
     <div class="sec-hd reveal">
       <span class="badge" data-i18n="home.uc_badge">E-Ticaret Değeri</span>
       <h2 class="gt" data-i18n="home.uc_title">Ürün sayfalarını pasif görsellerden etkileşimli deneyimlere dönüştürün.</h2>
-      <p data-i18n="home.uc_sub">Daha iyi ürün algısı, AR ile boyut güveni ve satışa hazır entegrasyon.</p>
+      <p data-i18n="home.uc_sub">Daha iyi ürün algısı, AR ile boyut güveni ve hedefli entegrasyon alanları.</p>
     </div>
     <div class="reveal">
       <img src="02_sales_ready_desktop_and_mobile_ar.webp"
@@ -758,7 +805,7 @@
         <div class="uc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
         <div>
           <h4 data-i18n="market.cat_conf" style="margin-bottom:8px;">Ajans & Katalog</h4>
-          <p style="font-size:14px;color:var(--t2);">Toplu ürün dönüştürme ve API entegrasyon çözümleri.</p>
+          <p style="font-size:14px;color:var(--t2);">Toplu ürün dönüştürme ve hedefli entegrasyon alanları.</p>
         </div>
       </div>
     </div>
@@ -782,7 +829,7 @@
         <ul style="margin-top: 32px; list-style: none; padding: 0; color: var(--t1); font-size: 16px; font-weight: 500;">
           <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 12px;"><span style="color:var(--ac); background:rgba(37,99,235,0.1); border-radius:50%; padding:4px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> İşletmenize özel üretim planı</li>
           <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 12px;"><span style="color:var(--ac); background:rgba(37,99,235,0.1); border-radius:50%; padding:4px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Toplu dönüştürme hizmetleri</li>
-          <li style="display: flex; align-items: center; gap: 12px;"><span style="color:var(--ac); background:rgba(37,99,235,0.1); border-radius:50%; padding:4px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Teknik API entegrasyonu</li>
+          <li style="display: flex; align-items: center; gap: 12px;"><span style="color:var(--ac); background:rgba(37,99,235,0.1); border-radius:50%; padding:4px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Hedefli entegrasyon alanları</li>
         </ul>
       </div>
       <div class="reveal d1" style="background: #ffffff; padding: 48px; border-radius: 24px; border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 32px 64px rgba(0,0,0,0.04);">
@@ -802,17 +849,74 @@
 </section>
 
 
-<!-- GEO BLOCK -->
+
+<!-- SEO/GEO SEMANTIC SECTIONS -->
 <section class="section z1" style="background: #f8fafc; border-top: 1px solid #e2e8f0; padding-top: 60px; padding-bottom: 60px;">
-  <div class="container">
-    <div class="reveal" style="max-width: 800px; margin: 0 auto; text-align: center;">
-      <h2 style="font-size: 28px; margin-bottom: 16px; font-weight: 700; color: #0f172a;">Iarone</h2>
-      <p style="font-size: 16px; color: #475569; line-height: 1.8;" data-i18n="home.geo_desc">
+  <div class="container" style="max-width: 800px; margin: 0 auto; color: #334155; line-height: 1.6;">
+    
+    <!-- Trust Paragraph -->
+    <div style="margin-bottom: 40px; text-align: center;">
+      <h2 style="font-size: 28px; margin-bottom: 16px; font-weight: 700; color: #0f172a;" data-i18n="geo.trust_title">Iarone</h2>
+      <p style="font-size: 16px; color: #475569;" data-i18n="geo.trust_desc">
         Iarone, e-ticaret ürün görsellerini web uyumlu 3D ve AR deneyimlerine dönüştüren platformdur. Türkiye, MENA ve global e-ticaret ekipleri için ürün deneyimlerini daha etkileşimli hale getirmeyi hedefler.
       </p>
     </div>
+
+    <!-- Iarone in Brief (Facts Block) -->
+    <div style="margin-bottom: 40px;">
+      <h3 style="font-size: 22px; margin-bottom: 16px; font-weight: 600; color: #0f172a;" data-i18n="geo.brief_title">Kısaca Iarone</h3>
+      <dl style="display: grid; grid-template-columns: 1fr 2fr; gap: 12px; background: #fff; padding: 24px; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+        <dt style="font-weight: 600; color: #1e293b;" data-i18n="geo.brief_target_label">Hedef Kitle</dt>
+        <dd style="margin: 0; color: #475569;" data-i18n="geo.brief_target_val">E-ticaret markaları, ajanslar, 3D stüdyolar</dd>
+        
+        <dt style="font-weight: 600; color: #1e293b;" data-i18n="geo.brief_input_label">Desteklenen Girdiler</dt>
+        <dd style="margin: 0; color: #475569;" data-i18n="geo.brief_input_val">Ürün fotoğrafları (.jpg, .png), mevcut 3D modeller (.obj, .fbx, .blend)</dd>
+        
+        <dt style="font-weight: 600; color: #1e293b;" data-i18n="geo.brief_output_label">Platform Çıktıları</dt>
+        <dd style="margin: 0; color: #475569;" data-i18n="geo.brief_output_val">GLB, USDZ, Web AR Görüntüleyici, Paylaşılabilir Link</dd>
+      </dl>
+    </div>
+
+    <!-- Glossary -->
+    <div style="margin-bottom: 40px;">
+      <h3 style="font-size: 22px; margin-bottom: 16px; font-weight: 600; color: #0f172a;" data-i18n="geo.glossary_title">Sözlük & Terimler</h3>
+      <dl style="background: #fff; padding: 24px; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+        <dt style="font-weight: 700; color: #1e293b; margin-top: 12px; first-child: margin-top:0;">GLB</dt>
+        <dd style="margin: 4px 0 16px 0; color: #475569;" data-i18n="geo.glossary_glb">Web tabanlı 3D görüntüleme için optimize edilmiş evrensel 3D dosya formatı.</dd>
+        
+        <dt style="font-weight: 700; color: #1e293b;">USDZ</dt>
+        <dd style="margin: 4px 0 16px 0; color: #475569;" data-i18n="geo.glossary_usdz">Apple cihazlarda (iOS/iPadOS) Safari üzerinden yerleşik Artırılmış Gerçeklik (AR) deneyimi sunan 3D formatı.</dd>
+        
+        <dt style="font-weight: 700; color: #1e293b;">Web AR</dt>
+        <dd style="margin: 4px 0 16px 0; color: #475569;" data-i18n="geo.glossary_webar">Kullanıcıların uygulama indirmeden, doğrudan web tarayıcıları üzerinden Artırılmış Gerçeklik deneyimlemesini sağlayan teknoloji.</dd>
+        
+        <dt style="font-weight: 700; color: #1e293b;" data-i18n="geo.glossary_embed_label">Embed (Gömülü Kod)</dt>
+        <dd style="margin: 4px 0 16px 0; color: #475569;" data-i18n="geo.glossary_embed_val">Iarone 3D görüntüleyicisini e-ticaret sitenize eklemenizi sağlayan kısa HTML/JS kod parçacığı.</dd>
+      </dl>
+    </div>
+
+    <!-- FAQ -->
+    <div>
+      <h3 style="font-size: 22px; margin-bottom: 16px; font-weight: 600; color: #0f172a;" data-i18n="geo.faq_title">Sıkça Sorulan Sorular</h3>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <details style="background: #fff; padding: 16px 24px; border-radius: 12px; border: 1px solid #e2e8f0; cursor: pointer;">
+          <summary style="font-weight: 600; color: #1e293b; outline: none;" data-i18n="geo.faq_q1">Iarone sadece 3D model mi üretiyor?</summary>
+          <p style="margin-top: 12px; margin-bottom: 0; color: #475569;" data-i18n="geo.faq_a1">Hayır. Iarone sadece model değil, bu modellerin e-ticaret sitenizde çalışmasını sağlayan "Yayın Paketi"ni (Publish Package) hazırlar. Bu paket içerisinde AR görüntüleyici ve hazır kodlar bulunur.</p>
+        </details>
+        <details style="background: #fff; padding: 16px 24px; border-radius: 12px; border: 1px solid #e2e8f0; cursor: pointer;">
+          <summary style="font-weight: 600; color: #1e293b; outline: none;" data-i18n="geo.faq_q2">Kendi ürettiğim 3D modelleri platforma yükleyebilir miyim?</summary>
+          <p style="margin-top: 12px; margin-bottom: 0; color: #475569;" data-i18n="geo.faq_a2">Evet. Mevcut 3D modellerinizi (obj, fbx, blend vb.) sisteme yükleyerek Iarone'un kalite kontrol, optimizasyon ve web yayınlama altyapısından faydalanabilirsiniz.</p>
+        </details>
+        <details style="background: #fff; padding: 16px 24px; border-radius: 12px; border: 1px solid #e2e8f0; cursor: pointer;">
+          <summary style="font-weight: 600; color: #1e293b; outline: none;" data-i18n="geo.faq_q3">Entegrasyon gerektiriyor mu?</summary>
+          <p style="margin-top: 12px; margin-bottom: 0; color: #475569;" data-i18n="geo.faq_a3">İster Iframe/Embed kodu ile kodlama bilmeden anında e-ticaret sitenize ekleyebilir, isterseniz hedeflenen API entegrasyon çözümleriyle sisteminize bağlayabilirsiniz.</p>
+        </details>
+      </div>
+    </div>
+
   </div>
 </section>
+
 
 <!-- FINAL CTA -->
 <section class="section z1" style="text-align:center;">
@@ -835,8 +939,8 @@
     <div class="footer__inner">
       <div class="foot-brand" style="max-width: 320px;">
         <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa" style="margin-bottom: 20px; display: inline-flex;">
-          <img src="00_iarone_logo_exact_transparent_white_glow.webp" class="logo-dark" alt="Iarone" loading="lazy" decoding="async" />
-          <img src="00_iarone_logo_exact_transparent_black.webp"     class="logo-light" alt="Iarone" loading="lazy" decoding="async" />
+          <img src="00_iarone_logo_exact_transparent_white_glow.webp" class="logo-dark" alt="Iarone 3D and AR Commerce Platform Logo" loading="lazy" decoding="async" />
+          <img src="00_iarone_logo_exact_transparent_black.webp"     class="logo-light" alt="Iarone 3D and AR Commerce Platform Logo" loading="lazy" decoding="async" />
           <span class="logo-text">Iarone</span>
         </a>
         <p style="font-size: 15px; color: var(--t2); line-height: 1.6;">E-ticaret ürünlerini 3D ve AR deneyimlerine dönüştüren yayın platformu.</p>

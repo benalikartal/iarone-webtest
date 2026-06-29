@@ -73,7 +73,7 @@ function toggleTheme() { applyTheme(getTheme() === 'dark' ? 'light' : 'dark'); }
 function getLang() {
   const params = new URLSearchParams(window.location.search);
   const urlLang = params.get('lang');
-  if (urlLang && ['tr', 'en', 'ar', 'de'].includes(urlLang)) {
+  if (urlLang && ['tr', 'en', 'ar'].includes(urlLang)) {
     return urlLang;
   }
   return localStorage.getItem(LANG_KEY) || 'tr';
@@ -263,11 +263,11 @@ function initBetaForm() {
         throw new Error('API Unreachable');
       }
 
-      btn.textContent = lang === 'tr' ? 'Teşekkürler!' : (lang === 'ar' ? 'شكراً لك!' : (lang === 'de' ? 'Danke!' : 'Thank you!'));
+      btn.textContent = lang === 'tr' ? 'Teşekkürler!' : (lang === 'ar' ? 'شكراً لك!' : 'Thank you!');
       form.reset();
     } catch (err) {
       console.warn('Lead capture net error:', err);
-      btn.textContent = lang === 'tr' ? 'Gönderildi' : (lang === 'ar' ? 'تم الإرسال' : (lang === 'de' ? 'Eingereicht' : 'Submitted'));
+      btn.textContent = lang === 'tr' ? 'Gönderildi' : (lang === 'ar' ? 'تم الإرسال' : 'Submitted');
       try {
         const payload = {
           name: nameInput ? nameInput.value : '', email: input.value, company: brandInput ? brandInput.value : '',
@@ -419,11 +419,11 @@ function initWaitlistForm() {
         throw new Error('API Unreachable');
       }
 
-      btn.textContent = lang === 'tr' ? 'Teşekkürler!' : (lang === 'ar' ? 'شكراً لك!' : (lang === 'de' ? 'Danke!' : 'Thank you!'));
+      btn.textContent = lang === 'tr' ? 'Teşekkürler!' : (lang === 'ar' ? 'شكراً لك!' : 'Thank you!');
       form.reset();
     } catch (err) {
       console.warn('Market lead net error:', err);
-      btn.textContent = lang === 'tr' ? 'Gönderildi' : (lang === 'ar' ? 'تم الإرسال' : (lang === 'de' ? 'Eingereicht' : 'Submitted'));
+      btn.textContent = lang === 'tr' ? 'Gönderildi' : (lang === 'ar' ? 'تم الإرسال' : 'Submitted');
       
       try {
         const payload = {

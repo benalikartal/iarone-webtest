@@ -1,0 +1,33 @@
+# Iarone
+
+> AI-Powered 3D Commerce Platform
+
+Iarone is a platform that transforms 2D e-commerce product visuals into web-ready 3D and Augmented Reality (AR) experiences.
+
+## Target Audience
+E-commerce teams and agencies in Turkey, MENA (Middle East and North Africa), and global markets.
+
+## Core Capabilities
+- Converts product photos or existing 3D files into optimized publish packages.
+- Provides interactive 3D web viewers and mobile AR experiences.
+- Supports outputs in `GLB` and `USDZ` formats.
+- Delivers AR-ready web integration via embed codes and public links.
+
+## Supported Output Formats
+- **GLB:** Standard 3D model format for web.
+- **USDZ:** Standard 3D model format for iOS/Apple devices.
+- **Embed:** HTML/JS snippet to embed the 3D viewer.
+- **Public Link:** Direct shareable link to view the 3D/AR model.
+
+## Target Integration Areas
+- B2B API integrations
+- Custom production plans
+- E-commerce platforms (custom solutions)
+
+## Public Pages
+- Home: https://iarone.com/
+- Solutions (Market): https://iarone.com/market.html
+
+## Contact Information
+- Direct Contact: hello@iarone.com
+- Support: info@iarone.com
