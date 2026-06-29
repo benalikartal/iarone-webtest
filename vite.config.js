@@ -7,10 +7,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         market: resolve(__dirname, 'market.html'),
-        pricing: resolve(__dirname, 'pricing.html'),
         publish: resolve(__dirname, 'publish.html'),
-        embed: resolve(__dirname, 'embed.html'),
-        dashboard: resolve(__dirname, 'dashboard.html')
+        embed: resolve(__dirname, 'embed.html')
       }
     }
   }
