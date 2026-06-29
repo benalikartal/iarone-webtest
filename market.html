@@ -288,7 +288,9 @@
         <div class="foot-col-title" data-i18n="footer.col2">Şirket</div>
         <div class="foot-links">
           <a href="#demo">Demo Talep Et</a>
-          <a href="#demo" data-i18n="footer.c_contact">İletişim</a>
+          <a href="mailto:hello@iarone.com">hello@iarone.com</a>
+          <a href="mailto:info@iarone.com">info@iarone.com</a>
+          <a href="mailto:partnerships@iarone.com">partnerships@iarone.com</a>
         </div>
       </div>
       <div>
@@ -308,11 +310,10 @@
 <script>
   window.IARONE_API_URL = "%VITE_IARONE_API_URL%";
   if (!window.IARONE_API_URL || window.IARONE_API_URL.startsWith("%VITE_")) {
-    window.IARONE_API_URL = "http://localhost:3000/api";
+    window.IARONE_API_URL = "https://api.iarone.com/api";
   }
 </script>
 <script type="module" src="i18n.js"></script>
 <script type="module" src="app.v5.js"></script>
-<script type="module" src="auth-intent.js"></script>
 </body>
 </html>

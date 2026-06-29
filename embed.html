@@ -68,12 +68,12 @@
   <script>
     window.IARONE_API_URL = "%VITE_IARONE_API_URL%";
     if (!window.IARONE_API_URL || window.IARONE_API_URL.startsWith("%VITE_")) {
-      window.IARONE_API_URL = "http://localhost:3000/api";
+      window.IARONE_API_URL = "https://api.iarone.com/api";
     }
   </script>
 
   <script>
-    const API_BASE = (typeof window !== 'undefined' && window.IARONE_API_URL) || 'http://localhost:3000/api';
+    const API_BASE = (typeof window !== 'undefined' && window.IARONE_API_URL) || 'https://api.iarone.com/api';
     
     function publicOrNull(u) { return (typeof u === 'string' && /^https?:\/\//i.test(u.trim())) ? u.trim() : null; }
     const urlParams = new URLSearchParams(window.location.search);

@@ -121,12 +121,12 @@
 <script>
   window.IARONE_API_URL = "%VITE_IARONE_API_URL%";
   if (!window.IARONE_API_URL || window.IARONE_API_URL.startsWith("%VITE_")) {
-    window.IARONE_API_URL = "http://localhost:3000/api";
+    window.IARONE_API_URL = "https://api.iarone.com/api";
   }
 </script>
 
 <script>
-  const API_BASE = (typeof window !== 'undefined' && window.IARONE_API_URL) || 'http://localhost:3000/api';
+  const API_BASE = (typeof window !== 'undefined' && window.IARONE_API_URL) || 'https://api.iarone.com/api';
 
   const _TRUSTWORTHY_SCALE_SOURCES = ['reference_object', 'user_input', 'sensor_depth'];
   function _extractScaleMeta(pkg) {
