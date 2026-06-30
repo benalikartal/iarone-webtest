@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nasıl Çalışır - IARONE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.v5.css" />
+  <style>
+    /* NASIL ÇALIŞIR - CUSTOM STYLES */
+    body { background: #f8fafc; }
+    .page-hero { padding: 120px 0 80px; text-align: center; position: relative; overflow: hidden; }
+    .page-hero h1 { font-size: 56px; font-weight: 800; color: #0f172a; margin-bottom: 24px; letter-spacing: -1.5px; }
+    .page-hero p { font-size: 20px; color: #475569; max-width: 800px; margin: 0 auto; line-height: 1.8; }
+    .flow-section { padding: 80px 0; }
+    
+    .timeline-card { background: #fff; border-radius: 24px; padding: 48px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 16px 40px rgba(0,0,0,0.03); margin-bottom: 40px; position: relative; }
+    .timeline-num { font-size: 140px; font-weight: 900; color: rgba(37,99,235,0.03); position: absolute; top: -10px; right: 20px; line-height: 1; pointer-events: none; }
+    .timeline-card h2 { font-size: 32px; font-weight: 800; color: #0f172a; margin-bottom: 20px; display: flex; align-items: center; gap: 16px; }
+    .timeline-card h2 .icon-box { width: 48px; height: 48px; border-radius: 12px; background: rgba(37,99,235,0.08); color: #2563eb; display: flex; align-items: center; justify-content: center; }
+    .timeline-card p { font-size: 18px; color: #334155; line-height: 1.8; margin-bottom: 24px; }
+    
+    .tech-list { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+    .tech-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 16px; color: #475569; background: #f8fafc; padding: 16px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.03); }
+    .tech-list li svg { flex-shrink: 0; color: #10B981; margin-top: 2px; }
+
+    .arch-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 60px; }
+    .arch-card { background: #1e293b; color: #f8fafc; border-radius: 24px; padding: 40px; box-shadow: 0 24px 48px rgba(0,0,0,0.1); }
+    .arch-card h3 { color: #fff; font-size: 24px; margin-bottom: 16px; font-family: monospace; color: #60a5fa; }
+    .arch-card ul { list-style: none; padding: 0; }
+    .arch-card ul li { margin-bottom: 12px; display: flex; align-items: center; gap: 8px; opacity: 0.9; font-size: 15px; }
+
+    .quote-box { background: linear-gradient(135deg, #1e293b, #0f172a); color: #ffffff !important; text-align: center; padding: 60px 40px; border-radius: 32px; margin: 80px 0; box-shadow: 0 32px 64px rgba(15,23,42,0.2); }
+    .quote-box h2 { font-size: 36px; line-height: 1.4; font-weight: 700; margin-bottom: 24px; color: #ffffff !important; }
+    .quote-box p { font-size: 22px; opacity: 0.9; max-width: 800px; margin: 0 auto; color: #f8fafc !important; }
+    .quote-box p strong { color: #ffffff !important; font-weight: 700; }
+
+    .code-flow { background: #0f172a; padding: 32px; border-radius: 16px; font-family: monospace; color: #94a3b8; font-size: 15px; line-height: 1.8; overflow-x: auto; }
+    .code-flow span.keyword { color: #38bdf8; }
+    .code-flow span.arrow { color: #f43f5e; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="nav" id="main-nav" role="navigation" aria-label="Ana navigasyon" style="background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05);">
+  <div class="container">
+    <div class="nav__wrap">
+      <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa" style="gap: 8px;">
+        <img src="00_iarone_logo_exact_transparent_black.webp" class="logo-light" alt="Iarone Logo" loading="lazy" width="24" />
+        <span class="logo-text">Iarone</span>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="index.html" class="nav__link" data-i18n="nav.home">Ana Sayfa</a></li>
+        <li><a href="nasil-calisir.html" class="nav__link active" data-i18n="nav.dashboard">Nasıl Çalışır</a></li>
+        <li><a href="market.html" class="nav__link" data-i18n="nav.market">Çözümler</a></li>
+      </ul>
+      <div class="nav__right">
+        <a href="index.html#demo" class="btn btn-primary" data-i18n="home.hero_cta_secondary">Demo Talep Et</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- CONTENT SECTIONS PLACEHOLDER -->
+<div id="page-content">
+  <!-- HERO SECTION -->
+  <header class="page-hero">
+    <div class="container">
+      <span style="display:inline-block; padding:8px 24px; background:rgba(37,99,235,0.1); color:#2563eb; border-radius:100px; font-weight:700; font-size:14px; text-transform:uppercase; margin-bottom:24px;">Teknoloji ve Altyapı</span>
+      <h1>3D Commerce Altyapısı</h1>
+      <p>IARONE, üretilen 3D modelleri yalnızca görsel olarak oluşturmakla kalmaz; web sitelerinde, ürün sayfalarında ve artırılmış gerçeklik deneyimlerinde sorunsuz kullanılabilecek yayın paketlerine dönüştürür. <br><br>
+        <span style="display:block; max-width:1000px; margin:0 auto; font-weight:700;">
+          <span style="white-space:nowrap;">Fotoğraf</span> → <span style="white-space:nowrap;">3D üretim</span> → <span style="white-space:nowrap;">Optimizasyon</span> → <span style="white-space:nowrap;">Kalite Kontrol</span> → <span style="white-space:nowrap;">Web/AR Yayını</span> → <span style="white-space:nowrap;">E-ticaret Entegrasyonu</span>
+        </span>
+      </p>
+    </div>
+  </header>
+
+  <div class="container flow-section">
+    <!-- 1. Müşteri Tarafı -->
+    <div class="timeline-card reveal">
+      <div class="timeline-num">01</div>
+      <h2><div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div> Müşteri Tarafında Nasıl Başlar?</h2>
+      <p>Normalde ürün sayfasında sadece 3-5 tane fotoğraf olur. Müşteri ürünü görür ama "Gerçek boyutu nasıl?", "Evimin salonunda nasıl durur?", "Malzeme hissi nasıl?" gibi sorular cevaplanamaz. IARONE tam burada devreye girer. Müşteri dashboard’a girer ve teknik bilgiye ihtiyaç duymadan süreci başlatır:</p>
+      <ul class="tech-list">
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Ürün fotoğrafını yükler</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Ürün adını girer ve kategori seçer (mobilya, ayakkabı, saat vb.)</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> İsterse ölçü ve referans nesne/AR marker ekler</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> "3D model oluştur" butonuna basar</li>
+      </ul>
+      <p style="margin-top:24px; font-weight:600; color:#0f172a;">Kullanıcı teknik hiçbir şeyle uğraşmaz. Blender bilmesine veya 3D artist bulmasına gerek kalmaz.</p>
+    </div>
+
+    <!-- 2. Dashboard API -->
+    <div class="timeline-card reveal">
+      <div class="timeline-num">02</div>
+      <h2><div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg></div> API İşlemi Başlatır</h2>
+      <p>Kullanıcı fotoğrafı yükleyince <code>iarone-app</code>, bu isteği merkezi beyin olan <code>iarone-api</code> tarafına gönderir. API burada güvenlik ve yetkilendirmeyi sağlayarak işin merkezini oluşturur:</p>
+      <ul class="tech-list">
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Giriş/Plan kontrolü</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Dosyayı Storage'a yükleme</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Job oluşturup durumu "queued" yapma</li>
+      </ul>
+      <p style="margin-top:24px;">Maliyetin patlamaması için sistem direkt GPU'yu çalıştırmaz. İş önce sıraya (queue) alınır.</p>
+    </div>
+
+    <!-- 3. Job Queue -->
+    <div class="timeline-card reveal">
+      <div class="timeline-num">03</div>
+      <h2><div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg></div> Job Queue & Dispatcher</h2>
+      <p>IARONE'da işler anlık değil, <strong>DB-backed queue (kuyruk)</strong> mantığıyla çalışır. Aynı anda 50 müşteri ürün yüklese bile sistem çökmez. İşler sıraya girer ve Dispatcher, maliyet limitlerini, GPU kapasitesini ve provider durumunu kontrol ederek işi en uygun zamanda başlatır.</p>
+      <div class="code-flow">
+        Kullanıcı istek gönderdi <br>
+        <span class="arrow">↓</span> API job oluşturdu <br>
+        <span class="arrow">↓</span> job queue’ya girdi <br>
+        <span class="arrow">↓</span> dispatcher uygun zamanda job’ı aldı <br>
+        <span class="arrow">↓</span> engine veya GPU worker’a gönderdi
+      </div>
+      <p style="margin-top:24px; font-weight:600;">Bu yapı yatırımcı açısından kritiktir. Proje "butona basınca GPU çağıran demo" değil; kontrollü, maliyet korumalı bir üretim altyapısıdır.</p>
+    </div>
+
+    <!-- 4. Generation Engine -->
+    <div class="timeline-card reveal">
+      <div class="timeline-num">04</div>
+      <h2><div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div> Generation Engine</h2>
+      <p><code>iarone-generation-engine</code> projenin asıl üretim fabrikasıdır. Görevi sadece AI model çağırmak değil, modeli baştan uca işlemektir.</p>
+      <div class="code-flow" style="display:flex; flex-wrap:wrap; gap:8px;">
+        <span>input hazırlama</span> <span class="arrow">→</span>
+        <span>görsel ön işleme</span> <span class="arrow">→</span>
+        <span>AI 3D üretim</span> <span class="arrow">→</span>
+        <span>mesh temizleme</span> <span class="arrow">→</span>
+        <span>texture hazırlama</span> <span class="arrow">→</span>
+        <span>optimizasyon</span> <span class="arrow">→</span>
+        <span>format dönüşümü</span> <span class="arrow">→</span>
+        <span>QA kontrol</span> <span class="arrow">→</span>
+        <span>callback</span>
+      </div>
+    </div>
+
+    <!-- 5 & 6. AI Production & Raw vs Final -->
+    <div class="timeline-card reveal">
+      <div class="timeline-num">05</div>
+      <h2><div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg></div> Provider-Agnostic Yapı & Final Model</h2>
+      <p>Sistem tek bir AI modeline (ör: Hunyuan3D, Trellis, Tripo) bağımlı değildir. <strong>Provider-agnostic</strong> yaklaşım sayesinde her zaman en hızlı, ucuz veya kaliteli AI sağlayıcısına geçiş yapılabilir.</p>
+      <p>AI'dan gelen ham çıktı genellikle ağırdır, zemini yanlıştır veya texture bozuklukları içerir. IARONE, modeli müşteriye doğrudan "al kullan" demez. Ham model (<code>raw_provider_glb</code>) ayrı tutulur. Ardından sistem bu modeli işleyip final haline (<code>optimized_glb</code>, <code>usdz</code>, posterler) getirir.</p>
+      <p style="margin-top:24px; font-weight:600; color:#2563eb;">IARONE sadece bir "AI 3D generator" değil, bir "3D asset factory" gibi çalışır.</p>
+    </div>
+    
+    <!-- 7 & 8. Optimization & QA -->
+    <div class="timeline-card reveal">
+      <div class="timeline-num">06</div>
+      <h2><div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div> Optimizasyon & Kalite Kontrol (QA)</h2>
+      <p>Model, web sitenizi yavaşlatmaması için sıkı bir optimizasyondan geçer. Mesh temizlenir, polygon sayısı düşürülür ve texture boyutları küçültülür. 150 MB'lık bir ham model web için uygun hale getirilir.</p>
+      <p>IARONE'un en güçlü yanlarından biri <strong>QA Gate (Kalite Kontrol)</strong> mantığıdır. QA Gate şu sorulara bakar:</p>
+      <ul class="tech-list" style="grid-template-columns: 1fr 1fr 1fr;">
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Model açılıyor mu?</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Doku (Texture) var mı?</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Bounding box mantıklı mı?</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Ürün yere oturuyor mu?</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> AR için uygun mu?</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Dosya web'de çalışır mı?</li>
+      </ul>
+      <p style="margin-top:24px;">Sonuç <code>passed</code>, <code>review_required</code> veya <code>failed</code> olarak belirlenir. Kalite kontrolü geçmeden model publish edilemez.</p>
+    </div>
+
+    <!-- 9 & 10. Callback & Save -->
+    <div class="timeline-card reveal">
+      <div class="timeline-num">07</div>
+      <h2><div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div> Güvenli Callback & API Kaydı</h2>
+      <p>İşlem bitince engine, API'ye bir callback gönderir. Bu callback doğrudan kabul edilmez. Güvenlik için <strong>HMAC imza kontrolü, Timestamp ve Nonce ile replay koruması</strong> uygulanır. Sonuç güvenliyse API durumu günceller ve model artık bir Asset haline gelir.</p>
+      <div class="code-flow" style="display:flex; flex-direction:column; gap:4px;">
+        <span><span class="keyword">Asset İçeriği:</span> Raw GLB, Optimized GLB, Final GLB, USDZ, Poster, Thumbnail, QA Report, Metadata, Scale Data.</span>
+      </div>
+    </div>
+
+    <!-- 11, 12 & 13. Dashboard, Publish & Embed -->
+    <div class="timeline-card reveal">
+      <div class="timeline-num">08</div>
+      <h2><div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div> Publish Paketi ve E-Ticaret Entegrasyonu</h2>
+      <p>Kullanıcı panele döndüğünde job durumunu görür. Sadece bir GLB indirme linki verilmez; <strong>Publish Paketi</strong> sunulur. Bu paket, markanın ürününü web sitesine saniyeler içinde ekleyebilmesini sağlar.</p>
+      <div class="code-flow" style="background:#1e293b; color:#cbd5e1; margin-bottom:24px;">
+        <span class="keyword">&lt;model-viewer</span> <br>
+        &nbsp;&nbsp;src=<span style="color:#a7f3d0">"product.glb"</span> <br>
+        &nbsp;&nbsp;ar <br>
+        &nbsp;&nbsp;ios-src=<span style="color:#a7f3d0">"product.usdz"</span><span class="keyword">&gt;</span><br>
+        <span class="keyword">&lt;/model-viewer&gt;</span>
+      </div>
+      <p>Müşteri (son kullanıcı) ürün sayfasına girdiğinde ürünü 3D olarak inceler, döndürür, yakınlaştırır ve AR butonu ile kendi salonunda gerçek boyutlarıyla deneyimler. Bu, satın alma güvenini doğrudan artırır.</p>
+    </div>
+
+    <!-- 14. Architecture Grid (Bento Box) -->
+    <div style="margin:120px 0 80px;">
+      <h2 style="font-size:36px; text-align:center; font-weight:800; margin-bottom:16px;">Platform Mimarisi</h2>
+      <p style="text-align:center; color:#475569; max-width:600px; margin:0 auto 40px; font-size:18px;">Sistem kurucuya veya tek bir kişiye değil, birbiriyle konuşan modüler 4 ana katmana (repo) bağlıdır.</p>
+      
+      <div class="arch-grid">
+        <div class="arch-card reveal">
+          <h3>1. iarone-web</h3>
+          <p style="color:#94a3b8; margin-bottom:16px;">Dış Vitrin / Public Web Sitesi</p>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg> Markayı anlatmak</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg> Yatırımcıya güven vermek</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg> Demo/publish sayfalarını göstermek</li>
+          </ul>
+        </div>
+        <div class="arch-card reveal">
+          <h3>2. iarone-app</h3>
+          <p style="color:#94a3b8; margin-bottom:16px;">Müşteri Dashboard'u</p>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg> Fotoğraf yükleme ve model oluşturma</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg> Job status takip ve Asset Cloud</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg> Publish ve model geçmişi</li>
+          </ul>
+        </div>
+        <div class="arch-card reveal">
+          <h3>3. iarone-api</h3>
+          <p style="color:#94a3b8; margin-bottom:16px;">Merkezi Beyin / Operasyon Merkezi</p>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg> Auth, Queue, Dispatcher yönetimi</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg> Security ve Cost Guard (Maliyet koruması)</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg> Engine callback ve Asset Management</li>
+          </ul>
+        </div>
+        <div class="arch-card reveal">
+          <h3>4. iarone-generation-engine</h3>
+          <p style="color:#94a3b8; margin-bottom:16px;">Üretim Fabrikası / Teknik Değer</p>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg> AI provider çağırma ve ham model üretme</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg> Model temizleme, optimize etme, QA kontrol</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg> GLB/USDZ formatlarını hazırlayıp API'ye dönme</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15, 16, 17. Workflow Summary & Value Prop -->
+    <div class="timeline-card reveal" style="background:#fff; border-left:4px solid #2563eb;">
+      <h2 style="font-size:28px;">Müşteri İçin Değer Nedir?</h2>
+      <p style="margin-bottom:24px;">IARONE bu projede süreci "Ömer modeli aldı, Blender'da düzeltti, müşteriye yolladı" şeklindeki butik bir ajans modelinden çıkarıp, tamamen modüler bir SaaS altyapısına bağlar.</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+        <div style="background:#fef2f2; padding:24px; border-radius:16px; border:1px solid #fca5a5;">
+          <h4 style="color:#991b1b; font-weight:700; margin-bottom:12px;">Eski Normal Süreç</h4>
+          <ul style="color:#7f1d1d; padding-left:20px;">
+            <li>3D artist bul, Blender'da modellet</li>
+            <li>Texture yaptır, optimize ettir</li>
+            <li>GLB/USDZ hazırlat</li>
+            <li>Geliştiriciye entegre ettir</li>
+            <li>Hataları düzelt, AR test et</li>
+          </ul>
+        </div>
+        <div style="background:#ecfdf5; padding:24px; border-radius:16px; border:1px solid #6ee7b7;">
+          <h4 style="color:#065f46; font-weight:700; margin-bottom:12px;">IARONE Altyapısı İle</h4>
+          <ul style="color:#064e3b; padding-left:20px;">
+            <li>Fotoğraf yükle</li>
+            <li>3D/AR varlığı otomatik oluşsun</li>
+            <li>Kalite kontrol (QA) edilsin</li>
+            <li>Publish paketi çıksın</li>
+            <li>Web sitesine hemen embed et</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:24px; font-weight:600; font-size:18px; text-align:center; color:#2563eb;">Sonuç: Daha hızlı üretim, düşük operasyon yükü ve katalog ölçeğinde 3D deneyimi.</p>
+    </div>
+
+    <!-- 18. Business Models -->
+    <div style="margin-top:80px; margin-bottom:40px;">
+      <h2 style="font-size:32px; font-weight:800; margin-bottom:24px; text-align:center;">İş ve Gelir Modelleri</h2>
+      <div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center;">
+        <span style="background:#f1f5f9; padding:12px 24px; border-radius:100px; font-weight:600; color:#334155;">Aylık Abonelik (Starter, Pro, Enterprise)</span>
+        <span style="background:#f1f5f9; padding:12px 24px; border-radius:100px; font-weight:600; color:#334155;">Model Başı Ücret / Kredi Sistemi</span>
+        <span style="background:#f1f5f9; padding:12px 24px; border-radius:100px; font-weight:600; color:#334155;">Ajans & B2B Paketleri</span>
+        <span style="background:#f1f5f9; padding:12px 24px; border-radius:100px; font-weight:600; color:#334155;">API / White-label Entegrasyon</span>
+        <span style="background:#f1f5f9; padding:12px 24px; border-radius:100px; font-weight:600; color:#334155;">Asset Cloud (Mevcut dosyaları yükleme)</span>
+      </div>
+    </div>
+
+    <!-- 19. Investor Pitch / Quote -->
+    <div class="quote-box reveal">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" opacity="0.2" style="margin-bottom:24px;"><path d="M10.33,9.53C9.74,8.59,8.81,8,7.5,8C5.57,8,4,9.57,4,11.5c0,1.26,0.68,2.37,1.72,2.99l-1.05,3.15C4.43,18.37,5.56,19,6.5,19 c0.67,0,1.3-0.27,1.77-0.74l3.5-3.5c0.47-0.47,0.73-1.1,0.73-1.77V9.53z"></path><path d="M21.33,9.53C20.74,8.59,19.81,8,18.5,8c-1.93,0-3.5,1.57-3.5,3.5c0,1.26,0.68,2.37,1.72,2.99l-1.05,3.15 c-0.24,0.73,0.89,1.36,1.83,1.36c0.67,0,1.3-0.27,1.77-0.74l3.5-3.5c0.47-0.47,0.73-1.1,0.73-1.77V9.53z"></path></svg>
+      <h2>Yatırımcı Özeti</h2>
+      <p style="font-size:22px; line-height:1.6; font-weight:300;">"IARONE, fotoğraftan 3D model üreten bir araç değil; e-ticaret için 3D/AR varlık üretimini, kalite kontrolünü, optimizasyonunu ve yayınlamasını tek sistemde yöneten bir <strong>SaaS Altyapısıdır.</strong>"</p>
+    </div>
+
+    <!-- 20 & 21. Scenario and Final Purpose -->
+    <div class="timeline-card reveal" style="background:#f8fafc; border:none; padding:60px 40px; text-align:center;">
+      <span style="display:inline-block; padding:8px 24px; background:#10b981; color:#fff; border-radius:100px; font-weight:700; font-size:14px; text-transform:uppercase; margin-bottom:24px;">Ana Amacımız</span>
+      <h2 style="justify-content:center; font-size:32px;">Shopify E-Ticareti Nasıl Kolaylaştırdıysa...</h2>
+      <p style="font-size:20px; color:#334155; max-width:800px; margin:0 auto;">3D ve AR ürün deneyimini sadece büyük markaların veya pahalı ajansların kullanabildiği özel bir hizmet olmaktan çıkarıp, tüm e-ticaret markalarının kolayca kullanabileceği <strong>sistemleşmiş bir SaaS platformuna</strong> dönüştürüyoruz.</p>
+      
+      <div style="margin-top:60px;">
+        <a href="index.html#demo" class="btn btn-primary" style="padding:16px 40px; font-size:18px; border-radius:100px; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; color:#fff; background:#2563eb;">Demo Talep Et & Sisteme Katıl</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer z1" role="contentinfo" style="margin-top: 100px;">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a href="index.html" class="nav__logo" style="margin-bottom: 24px;">
+          <img src="00_iarone_logo_exact_transparent_white_glow.webp" alt="Iarone" width="32" />
+          <span class="logo-text">Iarone</span>
+        </a>
+        <p class="foot-desc" style="color: #94a3b8; font-size: 15px;">E-ticaret ürün görsellerini web uyumlu 3D ve AR deneyimlerine dönüştüren platform.</p>
+      </div>
+    </div>
+    <div class="footer__bottom" style="margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color: #64748b; font-size: 14px;">
+      <span>© 2026 Iarone. Tüm hakları saklıdır.</span>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="i18n.js"></script>
+<script type="module" src="app.v5.js"></script>
+<!-- Fallback just in case -->
+<script>
+  setTimeout(() => {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+  }, 100);
+</script>
+
+</body>
+</html>
