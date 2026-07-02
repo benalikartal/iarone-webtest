@@ -238,7 +238,12 @@ export const i18n = {
       faq_q3: 'Entegrasyon gerektiriyor mu?',
       faq_a3: 'İster Iframe/Embed kodu ile kodlama bilmeden anında e-ticaret sitenize ekleyebilir, isterseniz hedeflenen API entegrasyon çözümleriyle sisteminize bağlayabilirsiniz.'
     },
-    nav: {
+        vision: {
+      badge: '5 Yıllık Ürün Vizyonu',
+      title: 'Ürün fotoğrafından, geleceğin 3D ürün envanterine.',
+      desc: 'IARONE, ürünleri yalnızca bugünkü web ve mobil AR deneyimleri için değil; yarının dijital showroomları, VR gözlükleri, oyun motorları ve yeni nesil 3D işletim sistemleri için de kullanılabilecek dijital ürün varlıklarına dönüştürmeyi hedefler.'
+    },
+nav: {
       home:      'Ana Sayfa',
       features:  'Özellikler',
       pricing:   'Fiyatlandırma',
@@ -717,7 +722,12 @@ export const i18n = {
       faq_q3: 'Does it require integration?',
       faq_a3: 'You can instantly add it to your e-commerce site without coding using an Iframe/Embed code, or connect it to your system with targeted API integration solutions.'
     },
-    nav: {
+        vision: {
+      badge: '5-Year Product Vision',
+      title: 'From product photo to the future 3D product inventory.',
+      desc: 'IARONE aims to transform products not only for today\'s web and mobile AR experiences, but also into reusable digital product assets for tomorrow\'s digital showrooms, VR headsets, game engines and next-generation 3D operating systems.'
+    },
+nav: {
       home:      'Home',
       features:  'Features',
       pricing:   'Pricing',
@@ -1439,7 +1449,12 @@ export const i18n = {
       faq_q3: 'هل يتطلب تكاملًا؟',
       faq_a3: 'يمكنك إضافته على الفور إلى موقع التجارة الإلكترونية الخاص بك دون تشفير باستخدام رمز Iframe/Embed، أو ربطه بنظامك من خلال حلول تكامل API المستهدفة.'
     },
-    nav: {
+        vision: {
+      badge: 'رؤية المنتج خلال 5 سنوات',
+      title: 'من صورة المنتج إلى مخزون المنتجات ثلاثي الأبعاد في المستقبل.',
+      desc: 'تهدف IARONE إلى تحويل المنتجات ليس فقط لتجارب الويب والواقع المعزز عبر الهاتف اليوم، بل أيضاً إلى أصول رقمية قابلة للاستخدام في صالات العرض الرقمية، ونظارات الواقع الافتراضي، ومحركات الألعاب، وأنظمة التشغيل ثلاثية الأبعاد المستقبلية.'
+    },
+nav: {
       home:      'الرئيسية',
       features:  'الميزات',
       pricing:   'التسعير',

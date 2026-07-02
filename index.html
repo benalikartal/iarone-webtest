@@ -244,24 +244,6 @@
   <div class="blob blob-3"></div>
 </div>
 
-<style>
-/* NAVBAR MOBILE FIXES */
-@media (max-width: 430px) {
-  #nav-login { display: none !important; }
-  .lang-sw { min-width: auto !important; }
-  .lang-btn { padding-left: 8px !important; padding-right: 8px !important; }
-  #nav-cta { padding-left: 12px !important; padding-right: 12px !important; font-size: 12px !important; white-space: nowrap; }
-  #nav-burger { display: inline-flex !important; flex-shrink: 0 !important; }
-  .nav__right { flex-shrink: 0 !important; gap: 8px !important; }
-  .nav__wrap { gap: 8px !important; overflow: hidden !important; }
-  .nav__logo { min-width: 0 !important; }
-  .logo-text { font-size: 18px !important; }
-}
-@media (max-width: 360px) {
-  .lang-sw { display: none !important; }
-  #nav-cta { padding-left: 10px !important; padding-right: 10px !important; font-size: 11px !important; }
-}
-</style>
 
 <nav class="nav" id="main-nav" role="navigation" aria-label="Ana navigasyon">
   <div class="container">
@@ -526,7 +508,7 @@
   
   <!-- Section 1: Elite E-commerce Text -->
   <section class="premium-section container" style="margin-bottom: 64px; margin-top: 32px;">
-    <div class="reveal" style="max-width: 1200px; margin: 0 auto; text-align: center; padding: 48px 64px; background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 32px; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 32px 64px rgba(0,0,0,0.03), inset 0 2px 0 rgba(255,255,255,1);">
+    <div class="reveal" style="max-width: 1200px; margin: 0 auto; text-align: center; padding: 48px clamp(20px, 5vw, 64px); background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 32px; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 32px 64px rgba(0,0,0,0.03), inset 0 2px 0 rgba(255,255,255,1);">
       <span style="display: inline-block; padding: 8px 20px; background: rgba(37,99,235,0.08); color: var(--ac); border-radius: 100px; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 20px; text-transform: uppercase;" data-i18n="new_sections.corp_badge">E-Ticaret Çözümleri</span>
       <h2 style="font-size: 46px; font-weight: 800; color: var(--t1); margin-bottom: 24px; letter-spacing: -1.5px; line-height: 1.1;"><span data-i18n="new_sections.corp_h2_1">Fotoğraftan Etkileşimli</span><br><span style="background: linear-gradient(90deg, #2563eb, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" data-i18n="new_sections.corp_h2_2">3D & AR Deneyimine</span></h2>
       <p style="font-size: 19px; color: var(--t2); line-height: 1.8; margin-bottom: 36px; font-weight: 400; max-width: 1000px; margin-left: auto; margin-right: auto;">
@@ -565,7 +547,7 @@
 
   <!-- Section 3: Web Ready Text -->
   <section class="premium-section container" style="margin-bottom: 80px;">
-    <div class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 64px 56px; background: #ffffff; border-radius: 32px; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 32px 64px rgba(0,0,0,0.02);">
+    <div class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 48px clamp(20px, 4.5vw, 56px); background: #ffffff; border-radius: 32px; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 32px 64px rgba(0,0,0,0.02);">
       
       <div style="text-align: center; margin-bottom: 48px;">
         <span style="display: inline-block; padding: 8px 20px; background: rgba(16,185,129,0.08); color: #10B981; border-radius: 100px; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 20px; text-transform: uppercase;" data-i18n="new_sections.perf_badge">Performans & Uyumluluk</span>
@@ -577,9 +559,9 @@
         </p>
       </div>
 
-      <div style="margin-bottom: 48px; background: linear-gradient(135deg, rgba(37,99,235,0.03), rgba(139,92,246,0.03)); padding: 40px; border-radius: 24px; border: 1px solid rgba(37,99,235,0.06);">
+      <div style="margin-bottom: 48px; background: linear-gradient(135deg, rgba(37,99,235,0.03), rgba(139,92,246,0.03)); padding: 32px clamp(16px, 3vw, 40px); border-radius: 24px; border: 1px solid rgba(37,99,235,0.06);">
         <h3 style="font-size: 24px; font-weight: 700; color: var(--t1); margin-bottom: 28px; text-align: center;" data-i18n="new_sections.feat_list_title">Öne Çıkan Özellikler</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 20px;">
           
           <div style="display: flex; align-items: flex-start; gap: 12px;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -625,7 +607,7 @@
         </div>
       </div>
 
-      <div style="text-align: center; padding: 40px; border-radius: 20px; background: #f8fafc; border: 1px solid #e2e8f0;">
+      <div style="text-align: center; padding: 32px clamp(16px, 3vw, 40px); border-radius: 20px; background: #f8fafc; border: 1px solid #e2e8f0;">
         <p style="font-size: 24px; font-weight: 700; color: var(--t1); line-height: 1.4; margin: 0;">
           <span style="color: var(--ac); font-size: 28px;">"</span><span data-i18n="new_sections.quote_main">IARONE’un farkı yalnızca 3D model üretmesi değil; bu modeli satışa hazır, web uyumlu ve e-ticaret içinde kullanılabilir bir 3D/AR varlığa dönüştürmesidir.</span><span style="color: var(--ac); font-size: 28px;">"</span>
         </p>
@@ -840,7 +822,7 @@
       }
     </style>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 32px; margin-bottom: 64px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 32px; margin-bottom: 64px;">
       
       <!-- Feature 1 -->
       <div class="contact-feature-card reveal d1">
@@ -976,43 +958,50 @@
 
 </div>
 <!-- FOOTER -->
-<footer class="footer z1" role="contentinfo">
+<footer class="footer z1" role="contentinfo" style="margin-top: 80px; background: var(--bg-surface); position: relative;">
   <div class="container">
-    <div class="footer__inner">
-      <div class="foot-brand" style="max-width: 320px;">
-        <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa" style="margin-bottom: 20px; display: inline-flex;">
-          <img src="00_iarone_logo_exact_transparent_white_glow.webp" class="logo-dark" alt="Iarone 3D and AR Commerce Platform Logo" loading="lazy" decoding="async" />
-          <img src="00_iarone_logo_exact_transparent_black.webp"     class="logo-light" alt="Iarone 3D and AR Commerce Platform Logo" loading="lazy" decoding="async" />
-          <span class="logo-text">Iarone</span>
+    <div class="footer__inner" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 60px; padding: 80px 0 60px; border-top: 1px solid var(--border);">
+      
+      <div class="foot-brand" style="flex: 1; min-width: 280px; max-width: 420px;">
+        <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa" style="margin-bottom: 24px; display: inline-flex; align-items: center; gap: 12px; text-decoration: none;">
+          <img src="00_iarone_logo_exact_transparent_white_glow.webp" class="logo-dark" alt="Iarone Logo" width="36" loading="lazy" decoding="async" />
+          <img src="00_iarone_logo_exact_transparent_black.webp" class="logo-light" alt="Iarone Logo" width="36" loading="lazy" decoding="async" />
+          <span class="logo-text" style="font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--t1);">Iarone</span>
         </a>
-        <p style="font-size: 15px; color: var(--t2); line-height: 1.6;" data-i18n="footer.f_desc">E-ticaret ürünlerini 3D ve AR deneyimlerine dönüştüren yayın platformu.</p>
+        <p style="font-size: 16px; color: var(--t3); line-height: 1.6; margin-bottom: 32px;" data-i18n="footer.f_desc">E-ticaret ürünlerini 3D ve AR deneyimlerine dönüştüren yeni nesil yayın platformu. Ziyaretçilerinizi müşteriye dönüştürün.</p>
+        
+        
       </div>
-      <div>
-        <div class="foot-col-title" data-i18n="footer.col1">Ürün</div>
-        <div class="foot-links">
-          <a href="nasil-calisir.html" data-i18n="footer.f_dash">Nasıl Çalışır</a>
-          <a href="market.html"              data-i18n="footer.f_market">Sektör Çözümleri</a>
-                            </div>
-      </div>
-      <div>
-        <div class="foot-col-title" data-i18n="footer.col2">Şirket</div>
-        <div class="foot-links">
-          <a href="#demo" data-i18n="footer.demo_cta">Demo Talep Et</a>
-          <a href="mailto:hello@iarone.com">hello@iarone.com</a>
-          <a href="mailto:info@iarone.com">info@iarone.com</a>
-          <a href="mailto:partnerships@iarone.com">partnerships@iarone.com</a>
+
+      <div style="display: flex; gap: 80px; flex-wrap: wrap;">
+        <!-- Product Links -->
+        <div style="min-width: 140px;">
+          <h4 style="font-size: 13px; font-weight: 700; color: var(--t1); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px;" data-i18n="footer.col1">Ürün</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px;">
+            <li><a href="nasil-calisir.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="footer.f_dash">Nasıl Çalışır</a></li>
+            <li><a href="market.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="footer.f_market">Sektör Çözümleri</a></li>
+            <li><a href="pricing.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';">Fiyatlandırma</a></li>
+          </ul>
+        </div>
+        
+        <!-- Company Links -->
+        <div style="min-width: 140px;">
+          <h4 style="font-size: 13px; font-weight: 700; color: var(--t1); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px;" data-i18n="footer.col2">İletişim</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px;">
+            
+            <li><a href="index.html#demo" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="footer.demo_cta">Demo Talep Et</a></li>
+          </ul>
         </div>
       </div>
-      <div>
-        <div class="foot-col-title" data-i18n="footer.col3">Yasal</div>
-        <div class="foot-links">
-                                      </div>
-      </div>
+      
     </div>
-    <div class="footer__bottom">
-      <span class="foot-copy" data-i18n="footer.copy">© 2026 Iarone. Tüm hakları saklıdır.</span>
-      <div class="foot-socials" aria-label="Sosyal medya">
-                                      </div>
+    
+    <div class="footer__bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; padding: 32px 0; border-top: 1px solid var(--border);">
+      <span style="font-size: 14px; font-weight: 500; color: var(--t3);" data-i18n="footer.copy">© 2026 Iarone. Tüm hakları saklıdır.</span>
+      <div style="display: flex; gap: 32px;">
+        <a href="#" style="font-size: 14px; font-weight: 500; color: var(--t3); text-decoration: none; transition: color 0.2s ease;" onmouseover="this.style.color='var(--t1)';" onmouseout="this.style.color='var(--t3)';">Gizlilik Politikası</a>
+        <a href="#" style="font-size: 14px; font-weight: 500; color: var(--t3); text-decoration: none; transition: color 0.2s ease;" onmouseover="this.style.color='var(--t1)';" onmouseout="this.style.color='var(--t3)';">Kullanım Şartları</a>
+      </div>
     </div>
   </div>
 </footer>
@@ -1164,5 +1153,19 @@
 </script>
 <script type="module" src="i18n.js"></script>
 <script type="module" src="app.v5.js"></script>
+
+<!-- Floating Instagram Button -->
+<a href="https://www.instagram.com/iarone.ai?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="floating-ig-btn" aria-label="Instagram">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+  </svg>
+</a>
+
+<!-- FLOATING INSTAGRAM -->
+<a href="https://www.instagram.com/iarone.ai?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="floating-ig" aria-label="Instagram" style="position:fixed; bottom:24px; right:24px; width:56px; height:56px; background:linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; box-shadow:0 10px 25px rgba(220, 39, 67, 0.4); z-index:9999; text-decoration:none; transition:transform 0.3s ease;">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px; height:28px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+</a>
 </body>
 </html>

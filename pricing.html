@@ -372,49 +372,50 @@
 </section>
 
 <!-- ═══ FOOTER ═══ -->
-<footer class="footer z1" role="contentinfo">
+<!-- FOOTER -->
+<footer class="footer z1" role="contentinfo" style="margin-top: 80px; background: var(--bg-surface); position: relative;">
   <div class="container">
-    <div class="footer__inner">
-      <div class="foot-brand" style="max-width: 320px;">
-        <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa" style="margin-bottom: 20px; display: inline-flex;">
-          <img src="00_iarone_logo_exact_transparent_white_glow.webp" class="logo-dark" alt="Iarone" loading="lazy" decoding="async" />
-          <img src="00_iarone_logo_exact_transparent_black.webp"     class="logo-light" alt="Iarone" loading="lazy" decoding="async" />
-          <span class="logo-text">Iarone</span>
+    <div class="footer__inner" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 60px; padding: 80px 0 60px; border-top: 1px solid var(--border);">
+      
+      <div class="foot-brand" style="flex: 1; min-width: 280px; max-width: 420px;">
+        <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa" style="margin-bottom: 24px; display: inline-flex; align-items: center; gap: 12px; text-decoration: none;">
+          <img src="00_iarone_logo_exact_transparent_white_glow.webp" class="logo-dark" alt="Iarone Logo" width="36" loading="lazy" decoding="async" />
+          <img src="00_iarone_logo_exact_transparent_black.webp" class="logo-light" alt="Iarone Logo" width="36" loading="lazy" decoding="async" />
+          <span class="logo-text" style="font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--t1);">Iarone</span>
         </a>
-        <p style="font-size: 15px; color: var(--t2); line-height: 1.6;">E-ticaret ürünlerini 3D ve AR deneyimlerine dönüştüren yayın platformu.</p>
+        <p style="font-size: 16px; color: var(--t3); line-height: 1.6; margin-bottom: 32px;" data-i18n="footer.f_desc">E-ticaret ürünlerini 3D ve AR deneyimlerine dönüştüren yeni nesil yayın platformu. Ziyaretçilerinizi müşteriye dönüştürün.</p>
+        
+        
       </div>
-      <div>
-        <div class="foot-col-title" data-i18n="footer.col1">Ürün</div>
-        <div class="foot-links">
-          <a href="index.html#nasil-calisir" data-i18n="footer.f_dash">Nasıl Çalışır</a>
-          <a href="market.html"              data-i18n="footer.f_market">Sektör Çözümleri</a>
-          <a href="pricing.html"             data-i18n="footer.f_price">Fiyatlandırma</a>
-          <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html">Panel</a>
+
+      <div style="display: flex; gap: 80px; flex-wrap: wrap;">
+        <!-- Product Links -->
+        <div style="min-width: 140px;">
+          <h4 style="font-size: 13px; font-weight: 700; color: var(--t1); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px;" data-i18n="footer.col1">Ürün</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px;">
+            <li><a href="nasil-calisir.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="footer.f_dash">Nasıl Çalışır</a></li>
+            <li><a href="market.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="footer.f_market">Sektör Çözümleri</a></li>
+            <li><a href="pricing.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';">Fiyatlandırma</a></li>
+          </ul>
+        </div>
+        
+        <!-- Company Links -->
+        <div style="min-width: 140px;">
+          <h4 style="font-size: 13px; font-weight: 700; color: var(--t1); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px;" data-i18n="footer.col2">İletişim</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px;">
+            
+            <li><a href="index.html#demo" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="footer.demo_cta">Demo Talep Et</a></li>
+          </ul>
         </div>
       </div>
-      <div>
-        <div class="foot-col-title" data-i18n="footer.col2">Şirket</div>
-        <div class="foot-links">
-          <a href="#demo-section">Demo Talep Et</a>
-          <a href="#demo-section" data-i18n="footer.c_contact">İletişim</a>
-        </div>
-      </div>
-      <div>
-        <div class="foot-col-title" data-i18n="footer.col3">Yasal</div>
-        <div class="foot-links">
-          <a href="#" data-i18n="footer.l_priv">Gizlilik</a>
-          <a href="#" data-i18n="footer.l_kvkk">KVKK</a>
-          <a href="#" data-i18n="footer.l_terms">Kullanım Şartları</a>
-        </div>
-      </div>
+      
     </div>
-    <div class="footer__bottom">
-      <span class="foot-copy" data-i18n="footer.copy">© 2026 Iarone. Tüm hakları saklıdır.</span>
-      <div class="foot-socials" aria-label="Sosyal medya">
-        <a href="#" class="soc-btn" aria-label="Twitter/X"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.73 8L4 20h2.67l9.33-10 4-6h-2.67L8 14l-4-6z"/></svg></a>
-        <a href="#" class="soc-btn" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-        <a href="#" class="soc-btn" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-        <a href="#" class="soc-btn" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+    
+    <div class="footer__bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; padding: 32px 0; border-top: 1px solid var(--border);">
+      <span style="font-size: 14px; font-weight: 500; color: var(--t3);" data-i18n="footer.copy">© 2026 Iarone. Tüm hakları saklıdır.</span>
+      <div style="display: flex; gap: 32px;">
+        <a href="#" style="font-size: 14px; font-weight: 500; color: var(--t3); text-decoration: none; transition: color 0.2s ease;" onmouseover="this.style.color='var(--t1)';" onmouseout="this.style.color='var(--t3)';">Gizlilik Politikası</a>
+        <a href="#" style="font-size: 14px; font-weight: 500; color: var(--t3); text-decoration: none; transition: color 0.2s ease;" onmouseover="this.style.color='var(--t1)';" onmouseout="this.style.color='var(--t3)';">Kullanım Şartları</a>
       </div>
     </div>
   </div>
@@ -439,5 +440,10 @@
     q.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); q.click(); } });
   });
 </script>
+
+<!-- FLOATING INSTAGRAM -->
+<a href="https://www.instagram.com/iarone.ai?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="floating-ig" aria-label="Instagram" style="position:fixed; bottom:24px; right:24px; width:56px; height:56px; background:linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; box-shadow:0 10px 25px rgba(220, 39, 67, 0.4); z-index:9999; text-decoration:none; transition:transform 0.3s ease;">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px; height:28px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+</a>
 </body>
 </html>

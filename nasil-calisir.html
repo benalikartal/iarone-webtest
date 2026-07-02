@@ -58,11 +58,35 @@
         <li><a href="market.html" class="nav__link" data-i18n="nav.market">Çözümler</a></li>
       </ul>
       <div class="nav__right">
+        <div class="lang-sw" id="lang-sw">
+          <button class="lang-btn" id="lang-btn" aria-label="Dil seçin" aria-haspopup="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="lang-current">TR</span>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-drop" role="menu">
+            <div class="lang-opt sel" data-lang="tr" role="menuitem" tabindex="0">🇹🇷 &nbsp;Türkçe</div>
+            <div class="lang-opt"     data-lang="en" role="menuitem" tabindex="0">🇺🇸 &nbsp;English</div>
+            <div class="lang-opt"     data-lang="ar" role="menuitem" tabindex="0">🇸🇦 &nbsp;العربية</div>
+          </div>
+        </div>
         <a href="index.html#demo" class="btn btn-primary" data-i18n="home.hero_cta_secondary">Demo Talep Et</a>
+        <button class="nav__burger" id="nav-burger" aria-label="Menüyü aç" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </div>
 </nav>
+
+<div class="nav__mobile" id="nav-mobile" role="menu">
+  <a href="index.html"         class="nav__link" data-i18n="nav.home">Ana Sayfa</a>
+  <a href="nasil-calisir.html" class="nav__link active" data-i18n="nav.dashboard">Nasıl Çalışır</a>
+  <a href="market.html"        class="nav__link" data-i18n="nav.market">Çözümler</a>
+  <div class="nav__mobile-actions">
+    <a href="index.html#demo" class="btn btn-primary" data-i18n="home.hero_cta_secondary">Demo Talep Et</a>
+  </div>
+</div>
 
 <!-- CONTENT SECTIONS PLACEHOLDER -->
 <div id="page-content">
@@ -168,26 +192,6 @@
       </div>
     </div>
 
-    <!-- Arka Planda Ne Olur? -->
-    <div class="quote-box reveal" style="text-align:left; padding:60px;">
-      <h2 style="font-size:32px; font-weight:800; color:#fff !important; margin-bottom:24px; text-align:left;" data-i18n="how_it_works.bg_title">Arka Planda Ne Olur?</h2>
-      <p style="font-size:18px; color:#cbd5e1 !important; line-height:1.8; margin-bottom:24px; text-align:left; max-width:100%;" data-i18n="how_it_works.bg_desc1">Kullanıcı yalnızca ürününü yükler ve sonucu bekler. IARONE ise arka planda üretim sürecini kontrollü bir altyapı üzerinden yönetir.</p>
-      <p style="font-size:18px; color:#cbd5e1 !important; line-height:1.8; margin-bottom:32px; text-align:left; max-width:100%;" data-i18n="how_it_works.bg_desc2">Sistem; API, üretim kuyruğu, AI generation engine, kalite kontrol, asset registry ve publish akışından oluşur. Böylece süreç tek kişiye bağlı manuel bir hizmet gibi değil, modüler ve ölçeklenebilir bir teknoloji altyapısı gibi çalışır.</p>
-      
-      <h4 style="font-size:16px; color:#60a5fa !important; text-transform:uppercase; letter-spacing:1px; margin-bottom:16px;" data-i18n="how_it_works.bg_flow_title">Arka Plandaki Sistem Akışı</h4>
-      <div class="code-flow" style="display:flex; flex-direction:column; gap:8px; font-size:16px; color:#f8fafc !important;">
-        <span data-i18n="how_it_works.bg_flow_1">1. Kullanıcı ürün fotoğrafını yükler</span>
-        <span data-i18n="how_it_works.bg_flow_2">2. API yeni üretim isteği oluşturur</span>
-        <span data-i18n="how_it_works.bg_flow_3">3. İşlem sıraya alınır (Queue)</span>
-        <span data-i18n="how_it_works.bg_flow_4">4. Generation engine modeli üretir</span>
-        <span data-i18n="how_it_works.bg_flow_5">5. Ham model optimize edilir</span>
-        <span data-i18n="how_it_works.bg_flow_6">6. Kalite kontrol (QA) yapılır</span>
-        <span data-i18n="how_it_works.bg_flow_7">7. Asset paketi hazırlanır</span>
-        <span data-i18n="how_it_works.bg_flow_8">8. Kullanıcı panelinde sonuç gösterilir</span>
-        <span data-i18n="how_it_works.bg_flow_9">9. Publish linki veya embed çıktısı oluşturulur</span>
-      </div>
-    </div>
-
     <!-- Kısa Özet -->
     <div class="timeline-card reveal" style="background:#fff; border:none; padding:60px 40px; text-align:center; box-shadow:0 16px 40px rgba(0,0,0,0.05); border:1px solid rgba(0,0,0,0.05);">
       <span style="display:inline-block; padding:8px 24px; background:#10b981; color:#fff; border-radius:100px; font-weight:700; font-size:14px; text-transform:uppercase; margin-bottom:24px;" data-i18n="how_it_works.summary_badge">Kısa Özet</span>
@@ -211,19 +215,50 @@
 </div>
 
 <!-- FOOTER -->
-<footer class="footer z1" role="contentinfo" style="margin-top: 100px;">
+<footer class="footer z1" role="contentinfo" style="margin-top: 80px; background: var(--bg-surface); position: relative;">
   <div class="container">
-    <div class="footer__grid">
-      <div>
-        <a href="index.html" class="nav__logo" style="margin-bottom: 24px;">
-          <img src="00_iarone_logo_exact_transparent_white_glow.webp" alt="Iarone" width="32" />
-          <span class="logo-text">Iarone</span>
+    <div class="footer__inner" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 60px; padding: 80px 0 60px; border-top: 1px solid var(--border);">
+      
+      <div class="foot-brand" style="flex: 1; min-width: 280px; max-width: 420px;">
+        <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa" style="margin-bottom: 24px; display: inline-flex; align-items: center; gap: 12px; text-decoration: none;">
+          <img src="00_iarone_logo_exact_transparent_white_glow.webp" class="logo-dark" alt="Iarone Logo" width="36" loading="lazy" decoding="async" />
+          <img src="00_iarone_logo_exact_transparent_black.webp" class="logo-light" alt="Iarone Logo" width="36" loading="lazy" decoding="async" />
+          <span class="logo-text" style="font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--t1);">Iarone</span>
         </a>
-        <p class="foot-desc" style="color: #94a3b8; font-size: 15px;">E-ticaret ürün görsellerini web uyumlu 3D ve AR deneyimlerine dönüştüren platform.</p>
+        <p style="font-size: 16px; color: var(--t3); line-height: 1.6; margin-bottom: 32px;" data-i18n="footer.f_desc">E-ticaret ürünlerini 3D ve AR deneyimlerine dönüştüren yeni nesil yayın platformu. Ziyaretçilerinizi müşteriye dönüştürün.</p>
+        
+        
       </div>
+
+      <div style="display: flex; gap: 80px; flex-wrap: wrap;">
+        <!-- Product Links -->
+        <div style="min-width: 140px;">
+          <h4 style="font-size: 13px; font-weight: 700; color: var(--t1); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px;" data-i18n="footer.col1">Ürün</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px;">
+            <li><a href="nasil-calisir.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="footer.f_dash">Nasıl Çalışır</a></li>
+            <li><a href="market.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="footer.f_market">Sektör Çözümleri</a></li>
+            <li><a href="pricing.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';">Fiyatlandırma</a></li>
+          </ul>
+        </div>
+        
+        <!-- Company Links -->
+        <div style="min-width: 140px;">
+          <h4 style="font-size: 13px; font-weight: 700; color: var(--t1); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px;" data-i18n="footer.col2">İletişim</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px;">
+            
+            <li><a href="index.html#demo" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="footer.demo_cta">Demo Talep Et</a></li>
+          </ul>
+        </div>
+      </div>
+      
     </div>
-    <div class="footer__bottom" style="margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color: #64748b; font-size: 14px;">
-      <span>© 2026 Iarone. Tüm hakları saklıdır.</span>
+    
+    <div class="footer__bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; padding: 32px 0; border-top: 1px solid var(--border);">
+      <span style="font-size: 14px; font-weight: 500; color: var(--t3);" data-i18n="footer.copy">© 2026 Iarone. Tüm hakları saklıdır.</span>
+      <div style="display: flex; gap: 32px;">
+        <a href="#" style="font-size: 14px; font-weight: 500; color: var(--t3); text-decoration: none; transition: color 0.2s ease;" onmouseover="this.style.color='var(--t1)';" onmouseout="this.style.color='var(--t3)';">Gizlilik Politikası</a>
+        <a href="#" style="font-size: 14px; font-weight: 500; color: var(--t3); text-decoration: none; transition: color 0.2s ease;" onmouseover="this.style.color='var(--t1)';" onmouseout="this.style.color='var(--t3)';">Kullanım Şartları</a>
+      </div>
     </div>
   </div>
 </footer>
@@ -237,5 +272,10 @@
   }, 100);
 </script>
 
+
+<!-- FLOATING INSTAGRAM -->
+<a href="https://www.instagram.com/iarone.ai?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="floating-ig" aria-label="Instagram" style="position:fixed; bottom:24px; right:24px; width:56px; height:56px; background:linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; box-shadow:0 10px 25px rgba(220, 39, 67, 0.4); z-index:9999; text-decoration:none; transition:transform 0.3s ease;">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px; height:28px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+</a>
 </body>
 </html>

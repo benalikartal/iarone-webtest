@@ -3664,3 +3664,228 @@ body:not([data-theme="light"]) .blob-3{opacity:.055}
 
 
 
+
+/* ─── FLOATING INSTAGRAM BUTTON ─── */
+.floating-ig-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(220, 39, 67, 0.4);
+  z-index: 9999;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+  text-decoration: none;
+}
+.floating-ig-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(220, 39, 67, 0.5);
+  color: white;
+}
+.floating-ig-btn svg { width: 28px; height: 28px; }
+@media (max-width: 768px) {
+  .floating-ig-btn { bottom: 20px; right: 20px; width: 48px; height: 48px; }
+  .floating-ig-btn svg { width: 24px; height: 24px; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   COMPREHENSIVE MOBILE RESPONSIVE OVERRIDES
+   Applied after all other rules for maximum specificity
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── index.html inline-style class fixes ── */
+@media (max-width: 768px) {
+  /* Segment tabs */
+  .segment-wrap { margin: 40px 0 24px !important; }
+  .segment-btn { padding: 10px 18px !important; font-size: 13px !important; }
+
+  /* Section grids → 1 column */
+  .sec-logo { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .feat-grid-3 { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .sec-ar-content { grid-template-columns: 1fr !important; padding: 28px 20px !important; gap: 24px !important; }
+  .sec-web { grid-template-columns: 1fr !important; gap: 32px !important; margin: 48px 0 !important; }
+  .web-cards { grid-template-columns: 1fr !important; gap: 12px !important; }
+
+  /* Fixed pixel widths → fluid */
+  .ui-layer { width: 100% !important; justify-self: stretch !important; }
+  .sec-ar { min-height: auto !important; border-radius: 20px !important; margin: 40px auto !important; }
+  .logo-img { height: 200px !important; }
+
+  /* Feat row wraps */
+  .feat-row { flex-wrap: wrap !important; gap: 12px !important; }
+
+  /* Float panels with negative offsets → hide (they overflow the viewport) */
+  .float-panel.left, .float-panel.right { display: none !important; }
+  .float-panel.center {
+    position: static !important;
+    transform: none !important;
+    border-radius: 16px !important;
+    margin: 16px auto 0 !important;
+    display: inline-flex !important;
+  }
+
+  /* AR section h2 */
+  .sec-ar-content h2 { font-size: clamp(22px, 6vw, 36px) !important; }
+  .sec-ar-content p { font-size: 16px !important; }
+}
+
+/* ── nasil-calisir.html class fixes ── */
+@media (max-width: 768px) {
+  .page-hero { padding: 80px 0 48px !important; }
+  .page-hero h1 { font-size: clamp(28px, 7vw, 44px) !important; }
+  .page-hero p { font-size: 17px !important; }
+
+  .timeline-card { padding: 28px 20px !important; border-radius: 16px !important; overflow: hidden; }
+  .timeline-num { font-size: 80px !important; right: 12px !important; }
+  .timeline-card h2 { font-size: clamp(18px, 5vw, 26px) !important; gap: 10px !important; }
+  .timeline-card p { font-size: 16px !important; }
+
+  .tech-list { grid-template-columns: 1fr !important; gap: 10px !important; }
+  .tech-list li { font-size: 15px !important; padding: 12px !important; }
+
+  .arch-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .arch-card { padding: 24px 20px !important; border-radius: 16px !important; }
+
+  .quote-box { padding: 32px 20px !important; margin: 40px 0 !important; border-radius: 20px !important; }
+  .quote-box h2 { font-size: clamp(20px, 5vw, 28px) !important; }
+  .quote-box p { font-size: 17px !important; }
+  .flow-section { padding: 40px 0 !important; }
+}
+
+/* ── Inline grid minmax fixes (market.html, index.html corp/personal tabs) ── */
+@media (max-width: 600px) {
+  /* Any grid with minmax >= 280px collapses on phones < 600px */
+  .quality-report-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ── Global overflow prevention ── */
+@media (max-width: 1024px) {
+  body { overflow-x: hidden; }
+  html { overflow-x: hidden; }
+}
+
+/* ── VS image full-width on mobile ── */
+@media (max-width: 768px) {
+  .iarone-vs-section {
+    padding: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .iarone-vs-section img {
+    border-radius: 12px !important;
+    width: 100% !important;
+  }
+}
+
+/* ── Inline h2 font-size overrides (index.html corp/perf sections) ── */
+@media (max-width: 768px) {
+  /* h2 elements with inline font-size that won't wrap properly */
+  h2[style*="font-size: 46px"],
+  h2[style*="font-size: 42px"],
+  h2[style*="font-size: 48px"],
+  h2[style*="font-size: 44px"],
+  h2[style*="font-size: 40px"] {
+    font-size: clamp(24px, 6vw, 34px) !important;
+    letter-spacing: -0.5px !important;
+  }
+  /* p elements with large inline font-size */
+  p[style*="font-size: 19px"],
+  p[style*="font-size: 18px"] {
+    font-size: 16px !important;
+  }
+  /* Force all content to not overflow */
+  .container * {
+    max-width: 100%;
+    word-break: break-word;
+  }
+}
+
+/* ── Navbar Mobile Fixes (Language dropdown & Hamburger) ── */
+@media (max-width: 768px) {
+  /* Hide the "Demo Talep Et" button in top nav to make space for hamburger (it's already in the mobile slide menu) */
+  .nav__right .btn.btn-primary { 
+    display: none !important; 
+  }
+  
+  /* Ensure the language dropdown and burger button are visible */
+  .nav__burger { 
+    display: flex !important; 
+    margin-left: 8px;
+  }
+  
+  /* Force overflow visible on all navbar parents so the dropdown can pop out */
+  .nav, .nav__wrap, .nav__right, .container { 
+    overflow: visible !important; 
+  }
+  
+  .lang-sw { 
+    position: relative !important; 
+    overflow: visible !important; 
+  }
+
+  /* Make language button slightly more compact */
+  .lang-btn {
+    padding: 6px 10px !important;
+  }
+  
+  /* Ensure dropdown isn't clipped and stays within screen bounds */
+  .lang-drop {
+    right: -10px !important;
+    min-width: 140px !important;
+  }
+}
+
+/* ── Robust Language Dropdown Fix for Mobile ── */
+@media (max-width: 768px) {
+  /* Ensure the dropdown wrapper has a high z-index and is definitely visible */
+  .lang-sw {
+    z-index: 9999 !important;
+  }
+  
+  /* Redefine lang-drop to ensure it absolutely appears on screen when open */
+  .lang-sw.open .lang-drop,
+  .lang-sw:focus-within .lang-drop,
+  .lang-sw:active .lang-drop {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
+  }
+  
+  .lang-drop {
+    position: absolute !important;
+    top: 40px !important;
+    right: -10px !important; /* Slightly offset so it doesn't hit the right edge */
+    background: #ffffff !important; /* Force solid white background */
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+    z-index: 99999 !important; /* Force to top */
+    min-width: 140px !important;
+    display: none !important; /* Hidden by default until .open or focus */
+  }
+
+  .lang-opt {
+    color: #1e293b !important; /* Dark text to ensure it's visible on white */
+    padding: 12px 16px !important; /* Larger touch targets */
+  }
+}
+
+/* ── Mobile Button Wrap Fix ── */
+@media (max-width: 480px) {
+  .btn {
+    white-space: normal !important;
+    text-align: center !important;
+    line-height: 1.4 !important;
+    height: auto !important;
+    min-height: 44px;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+}
