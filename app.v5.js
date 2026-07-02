@@ -117,6 +117,29 @@ function applyLang(lang) {
   document.querySelectorAll('.lang-opt').forEach(o =>
     o.classList.toggle('sel', o.dataset.lang === lang)
   );
+
+  // Switch image for language
+  const howItWorksImg = document.getElementById('how-it-works-img');
+  if (howItWorksImg) {
+    if (lang === 'en') {
+      howItWorksImg.src = 'ıarone eng (2).png';
+    } else if (lang === 'ar') {
+      howItWorksImg.src = 'arapça (2).png';
+    } else {
+      howItWorksImg.src = 'ıarone 66.png';
+    }
+  }
+
+  const ecommerceValImg = document.getElementById('ecommerce-val-img');
+  if (ecommerceValImg) {
+    if (lang === 'en') {
+      ecommerceValImg.src = 'ıarone eng (1).png';
+    } else if (lang === 'ar') {
+      ecommerceValImg.src = 'arapça (1).png';
+    } else {
+      ecommerceValImg.src = 'ıarone 55.png';
+    }
+  }
 }
 
 /* ─── NAV SCROLL ─── */
@@ -350,6 +373,8 @@ function setActiveLink() {
       if (href.includes('market')) active = true;
     } else if (page.includes('dashboard')) {
       if (href.includes('dashboard')) active = true;
+    } else if (page.includes('nasil-calisir')) {
+      if (href.includes('nasil-calisir')) active = true;
     }
     a.classList.toggle('active', active);
   });
