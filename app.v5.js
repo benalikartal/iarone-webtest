@@ -4,6 +4,7 @@
    Drag & Drop, Search, Filters, Onboarding & Dashboard modules
    ===================================================== */
 import { i18n } from './i18n.js';
+import '@google/model-viewer';
 
 /* ─── PREMIUM PRELOADER (GÜVENLİ) ─── */
 function initPreloader() {
