@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https: http://localhost:3000 http://127.0.0.1:3000; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'" />
+  <title data-i18n="nav.roadmap">IARONE — Yol Haritası | AI 3D Asset & Commerce Platform</title>
+  <meta name="description" content="IARONE'un 5 yıllık gelişim, gelecek vizyonu ve yapay zekâ destekli 3D varlık üretim yol haritası." />
+  <link rel="canonical" href="https://iarone.com/roadmap.html" />
+  
+  <meta property="og:title" content="IARONE — Yol Haritası | AI 3D Asset & Commerce Platform" />
+  <meta property="og:description" content="IARONE'un 5 yıllık gelişim, gelecek vizyonu ve yapay zekâ destekli 3D varlık üretim yol haritası." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://iarone.com/roadmap.html" />
+  <meta property="og:image" content="https://iarone.com/00_iarone_logo_exact_transparent_white_glow.png" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:locale:alternate" content="ar_AR" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="IARONE — Yol Haritası | AI 3D Asset & Commerce Platform" />
+  <meta name="twitter:description" content="IARONE'un 5 yıllık gelişim, gelecek vizyonu ve yapay zekâ destekli 3D varlık üretim yol haritası." />
+  <meta name="twitter:image" content="https://iarone.com/00_iarone_logo_exact_transparent_white_glow.png" />
+
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <link rel="alternate" hreflang="tr" href="https://iarone.com/roadmap.html?lang=tr" />
+  <link rel="alternate" hreflang="en" href="https://iarone.com/roadmap.html?lang=en" />
+  <link rel="alternate" hreflang="ar" href="https://iarone.com/roadmap.html?lang=ar" />
+  <link rel="alternate" hreflang="x-default" href="https://iarone.com/roadmap.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.v5.css" />
+  <style>
+    body { background: #f8fafc; }
+    .page-hero { padding: 120px 0 80px; text-align: center; position: relative; overflow: hidden; }
+    .page-hero h1 { font-size: 56px; font-weight: 800; color: #0f172a; margin-bottom: 24px; letter-spacing: -1.5px; }
+    .page-hero p { font-size: 20px; color: #475569; max-width: 800px; margin: 0 auto; line-height: 1.8; }
+    .flow-section { padding: 80px 0; }
+    
+    .timeline-card { background: #fff; border-radius: 24px; padding: 48px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 16px 40px rgba(0,0,0,0.03); margin-bottom: 40px; position: relative; }
+    .timeline-num { font-size: 140px; font-weight: 900; color: rgba(37,99,235,0.03); position: absolute; top: -10px; right: 20px; line-height: 1; pointer-events: none; }
+    .timeline-card h2 { font-size: 32px; font-weight: 800; color: #0f172a; margin-bottom: 20px; display: flex; align-items: center; gap: 16px; }
+    .timeline-card h2 .icon-box { width: 48px; height: 48px; border-radius: 12px; background: rgba(37,99,235,0.08); color: #2563eb; display: flex; align-items: center; justify-content: center; }
+    .timeline-card p { font-size: 18px; color: #334155; line-height: 1.8; margin-bottom: 24px; }
+    
+    .tech-list { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+    .tech-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 16px; color: #475569; background: #f8fafc; padding: 16px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.03); }
+    .tech-list li svg { flex-shrink: 0; color: #10B981; margin-top: 2px; }
+
+    .status-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .status-ready { background: rgba(16,185,129,0.1); color: #10b981; }
+    .status-progress { background: rgba(245,158,11,0.1); color: #f59e0b; }
+    .status-planned { background: rgba(37,99,235,0.1); color: #2563eb; }
+    .status-vision { background: rgba(139,92,246,0.1); color: #8b5cf6; }
+
+    @media (max-width: 767px) {
+      .tech-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="preloader" class="pl" role="status" aria-label="Iarone yükleniyor">
+  <div class="pl__logo">
+    <img src="00_iarone_logo_exact_transparent_white_glow.webp" class="logo-dark" alt="Iarone Logo" />
+    <img src="00_iarone_logo_exact_transparent_black.webp" class="logo-light" alt="Iarone Logo" />
+    <span class="logo-text">Iarone</span>
+  </div>
+  <div class="pl__text">Yükleniyor<span class="pl__dots"></span></div>
+</div>
+
+<div class="bg-blobs" aria-hidden="true">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="nav" id="main-nav" role="navigation" aria-label="Ana navigasyon" style="background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05);">
+  <div class="container">
+    <div class="nav__wrap">
+      <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa" style="gap: 8px;">
+        <img src="00_iarone_logo_exact_transparent_white_glow.webp" class="logo-dark" alt="Iarone Logo" loading="lazy" width="24" />
+        <img src="00_iarone_logo_exact_transparent_black.webp" class="logo-light" alt="Iarone Logo" loading="lazy" width="24" />
+        <span class="logo-text">Iarone</span>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="index.html"     class="nav__link" data-i18n="nav.home">Ana Sayfa</a></li>
+        <li><a href="nasil-calisir.html" class="nav__link" data-i18n="nav.dashboard">Nasıl Çalışır</a></li>
+        <li><a href="market.html"    class="nav__link" data-i18n="nav.market">Kullanım Alanları</a></li>
+        <li><a href="pricing.html"   class="nav__link" data-i18n="nav.pricing">Fiyatlandırma</a></li>
+        <li><a href="roadmap.html"   class="nav__link active" data-i18n="nav.roadmap">Roadmap</a></li>
+      </ul>
+      <div class="nav__right">
+        <div class="lang-sw" id="lang-sw">
+          <button class="lang-btn" id="lang-btn" aria-label="Dil seçin" aria-haspopup="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="lang-current">TR</span>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-drop" role="menu">
+            <div class="lang-opt sel" data-lang="tr" role="menuitem" tabindex="0">🇹🇷 &nbsp;Türkçe</div>
+            <div class="lang-opt"     data-lang="en" role="menuitem" tabindex="0">🇺🇸 &nbsp;English</div>
+            <div class="lang-opt"     data-lang="ar" role="menuitem" tabindex="0">🇸🇦 &nbsp;العربية</div>
+          </div>
+        </div>
+        <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html" class="btn btn-ghost" id="nav-login" data-auth-intent="login" data-i18n="nav.login" style="margin-right: 8px; font-weight: 600;">Giriş Yap</a>
+        <a href="#demo" class="btn btn-primary" data-i18n="home.hero_cta_secondary">Demo Talep Et</a>
+        <button class="nav__burger" id="nav-burger" aria-label="Menüyü aç" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="nav__mobile" id="nav-mobile" role="menu">
+  <a href="index.html"         class="nav__link" data-i18n="nav.home">Ana Sayfa</a>
+  <a href="nasil-calisir.html" class="nav__link" data-i18n="nav.dashboard">Nasıl Çalışır</a>
+  <a href="market.html"        class="nav__link" data-i18n="nav.market">Kullanım Alanları</a>
+  <a href="pricing.html"       class="nav__link" data-i18n="nav.pricing">Fiyatlandırma</a>
+  <a href="roadmap.html"       class="nav__link active" data-i18n="nav.roadmap">Roadmap</a>
+  <div class="nav__mobile-actions" style="flex-direction: column; gap: 8px; width: 100%;">
+    <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html" class="btn btn-ghost" data-auth-intent="login" data-i18n="nav.login" style="width: 100%; justify-content: center;">Giriş Yap</a>
+    <a href="#demo" class="btn btn-primary" data-i18n="home.hero_cta_secondary" style="width: 100%; justify-content: center;">Demo Talep Et</a>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="page-content">
+  <header class="page-hero">
+    <div class="container">
+      <span style="display:inline-block; padding:8px 24px; background:rgba(37,99,235,0.1); color:#2563eb; border-radius:100px; font-weight:700; font-size:14px; text-transform:uppercase; margin-bottom:24px;" data-i18n="roadmap.badge">Yol Haritası</span>
+      <h1 data-i18n="roadmap.title">5 Yıllık Gelişim & Gelecek Vizyonu</h1>
+      <p data-i18n="roadmap.sub">IARONE’un yapay zekâ destekli 3D varlık üretim altyapısını geleceğe nasıl taşıdığını keşfedin.</p>
+    </div>
+  </header>
+
+  <div class="container flow-section">
+    <!-- Phase 1 -->
+    <div class="timeline-card reveal">
+      <div class="timeline-num">01</div>
+      <h2>
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+        </div>
+        <span data-i18n="roadmap.phase1_title">Altyapı & E-ticaret Hacmi</span>
+      </h2>
+      <div style="margin-bottom: 20px;">
+        <span class="status-badge status-ready" data-i18n="roadmap.phase1_status">Yayınlandı / Aktif</span>
+        <span style="margin-left: 12px; font-weight: 600; color: var(--t3);" data-i18n="roadmap.phase1_badge">Faz 1: 0 - 6 Ay</span>
+      </div>
+      <p data-i18n="roadmap.phase1_desc">AI tabanlı temel 3D model üretim motoru, web uyumlu optimizasyon araçları, GLB/USDZ dosya çıktıları ve e-ticaret siteleri için entegre yayınlama altyapısının kurulması.</p>
+      
+      <div style="background:#f1f5f9; padding:20px; border-radius:16px;">
+        <h4 style="font-size:14px; text-transform:uppercase; color:#64748b; margin-bottom:12px; letter-spacing:1px;" data-i18n="how_it_works.step_highlights">Öne Çıkanlar</h4>
+        <ul class="tech-list" style="margin-top:0;">
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="roadmap.phase1_li1">Temel Görselden 3D Motoru</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="roadmap.phase1_li2">Otomatik Web Sıkıştırma (GLB/USDZ)</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="roadmap.phase1_li3">E-ticaret Entegre Embed Kodu</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="timeline-card reveal">
+      <div class="timeline-num">02</div>
+      <h2>
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M12 6v6l4 2"></path></svg>
+        </div>
+        <span data-i18n="roadmap.phase2_title">Yaratıcı & Creator Genişlemesi</span>
+      </h2>
+      <div style="margin-bottom: 20px;">
+        <span class="status-badge status-progress" data-i18n="roadmap.phase2_status">Ar-Ge Sürecinde / Yakında</span>
+        <span style="margin-left: 12px; font-weight: 600; color: var(--t3);" data-i18n="roadmap.phase2_badge">Faz 2: 6 - 12 Ay</span>
+      </div>
+      <p data-i18n="roadmap.phase2_desc">Grafik tasarımcılar, ajanslar ve bireysel yaratıcılar için taslak ve konsept üretimini hızlandıracak gelişmiş arayüzlerin, Text-to-3D motorunun ve tasarım envanter entegrasyonlarının geliştirilmesi.</p>
+      
+      <div style="background:#f1f5f9; padding:20px; border-radius:16px;">
+        <h4 style="font-size:14px; text-transform:uppercase; color:#64748b; margin-bottom:12px; letter-spacing:1px;" data-i18n="how_it_works.step_highlights">Öne Çıkanlar</h4>
+        <ul class="tech-list" style="margin-top:0;">
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="roadmap.phase2_li1">Gelişmiş Text-to-3D Motoru</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="roadmap.phase2_li2">Ajans Arayüzü & White-label</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="roadmap.phase2_li3">Tasarım Mockup Export Desteği</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="timeline-card reveal">
+      <div class="timeline-num">03</div>
+      <h2>
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+        </div>
+        <span data-i18n="roadmap.phase3_title">3D Baskı & Maker Uyumluluğu</span>
+      </h2>
+      <div style="margin-bottom: 20px;">
+        <span class="status-badge status-planned" data-i18n="roadmap.phase3_status">Planlanan Ar-Ge</span>
+        <span style="margin-left: 12px; font-weight: 600; color: var(--t3);" data-i18n="roadmap.phase3_badge">Faz 3: 1 - 2 Yıl</span>
+      </div>
+      <p data-i18n="roadmap.phase3_desc">3D yazıcı kullanıcıları ve maker'lar için fikirden veya görselden doğrudan baskıya hazırlanabilir model taslaklarının üretilmesi. Print-ready kontrol algoritmaları ve STL/OBJ çıktısı.</p>
+      
+      <div style="background:#f1f5f9; padding:20px; border-radius:16px;">
+        <h4 style="font-size:14px; text-transform:uppercase; color:#64748b; margin-bottom:12px; letter-spacing:1px;" data-i18n="how_it_works.step_highlights">Öne Çıkanlar</h4>
+        <ul class="tech-list" style="margin-top:0;">
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="roadmap.phase3_li1">Print-Ready Geometri Analizi</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="roadmap.phase3_li2">STL / OBJ Baskı Formatları</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="roadmap.phase3_li3">Ölçeklendirme & Kalınlık Desteği</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Phase 4 -->
+    <div class="timeline-card reveal">
+      <div class="timeline-num">04</div>
+      <h2>
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        </div>
+        <span data-i18n="roadmap.phase4_title">Mekânsal Deneyim & Oyun Motorları</span>
+      </h2>
+      <div style="margin-bottom: 20px;">
+        <span class="status-badge status-planned" data-i18n="roadmap.phase4_status">Vizyon / Gelecek Planı</span>
+        <span style="margin-left: 12px; font-weight: 600; color: var(--t3);" data-i18n="roadmap.phase4_badge">Faz 4: 2 - 3 Yıl</span>
+      </div>
+      <p data-i18n="roadmap.phase4_desc">Üretilen 3D varlıkların Unreal Engine, Unity, Apple Vision Pro (visionOS) ve Meta Quest gibi mekânsal/oyun platformlarında tam uyumlu, düşük poligonlu ve yüksek performanslı çalışacak şekilde export edilmesi.</p>
+      
+      <div style="background:#f1f5f9; padding:20px; border-radius:16px;">
+        <h4 style="font-size:14px; text-transform:uppercase; color:#64748b; margin-bottom:12px; letter-spacing:1px;" data-i18n="how_it_works.step_highlights">Öne Çıkanlar</h4>
+        <ul class="tech-list" style="margin-top:0;">
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="roadmap.phase4_li1">Unity / Unreal Engine Export</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="roadmap.phase4_li2">visionOS (Apple Vision Pro) USDZ</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="roadmap.phase4_li3">LOD (Level of Detail) Yönetimi</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Phase 5 -->
+    <div class="timeline-card reveal">
+      <div class="timeline-num">05</div>
+      <h2>
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        </div>
+        <span data-i18n="roadmap.phase5_title">Dinamik & AI Etkileşimli Dünyalar</span>
+      </h2>
+      <div style="margin-bottom: 20px;">
+        <span class="status-badge status-vision" data-i18n="roadmap.phase5_status">Gelecek Vizyonu</span>
+        <span style="margin-left: 12px; font-weight: 600; color: var(--t3);" data-i18n="roadmap.phase5_badge">Faz 5: 3 - 5 Yıl</span>
+      </div>
+      <p data-i18n="roadmap.phase5_desc">Görsellerin ve fikirlerin ötesinde, tamamen AI tarafından üretilen, çevreyle dinamik etkileşime giren, fizik kurallarına duyarlı ve yaşayan 3D ortam ve platform altyapısının sunulması.</p>
+      
+      <div style="background:#f1f5f9; padding:20px; border-radius:16px;">
+        <h4 style="font-size:14px; text-transform:uppercase; color:#64748b; margin-bottom:12px; letter-spacing:1px;" data-i18n="how_it_works.step_highlights">Öne Çıkanlar</h4>
+        <ul class="tech-list" style="margin-top:0;">
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="roadmap.phase5_li1">Fizik Uyumlu Akıllı Geometri</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="roadmap.phase5_li2">Dinamik Ortam & Sahne Üretimi</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="roadmap.phase5_li3">Sınırsız Ölçekli Canlı 3D Dünya</span></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer z1" role="contentinfo" style="margin-top: 80px; background: var(--bg-surface); position: relative;">
+  <div class="container">
+    <div class="footer__inner" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 60px; padding: 80px 0 60px; border-top: 1px solid var(--border);">
+      
+      <div class="foot-brand" style="flex: 1; min-width: 280px; max-width: 420px;">
+        <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa" style="margin-bottom: 24px; display: inline-flex; align-items: center; gap: 12px; text-decoration: none;">
+          <img src="00_iarone_logo_exact_transparent_white_glow.webp" class="logo-dark" alt="Iarone Logo" width="36" loading="lazy" decoding="async" />
+          <img src="00_iarone_logo_exact_transparent_black.webp" class="logo-light" alt="Iarone Logo" width="36" loading="lazy" decoding="async" />
+          <span class="logo-text" style="font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--t1);">Iarone</span>
+        </a>
+        <p style="font-size: 16px; color: var(--t3); line-height: 1.6; margin-bottom: 32px;" data-i18n="footer.f_desc">IARONE, görselleri, fikirleri ve ürünleri web, AR, dijital showroom, yaratıcı üretim, 3D baskı ve gelecek 3D platformları için kullanılabilir dijital varlıklara dönüştürmeyi hedefleyen yapay zekâ destekli 3D üretim altyapısıdır.</p>
+      </div>
+
+      <div style="display: flex; gap: 80px; flex-wrap: wrap;">
+        <!-- Product Links -->
+        <div style="min-width: 140px;">
+          <h4 style="font-size: 13px; font-weight: 700; color: var(--t1); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px;" data-i18n="footer.col1">Platform</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px;">
+            <li><a href="index.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="nav.home">Ana Sayfa</a></li>
+            <li><a href="nasil-calisir.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="nav.dashboard">Nasıl Çalışır</a></li>
+            <li><a href="market.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="nav.market">Kullanım Alanları</a></li>
+            <li><a href="pricing.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="nav.pricing">Fiyatlandırma</a></li>
+            <li><a href="roadmap.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="nav.roadmap">Roadmap</a></li>
+          </ul>
+        </div>
+        
+        <!-- Company Links -->
+        <div style="min-width: 140px;">
+          <h4 style="font-size: 13px; font-weight: 700; color: var(--t1); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px;" data-i18n="footer.col2">İletişim</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px;">
+            <li><a href="index.html#demo" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="footer.demo_cta">Demo Talep Et</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="footer__bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; padding: 32px 0; border-top: 1px solid var(--border);">
+      <span style="font-size: 14px; font-weight: 500; color: var(--t3);" data-i18n="footer.copy">© 2026 Iarone. Tüm hakları saklıdır.</span>
+      <div style="display: flex; gap: 32px;">
+        <a href="#" style="font-size: 14px; font-weight: 500; color: var(--t3); text-decoration: none; transition: color 0.2s ease;" onmouseover="this.style.color='var(--t1)';" onmouseout="this.style.color='var(--t3)';">Gizlilik Politikası</a>
+        <a href="#" style="font-size: 14px; font-weight: 500; color: var(--t3); text-decoration: none; transition: color 0.2s ease;" onmouseover="this.style.color='var(--t1)';" onmouseout="this.style.color='var(--t3)';">Kullanım Şartları</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.IARONE_API_URL = "%VITE_IARONE_API_URL%";
+  if (!window.IARONE_API_URL || window.IARONE_API_URL.startsWith("%VITE_")) {
+    window.IARONE_API_URL = "https://api.iarone.com/api";
+  }
+</script>
+<script type="module" src="i18n.js"></script>
+<script type="module" src="app.v5.js"></script>
+
+<!-- Floating Instagram Button -->
+<a href="https://www.instagram.com/iarone.ai?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="floating-ig-btn" aria-label="Instagram">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+  </svg>
+</a>
+</body>
+</html>

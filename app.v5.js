@@ -1071,7 +1071,7 @@ function initEnhancedAIChat() {
       if (query.toLowerCase().includes('nası') || query.toLowerCase().includes('nasıl')) {
         addMessage('', 'bot', true);
       } else if (query.toLowerCase().includes('fiyat')) {
-        addMessage('Aylık abonelik planlarımız Starter (Ücretsiz), Pro (₺499) ve Premium (Kurumsal) şeklindedir. Detaylar için üst menüden Fiyatlandırma sayfamıza göz atabilirsiniz.', 'bot');
+        addMessage('Aylık planlarımız Starter (Ücretsiz), Creator ($19), Commerce ($59) ve Agency / Enterprise (Özel) şeklindedir. Detaylar için üst menüden Fiyatlandırma sayfamıza göz atabilirsiniz.', 'bot');
       } else {
         addMessage('Sorunuzu aldım! Destek ekibimiz en kısa sürede yanıtlayacaktır. Dilerseniz menüdeki hazır başlıkları seçebilirsiniz.', 'bot');
       }
@@ -1090,7 +1090,7 @@ function initEnhancedAIChat() {
       if (optionText === 'Sistem Nasıl Çalışır?') {
         addMessage('', 'bot', true);
       } else if (optionText === 'Fiyatlandırma') {
-        addMessage('Aylık abonelik planlarımız Starter (Ücretsiz), Pro (₺499) ve Premium (Kurumsal) şeklindedir. Detaylar için üst menüden Fiyatlandırma sayfamıza göz atabilirsiniz.', 'bot');
+        addMessage('Aylık planlarımız Starter (Ücretsiz), Creator ($19), Commerce ($59) ve Agency / Enterprise (Özel) şeklindedir. Detaylar için üst menüden Fiyatlandırma sayfamıza göz atabilirsiniz.', 'bot');
       } else if (optionText === 'Örnek AR Gör') {
         addMessage('Harika! Telefonunun kamerasıyla aşağıdaki QR kodu okutarak satışa hazır bir AR modelini anında deneyimleyebilirsin.<br><br><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://ar-code.com/NgU6gFv8p" alt="Iarone AR QR Kod" style="border-radius: var(--r-sm); margin-top: 10px; width: 160px; height: 160px;" />', 'bot', false, true);
       }

@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https: http://localhost:3000 http://127.0.0.1:3000; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'" />
-  <title data-i18n="solutions.page_title">Iarone — Çözümler | 3D & AR Commerce</title>
-  <meta name="description" content="Iarone, e-ticaret ürün görsellerini web uyumlu 3D ve AR deneyimlerine dönüştüren platformdur. Türkiye, MENA ve global e-ticaret ekipleri için ürün deneyimlerini daha etkileşimli hale getirmeyi hedefler." />
+  <title data-i18n="solutions.page_title">IARONE — Kullanım Alanları | AI 3D Asset & Commerce Platform</title>
+  <meta name="description" content="IARONE, görselleri, fikirleri ve ürünleri web, mobil AR, e-ticaret, dijital showroom, oyun motorları ve gelecek 3D platformları için kullanılabilir 3D dijital varlıklara dönüştürmeyi hedefleyen yapay zekâ destekli platformdur." />
   <link rel="canonical" href="https://iarone.com/market.html" />
   
-  <meta property="og:title" content="Iarone — Solutions for 3D & AR Commerce" />
-  <meta property="og:description" content="E-ticaret ürün görsellerini web uyumlu 3D ve AR deneyimlerine dönüştüren platform." />
+  <meta property="og:title" content="IARONE — Kullanım Alanları | AI 3D Asset & Commerce Platform" />
+  <meta property="og:description" content="Görselleri, fikirleri ve ürünleri kullanılabilir 3D dijital varlıklara dönüştüren yapay zekâ destekli altyapı." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://iarone.com/market.html" />
   <meta property="og:image" content="https://iarone.com/00_iarone_logo_exact_transparent_white_glow.png" />
@@ -18,8 +18,8 @@
   <meta property="og:locale:alternate" content="ar_AR" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Iarone — Solutions for 3D & AR Commerce" />
-  <meta name="twitter:description" content="E-ticaret ürün görsellerini web uyumlu 3D ve AR deneyimlerine dönüştüren platform." />
+  <meta name="twitter:title" content="IARONE — Kullanım Alanları | AI 3D Asset & Commerce Platform" />
+  <meta name="twitter:description" content="Görselleri, fikirleri ve ürünleri kullanılabilir 3D dijital varlıklara dönüştüren yapay zekâ destekli altyapı." />
   <meta name="twitter:image" content="https://iarone.com/00_iarone_logo_exact_transparent_white_glow.png" />
 
   <meta name="robots" content="index, follow" />
@@ -36,7 +36,7 @@
     "@type": "SoftwareApplication",
     "name": "Iarone",
     "url": "https://iarone.com",
-    "description": "E-commerce product images into 3D and AR experiences",
+    "description": "AI-powered 3D asset and commerce infrastructure for transforming product images, ideas and existing 3D files into reusable digital assets.",
     "applicationCategory": "BusinessApplication"
   }
   </script>
@@ -77,8 +77,10 @@
       <ul class="nav__links" role="list">
         <li><a href="index.html"     class="nav__link" data-i18n="nav.home">Ana Sayfa</a></li>
         <li><a href="nasil-calisir.html" class="nav__link" data-i18n="nav.dashboard">Nasıl Çalışır</a></li>
-        <li><a href="market.html"    class="nav__link active" data-i18n="nav.market">Çözümler</a></li>
-                      </ul>
+        <li><a href="market.html"    class="nav__link active" data-i18n="nav.market">Kullanım Alanları</a></li>
+        <li><a href="pricing.html"   class="nav__link" data-i18n="nav.pricing">Fiyatlandırma</a></li>
+        <li><a href="roadmap.html"   class="nav__link" data-i18n="nav.roadmap">Roadmap</a></li>
+      </ul>
       <div class="nav__right">
         <div class="lang-sw" id="lang-sw">
           <button class="lang-btn" id="lang-btn" aria-label="Dil seçin" aria-haspopup="true">
@@ -88,11 +90,12 @@
           </button>
           <div class="lang-drop" role="menu">
             <div class="lang-opt sel" data-lang="tr" role="menuitem" tabindex="0">🇹🇷 &nbsp;Türkçe</div>
-            <div class="lang-opt"     data-lang="en" role="menuitem" tabindex="0">🇬🇧 &nbsp;English</div>
+            <div class="lang-opt"     data-lang="en" role="menuitem" tabindex="0">🇺🇸 &nbsp;English</div>
             <div class="lang-opt"     data-lang="ar" role="menuitem" tabindex="0">🇸🇦 &nbsp;العربية</div>
           </div>
         </div>
-                <a href="#demo" class="btn btn-primary" data-i18n="home.hero_cta_secondary">Demo Talep Et</a>
+        <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html" class="btn btn-ghost" id="nav-login" data-auth-intent="login" data-i18n="nav.login" style="margin-right: 8px; font-weight: 600;">Giriş Yap</a>
+        <a href="#demo" class="btn btn-primary" data-i18n="home.hero_cta_secondary">Demo Talep Et</a>
         <button class="nav__burger" id="nav-burger" aria-label="Menüyü aç" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -104,9 +107,12 @@
 <div class="nav__mobile" id="nav-mobile" role="menu">
   <a href="index.html"     class="nav__link" data-i18n="nav.home">Ana Sayfa</a>
   <a href="nasil-calisir.html" class="nav__link" data-i18n="nav.dashboard">Nasıl Çalışır</a>
-  <a href="market.html"    class="nav__link active" data-i18n="nav.market">Çözümler</a>
-    <div class="nav__mobile-actions">
-    <a href="#demo" class="btn btn-primary" data-i18n="home.hero_cta_secondary">Demo Talep Et</a>
+  <a href="market.html"    class="nav__link active" data-i18n="nav.market">Kullanım Alanları</a>
+  <a href="pricing.html"   class="nav__link" data-i18n="nav.pricing">Fiyatlandırma</a>
+  <a href="roadmap.html"   class="nav__link" data-i18n="nav.roadmap">Roadmap</a>
+  <div class="nav__mobile-actions" style="flex-direction: column; gap: 8px; width: 100%;">
+    <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html" class="btn btn-ghost" data-auth-intent="login" data-i18n="nav.login" style="width: 100%; justify-content: center;">Giriş Yap</a>
+    <a href="#demo" class="btn btn-primary" data-i18n="home.hero_cta_secondary" style="width: 100%; justify-content: center;">Demo Talep Et</a>
   </div>
 </div>
 
@@ -117,6 +123,131 @@
       <h1 class="gt-ac" style="font-size: 48px; margin-top: 24px; margin-bottom: 24px;" data-i18n="solutions.hero_title">Çözümler</h1>
       <p style="font-size: 20px; color: #475569; max-width: 800px; margin: 0 auto 24px; line-height: 1.8;" data-i18n="solutions.hero_desc">IARONE, farklı sektörlerdeki e-ticaret markalarının ürünlerini yalnızca fotoğrafla sergilemek yerine, müşteriye daha anlaşılır, etkileşimli ve güven veren 3D/AR deneyimleriyle sunmasını sağlar.</p>
 
+    </div>
+  </div>
+</section>
+
+<!-- KULLANICI TİPLERİ SECTION -->
+<section class="section z1" style="background: #ffffff; border-bottom: 1px solid var(--border); padding-top: 80px; padding-bottom: 80px;">
+  <div class="container">
+    <div class="reveal" style="text-align: center; margin-bottom: 48px;">
+      <span class="badge" data-i18n="solutions.grid_badge">Kullanıcı Tipleri</span>
+      <h2 class="gt-ac" style="font-size: 40px; margin-top: 24px; margin-bottom: 20px;" data-i18n="solutions.grid_title">Hedef Kitle ve Kullanıcı Tipleri</h2>
+      <p style="font-size: 18px; color: var(--t2); max-width: 800px; margin: 0 auto; line-height: 1.7;" data-i18n="solutions.grid_desc">
+        Iarone platformunun sunduğu 3D ve AR üretim altyapısı, farklı profesyonel ve yaratıcı ihtiyaçlara özel çözümler sunar.
+      </p>
+    </div>
+
+    <style>
+      .user-type-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 40px;
+      }
+      .user-type-card {
+        background: linear-gradient(145deg, #ffffff, #f8fafc);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 32px;
+        box-shadow: var(--sh-sm);
+        transition: all 0.3s var(--ease);
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+      }
+      .user-type-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--sh-hv);
+        border-color: rgba(37,99,235,0.15);
+      }
+      .user-type-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .user-type-card h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--t1);
+        margin-bottom: 12px;
+      }
+      .user-type-card p {
+        font-size: 15px;
+        color: var(--t2);
+        line-height: 1.6;
+        margin: 0;
+      }
+      @media (max-width: 1023px) {
+        .user-type-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 767px) {
+        .user-type-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+
+    <div class="user-type-grid">
+      <!-- Group 1 -->
+      <div class="user-type-card reveal">
+        <div class="user-type-icon" style="background: rgba(37,99,235,0.08); color: var(--ac);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        </div>
+        <h3 data-i18n="platform_vision.card1_title">E-ticaret Markaları</h3>
+        <p data-i18n="platform_vision.card1_desc">Ürün sayfaları, 360° görüntüleme, mobil AR, dijital katalog ve satışa hazır yayın paketleri.</p>
+      </div>
+
+      <!-- Group 2 -->
+      <div class="user-type-card reveal d1">
+        <div class="user-type-icon" style="background: rgba(16, 185, 129, 0.08); color: #10B981;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M12 6v6l4 2"></path></svg>
+        </div>
+        <h3 data-i18n="platform_vision.card2_title">Grafik Tasarımcılar</h3>
+        <p data-i18n="platform_vision.card2_desc">Reklam görselleri, ürün mockup’ları, sosyal medya kreatifleri ve sunum varlıkları için hızlı 3D üretim.</p>
+      </div>
+
+      <!-- Group 3 -->
+      <div class="user-type-card reveal d2">
+        <div class="user-type-icon" style="background: rgba(139, 92, 246, 0.08); color: #8B5CF6;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        </div>
+        <h3 data-i18n="platform_vision.card3_title">Ajanslar</h3>
+        <p data-i18n="platform_vision.card3_desc">Müşterilere white-label 3D/AR hizmetleri, kampanya sunumları ve katalog dönüşüm paketleri.</p>
+      </div>
+
+      <!-- Group 4 -->
+      <div class="user-type-card reveal">
+        <div class="user-type-icon" style="background: rgba(245, 158, 11, 0.08); color: #F59E0B;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+        </div>
+        <h3 data-i18n="platform_vision.card4_title">Maker & 3D Baskı</h3>
+        <p data-i18n="platform_vision.card4_desc">Fikirden veya görselden baskıya hazırlanabilir model taslakları; ilerleyen sürümlerde print-ready kontrol roadmap’i.</p>
+      </div>
+
+      <!-- Group 5 -->
+      <div class="user-type-card reveal d1">
+        <div class="user-type-icon" style="background: rgba(236, 72, 153, 0.08); color: #EC4899;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        </div>
+        <h3 data-i18n="platform_vision.card5_title">Mimar & İç Mimarlar</h3>
+        <p data-i18n="platform_vision.card5_desc">Mekân, mobilya, dekorasyon ve konsept sunumları için 3D ürün ve ortam varlıkları.</p>
+      </div>
+
+      <!-- Group 6 -->
+      <div class="user-type-card reveal d2">
+        <div class="user-type-icon" style="background: rgba(59, 130, 246, 0.08); color: #3B82F6;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+        </div>
+        <h3 data-i18n="platform_vision.card6_title">Oyun / VR Ekipleri</h3>
+        <p data-i18n="platform_vision.card6_desc">GLB tabanlı asset akışı, Unreal / Unity kullanımı, VR showroom ve XR deneyimleri için gelecek uyumluluğu.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -365,7 +496,7 @@
           <img src="00_iarone_logo_exact_transparent_black.webp" class="logo-light" alt="Iarone Logo" width="36" loading="lazy" decoding="async" />
           <span class="logo-text" style="font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--t1);">Iarone</span>
         </a>
-        <p style="font-size: 16px; color: var(--t3); line-height: 1.6; margin-bottom: 32px;" data-i18n="footer.f_desc">E-ticaret ürünlerini 3D ve AR deneyimlerine dönüştüren yeni nesil yayın platformu. Ziyaretçilerinizi müşteriye dönüştürün.</p>
+        <p style="font-size: 16px; color: var(--t3); line-height: 1.6; margin-bottom: 32px;" data-i18n="footer.f_desc">IARONE, görselleri, fikirleri ve ürünleri web, AR, dijital showroom, yaratıcı üretim, 3D baskı ve gelecek 3D platformları için kullanılabilir dijital varlıklara dönüştürmeyi hedefleyen yapay zekâ destekli 3D üretim altyapısıdır.</p>
         
         
       </div>
@@ -373,11 +504,13 @@
       <div style="display: flex; gap: 80px; flex-wrap: wrap;">
         <!-- Product Links -->
         <div style="min-width: 140px;">
-          <h4 style="font-size: 13px; font-weight: 700; color: var(--t1); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px;" data-i18n="footer.col1">Ürün</h4>
+          <h4 style="font-size: 13px; font-weight: 700; color: var(--t1); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px;" data-i18n="footer.col1">Platform</h4>
           <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px;">
-            <li><a href="nasil-calisir.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="footer.f_dash">Nasıl Çalışır</a></li>
-            <li><a href="market.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="footer.f_market">Sektör Çözümleri</a></li>
-            <li><a href="pricing.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';">Fiyatlandırma</a></li>
+            <li><a href="index.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="nav.home">Ana Sayfa</a></li>
+            <li><a href="nasil-calisir.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="nav.dashboard">Nasıl Çalışır</a></li>
+            <li><a href="market.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="nav.market">Kullanım Alanları</a></li>
+            <li><a href="pricing.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="nav.pricing">Fiyatlandırma</a></li>
+            <li><a href="roadmap.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="nav.roadmap">Roadmap</a></li>
           </ul>
         </div>
         
@@ -385,7 +518,6 @@
         <div style="min-width: 140px;">
           <h4 style="font-size: 13px; font-weight: 700; color: var(--t1); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px;" data-i18n="footer.col2">İletişim</h4>
           <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px;">
-            
             <li><a href="index.html#demo" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="footer.demo_cta">Demo Talep Et</a></li>
           </ul>
         </div>
@@ -412,9 +544,13 @@
 <script type="module" src="i18n.js"></script>
 <script type="module" src="app.v5.js"></script>
 
-<!-- FLOATING INSTAGRAM -->
-<a href="https://www.instagram.com/iarone.ai?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="floating-ig" aria-label="Instagram" style="position:fixed; bottom:24px; right:24px; width:56px; height:56px; background:linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; box-shadow:0 10px 25px rgba(220, 39, 67, 0.4); z-index:9999; text-decoration:none; transition:transform 0.3s ease;">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px; height:28px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+<!-- Floating Instagram Button -->
+<a href="https://www.instagram.com/iarone.ai?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="floating-ig-btn" aria-label="Instagram">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+  </svg>
 </a>
 </body>
 </html>

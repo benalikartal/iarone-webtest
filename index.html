@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https: http://localhost:3000 http://127.0.0.1:3000; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'" />
-  <title>Iarone — 3D & AR Commerce Platform</title>
-  <meta name="description" content="Iarone, e-ticaret ürün görsellerini web uyumlu 3D ve AR deneyimlerine dönüştüren platformdur. Türkiye, MENA ve global e-ticaret ekipleri için ürün deneyimlerini daha etkileşimli hale getirmeyi hedefler." />
+  <title>IARONE — AI 3D Asset & Commerce Platform</title>
+  <meta name="description" content="IARONE, görselleri, fikirleri ve ürünleri web, mobil AR, e-ticaret, dijital showroom, oyun motorları ve gelecek 3D platformları için kullanılabilir 3D dijital varlıklara dönüştürmeyi hedefleyen yapay zekâ destekli platformdur." />
   <link rel="canonical" href="https://iarone.com/" />
   
-  <meta property="og:title" content="Iarone — 3D & AR Commerce Platform" />
-  <meta property="og:description" content="E-ticaret ürün görsellerini web uyumlu 3D ve AR deneyimlerine dönüştüren platform." />
+  <meta property="og:title" content="IARONE — AI 3D Asset & Commerce Platform" />
+  <meta property="og:description" content="Görselleri, fikirleri ve ürünleri kullanılabilir 3D dijital varlıklara dönüştüren yapay zekâ destekli altyapı." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://iarone.com/" />
   <meta property="og:image" content="https://iarone.com/00_iarone_logo_exact_transparent_white_glow.png" />
@@ -18,8 +18,8 @@
   <meta property="og:locale:alternate" content="ar_AR" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Iarone — 3D & AR Commerce Platform" />
-  <meta name="twitter:description" content="E-ticaret ürün görsellerini web uyumlu 3D ve AR deneyimlerine dönüştüren platform." />
+  <meta name="twitter:title" content="IARONE — AI 3D Asset & Commerce Platform" />
+  <meta name="twitter:description" content="Görselleri, fikirleri ve ürünleri kullanılabilir 3D dijital varlıklara dönüştüren yapay zekâ destekli altyapı." />
   <meta name="twitter:image" content="https://iarone.com/00_iarone_logo_exact_transparent_white_glow.png" />
 
   <meta name="robots" content="index, follow" />
@@ -36,7 +36,7 @@
     "@type": "SoftwareApplication",
     "name": "Iarone",
     "url": "https://iarone.com",
-    "description": "E-commerce product images into 3D and AR experiences",
+    "description": "AI-powered 3D asset and commerce infrastructure for transforming product images, ideas and existing 3D files into reusable digital assets.",
     "applicationCategory": "BusinessApplication"
   }
   </script>
@@ -126,10 +126,13 @@
   </style>
     <script>
     function switchSegment(tabId) {
-      document.getElementById('tab-corp').style.display = tabId === 'corp' ? 'block' : 'none';
-      document.getElementById('tab-personal').style.display = tabId === 'personal' ? 'block' : 'none';
-      document.getElementById('btn-corp').classList.toggle('active', tabId === 'corp');
-      document.getElementById('btn-personal').classList.toggle('active', tabId === 'personal');
+      const tabs = ['brands', 'creators', 'maker', 'game'];
+      tabs.forEach(t => {
+        const el = document.getElementById('tab-' + t);
+        const btn = document.getElementById('btn-' + t);
+        if (el) el.style.display = t === tabId ? 'block' : 'none';
+        if (btn) btn.classList.toggle('active', t === tabId);
+      });
     }
 
     /* SHOWCASE CAROUSEL LOGIC */
@@ -255,8 +258,10 @@
       <ul class="nav__links" role="list">
         <li><a href="index.html"     class="nav__link active" data-i18n="nav.home">Ana Sayfa</a></li>
         <li><a href="nasil-calisir.html" class="nav__link" data-i18n="nav.dashboard">Nasıl Çalışır</a></li>
-        <li><a href="market.html"    class="nav__link" data-i18n="nav.market">Çözümler</a></li>
-                      </ul>
+        <li><a href="market.html"    class="nav__link" data-i18n="nav.market">Kullanım Alanları</a></li>
+        <li><a href="pricing.html"   class="nav__link" data-i18n="nav.pricing">Fiyatlandırma</a></li>
+        <li><a href="roadmap.html"   class="nav__link" data-i18n="nav.roadmap">Roadmap</a></li>
+      </ul>
       <div class="nav__right">
         <div class="lang-sw" id="lang-sw">
           <button class="lang-btn" id="lang-btn" aria-label="Dil seçin" aria-haspopup="true">
@@ -270,7 +275,8 @@
             <div class="lang-opt"     data-lang="ar" role="menuitem" tabindex="0">🇸🇦 &nbsp;العربية</div>
           </div>
         </div>
-                <a href="#demo" class="btn btn-primary" data-i18n="home.hero_cta_secondary">Demo Talep Et</a>
+        <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html" class="btn btn-ghost" id="nav-login" data-auth-intent="login" data-i18n="nav.login" style="margin-right: 8px; font-weight: 600;">Giriş Yap</a>
+        <a href="#demo" class="btn btn-primary" data-i18n="home.hero_cta_secondary">Demo Talep Et</a>
         <button class="nav__burger" id="nav-burger" aria-label="Menüyü aç" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -282,9 +288,12 @@
 <div class="nav__mobile" id="nav-mobile" role="menu">
   <a href="index.html"     class="nav__link active" data-i18n="nav.home">Ana Sayfa</a>
   <a href="nasil-calisir.html" class="nav__link" data-i18n="nav.dashboard">Nasıl Çalışır</a>
-  <a href="market.html"    class="nav__link" data-i18n="nav.market">Çözümler</a>
-    <div class="nav__mobile-actions">
-    <a href="#demo" class="btn btn-primary" data-i18n="home.hero_cta_secondary">Demo Talep Et</a>
+  <a href="market.html"    class="nav__link" data-i18n="nav.market">Kullanım Alanları</a>
+  <a href="pricing.html"   class="nav__link" data-i18n="nav.pricing">Fiyatlandırma</a>
+  <a href="roadmap.html"   class="nav__link" data-i18n="nav.roadmap">Roadmap</a>
+  <div class="nav__mobile-actions" style="flex-direction: column; gap: 8px; width: 100%;">
+    <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html" class="btn btn-ghost" data-auth-intent="login" data-i18n="nav.login" style="width: 100%; justify-content: center;">Giriş Yap</a>
+    <a href="#demo" class="btn btn-primary" data-i18n="home.hero_cta_secondary" style="width: 100%; justify-content: center;">Demo Talep Et</a>
   </div>
 </div>
 
@@ -404,16 +413,17 @@
       <div class="hero-badge-wrap" style="display: flex; justify-content: flex-start; margin-bottom: 24px;">
         <div class="ix-premium-badge">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-          3D & AR PLATFORMU
+          <span data-i18n="home.badge_hero">AI 3D ASSET PLATFORM</span>
         </div>
       </div>
       
-      <h1 class="hero-title" data-i18n="home.hero_h1">Ürün görsellerini etkileşimli <span style="color:#3b82f6;">3D</span> ve <span style="color:#3b82f6;">AR</span> deneyimlerine dönüştürün.</h1>
+      <h1 class="hero-title" data-i18n="home.hero_h1">Görselleri, fikirleri ve ürünleri kullanılabilir 3D dijital varlıklara dönüştürün.</h1>
       
-      <p class="hero-desc" data-i18n="home.hero_h2">Ürün fotoğrafınızı veya mevcut 3D dosyanızı yükleyin; Iarone, web, mobil AR ve e-ticaret sayfaları için optimize edilmiş yayın paketleri oluştursun.</p>
+      <p class="hero-desc" data-i18n="home.hero_h2">IARONE; tek görsel, çoklu ürün görseli, metin açıklaması veya mevcut 3D dosyadan web, mobil AR, dijital showroom, oyun motoru ve gelecek 3D platformları için kullanılabilir 3D varlıklar üretmeyi hedefleyen yapay zekâ destekli altyapıdır.</p>
       
-      <div class="hero-actions">
+      <div class="hero-actions" style="margin-bottom: 24px;">
         <a href="#demo" class="btn btn-primary" data-i18n="home.hero_cta_primary">Model Oluştur</a>
+        <a href="#platform-vision" class="btn btn-ghost" data-i18n="home.hero_cta_platform_vision" style="margin-left: 12px;">Platformu Keşfet</a>
       </div>
 
       <!-- Deneyim Modu -->
@@ -427,13 +437,16 @@
 
       <!-- Output Chips -->
       <div class="hero-chips-wrap">
-        <span style="font-size: 13px; font-weight: 600; color: #64748b; margin-right: 8px;">Hazır çıktılar:</span>
+        <span style="font-size: 13px; font-weight: 600; color: #64748b; margin-right: 8px;">Çıktılar & Gelecek:</span>
         <div class="hero-chips-flex">
-          <span class="ix-badge" style="margin-top: 0;">GLB</span>
-          <span class="ix-badge" style="margin-top: 0;">USDZ</span>
-          <span class="ix-badge" style="margin-top: 0;">Embed</span>
-          <span class="ix-badge" style="margin-top: 0;">Public Link</span>
+          <span class="ix-badge" style="margin-top: 0;">Image to 3D</span>
+          <span class="ix-badge" style="margin-top: 0;">Multi Image to 3D</span>
+          <span class="ix-badge" style="margin-top: 0;">Text to 3D</span>
+          <span class="ix-badge" style="margin-top: 0;">GLB / USDZ</span>
+          <span class="ix-badge" style="margin-top: 0;">Web Embed</span>
           <span class="ix-badge" style="background: rgba(16,185,129,0.1); color: #059669; margin-top: 0;">AR Ready</span>
+          <span class="ix-badge" style="margin-top: 0;">Game Engine Export</span>
+          <span class="ix-badge" style="background: rgba(245,158,11,0.08); color: #D97706; margin-top: 0;">3D Print Roadmap</span>
         </div>
       </div>
     </div>
@@ -495,16 +508,235 @@
   </div>
 </section>
 
+<!-- PLATFORM VISION SECTION -->
+<section class="premium-section container" id="platform-vision" style="margin-top: 100px; margin-bottom: 80px;">
+  <div class="reveal" style="text-align: center; margin-bottom: 48px;">
+    <span class="badge" data-i18n="platform_vision.badge">Platform Vizyonu</span>
+    <h2 class="gt" style="font-size: 42px; font-weight: 800; color: var(--t1); margin-top: 0; margin-bottom: 20px; letter-spacing: -1.5px;" data-i18n="platform_vision.title">İlk pazar e-ticaret. Büyük vizyon: herkes için 3D üretim.</h2>
+    <p style="font-size: 18px; color: var(--t2); max-width: 900px; margin: 0 auto 24px; line-height: 1.8;" data-i18n="platform_vision.desc">
+      IARONE’un ilk güçlü kullanım alanı e-ticaret ürünlerini 3D ve AR deneyimlere dönüştürmektir. Ancak platformun vizyonu bununla sınırlı değildir. Aynı altyapı; grafik tasarımcılar, ajanslar, 3D yazıcı kullanıcıları, mimarlar, oyun/VR ekipleri ve bireysel yaratıcılar için de ürünleri, fikirleri ve görselleri kullanılabilir 3D dijital varlıklara dönüştürmeyi hedefler.
+    </p>
+    <div style="font-size: 15px; font-weight: 700; color: var(--ac); letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="platform_vision.slogan">Tek teknoloji, çoklu kullanım alanı.</div>
+  </div>
+
+  <style>
+    .vision-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .vision-card {
+      background: linear-gradient(145deg, #ffffff, #f8fafc);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: var(--sh-sm);
+      transition: all 0.3s var(--ease);
+      position: relative;
+      overflow: hidden;
+      text-align: left;
+    }
+    .vision-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--sh-hv);
+      border-color: rgba(37, 99, 235, 0.2);
+    }
+    .vision-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #2563eb, #8b5cf6);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .vision-card:hover::after {
+      opacity: 1;
+    }
+    .vision-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: var(--t1);
+    }
+    .vision-card p {
+      font-size: 15px;
+      color: var(--t2);
+      line-height: 1.6;
+      margin: 0;
+    }
+    @media (max-width: 1023px) {
+      .vision-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 767px) {
+      .vision-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <div class="vision-grid">
+    <div class="vision-card reveal">
+      <h3 data-i18n="platform_vision.card1_title">E-ticaret Markaları</h3>
+      <p data-i18n="platform_vision.card1_desc">Ürün sayfaları, 360° görüntüleme, mobil AR, dijital katalog ve satışa hazır yayın paketleri.</p>
+    </div>
+    <div class="vision-card reveal d1">
+      <h3 data-i18n="platform_vision.card2_title">Grafik Tasarımcılar</h3>
+      <p data-i18n="platform_vision.card2_desc">Reklam görselleri, ürün mockup’ları, sosyal medya kreatifleri ve sunum varlıkları için hızlı 3D üretim.</p>
+    </div>
+    <div class="vision-card reveal d2">
+      <h3 data-i18n="platform_vision.card3_title">Ajanslar</h3>
+      <p data-i18n="platform_vision.card3_desc">Müşterilere white-label 3D/AR hizmetleri, kampanya sunumları ve katalog dönüşüm paketleri.</p>
+    </div>
+    <div class="vision-card reveal">
+      <h3 data-i18n="platform_vision.card4_title">Maker & 3D Baskı</h3>
+      <p data-i18n="platform_vision.card4_desc">Fikirden veya görselden baskıya hazırlanabilir model taslakları; ilerleyen sürümlerde print-ready kontrol roadmap’i.</p>
+    </div>
+    <div class="vision-card reveal d1">
+      <h3 data-i18n="platform_vision.card5_title">Mimar & İç Mimarlar</h3>
+      <p data-i18n="platform_vision.card5_desc">Mekân, mobilya, dekorasyon ve konsept sunumları için 3D ürün ve ortam varlıkları.</p>
+    </div>
+    <div class="vision-card reveal d2">
+      <h3 data-i18n="platform_vision.card6_title">Oyun / VR Ekipleri</h3>
+      <p data-i18n="platform_vision.card6_desc">GLB tabanlı asset akışı, Unreal / Unity kullanımı, VR showroom ve XR deneyimleri için gelecek uyumluluğu.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GENERATION METHODS SECTION -->
+<section class="premium-section container" id="generation-methods" style="margin-bottom: 80px;">
+  <div class="reveal" style="text-align: center; margin-bottom: 48px;">
+    <span class="badge" data-i18n="generation_methods.badge">Üretim Yolları</span>
+    <h2 class="gt" style="font-size: 42px; font-weight: 800; color: var(--t1); margin-top: 0; margin-bottom: 20px; letter-spacing: -1.5px;" data-i18n="generation_methods.title">Tek bir platform, birden fazla 3D üretim yolu.</h2>
+    <p style="font-size: 18px; color: var(--t2); max-width: 900px; margin: 0 auto; line-height: 1.8;" data-i18n="generation_methods.desc">
+      IARONE, yalnızca tek fotoğraftan 3D model üretmeye odaklanmaz. Platform; tek görsel, çoklu görsel, metin açıklaması ve mevcut 3D dosya gibi farklı girişleri destekleyerek farklı kullanıcı ihtiyaçlarına uygun 3D varlık üretim akışı sunmayı hedefler.
+    </p>
+  </div>
+
+  <style>
+    .gen-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .gen-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: var(--sh-sm);
+      transition: all 0.3s var(--ease);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .gen-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--sh-hv);
+      border-color: rgba(37, 99, 235, 0.2);
+    }
+    .gen-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gen-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--t1);
+      margin-bottom: 12px;
+    }
+    .gen-card p {
+      font-size: 14px;
+      color: var(--t2);
+      line-height: 1.6;
+      margin: 0;
+    }
+    @media (max-width: 1023px) {
+      .gen-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 767px) {
+      .gen-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <div class="gen-grid">
+    <div class="gen-card reveal">
+      <div class="gen-icon-box" style="background: rgba(37, 99, 235, 0.08); color: var(--ac);">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+      </div>
+      <h3 data-i18n="generation_methods.method1_title">Single Image to 3D</h3>
+      <p data-i18n="generation_methods.method1_desc">Tek ürün görselinden hızlı 3D varlık üretimi.</p>
+    </div>
+    <div class="gen-card reveal d1">
+      <div class="gen-icon-box" style="background: rgba(16, 185, 129, 0.08); color: #10B981;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M12 6v6l4 2"></path></svg>
+      </div>
+      <h3 data-i18n="generation_methods.method2_title">Multi Image to 3D</h3>
+      <p data-i18n="generation_methods.method2_desc">Ürünün farklı açılarından alınan görsellerle daha tutarlı form, hacim ve ürün algısı.</p>
+    </div>
+    <div class="gen-card reveal d2">
+      <div class="gen-icon-box" style="background: rgba(245, 158, 11, 0.08); color: #F59E0B;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+      </div>
+      <h3 data-i18n="generation_methods.method3_title">Text to 3D</h3>
+      <p data-i18n="generation_methods.method3_desc">Ürün fikri, konsept veya açıklamadan 3D model taslağı oluşturma altyapısı.</p>
+    </div>
+    <div class="gen-card reveal d3">
+      <div class="gen-icon-box" style="background: rgba(139, 92, 246, 0.08); color: #8B5CF6;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+      </div>
+      <h3 data-i18n="generation_methods.method4_title">Existing 3D Upload</h3>
+      <p data-i18n="generation_methods.method4_desc">Mevcut GLB, USDZ veya 3D dosyaları web, AR ve yayınlama için optimize etme.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FUTURE ROADMAP PREVIEW SECTION -->
+<section class="premium-section container" id="future-roadmap-preview" style="margin-bottom: 80px;">
+  <div class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 48px clamp(20px, 5vw, 64px); background: linear-gradient(135deg, #1e293b, #0f172a); border-radius: 32px; color: #ffffff; text-align: center; box-shadow: var(--sh-xl);">
+    <span class="badge" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); color: var(--ac-lt);" data-i18n="future_roadmap.badge">5 Yıllık Ürün Vizyonu</span>
+    <h2 style="font-size: 38px; font-weight: 800; color: #ffffff; margin-top: 0; margin-bottom: 20px; letter-spacing: -1px; line-height: 1.2;" data-i18n="future_roadmap.title">Ürün fotoğrafından, geleceğin 3D ürün envanterine.</h2>
+    <p style="font-size: 17px; opacity: 0.85; max-width: 900px; margin: 0 auto 32px; line-height: 1.7; color: #f8fafc;" data-i18n="future_roadmap.desc">
+      IARONE, ürünleri yalnızca bugünkü web ve mobil AR deneyimleri için değil; yarının dijital showroomları, VR gözlükleri, oyun motorları ve yeni nesil 3D işletim sistemleri için de kullanılabilecek dijital ürün varlıklarına dönüştürmeyi hedefler.
+    </p>
+
+    <!-- Roadmap preview tags -->
+    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;">
+      <span class="ix-badge" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #f8fafc; margin-top:0;">Web & Mobil AR</span>
+      <span class="ix-badge" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #f8fafc; margin-top:0;">Digital Showroom</span>
+      <span class="ix-badge" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #f8fafc; margin-top:0;">VisionOS Roadmap</span>
+      <span class="ix-badge" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #f8fafc; margin-top:0;">Meta / VR Roadmap</span>
+      <span class="ix-badge" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #f8fafc; margin-top:0;">Unreal / Unity Export</span>
+      <span class="ix-badge" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #f8fafc; margin-top:0;">3D Print Roadmap</span>
+    </div>
+
+    <a href="roadmap.html" class="btn btn-primary" style="background: #ffffff; color: #0f172a; box-shadow: 0 4px 14px rgba(255,255,255,0.1);" data-i18n="future_roadmap.btn">Roadmap'i Gör</a>
+  </div>
+</section>
+
 <!-- SEGMENT TABS -->
-<div class="segment-wrap" style="margin-top: 160px;">
-  <div class="segment-control">
-    <button class="segment-btn active" id="btn-corp" onclick="switchSegment('corp')" data-i18n="new_sections.tab_corp">E-Ticaret Çözümleri</button>
-    <button class="segment-btn" id="btn-personal" onclick="switchSegment('personal')" data-i18n="new_sections.tab_personal">Kişisel Kullanım</button>
+<div class="segment-wrap" style="margin-top: 100px;">
+  <div class="segment-control" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; border-radius: 30px;">
+    <button class="segment-btn active" id="btn-brands" onclick="switchSegment('brands')" data-i18n="new_sections.tab_brands">Markalar & E-Ticaret</button>
+    <button class="segment-btn" id="btn-creators" onclick="switchSegment('creators')" data-i18n="new_sections.tab_creators">Yaratıcılar</button>
+    <button class="segment-btn" id="btn-maker" onclick="switchSegment('maker')" data-i18n="new_sections.tab_maker">Maker & 3D Baskı</button>
+    <button class="segment-btn" id="btn-game" onclick="switchSegment('game')" data-i18n="new_sections.tab_game">Game & XR</button>
   </div>
 </div>
 
 <!-- E-COMMERCE (CORPORATE) TAB -->
-<div id="tab-corp" class="tab-content" style="display:block;">
+<div id="tab-brands" class="tab-content" style="display:block;">
   
   <!-- Section 1: Elite E-commerce Text -->
   <section class="premium-section container" style="margin-bottom: 64px; margin-top: 32px;">
@@ -619,9 +851,107 @@
 
 </div>
 
-<!-- PERSONAL TAB (Original Content) -->
-<div id="tab-personal" class="tab-content" style="display:none;">
+<!-- CREATORS TAB -->
+<div id="tab-creators" class="tab-content" style="display:none;">
+  <section class="premium-section container" style="margin-bottom: 64px; margin-top: 32px;">
+    <div class="reveal" style="max-width: 1200px; margin: 0 auto; text-align: center; padding: 48px clamp(20px, 5vw, 64px); background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 32px; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 32px 64px rgba(0,0,0,0.03), inset 0 2px 0 rgba(255,255,255,1);">
+      <span style="display: inline-block; padding: 8px 20px; background: rgba(37,99,235,0.08); color: var(--ac); border-radius: 100px; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 20px; text-transform: uppercase;" data-i18n="new_sections.creators_badge">Yaratıcı Çözümleri</span>
+      <h2 style="font-size: 46px; font-weight: 800; color: var(--t1); margin-bottom: 24px; letter-spacing: -1.5px; line-height: 1.1;"><span data-i18n="new_sections.creators_h2_1">Fikirlerden ve Görsellerden</span><br><span style="background: linear-gradient(90deg, #2563eb, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" data-i18n="new_sections.creators_h2_2">Hızlı 3D Üretime</span></h2>
+      <p style="font-size: 19px; color: var(--t2); line-height: 1.8; margin-bottom: 36px; font-weight: 400; max-width: 1000px; margin-left: auto; margin-right: auto;">
+        <span data-i18n="new_sections.creators_desc">Grafik tasarımcılar, ajanslar ve bireysel yaratıcılar için taslak ve konsept üretimini hızlandırın. Görsellerinizi ve fikirlerinizi dakikalar içinde 3D dijital varlıklara dönüştürerek sunumlarınızı, mockup'larınızı ve yaratıcı süreçlerinizi zenginleştirin.</span>
+      </p>
+      
+      <div style="display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 12px; font-size: 17px; font-weight: 600; color: var(--t1);">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(37,99,235,0.1); color: var(--ac); display: flex; align-items: center; justify-content: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+          </div>
+          <span data-i18n="new_sections.creators_feat_1">Tasarım Odaklı Yaklaşım</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; font-size: 17px; font-weight: 600; color: var(--t1);">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(16,185,129,0.1); color: #10B981; display: flex; align-items: center; justify-content: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          </div>
+          <span data-i18n="new_sections.creators_feat_2">Geniş Format Desteği</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; font-size: 17px; font-weight: 600; color: var(--t1);">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(139,92,246,0.1); color: #8B5CF6; display: flex; align-items: center; justify-content: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <span data-i18n="new_sections.creators_feat_3">Hızlı Mockup & Envanter</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
+<!-- MAKER TAB -->
+<div id="tab-maker" class="tab-content" style="display:none;">
+  <section class="premium-section container" style="margin-bottom: 64px; margin-top: 32px;">
+    <div class="reveal" style="max-width: 1200px; margin: 0 auto; text-align: center; padding: 48px clamp(20px, 5vw, 64px); background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 32px; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 32px 64px rgba(0,0,0,0.03), inset 0 2px 0 rgba(255,255,255,1);">
+      <span style="display: inline-block; padding: 8px 20px; background: rgba(37,99,235,0.08); color: var(--ac); border-radius: 100px; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 20px; text-transform: uppercase;" data-i18n="new_sections.maker_badge">Maker & 3D Baskı</span>
+      <h2 style="font-size: 46px; font-weight: 800; color: var(--t1); margin-bottom: 24px; letter-spacing: -1.5px; line-height: 1.1;"><span data-i18n="new_sections.maker_h2_1">Fikirlerden Fiziksel Dünyaya</span><br><span style="background: linear-gradient(90deg, #2563eb, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" data-i18n="new_sections.maker_h2_2">3D Baskı Çıktıları</span></h2>
+      <p style="font-size: 19px; color: var(--t2); line-height: 1.8; margin-bottom: 36px; font-weight: 400; max-width: 1000px; margin-left: auto; margin-right: auto;">
+        <span data-i18n="new_sections.maker_desc">3D yazıcı kullanıcıları, prototipçiler ve maker'lar için fikirden veya görselden baskıya hazırlanabilir model taslaklarına giden süreci kısaltmayı amaçlıyoruz. İlerleyen sürümlerde print-ready kontrol, ölçekleme ve 3D baskı formatları roadmap kapsamındadır.</span>
+      </p>
+      
+      <div style="display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 12px; font-size: 17px; font-weight: 600; color: var(--t1);">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(37,99,235,0.1); color: var(--ac); display: flex; align-items: center; justify-content: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+          </div>
+          <span data-i18n="new_sections.maker_feat_1">Baskı Öncesi Taslak</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; font-size: 17px; font-weight: 600; color: var(--t1);">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(16, 185, 129, 0.1); color: #10B981; display: flex; align-items: center; justify-content: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14h6v8H4zm10-8h6v16h-6zM4 2h6v8H4z"></path></svg>
+          </div>
+          <span data-i18n="new_sections.maker_feat_2">Ölçeklenebilirlik</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; font-weight: 600; color: var(--t1);">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(139,92,246,0.1); color: #8B5CF6; display: flex; align-items: center; justify-content: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          </div>
+          <span data-i18n="new_sections.maker_feat_3">Print-Ready Roadmap</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- GAME TAB -->
+<div id="tab-game" class="tab-content" style="display:none;">
+  <section class="premium-section container" style="margin-bottom: 64px; margin-top: 32px;">
+    <div class="reveal" style="max-width: 1200px; margin: 0 auto; text-align: center; padding: 48px clamp(20px, 5vw, 64px); background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 32px; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 32px 64px rgba(0,0,0,0.03), inset 0 2px 0 rgba(255,255,255,1);">
+      <span style="display: inline-block; padding: 8px 20px; background: rgba(37,99,235,0.08); color: var(--ac); border-radius: 100px; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 20px; text-transform: uppercase;" data-i18n="new_sections.game_badge">Game & XR</span>
+      <h2 style="font-size: 46px; font-weight: 800; color: var(--t1); margin-bottom: 24px; letter-spacing: -1.5px; line-height: 1.1;"><span data-i18n="new_sections.game_h2_1">Oyun Motorları ve VR/XR</span><br><span style="background: linear-gradient(90deg, #2563eb, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" data-i18n="new_sections.game_h2_2">Gelecek Platformları</span></h2>
+      <p style="font-size: 19px; color: var(--t2); line-height: 1.8; margin-bottom: 36px; font-weight: 400; max-width: 1000px; margin-left: auto; margin-right: auto;">
+        <span data-i18n="new_sections.game_desc">Üretilen 3D varlıkların ilerleyen sürümlerde Unreal Engine, Unity, VR showroom ve mekânsal deneyimlerde (visionOS / Meta Quest) kullanılabilecek şekilde hazırlanmasını hedefliyoruz. Geleceğin 3D platformlarına tam uyumluluk yönünde çalışıyoruz.</span>
+      </p>
+      
+      <div style="display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 12px; font-size: 17px; font-weight: 600; color: var(--t1);">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(37,99,235,0.1); color: var(--ac); display: flex; align-items: center; justify-content: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          </div>
+          <span data-i18n="new_sections.game_feat_1">GLB Asset Akışı</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; font-size: 17px; font-weight: 600; color: var(--t1);">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(16, 185, 129, 0.1); color: #10B981; display: flex; align-items: center; justify-content: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          </div>
+          <span data-i18n="new_sections.game_feat_2">Unreal / Unity Export</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; font-size: 17px; font-weight: 600; color: var(--t1);">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(139,92,246,0.1); color: #8B5CF6; display: flex; align-items: center; justify-content: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M12 6v6l4 2"></path></svg>
+          </div>
+          <span data-i18n="new_sections.game_feat_3">XR Showroom</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
 <!-- HOW IT WORKS -->
 <section class="section z1" id="nasil-calisir" aria-labelledby="steps-heading"
@@ -956,7 +1286,6 @@
   </div>
 </section>
 
-</div>
 <!-- FOOTER -->
 <footer class="footer z1" role="contentinfo" style="margin-top: 80px; background: var(--bg-surface); position: relative;">
   <div class="container">
@@ -968,7 +1297,7 @@
           <img src="00_iarone_logo_exact_transparent_black.webp" class="logo-light" alt="Iarone Logo" width="36" loading="lazy" decoding="async" />
           <span class="logo-text" style="font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--t1);">Iarone</span>
         </a>
-        <p style="font-size: 16px; color: var(--t3); line-height: 1.6; margin-bottom: 32px;" data-i18n="footer.f_desc">E-ticaret ürünlerini 3D ve AR deneyimlerine dönüştüren yeni nesil yayın platformu. Ziyaretçilerinizi müşteriye dönüştürün.</p>
+        <p style="font-size: 16px; color: var(--t3); line-height: 1.6; margin-bottom: 32px;" data-i18n="footer.f_desc">IARONE, görselleri, fikirleri ve ürünleri web, AR, dijital showroom, yaratıcı üretim, 3D baskı ve gelecek 3D platformları için kullanılabilir dijital varlıklara dönüştürmeyi hedefleyen yapay zekâ destekli 3D üretim altyapısıdır.</p>
         
         
       </div>
@@ -976,11 +1305,13 @@
       <div style="display: flex; gap: 80px; flex-wrap: wrap;">
         <!-- Product Links -->
         <div style="min-width: 140px;">
-          <h4 style="font-size: 13px; font-weight: 700; color: var(--t1); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px;" data-i18n="footer.col1">Ürün</h4>
+          <h4 style="font-size: 13px; font-weight: 700; color: var(--t1); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px;" data-i18n="footer.col1">Platform</h4>
           <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px;">
-            <li><a href="nasil-calisir.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="footer.f_dash">Nasıl Çalışır</a></li>
-            <li><a href="market.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="footer.f_market">Sektör Çözümleri</a></li>
-            <li><a href="pricing.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';">Fiyatlandırma</a></li>
+            <li><a href="index.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="nav.home">Ana Sayfa</a></li>
+            <li><a href="nasil-calisir.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="nav.dashboard">Nasıl Çalışır</a></li>
+            <li><a href="market.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="nav.market">Kullanım Alanları</a></li>
+            <li><a href="pricing.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="nav.pricing">Fiyatlandırma</a></li>
+            <li><a href="roadmap.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="nav.roadmap">Roadmap</a></li>
           </ul>
         </div>
         
@@ -988,7 +1319,6 @@
         <div style="min-width: 140px;">
           <h4 style="font-size: 13px; font-weight: 700; color: var(--t1); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px;" data-i18n="footer.col2">İletişim</h4>
           <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px;">
-            
             <li><a href="index.html#demo" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="footer.demo_cta">Demo Talep Et</a></li>
           </ul>
         </div>
@@ -1163,9 +1493,5 @@
   </svg>
 </a>
 
-<!-- FLOATING INSTAGRAM -->
-<a href="https://www.instagram.com/iarone.ai?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="floating-ig" aria-label="Instagram" style="position:fixed; bottom:24px; right:24px; width:56px; height:56px; background:linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; box-shadow:0 10px 25px rgba(220, 39, 67, 0.4); z-index:9999; text-decoration:none; transition:transform 0.3s ease;">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px; height:28px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-</a>
 </body>
 </html>
