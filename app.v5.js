@@ -252,7 +252,8 @@ function initBetaForm() {
     const nameInput = form.querySelector('#wait_name');
     const brandInput = form.querySelector('#wait_brand');
     const website = form.querySelector('input[name="website"]');
-    if (!input || !input.value) return;
+    const emailInput = form.querySelector('#beta-email') || form.querySelector('input[type="email"]');
+    if (!emailInput || !emailInput.value) return;
 
     const originalText = btn.textContent;
     const lang = getLang();
@@ -262,7 +263,7 @@ function initBetaForm() {
     try {
       const payload = {
         name: nameInput ? nameInput.value : '',
-        email: input.value,
+        email: emailInput.value,
         company: brandInput ? brandInput.value : '',
         intent: 'MARKET_WAITLIST',
         source: 'MARKET_WAITLIST',
@@ -293,7 +294,7 @@ function initBetaForm() {
       btn.textContent = lang === 'tr' ? 'Gönderildi' : (lang === 'ar' ? 'تم الإرسال' : 'Submitted');
       try {
         const payload = {
-          name: nameInput ? nameInput.value : '', email: input.value, company: brandInput ? brandInput.value : '',
+          name: nameInput ? nameInput.value : '', email: emailInput.value, company: brandInput ? brandInput.value : '',
           intent: 'MARKET_WAITLIST', source: 'MARKET_WAITLIST',
           pageUrl: window.location.href, timestamp: Date.now()
         };

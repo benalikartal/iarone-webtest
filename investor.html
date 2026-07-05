@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https: http://localhost:3000 http://127.0.0.1:3000; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'" />
+  <title data-i18n="nav.investor">IARONE — Yatırımcı İlişkileri | AI 3D Asset & Commerce Platform</title>
+  <meta name="description" content="IARONE'un 5 yıllık gelişim vizyonu, yatırım fırsatları ve yapay zekâ destekli 3D ticaret altyapısı." />
+  <link rel="canonical" href="https://iarone.com/investor.html" />
+  
+  <meta property="og:title" content="IARONE — Yatırımcı İlişkileri | AI 3D Asset & Commerce Platform" />
+  <meta property="og:description" content="IARONE'un 5 yıllık gelişim vizyonu, yatırım fırsatları ve yapay zekâ destekli 3D ticaret altyapısı." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://iarone.com/investor.html" />
+  <meta property="og:image" content="https://iarone.com/00_iarone_logo_exact_transparent_white_glow.png" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:locale:alternate" content="ar_AR" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="IARONE — Yatırımcı İlişkileri | AI 3D Asset & Commerce Platform" />
+  <meta name="twitter:description" content="IARONE'un 5 yıllık gelişim vizyonu, yatırım fırsatları ve yapay zekâ destekli 3D ticaret altyapısı." />
+  <meta name="twitter:image" content="https://iarone.com/00_iarone_logo_exact_transparent_white_glow.png" />
+
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <link rel="alternate" hreflang="tr" href="https://iarone.com/investor.html?lang=tr" />
+  <link rel="alternate" hreflang="en" href="https://iarone.com/investor.html?lang=en" />
+  <link rel="alternate" hreflang="ar" href="https://iarone.com/investor.html?lang=ar" />
+  <link rel="alternate" hreflang="x-default" href="https://iarone.com/investor.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.v5.css" />
+  <style>
+    body { background: #f8fafc; }
+    .page-hero { padding: 120px 0 80px; text-align: center; position: relative; overflow: hidden; }
+    .page-hero h1 { font-size: 48px; font-weight: 800; color: #0f172a; margin-bottom: 24px; letter-spacing: -1.5px; line-height: 1.25; }
+    .page-hero p { font-size: 19px; color: #475569; max-width: 850px; margin: 0 auto 32px; line-height: 1.75; }
+    
+    .inv-section { padding: 80px 0; border-top: 1px solid var(--border); }
+    .inv-section:nth-of-type(odd) { background: #ffffff; }
+
+    .inv-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px; }
+    .inv-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 40px; }
+    .inv-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 40px; }
+
+    .inv-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 36px 30px;
+      box-shadow: var(--sh-sm);
+      transition: all 0.3s var(--ease);
+      display: flex;
+      flex-direction: column;
+    }
+    .inv-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--sh-hv);
+      border-color: rgba(37,99,235,0.15);
+    }
+    .inv-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .inv-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--t1);
+      margin-bottom: 14px;
+      line-height: 1.35;
+    }
+    .inv-card p {
+      font-size: 14.5px;
+      color: var(--t2);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* Comparison Box */
+    .comp-container { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
+    .comp-box {
+      border-radius: 24px;
+      padding: 40px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+    }
+    .comp-box.highlight {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      color: #ffffff;
+      border: none;
+      box-shadow: var(--sh-xl);
+    }
+    .comp-box h3 { font-size: 24px; font-weight: 800; margin-bottom: 24px; }
+    .comp-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
+    .comp-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.5; }
+    .comp-list li svg { flex-shrink: 0; margin-top: 3px; }
+
+    /* Visual Steps */
+    .steps-pipeline {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 48px;
+    }
+    .step-pill {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 12px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--t1);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--sh-sm);
+    }
+    .step-arrow {
+      align-self: center;
+      color: var(--t3);
+    }
+
+    /* Target markets pills */
+    .market-tags { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 32px; }
+    .market-tag {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 24px;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--t1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      transition: all 0.2s ease;
+    }
+    .market-tag:hover {
+      border-color: var(--ac);
+      color: var(--ac);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 1023px) {
+      .inv-grid-3, .inv-grid-4, .comp-container { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 767px) {
+      .inv-grid-3, .inv-grid-4, .inv-grid-2, .comp-container { grid-template-columns: 1fr; }
+      .page-hero h1 { font-size: 34px; }
+      .comp-box { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="preloader" class="pl" role="status" aria-label="Iarone yükleniyor">
+  <div class="pl__logo">
+    <img src="00_iarone_logo_exact_transparent_white_glow.webp" class="logo-dark" alt="Iarone Logo" />
+    <img src="00_iarone_logo_exact_transparent_black.webp" class="logo-light" alt="Iarone Logo" />
+    <span class="logo-text">Iarone</span>
+  </div>
+  <div class="pl__text">Yükleniyor<span class="pl__dots"></span></div>
+</div>
+
+<div class="bg-blobs" aria-hidden="true">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="nav" id="main-nav" role="navigation" aria-label="Ana navigasyon" style="background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05);">
+  <div class="container">
+    <div class="nav__wrap">
+      <a href="index.html" class="nav__logo" aria-label="Iarone ana sayfa" style="gap: 8px;">
+        <img src="00_iarone_logo_exact_transparent_white_glow.webp" class="logo-dark" alt="Iarone Logo" loading="lazy" width="24" />
+        <img src="00_iarone_logo_exact_transparent_black.webp" class="logo-light" alt="Iarone Logo" loading="lazy" width="24" />
+        <span class="logo-text">Iarone</span>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="index.html"     class="nav__link" data-i18n="nav.home">Ana Sayfa</a></li>
+        <li><a href="nasil-calisir.html" class="nav__link" data-i18n="nav.dashboard">Nasıl Çalışır</a></li>
+        <li><a href="market.html"    class="nav__link" data-i18n="nav.market">Kullanım Alanları</a></li>
+        <li><a href="pricing.html"   class="nav__link" data-i18n="nav.pricing">Fiyatlandırma</a></li>
+        <li><a href="investor.html"  class="nav__link active" data-i18n="nav.investor">Yatırımcı Ol</a></li>
+      </ul>
+      <div class="nav__right">
+        <div class="lang-sw" id="lang-sw">
+          <button class="lang-btn" id="lang-btn" aria-label="Dil seçin" aria-haspopup="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="lang-current">TR</span>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-drop" role="menu">
+            <div class="lang-opt sel" data-lang="tr" role="menuitem" tabindex="0">🇹🇷 &nbsp;Türkçe</div>
+            <div class="lang-opt"     data-lang="en" role="menuitem" tabindex="0">🇺🇸 &nbsp;English</div>
+            <div class="lang-opt"     data-lang="ar" role="menuitem" tabindex="0">🇸🇦 &nbsp;العربية</div>
+          </div>
+        </div>
+        <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html" class="btn btn-ghost" id="nav-login" data-auth-intent="login" data-i18n="nav.login" style="margin-right: 8px; font-weight: 600;">Giriş Yap</a>
+        <a href="index.html#demo" class="btn btn-primary" data-i18n="home.hero_cta_secondary">Demo Talep Et</a>
+        <button class="nav__burger" id="nav-burger" aria-label="Menüyü aç" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="nav__mobile" id="nav-mobile" role="menu">
+  <a href="index.html"         class="nav__link" data-i18n="nav.home">Ana Sayfa</a>
+  <a href="nasil-calisir.html" class="nav__link" data-i18n="nav.dashboard">Nasıl Çalışır</a>
+  <a href="market.html"        class="nav__link" data-i18n="nav.market">Kullanım Alanları</a>
+  <a href="pricing.html"       class="nav__link" data-i18n="nav.pricing">Fiyatlandırma</a>
+  <a href="investor.html"      class="nav__link active" data-i18n="nav.investor">Yatırımcı Ol</a>
+  <div class="nav__mobile-actions" style="flex-direction: column; gap: 8px; width: 100%;">
+    <a href="https://app.iarone.com/auth.html?mode=login&returnUrl=/dashboard.html" class="btn btn-ghost" data-auth-intent="login" data-i18n="nav.login" style="width: 100%; justify-content: center;">Giriş Yap</a>
+    <a href="index.html#demo" class="btn btn-primary" data-i18n="home.hero_cta_secondary" style="width: 100%; justify-content: center;">Demo Talep Et</a>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="page-content">
+  
+  <!-- 1. HERO SECTION -->
+  <header class="page-hero">
+    <div class="container">
+      <span class="badge" style="margin-bottom:24px;" data-i18n="investor.badge">Yatırım Fırsatı</span>
+      <h1 data-i18n="investor.hero_title">IARONE sonrası e-ticaret, ürünleri sadece göstermez; 3D olarak deneyimletir.</h1>
+      <p data-i18n="investor.hero_desc">IARONE, ürün fotoğraflarını satışa hazır 3D/AR dijital varlıklara dönüştüren; kalite kontrol, optimizasyon, publish ve entegrasyon altyapısını tek platformda sunan yeni nesil 3D commerce sistemidir.</p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="#overview" class="btn btn-primary btn-lg" data-i18n="investor.cta_deck">Yatırımcı Sunumunu Gör</a>
+        <a href="index.html#demo" class="btn btn-ghost btn-lg" data-i18n="investor.cta_demo">Demo Talep Et</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. INVESTOR OVERVIEW (WHY IARONE) -->
+  <section class="inv-section" id="overview">
+    <div class="container">
+      <div class="reveal" style="text-align: center; max-width: 800px; margin: 0 auto 48px;">
+        <span class="badge" data-i18n="investor.sec_why_title">Neden IARONE?</span>
+        <h2 class="gt" style="font-size: 38px; font-weight: 800;" data-i18n="investor.sec_why_title">Neden IARONE?</h2>
+      </div>
+
+      <div class="inv-grid-3">
+        <div class="inv-card reveal">
+          <div class="inv-icon-box" style="background: rgba(239, 68, 68, 0.08); color: #ef4444;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+          </div>
+          <h3 data-i18n="investor.sec_why_card1_t">2D Görsel Bağımlılığı</h3>
+          <p data-i18n="investor.sec_why_card1_d">E-ticaret hâlâ statik ve yetersiz 2D ürün görsellerine bağımlı durumdadır.</p>
+        </div>
+        <div class="inv-card reveal d1">
+          <div class="inv-icon-box" style="background: rgba(245, 158, 11, 0.08); color: #f59e0b;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <h3 data-i18n="investor.sec_why_card2_t">Yüksek Üretim Maliyetleri</h3>
+          <p data-i18n="investor.sec_why_card2_d">Markalar 3D/AR deneyimi üretmek istediğinde süreç pahalı, teknik ve ajans bağımlı hale gelmektedir.</p>
+        </div>
+        <div class="inv-card reveal d2">
+          <div class="inv-icon-box" style="background: rgba(16, 185, 129, 0.08); color: #10b981;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+          </div>
+          <h3 data-i18n="investor.sec_why_card3_t">Sistemleşmiş Altyapı</h3>
+          <p data-i18n="investor.sec_why_card3_d">IARONE bu süreci ürün fotoğrafından satışa hazır 3D/AR varlığa dönüştüren sistemleşmiş ve modüler bir altyapıya çevirir.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PROBLEM SECTION -->
+  <section class="inv-section" id="problem">
+    <div class="container">
+      <div class="reveal" style="text-align: center; max-width: 800px; margin: 0 auto 48px;">
+        <span class="badge" style="background: rgba(239, 68, 68, 0.08); border-color: rgba(239, 68, 68, 0.15); color: #ef4444;">Problem</span>
+        <h2 class="gt" style="font-size: 38px; font-weight: 800; margin-top: 12px; margin-bottom: 20px;" data-i18n="investor.sec_prob_title">E-ticaretin Ürün Deneyimi Problemi</h2>
+        <p style="font-size: 16.5px; color: var(--t2); line-height: 1.7;" data-i18n="investor.sec_prob_desc">Müşteriler statik 2D görsellerden ürünün gerçek boyutunu, hacmini, materyalini, dokusunu ve ortamdaki duruşunu tam olarak anlayamaz. Bu durum belirsizlik yaratır, ürün güvenini zayıflatır ve satın alma kararını olumsuz etkiler.</p>
+      </div>
+
+      <div class="inv-grid-4">
+        <div class="inv-card reveal">
+          <div class="inv-icon-box" style="background: rgba(239, 68, 68, 0.08); color: #ef4444;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg></div>
+          <h3 data-i18n="investor.sec_prob_card1_t">Boyut ve hacim algısı zayıf</h3>
+          <p data-i18n="investor.sec_prob_card1_d">Müşteri ürünü satın almadan önce gerçek alanında nasıl yer kaplayacağını hayal edemez.</p>
+        </div>
+        <div class="inv-card reveal d1">
+          <div class="inv-icon-box" style="background: rgba(239, 68, 68, 0.08); color: #ef4444;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg></div>
+          <h3 data-i18n="investor.sec_prob_card2_t">Ürün ortamda görülemiyor</h3>
+          <p data-i18n="investor.sec_prob_card2_d">Kamera ile gerçek dünyaya yerleştirme (AR) altyapısı bulunmadığı için uyumsuzluk yaşanır.</p>
+        </div>
+        <div class="inv-card reveal d2">
+          <div class="inv-icon-box" style="background: rgba(239, 68, 68, 0.08); color: #ef4444;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
+          <h3 data-i18n="investor.sec_prob_card3_t">3D/AR üretim pahalı ve teknik</h3>
+          <p data-i18n="investor.sec_prob_card3_d">Klasik 3D modelleme ajans süreçleri yavaş, yüksek maliyetli ve ölçeklenemez durumdadır.</p>
+        </div>
+        <div class="inv-card reveal d3">
+          <div class="inv-icon-box" style="background: rgba(239, 68, 68, 0.08); color: #ef4444;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M12 6v6l4 2"></path></svg></div>
+          <h3 data-i18n="investor.sec_prob_card4_t">Katalog ölçeğinde üretim zor</h3>
+          <p data-i18n="investor.sec_prob_card4_d">Yüzlerce veya binlerce üründen oluşan e-ticaret kataloglarını 3D'ye taşımak manuel yöntemlerle imkansızdır.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. SOLUTION SECTION -->
+  <section class="inv-section" id="solution">
+    <div class="container" style="max-width: 1100px;">
+      <div class="reveal" style="text-align: center; max-width: 800px; margin: 0 auto 32px;">
+        <span class="badge" style="background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.15); color: #10b981;">Çözüm</span>
+        <h2 class="gt" style="font-size: 38px; font-weight: 800; margin-top: 12px; margin-bottom: 20px;" data-i18n="investor.sec_sol_title">Fotoğraftan Satışa Hazır 3D/AR Ürün Varlığına</h2>
+        <p style="font-size: 16.5px; color: var(--t2); line-height: 1.7;" data-i18n="investor.sec_sol_desc">IARONE, ham bir AI modeli teslim etmekle kalmaz; e-ticaret sitelerinde anında yayınlanabilecek ve tüm 3D platformlarında kullanılabilecek tam donanımlı bir publish paketi hazırlar.</p>
+      </div>
+
+      <div class="steps-pipeline reveal">
+        <div class="step-pill">
+          <span style="display:flex; align-items:center; justify-content:center; width:20px; height:20px; background:var(--ac); color:#fff; border-radius:50%; font-size:11px;">1</span>
+          <span data-i18n="investor.sec_sol_step1">Ürün Fotoğrafı Yükle</span>
+        </div>
+        <div class="step-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="step-pill">
+          <span style="display:flex; align-items:center; justify-content:center; width:20px; height:20px; background:var(--ac); color:#fff; border-radius:50%; font-size:11px;">2</span>
+          <span data-i18n="investor.sec_sol_step2">AI 3D Üretim</span>
+        </div>
+        <div class="step-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="step-pill">
+          <span style="display:flex; align-items:center; justify-content:center; width:20px; height:20px; background:var(--ac); color:#fff; border-radius:50%; font-size:11px;">3</span>
+          <span data-i18n="investor.sec_sol_step3">Web/AR Optimizasyonu</span>
+        </div>
+        <div class="step-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="step-pill">
+          <span style="display:flex; align-items:center; justify-content:center; width:20px; height:20px; background:var(--ac); color:#fff; border-radius:50%; font-size:11px;">4</span>
+          <span data-i18n="investor.sec_sol_step4">QA & Ölçek Kontrolü</span>
+        </div>
+        <div class="step-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="step-pill">
+          <span style="display:flex; align-items:center; justify-content:center; width:20px; height:20px; background:var(--ac); color:#fff; border-radius:50%; font-size:11px;">5</span>
+          <span data-i18n="investor.sec_sol_step5">GLB / USDZ Paketleme</span>
+        </div>
+        <div class="step-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="step-pill">
+          <span style="display:flex; align-items:center; justify-content:center; width:20px; height:20px; background:var(--ac); color:#fff; border-radius:50%; font-size:11px;">6</span>
+          <span data-i18n="investor.sec_sol_step6">Publish Link & Embed</span>
+        </div>
+        <div class="step-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="step-pill">
+          <span style="display:flex; align-items:center; justify-content:center; width:20px; height:20px; background:var(--ac); color:#fff; border-radius:50%; font-size:11px;">7</span>
+          <span data-i18n="investor.sec_sol_step7">E-Ticaret Entegrasyonu</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. DIFFERENTIATION MATRIX -->
+  <section class="inv-section" id="differentiators">
+    <div class="container">
+      <div class="reveal" style="text-align: center; max-width: 800px; margin: 0 auto 32px;">
+        <span class="badge" style="background: rgba(37,99,235,0.08); border-color: rgba(37,99,235,0.15); color: var(--ac);">Diferansiyel</span>
+        <h2 class="gt" style="font-size: 38px; font-weight: 800; margin-top: 12px; margin-bottom: 20px;" data-i18n="investor.sec_diff_title">IARONE’u Farklı Kılan Şey Sadece Model Üretimi Değil</h2>
+      </div>
+
+      <div class="comp-container reveal">
+        <!-- Generic -->
+        <div class="comp-box">
+          <h3 style="color:#ef4444; border-bottom:1px solid var(--border); padding-bottom:16px;" data-i18n="investor.sec_diff_gen_t">Sıradan AI 3D Araçları</h3>
+          <ul class="comp-list">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span data-i18n="investor.sec_diff_gen_li1">Sadece ham 3D model üretir</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span data-i18n="investor.sec_diff_gen_li2">Sıklıkla manuel düzeltme gerektirir</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span data-i18n="investor.sec_diff_gen_li3">Web ve e-ticaret için hazır değildir</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span data-i18n="investor.sec_diff_gen_li4">Katalog akışları için tasarlanmamıştır</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span data-i18n="investor.sec_diff_gen_li5">Yayınlama ve embed odaklı değildir</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- IARONE -->
+        <div class="comp-box highlight">
+          <h3 style="color:#10b981; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:16px;" data-i18n="investor.sec_diff_iarone_t">IARONE 3D Commerce Altyapısı</h3>
+          <ul class="comp-list">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="investor.sec_diff_iarone_li1">3D model üretir veya mevcut modelleri kabul eder</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="investor.sec_diff_iarone_li2">Web ve mobil için otomatik optimize eder</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="investor.sec_diff_iarone_li3">Kalite kontrol (QA) denetimlerini yapar</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="investor.sec_diff_iarone_li4">Satışa ve AR'a hazır çıktılar üretir</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="investor.sec_diff_iarone_li5">Anında yayınlama linkleri ve embed paketleri sunar</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="investor.sec_diff_iarone_li6">B2B, ajans ve pazaryeri iş akışlarını destekler</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. SYSTEM INFRASTRUCTURE -->
+  <section class="inv-section" id="infrastructure">
+    <div class="container">
+      <div class="reveal" style="text-align: center; max-width: 800px; margin: 0 auto 32px;">
+        <span class="badge">Teknoloji Altyapısı</span>
+        <h2 class="gt" style="font-size: 38px; font-weight: 800; margin-top: 12px; margin-bottom: 20px;" data-i18n="investor.sec_infra_title">Kişiye Değil, Sisteme Bağlı Altyapı</h2>
+        <p style="font-size: 16.5px; color: var(--t2); line-height: 1.7;" data-i18n="investor.sec_infra_desc">IARONE, el işçiliği yapan bir 3D ajansı değil; modüler ve ölçeklenebilir bir yazılım altyapısıdır.</p>
+      </div>
+
+      <!-- Diagram Flow Mockup -->
+      <div class="reveal" style="background:#ffffff; border:1px solid var(--border); padding:32px; border-radius:24px; box-shadow:var(--sh-sm); text-align:center; margin-bottom:40px; overflow-x:auto;">
+        <div style="display:inline-flex; align-items:center; gap:16px; min-width:800px; padding:10px;">
+          <div style="padding:12px 20px; background:#f1f5f9; border-radius:10px; font-size:13px; font-weight:700; color:#475569;">Dashboard / API</div>
+          <div style="color:var(--t3)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div style="padding:12px 20px; background:#dbeafe; border-radius:10px; font-size:13px; font-weight:700; color:#2563eb;">Job Queue</div>
+          <div style="color:var(--t3)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div style="padding:12px 20px; background:#dcfce7; border-radius:10px; font-size:13px; font-weight:700; color:#15803d;">Generation Engine</div>
+          <div style="color:var(--t3)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div style="padding:12px 20px; background:#fef3c7; border-radius:10px; font-size:13px; font-weight:700; color:#b45309;">Optimization Layer</div>
+          <div style="color:var(--t3)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div style="padding:12px 20px; background:#f3e8ff; border-radius:10px; font-size:13px; font-weight:700; color:#6b21a8;">QA Audit Report</div>
+          <div style="color:var(--t3)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div style="padding:12px 20px; background:linear-gradient(135deg, #1e293b, #0f172a); color:#fff; border-radius:10px; font-size:13px; font-weight:700;">Publish Package</div>
+        </div>
+      </div>
+
+      <div class="inv-grid-3">
+        <div class="inv-card reveal">
+          <h3 data-i18n="investor.sec_infra_card1_t">API-First Mimari</h3>
+          <p data-i18n="investor.sec_infra_card1_d">Tüm üretim ve optimizasyon süreçleri API üzerinden uzaktan yönetilebilir.</p>
+        </div>
+        <div class="inv-card reveal d1">
+          <h3 data-i18n="investor.sec_infra_card2_t">Kuyruk Tabanlı Üretim</h3>
+          <p data-i18n="investor.sec_infra_card2_d">Büyük katalog talepleri job queue (iş kuyruğu) sistemi ile otomatik sıraya alınır.</p>
+        </div>
+        <div class="inv-card reveal d2">
+          <h3 data-i18n="investor.sec_infra_card3_t">Sağlayıcı Bağımsız Motor</h3>
+          <p data-i18n="investor.sec_infra_card3_d">Arka planda farklı AI üretim sağlayıcılarını (provider) hibrit ve yedekli çalıştırır.</p>
+        </div>
+        <div class="inv-card reveal">
+          <h3 data-i18n="investor.sec_infra_card4_t">QA ve Yayın Kontrolü</h3>
+          <p data-i18n="investor.sec_infra_card4_d">Hatalı modellerin yayına girmesini engelleyen otomatik kalite kontrol katmanı.</p>
+        </div>
+        <div class="inv-card reveal d1" style="grid-column: span 2;">
+          <h3 data-i18n="investor.sec_infra_card5_t">Katalog Ölçeğinde Ölçekleme</h3>
+          <p data-i18n="investor.sec_infra_card5_d">Manuel müdahale ihtiyacını en aza indiren otomatik pipeline akışı.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. BUSINESS MODEL SECTION -->
+  <section class="inv-section" id="business-model">
+    <div class="container">
+      <div class="reveal" style="text-align: center; max-width: 800px; margin: 0 auto 32px;">
+        <span class="badge">Gelir Modeli</span>
+        <h2 class="gt" style="font-size: 38px; font-weight: 800; margin-top: 12px; margin-bottom: 20px;" data-i18n="investor.sec_biz_title">Çok Katmanlı Gelir Modeli</h2>
+        <p style="font-size: 16.5px; color: var(--t2); line-height: 1.7;" data-i18n="investor.sec_biz_desc">IARONE'un büyüme tavanı sadece bireysel abonelikler değildir; asıl iş fırsatı kurumsal katalog dönüşümleri, API lisanslamaları ve white-label entegrasyonlardır.</p>
+      </div>
+
+      <div class="inv-grid-3">
+        <div class="inv-card reveal">
+          <h3 data-i18n="investor.sec_biz_card1_t">SaaS Abonelikleri</h3>
+          <p data-i18n="investor.sec_biz_card1_d">Bireysel yaratıcılar ve markalar için aylık/yıllık kullanım planları.</p>
+        </div>
+        <div class="inv-card reveal d1">
+          <h3 data-i18n="investor.sec_biz_card2_t">Üretim Kredileri</h3>
+          <p data-i18n="investor.sec_biz_card2_d">Abonelik dışı ek 3D model üretim talepleri için kredi paketleri.</p>
+        </div>
+        <div class="inv-card reveal d2">
+          <h3 data-i18n="investor.sec_biz_card3_t">Ürün Başı Dönüşüm</h3>
+          <p data-i18n="investor.sec_biz_card3_d">Büyük e-ticaret siteleri için model başına ölçekli fiyatlandırma.</p>
+        </div>
+        <div class="inv-card reveal">
+          <h3 data-i18n="investor.sec_biz_card4_t">Kurumsal Katalog Dönüşümü</h3>
+          <p data-i18n="investor.sec_biz_card4_d">Tüm ürün kataloglarının toplu olarak 3D/AR envantere taşınması projeleri.</p>
+        </div>
+        <div class="inv-card reveal d1">
+          <h3 data-i18n="investor.sec_biz_card5_t">API & White-Label Lisansı</h3>
+          <p data-i18n="investor.sec_biz_card5_d">Kendi sisteminde 3D üretmek isteyen kurumsal platformlar için lisanslama.</p>
+        </div>
+        <div class="inv-card reveal d2">
+          <h3 data-i18n="investor.sec_biz_card6_t">Pazaryeri & Partner Payı</h3>
+          <p data-i18n="investor.sec_biz_card6_d">Entegre pazaryerleri ve fotoğraf ajansları üzerinden gelir paylaşım modeli.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. TARGET MARKETS SECTION -->
+  <section class="inv-section" id="target-markets">
+    <div class="container" style="text-align: center;">
+      <span class="badge">Hedef Pazarlar</span>
+      <h2 class="gt" style="font-size: 38px; font-weight: 800; margin-top: 12px; margin-bottom: 20px;" data-i18n="investor.sec_markets_title">İlk Hedef Pazarlar</h2>
+      
+      <div class="market-tags reveal">
+        <div class="market-tag" data-i18n="investor.sec_markets_c1_t">Mobilya & Dekorasyon</div>
+        <div class="market-tag" data-i18n="investor.sec_markets_c2_t">Saat, Mücevher & Aksesuar</div>
+        <div class="market-tag" data-i18n="investor.sec_markets_c3_t">Ayakkabı, Çanta & Moda</div>
+        <div class="market-tag" data-i18n="investor.sec_markets_c4_t">Aydınlatma & Ev Ürünleri</div>
+        <div class="market-tag" data-i18n="investor.sec_markets_c5_t">Kozmetik & Premium Ürünler</div>
+        <div class="market-tag" data-i18n="investor.sec_markets_c6_t">Pazaryeri Satıcıları</div>
+        <div class="market-tag" data-i18n="investor.sec_markets_c7_t">Ürün Fotoğraf Ajansları</div>
+        <div class="market-tag" data-i18n="investor.sec_markets_c8_t">Creative Production Ekipleri</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. INVESTMENT USE SECTION -->
+  <section class="inv-section" id="fund-use">
+    <div class="container">
+      <div class="reveal" style="text-align: center; max-width: 800px; margin: 0 auto 32px;">
+        <span class="badge">Fon Kullanımı</span>
+        <h2 class="gt" style="font-size: 38px; font-weight: 800; margin-top: 12px; margin-bottom: 20px;" data-i18n="investor.sec_use_title">Yatırım Hangi Büyümeyi Hızlandıracak?</h2>
+      </div>
+
+      <div class="inv-grid-3">
+        <div class="inv-card reveal">
+          <h3 data-i18n="investor.sec_use_c1_t">AI Production Hattı Geliştirme</h3>
+          <p data-i18n="investor.sec_use_c1_d">Yapay zeka üretim pipeline'ının hızlandırılması ve çıktı kalitesinin artırılması.</p>
+        </div>
+        <div class="inv-card reveal d1">
+          <h3 data-i18n="investor.sec_use_c2_t">QA & Ölçek Doğrulama Motoru</h3>
+          <p data-i18n="investor.sec_use_c2_d">Ölçek ve boyut doğruluğunu kontrol eden otomatik QA denetim yazılımı.</p>
+        </div>
+        <div class="inv-card reveal d2">
+          <h3 data-i18n="investor.sec_use_c3_t">Web/AR Viewer & Embed Altyapısı</h3>
+          <p data-i18n="investor.sec_use_c3_d">Daha hızlı ve etkileşimli yerleşik 3D görüntüleyici teknolojileri.</p>
+        </div>
+        <div class="inv-card reveal">
+          <h3 data-i18n="investor.sec_use_c4_t">Pilot Müşteri & Kurumsal Satış</h3>
+          <p data-i18n="investor.sec_use_c4_d">Büyük e-ticaret siteleri ile pilot entegrasyon süreçleri ve satış ağı.</p>
+        </div>
+        <div class="inv-card reveal d1">
+          <h3 data-i18n="investor.sec_use_c5_t">Bölgesel Genişleme</h3>
+          <p data-i18n="investor.sec_use_c5_d">Türkiye'den MENA (Orta Doğu) ve Avrupa pazarlarına operasyonel açılım.</p>
+        </div>
+        <div class="inv-card reveal d2">
+          <h3 data-i18n="investor.sec_use_c6_t">GPU Maliyet Optimizasyonu</h3>
+          <p data-i18n="investor.sec_use_c6_d">Altyapı üretim ve GPU barındırma maliyetlerinin düşürülmesi çalışmaları.</p>
+        </div>
+        <div class="inv-card reveal" style="grid-column: span 3; text-align: center; align-items: center;">
+          <h3 data-i18n="investor.sec_use_c7_t">Teknik Ekip & Operasyon</h3>
+          <p data-i18n="investor.sec_use_c7_d">Yetenekli 3D mühendisleri ve sistem mimarlarından oluşan çekirdek ekibin büyütülmesi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. 5-YEAR VISION SECTION -->
+  <section class="inv-section" id="vision">
+    <div class="container" style="max-width: 1000px;">
+      <div class="reveal" style="text-align: center; max-width: 800px; margin: 0 auto 48px;">
+        <span class="badge">5 Yıllık Vizyon</span>
+        <h2 class="gt" style="font-size: 38px; font-weight: 800; margin-top: 12px; margin-bottom: 20px;" data-i18n="investor.sec_vision_title">5 Yıllık Vizyon: 3D Commerce'ten geleceğin dijital ürün envanterine</h2>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 32px; margin-top: 40px;">
+        <!-- Phase 1 -->
+        <div class="reveal" style="background:#ffffff; border:1px solid var(--border); border-radius:24px; padding:36px; box-shadow:var(--sh-sm); position:relative;">
+          <div style="font-size:54px; font-weight:900; color:rgba(37,99,235,0.06); position:absolute; top:-5px; right:25px; line-height:1; pointer-events:none;">01</div>
+          <h3 style="font-size:22px; font-weight:700; color:var(--t1); margin-bottom:12px; display:flex; align-items:center; gap:12px;">
+            <span style="display:inline-block; padding:4px 10px; background:rgba(37,99,235,0.08); color:var(--ac); border-radius:6px; font-size:12px; font-weight:800;">FAZ 1</span>
+            <span data-i18n="investor.sec_vision_phase1_t">Faz 1: E-ticaret ve publish altyapısı</span>
+          </h3>
+          <p style="font-size:15px; color:var(--t2); line-height:1.7; margin:0;" data-i18n="investor.sec_vision_phase1_d">AI tabanlı temel 3D model üretim motorunun ve web/AR entegre yayınlama altyapısının kurulmasını hedefliyoruz.</p>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="reveal d1" style="background:#ffffff; border:1px solid var(--border); border-radius:24px; padding:36px; box-shadow:var(--sh-sm); position:relative;">
+          <div style="font-size:54px; font-weight:900; color:rgba(37,99,235,0.06); position:absolute; top:-5px; right:25px; line-height:1; pointer-events:none;">02</div>
+          <h3 style="font-size:22px; font-weight:700; color:var(--t1); margin-bottom:12px; display:flex; align-items:center; gap:12px;">
+            <span style="display:inline-block; padding:4px 10px; background:rgba(245,158,11,0.08); color:#f59e0b; border-radius:6px; font-size:12px; font-weight:800;">FAZ 2</span>
+            <span data-i18n="investor.sec_vision_phase2_t">Faz 2: Creator, ajans ve white-label genişleme</span>
+          </h3>
+          <p style="font-size:15px; color:var(--t2); line-height:1.7; margin:0;" data-i18n="investor.sec_vision_phase2_d">Tasarımcılar, ajanslar ve freelancerlar için Text-to-3D motoru ve white-label lisanslama süreçlerini planlıyoruz.</p>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="reveal d2" style="background:#ffffff; border:1px solid var(--border); border-radius:24px; padding:36px; box-shadow:var(--sh-sm); position:relative;">
+          <div style="font-size:54px; font-weight:900; color:rgba(37,99,235,0.06); position:absolute; top:-5px; right:25px; line-height:1; pointer-events:none;">03</div>
+          <h3 style="font-size:22px; font-weight:700; color:var(--t1); margin-bottom:12px; display:flex; align-items:center; gap:12px;">
+            <span style="display:inline-block; padding:4px 10px; background:rgba(16,185,129,0.08); color:#10b981; border-radius:6px; font-size:12px; font-weight:800;">FAZ 3</span>
+            <span data-i18n="investor.sec_vision_phase3_t">Faz 3: 3D baskı ve maker uyumluluğu</span>
+          </h3>
+          <p style="font-size:15px; color:var(--t2); line-height:1.7; margin:0;" data-i18n="investor.sec_vision_phase3_d">3D yazıcı kullanıcıları için geometri kontrolü ve STL/OBJ baskı formatı entegrasyonlarını hedefliyoruz.</p>
+        </div>
+
+        <!-- Phase 4 -->
+        <div class="reveal d3" style="background:#ffffff; border:1px solid var(--border); border-radius:24px; padding:36px; box-shadow:var(--sh-sm); position:relative;">
+          <div style="font-size:54px; font-weight:900; color:rgba(37,99,235,0.06); position:absolute; top:-5px; right:25px; line-height:1; pointer-events:none;">04</div>
+          <h3 style="font-size:22px; font-weight:700; color:var(--t1); margin-bottom:12px; display:flex; align-items:center; gap:12px;">
+            <span style="display:inline-block; padding:4px 10px; background:rgba(139,92,246,0.08); color:#8b5cf6; border-radius:6px; font-size:12px; font-weight:800;">FAZ 4</span>
+            <span data-i18n="investor.sec_vision_phase4_t">Faz 4: Mekânsal Deneyim & XR Showroom</span>
+          </h3>
+          <p style="font-size:15px; color:var(--t2); line-height:1.7; margin:0;" data-i18n="investor.sec_vision_phase4_d">VisionOS (Apple Vision Pro), Quest, Unreal ve Unity platformlarında tam performanslı export supports planlıyoruz.</p>
+        </div>
+
+        <!-- Phase 5 -->
+        <div class="reveal d4" style="background:#ffffff; border:1px solid var(--border); border-radius:24px; padding:36px; box-shadow:var(--sh-sm); position:relative;">
+          <div style="font-size:54px; font-weight:900; color:rgba(37,99,235,0.06); position:absolute; top:-5px; right:25px; line-height:1; pointer-events:none;">05</div>
+          <h3 style="font-size:22px; font-weight:700; color:var(--t1); margin-bottom:12px; display:flex; align-items:center; gap:12px;">
+            <span style="display:inline-block; padding:4px 10px; background:rgba(236,72,153,0.08); color:#ec4899; border-radius:6px; font-size:12px; font-weight:800;">FAZ 5</span>
+            <span data-i18n="investor.sec_vision_phase5_t">Faz 5: Dinamik, AI destekli 3D ürün ve ortam ekosistemi</span>
+          </h3>
+          <p style="font-size:15px; color:var(--t2); line-height:1.7; margin:0;" data-i18n="investor.sec_vision_phase5_d">Yaşayan 3D ortamlar ve akıllı nesne sistemlerinin yer alacağı sınırları aşan canlı bir 3D dünya altyapısını hedefliyoruz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. FINAL INVESTOR CTA -->
+  <section class="inv-section" style="background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);">
+    <div class="container" style="max-width: 900px; text-align: center;">
+      <div class="reveal">
+        <span class="badge" style="margin-bottom: 16px;">Geleceğe Yatırım</span>
+        <h2 class="gt-ac" style="font-size: 38px; margin-top: 0; margin-bottom: 24px;" data-i18n="investor.sec_final_title">IARONE’un 3D commerce altyapısını birlikte büyütelim.</h2>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
+          <a href="index.html#demo" class="btn btn-primary btn-lg" data-i18n="investor.cta_contact">İletişime Geç</a>
+          <a href="pricing.html" class="btn btn-ghost btn-lg" data-i18n="footer.col1">Platform</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      
+      <!-- Brand column -->
+      <div style="max-width: 320px;">
+        <a href="index.html" class="footer__logo" aria-label="Iarone Ana Sayfa" style="gap: 8px;">
+          <img src="00_iarone_logo_exact_transparent_white_glow.webp" class="logo-dark" alt="Iarone Logo" loading="lazy" width="24" />
+          <img src="00_iarone_logo_exact_transparent_black.webp" class="logo-light" alt="Iarone Logo" loading="lazy" width="24" />
+          <span class="logo-text">Iarone</span>
+        </a>
+        <p style="font-size: 16px; color: var(--t3); line-height: 1.6; margin-bottom: 32px;" data-i18n="footer.f_desc">IARONE, görselleri, fikirleri ve ürünleri web, AR, dijital showroom, yaratıcı üretim, 3D baskı ve gelecek 3D platformları için kullanılabilir dijital varlıklara dönüştürmeyi hedefleyen yapay zekâ destekli 3D üretim altyapısıdır.</p>
+      </div>
+
+      <div style="display: flex; gap: 80px; flex-wrap: wrap;">
+        <!-- Product Links -->
+        <div style="min-width: 140px;">
+          <h4 style="font-size: 13px; font-weight: 700; color: var(--t1); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px;" data-i18n="footer.col1">Platform</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px;">
+            <li><a href="index.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="nav.home">Ana Sayfa</a></li>
+            <li><a href="nasil-calisir.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="nav.dashboard">Nasıl Çalışır</a></li>
+            <li><a href="market.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="nav.market">Kullanım Alanları</a></li>
+            <li><a href="pricing.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="nav.pricing">Fiyatlandırma</a></li>
+            <li><a href="investor.html" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="nav.investor">Yatırımcı Ol</a></li>
+          </ul>
+        </div>
+        
+        <!-- Company Links -->
+        <div style="min-width: 140px;">
+          <h4 style="font-size: 13px; font-weight: 700; color: var(--t1); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px;" data-i18n="footer.col2">İletişim</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px;">
+            <li><a href="index.html#demo" style="color: var(--t3); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--ac)';" onmouseout="this.style.color='var(--t3)';" data-i18n="footer.demo_cta">Demo Talep Et</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="footer__bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; padding: 32px 0; border-top: 1px solid var(--border);">
+      <span style="font-size: 14px; font-weight: 500; color: var(--t3);" data-i18n="footer.copy">© 2026 Iarone. Tüm hakları saklıdır.</span>
+      <div style="display: flex; gap: 32px;">
+        <a href="#" style="font-size: 14px; font-weight: 500; color: var(--t3); text-decoration: none; transition: color 0.2s ease;" onmouseover="this.style.color='var(--t1)';" onmouseout="this.style.color='var(--t3)';">Gizlilik Politikası</a>
+        <a href="#" style="font-size: 14px; font-weight: 500; color: var(--t3); text-decoration: none; transition: color 0.2s ease;" onmouseover="this.style.color='var(--t1)';" onmouseout="this.style.color='var(--t3)';">Kullanım Şartları</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.IARONE_API_URL = "%VITE_IARONE_API_URL%";
+  if (!window.IARONE_API_URL || window.IARONE_API_URL.startsWith("%VITE_")) {
+    window.IARONE_API_URL = "https://api.iarone.com/api";
+  }
+</script>
+<script type="module" src="i18n.js"></script>
+<script type="module" src="app.v5.js"></script>
+
+<!-- Floating Instagram Button -->
+<a href="https://www.instagram.com/iarone.ai?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="floating-ig-btn" aria-label="Instagram">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+  </svg>
+</a>
+</body>
+</html>
