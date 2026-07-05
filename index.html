@@ -561,18 +561,14 @@
 <section class="container" style="margin-top: 60px; margin-bottom: 20px;">
   <div class="viewer-container reveal">
     <model-viewer 
-      src="models/dolap.glb" 
+      src="/models/dolap.glb" 
       camera-controls 
       auto-rotate 
+      rotation-per-second="10deg"
       loading="eager"
       reveal="auto"
-      rotation-per-second="10deg" 
       ar 
-      ar-modes="webxr scene-viewer quick-look" 
-      tone-mapping="agx"
-      environment-image="neutral"
-      shadow-intensity="1"
-      exposure="0.7">
+      ar-modes="webxr scene-viewer quick-look">
       
       <div slot="poster" class="model-loading">
         3D model yükleniyor...
