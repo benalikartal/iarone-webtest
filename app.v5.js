@@ -3,8 +3,10 @@
    Theme toggle, i18n, nav, animations, 3D preloader, 
    Drag & Drop, Search, Filters, Onboarding & Dashboard modules
    ===================================================== */
-import { i18n } from './i18n.js';
+
+// 3D Model Viewer
 import '@google/model-viewer';
+import { i18n } from './i18n.js';
 
 /* ─── PREMIUM PRELOADER (GÜVENLİ) ─── */
 function initPreloader() {
