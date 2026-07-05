@@ -595,12 +595,31 @@
 
       viewer.addEventListener('load', () => {
         if(loader) loader.style.display = 'none';
+
+        // Beyaz/açık renkli malzemeleri lacivert yap
+        try {
+          const materials = viewer.model.materials;
+          console.log('Toplam malzeme sayısı:', materials.length);
+          materials.forEach((mat, i) => {
+            const c = mat.pbrMetallicRoughness.baseColorFactor;
+            console.log(`Malzeme ${i} (${mat.name}): R=${c[0].toFixed(2)} G=${c[1].toFixed(2)} B=${c[2].toFixed(2)}`);
+            // Açık/beyaz renkleri (R,G,B hepsi 0.6'dan büyükse) lacivert yap
+            if (c[0] > 0.6 && c[1] > 0.6 && c[2] > 0.6) {
+              mat.pbrMetallicRoughness.setBaseColorFactor([0.04, 0.06, 0.14, 1.0]);
+              mat.pbrMetallicRoughness.setMetallicFactor(0.1);
+              mat.pbrMetallicRoughness.setRoughnessFactor(0.3);
+              console.log(`  → Lacivert yapıldı`);
+            }
+          });
+        } catch(e) {
+          console.warn('Malzeme değiştirme hatası:', e);
+        }
       });
 
-      // Eger kütüphane hiç yüklenemezse uyar
+      // Kütüphane yüklenemezse uyar
       setTimeout(() => {
         if (!customElements.get('model-viewer') && loader) {
-          loader.innerHTML = '⚠️ 3D kütüphanesi yüklenemedi. Vite sunucusunu (npm run dev) çalıştırdığınızdan emin olun.';
+          loader.innerHTML = '⚠️ 3D kütüphanesi yüklenemedi.';
           loader.style.color = '#f59e0b';
         }
       }, 3000);
