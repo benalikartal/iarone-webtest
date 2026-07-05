@@ -11,7 +11,8 @@ export default defineConfig({
         nasil_calisir: resolve(__dirname, 'nasil-calisir.html'),
         investor: resolve(__dirname, 'investor.html'),
         publish: resolve(__dirname, 'publish.html'),
-        embed: resolve(__dirname, 'embed.html')
+        embed: resolve(__dirname, 'embed.html'),
+        demo3d: resolve(__dirname, '3d-demo.html')
       }
     }
   }
